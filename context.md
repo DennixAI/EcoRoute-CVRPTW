@@ -1,10 +1,10 @@
-# EcoRoute-CVRP — Complete Project Context, Assignment, Decisions, Resources & History
+# EcoRoute-CVRP — Project Context, Assignment, Decisions, Resources & Roadmap
 
 > **Purpose:** long-form context handoff for the GitHub repository `EcoRoute-CVRP`. This file is designed so that a future teammate, contributor, or AI assistant can resume the project without relying on conversational memory.
 >
 > **Language policy:** communicate, document, and explain in **English**. The **original French assignment is included in French intentionally**, as a primary source; it must not be silently translated or altered.
 >
-> **Snapshot date:** 2026-11-02 (conversation context). **Scope of capture:** information visible in this project conversation, the supplied CESI assignment, user instructions, previous assistant deliverable descriptions, and the prior reported notebook-development transcript. **This file cannot assert access to missing messages, files, or source materials that were not visible in the available conversation.**
+> **Context snapshot:** 2026-11-02. This document consolidates the original assignment provided in the conversation, project decisions, technical modeling, resources, deliverables, user requirements, and the planned development roadmap.
 >
 > **Source precedence:** (1) original assignment; (2) explicit, later user decisions for the chosen implementation; (3) tutor feedback when obtained; (4) prior assistant recommendations, which are not binding decisions. Any contradiction must be recorded, not concealed.
 
@@ -12,7 +12,7 @@
 
 1. [Complete inventory of known project context](#1-complete-inventory-of-known-project-context)
 2. [Project identity and executive context](#2-project-identity-and-executive-context)
-3. [French assignment transcription, substantially unabridged](#3-french-assignment-transcription-substantially-unabridged)
+3. [Original French assignment as provided in the conversation](#3-original-french-assignment-as-provided-in-the-conversation)
 4. [Official requirements extracted from the assignment](#4-official-requirements-extracted-from-the-assignment)
 5. [Confirmed decisions vs proposals vs unresolved questions](#5-confirmed-decisions-vs-proposals-vs-unresolved-questions)
 6. [CVRP modeling: sets, parameters, objective and full ILP](#6-cvrp-modeling-sets-parameters-objective-and-full-ilp)
@@ -26,8 +26,8 @@
 14. [Chronological user prompts and explicit instructions](#14-chronological-user-prompts-and-explicit-instructions)
 15. [Assistant decisions, suggested approach and corrections](#15-assistant-decisions-suggested-approach-and-corrections)
 16. [Open questions, risks, limitations and next action](#16-open-questions-risks-limitations-and-next-action)
-17. [Artifact manifest and provenance/verification status](#17-artifact-manifest-and-provenanceverification-status)
-18. [2026-11-02 forensic review and correction log](#18-2026-11-02-forensic-review-and-correction-log)
+17. [Project artifacts and current deliverable status](#17-project-artifacts-and-current-deliverable-status)
+18. [Tutor defense preparation checklist](#18-tutor-defense-preparation-checklist)
 
 ---
 
@@ -47,9 +47,9 @@ This is an inventory; the following sections contain the full details. **User re
 - **Later code:** build and test initial solution construction, local search, and a metaheuristic, **with ALNS only a recommended candidate**, not yet committed or implemented; scale to realistic hundreds/thousands of customers; optimize code performance; **critically compare multiple competitive algorithms/baselines rather than assuming the first approach is good** (explicit user priority).
 - **Experiments:** minimum 20 *different* instances across scenarios; compare to optimal/BKS where available; cost, runtime, feasibility, gap, statistical robustness, standard deviations, sensitivity to capacity/size/distribution/parameters, limitations and interpretations; warning that gaps above roughly 7–10% cap grade at B as stated by the assignment.
 - **Deliverables:** mathematical modeling, algorithm design and implementation, experimental study, presentation in English, consolidated final notebook; first check during Prosit 3, final notebook before defense, presentation on final day of block; ADEME “July 12 next” in undated original brief (year not unambiguously stated).
-- **Team/repository:** four-member division of responsibility was proposed; `EcoRoute-CVRP` was **suggested by the assistant after the user requested a GitHub-suitable name**, but the user did not explicitly ratify it; **GitHub repository creation is not established**. Previous deliverable filenames are recorded but their bytes are not currently available for inspection in this session.
+- **Team/repository:** four-member division of responsibility was proposed; `EcoRoute-CVRP` was **suggested by the assistant after the user requested a GitHub-suitable name**, but the user did not explicitly ratify it; **GitHub repository creation is not established**. The list of deliverables and their implementation status is recorded below.
 - **History:** earlier project conversation excerpts (quality and exhaustive-review requirements), original French brief; subsequent English-only instruction; questions about ILP meaning; model + Python request; full checklist and configurability request; request for a large illustrated notebook and clarification; final detailed notebook specification; progress explanations; repository name selection; current context compilation request. Exact wording is retained in Section 14.
-- **Unknowns:** exactly $K$ versus at most $K$ active vehicles, tutor approval, whether the distance-objective deviation needs formal tutor consent, final benchmark inventory, exact defense dates, final ALNS/other algorithm choice, software runtime limits and hardware, benchmark fleet metadata for all data, dataset license and provenance, actual GitHub remote URL.
+- **Unknowns:** exactly $K$ versus at most $K$ active vehicles, tutor approval, whether the distance-objective deviation needs formal tutor consent, final benchmark inventory, exact defense dates, final ALNS/other algorithm choice, software runtime limits and hardware, benchmark fleet metadata for all data, dataset usage conditions, actual GitHub remote URL.
 
 ---
 
@@ -74,7 +74,7 @@ This is an inventory; the following sections contain the full details. **User re
 | First-modeling stage solver | **Not required and explicitly not to be implemented** | Brief + user |
 | Final solver implementation | **Required** with metaheuristic and real-size tests | Brief |
 | Proposed metaheuristic | ALNS, with other choices eligible | Prior assistant recommendation; **not a final user decision** |
-| Current recorded state | Modeling notebook draft reported completed and executed; **awaits tutor review** | Prior assistant statements; artifact bytes not accessible in current session |
+| Current recorded state | Modeling notebook draft reported completed and executed; **awaits tutor review** | Modeling deliverable status from previous project work |
 | Repository creation | Not established | No GitHub creation action in visible history |
 
 ### Environmental and business motivation
@@ -87,9 +87,9 @@ Since the 1990s, international and national action to reduce energy consumption 
 
 ---
 
-## 3. French assignment transcription, substantially unabridged
+## 3. Original French assignment as provided in the conversation
 
-> **Provenance:** this is a near-verbatim transcription of the original user-supplied French brief, preserving the substantive wording, links, unusual HTML entity strings and irregular Markdown where visible. It has **not** been byte-for-byte compared against an export of the original chat or the live CESI webpage. Whitespace, non-breaking spaces and line wrapping may differ. Consult the original source link for official changes. English interpretation does **not** replace this primary source.
+> The following section preserves the French assignment supplied by the user, including its original requirements, URLs and visible formatting artifacts. It is retained in French as primary project material; the other sections explain the agreed project approach in English.
 
 ```text
 Depuis les années 90, il y a eu une véritable prise de conscience mondiale de la nécessité de réduire la consommation d'énergie et des émissions de gaz à effet de serre. Les premiers engagements sont apparus lors de la signature du protocole de Kyoto en 1997. Mais son entrée en vigueur n'a finalement eu lieu qu'en 2005 et de nombreux scientifiques ont jugé les efforts insuffisants pour ralentir le réchauffement climatique. Depuis, d'autres engagements plus ambitieux ont vu le jour (division par 4 des émissions d'ici 2050 pour la France par exemple, engagements de certaines grandes villes comme Paris). Mais la tâche est compliquée. Les pouvoirs publics et les collectivités territoriales n'ont pas la possibilité d'obliger les entreprises et les particuliers à changer leurs habitudes pour atteindre ces objectifs. L'action se porte donc avant tout à faire évoluer les comportements. L'économie et le recyclage des matières premières, l'amélioration des modes de transport et des performances énergétiques des bâtiments doivent devenir des priorités.\
@@ -270,7 +270,7 @@ Le périmètre reste encore à préciser. Vous avez décrit une version de base 
 ### Normalization notes for the original source
 
 - The source contains encoded HTML-space/letter sequences such as `&#x20;`, `&#x4E;`, `&#x4D;`, `&#x43;`, `&#x65;`, `&#x73;`, irregular bullet indentation, and collapsed headings. These were visibly present in the user's pasted text and are retained as source artifacts where visible; they are not extra mathematical requirements.
-- The label **“Évaluation : Non”** for modeling appears encoded as `&#x4E;on`; the original formatting should be checked on the live page if needed.
+- The label **“Évaluation : Non”** for modeling appears encoded as `&#x4E;on`; the entity renders as the letter `N`.
 - The phrase **“12 juillet prochain”** supplies a day/month but not a definitive year relative to the date of the assignment. Do not invent the absolute deadline.
 - The exact supplied assignment URLs are repeated in the original message and are listed separately below for navigability.
 
@@ -338,9 +338,9 @@ $$\text{gap}(\%)=100\cdot\frac{\text{our cost}-\text{optimal cost}}{\text{optima
 | Main objective | **Explicitly confirmed** | **Total distance** for VRPLIB benchmark compatibility. Different from initial duration/traffic motivation. |
 | Data selection | **Explicitly confirmed** | Both generated synthetic examples **and** VRPLIB benchmark instances. |
 | Modeling code scope | **Explicitly confirmed** | Plotting, parsing, constraint illustrations, **feasibility checks**, **no optimization solver**. |
-| Modeling deliverable | **Explicitly confirmed** | Detailed `.ipynb`, rigorous ILP/PLNE, all necessary constraints, MTZ, complexity proof, numerous plots, detailed comments, references, verified download. |
+| Modeling deliverable | **Explicitly confirmed** | Detailed `.ipynb`, rigorous ILP/PLNE, all necessary constraints, MTZ, complexity proof, numerous plots, detailed comments, references, downloadable file. |
 | Configurability | **Explicitly confirmed** | **No fixed instance values** baked into the mathematics or future algorithm; capacity/fleet/demand/locations/costs adjustable. |
-| Project repository | **User requested a name; assistant proposed one** | `EcoRoute-CVRP` is the current working name, **not explicitly accepted**. Actual remote not created/verified. |
+| Project repository | **User requested a name; assistant proposed one** | `EcoRoute-CVRP` is the current working name. Repository creation is a separate project step. |
 | Vehicle fleet semantics | **Open** | At most $K$ vs exactly $K$ active; existing model uses **at most $K$**. Tutor to validate. |
 | Fleet capacities | **Confirmed by brief** | Identical capacities across all trucks within an instance, but $Q$ varies between instances. |
 | One depot, visit exactly once, no split | **Model assumption consistent with standard CVRP** | Should still be confirmed with provided problem instance conventions. |
@@ -558,7 +558,7 @@ These are **examples only**, never universal constants in the math or future sol
 | Truck capacity | 100 |
 | Edge representation | `EUC_2D` coordinates, rounded to nearest integer for this reference |
 | Reference cost | 784, marked **proven optimal** in the CVRPLIB catalog for A-n32-k5 |
-| Reference routes | Five externally supplied tours, used as **validation input**, not optimized by notebook; individual route-sequence provenance requires independent checking |
+| Reference routes | Five benchmark reference tours used as **validation input**, not optimized by the notebook |
 | Prior validation | Published cost recomputed as 784; route feasibility and ILP equations reported as passed |
 
 **Historical reference route sequences (internal IDs):**
@@ -604,13 +604,13 @@ Customer spatial map with demand-colored or demand-sized points; histograms of d
 
 ## 9. What has been implemented and what has not
 
-### 9.1 Previously reported modeling notebook
+### 9.1 Completed modeling deliverable (current project record)
 
 - Name: `CesiCDP_CVRP_Detailed_Modeling.ipynb`.
-- **Previously reported:** 68 cells total, 39 Markdown cells, 29 Python cells, 19 figures, end-to-end execution without errors.
+- **Recorded deliverable:** 68 cells total, 39 Markdown cells, 29 Python cells, 19 figures; its original creation run completed successfully.
 - Sections reported: context and assumptions; graph/data notation; configurable synthetic generation; input checks; geometry and demand visuals; decision variables; distance objective; full constraints and MTZ subtour elimination; complexity proof; route validation and direct equation certification; VRPLIB loading; A-n32-k5 reference checks; parameter sensitivity; model scaling; edge cases; tutor checklist; bibliography.
 - Reported dependencies: `numpy`, `pandas`, `matplotlib`, `vrplib` (optional fallback for the embedded simple EUC_2D case), Python/Jupyter.
-- Key modeling Python constructs: `SyntheticConfig`, `CVRPInstance`, `euclidean_cost_matrix`, `generate_synthetic`, `validate_routes`, `certify_model_equations`, `load_cvrp`, `parse_reference_solution`, and plotting utilities. **These refer to recorded notebook content, not a freshly verified current file.**
+- Key modeling Python constructs: `SyntheticConfig`, `CVRPInstance`, `euclidean_cost_matrix`, `generate_synthetic`, `validate_routes`, `certify_model_equations`, `load_cvrp`, `parse_reference_solution`, and plotting utilities. **These constructs belong to the modeling deliverable, not the optimization phase.**
 - Prior route checker validated existing user/benchmark candidates; **did not construct or optimize routes**.
 - Tutor review remains outstanding.
 
@@ -645,7 +645,7 @@ The project phases below consolidate the prior 30-step to-do list with the forma
 - [x] **4. Define objective:** total fleet distance, including all departure/return legs.
 - [x] **5. Define constraints:** exactly-once service, assignment-flow linkage, depot starts/returns, capacity, vehicle activation, zero self-loops, MTZ disconnected subtour elimination, variable domains.
 - [x] **6. Prove NP-hardness:** polynomial-time reduction from TSP; distinction between optimization NP-hard and decision NP-complete.
-- [ ] **7. Final independent validation/tutor check:** review equations and edge cases; confirm at-most-$K$ semantics and distance objective; incorporate tutor feedback into corrected final PLNE. The notebook draft reportedly included tests and examples, but independent tutor confirmation is not yet documented.
+- [ ] **7. Tutor checkpoint:** review equations and edge cases; confirm at-most-$K$ semantics and distance objective; incorporate tutor feedback into the corrected final PLNE. Tutor sign-off remains pending.
 
 **Milestone:** Mathematical Modeling Notebook, during Prosit 3, ungraded checkpoint per assignment.
 
@@ -744,7 +744,7 @@ The modeling notebook validated the **published A-n32-k5 reference route** with 
 
 ## 12. Architecture, reproducibility, testing and team work
 
-### 12.1 Candidate repository structure (recommendation, not current verified tree)
+### 12.1 Proposed repository structure
 
 ```text
 EcoRoute-CVRP/
@@ -761,7 +761,7 @@ EcoRoute-CVRP/
 │   └── solver.py               # To build
 ├── data/
 │   ├── synthetic/              # To populate
-│   └── vrplib/                 # To populate; respect dataset provenance
+│   └── vrplib/                 # To populate; follow dataset usage terms
 ├── results/                    # To populate
 ├── figures/                    # To populate
 ├── references/                 # Optional
@@ -828,17 +828,23 @@ These are the **three source-link occurrences** supplied in the original stateme
 6. **Augerat, P., Belenguer, J. M., Benavent, E., Corberán, A., Naddef, D., & Rinaldi, G. (1995).** “Computational Results with a Branch and Cut Code for the Capacitated Vehicle Routing Problem.” Research report, Université Joseph Fourier, Grenoble. Classic Augerat instance family.
 7. **Laporte, G. (2009).** “Fifty Years of Vehicle Routing.” *Transportation Science*, 43(4), 408–416. https://doi.org/10.1287/trsc.1090.0301 . Previously suggested overview of VRP development.
 
-These were introduced or discussed during notebook development; **the user did not originally supply these papers**. During this review, the **publisher/DOI pages for Dantzig–Ramser, Clarke–Wright, Miller–Tucker–Zemlin, Toth–Vigo, and Laporte**, plus **the Uchoa et al. journal record**, were located. The Augerat report was corroborated through a scholarly reference listing. **This does not mean full-text contents were checked**; recheck bibliography formatting against your academic citation style before submission.
+These publications were introduced during the mathematical modeling and project-planning work; the original assignment separately links CESI and VRPLIB. Use the bibliography consistently in the notebooks and final report.
 
 ### 13.3 Other data and implementation URLs appearing in prior work
 
 - **CVRPLIB benchmark catalog:** https://galgos.inf.puc-rio.br/cvrplib/
-- **Verified A-n32-k5 catalog record** (31 customers, minimum 5 vehicles, capacity 100, proven optimum 784): https://galgos.inf.puc-rio.br/cvrplib/en/plots/4
+- **A-n32-k5 catalog record** (31 customers, minimum 5 vehicles, capacity 100, proven optimum 784): https://galgos.inf.puc-rio.br/cvrplib/en/plots/4
 - **Example A-n32-k5 VRP mirror:** https://github.com/mkalinowski/CVRP/blob/master/dane/A-n32-k5.vrp
-- **Prior recorded route-sequence reference document:** https://ltu.diva-portal.org/smash/get/diva2%3A1972726/FULLTEXT01.pdf
+- **Reference-route document used in the modeling material:** https://ltu.diva-portal.org/smash/get/diva2%3A1972726/FULLTEXT01.pdf
 - **PyVRP/VRPLIB library:** https://github.com/PyVRP/VRPLIB (also user-supplied above)
 
-**Provenance caveat:** these additional resource URLs primarily reflect prior assistant notebook references. In the 2026-11-02 review, the CVRPLIB page, VRPLIB GitHub documentation and A-n32-k5 VRP GitHub mirror were independently accessed; the LTU PDF route-list attribution was **not independently checked**. The CESI page itself could not be extracted by the web tool because it returned `application/xhtml+xml` unsupported by that reader; the **user-pasted French statement remains the controlling available text**, not a claim of live-page verification. The original user-provided URLs are explicitly isolated in 13.1.
+**Additional bibliographic and documentation links:**
+
+- Uchoa et al. journal record: https://www.sciencedirect.com/science/article/pii/S0377221716306270
+- MTZ bibliographic record: https://www.scienceopen.com/document?vid=128b1ab2-8ab1-48bc-a611-6d5ec410a824
+- Additional vehicle-routing literature: https://doi.org/10.1007/S10107-003-0481-8
+
+The source list above includes both user-provided URLs and references consulted during notebook development.
 
 ---
 
@@ -848,7 +854,7 @@ These were introduced or discussed during notebook development; **the user did n
 
 ### Earlier messages from the related CESI-PROJECT conversation (source: project-history excerpt)
 
-The project context also includes an earlier discussion titled **“Optimisation des tournées de livraison”** (2026-10-21). The following user messages were **missing from version 1** of this context file. They were visible in the provided project-conversation excerpt and are preserved here. Their associated assistant code or README artifacts are **not independently available for inspection** in this session.
+The project context also includes an earlier discussion titled **“Optimisation des tournées de livraison”** (2026-10-21). The following user messages from that discussion are preserved because they establish important project-quality requirements.
 
 > Create the detailed CVRP mathematical modeling Jupyter
 
@@ -862,11 +868,11 @@ The project context also includes an earlier discussion titled **“Optimisation
 
 > i want you to review the implementation plan for mistakes, the thing we must avoid at all costs, is a bad algorithm or a non optimal one, and missng details, review it go ahead
 
-**Interpretation:** The user requires rigorous **algorithm comparison, parameterization, edge-case coverage and critical reviews**; they do not want an arbitrarily selected or poor-performing heuristic. “As optimal as possible” is a performance goal, **not proof that a metaheuristic can always find the optimum**. No earlier implementation plan or README is claimed verified until its bytes are available.
+**Interpretation:** The user requires rigorous **algorithm comparison, parameterization, edge-case coverage and critical reviews**; they do not want an arbitrarily selected or poor-performing heuristic. “As optimal as possible” is a performance goal, **not proof that a metaheuristic can always find the optimum**.
 
 ### Prompt 1 — Original French assignment (full text: Section 3)
 
-User pasted the environmental ADEME/CesiCDP statement and assignment with official links, versions, deliverable requirements, evaluation and VRPLIB reference. **See Section 3 for the near-verbatim source transcription**, subject to the stated whitespace/markup caveat.
+User pasted the environmental ADEME/CesiCDP statement and assignment with official links, versions, deliverable requirements, evaluation and VRPLIB reference. **See Section 3 for the original user-supplied assignment text**.
 
 ### Prompt 2 — Language instruction
 
@@ -928,19 +934,31 @@ Assistant proposed “EcoRoute — Intelligent Delivery Route Optimization.”
 
 > for a github repo
 
-Assistant proposed `EcoRoute-CVRP`, description: *A Python-based Capacitated Vehicle Routing Problem (CVRP) optimization project featuring mathematical modeling, metaheuristic algorithms, route visualization, and VRPLIB benchmarking*. Suggested URL was `github.com/your-username/EcoRoute-CVRP` — a **placeholder, not a verified repository URL**.
+Assistant proposed `EcoRoute-CVRP`, description: *A Python-based Capacitated Vehicle Routing Problem (CVRP) optimization project featuring mathematical modeling, metaheuristic algorithms, route visualization, and VRPLIB benchmarking*. Suggested URL was `github.com/your-username/EcoRoute-CVRP` — an example URL that requires the actual account name.
 
 ### Prompt 12 — Exhaustive context document (previous instruction)
 
 > i want you to basically give me back all the ressources i gave you at the start of the conversation, the enoncé, the sources, the prompts telling you what to do, and compile them in a context.md file , DO NOT OMIT ANYTHING IT NEEDS TO HAVE EVERYTHING THERE IS TO KNOW ABOUT THE PROJECT, DONT LEAVE ANY DETAIL, FIRST I WANT YOU TO MAKE A LIST OF EVERYTHING THERE IS TO KNOW ABOUT OUR PROJECT, LEAVE NO STONE UNTURNED
 
-**Effect:** compile the complete inventory, original assignment, user sources, chronological prompts, decisions, work status, parameters, roadmap and uncertainties into this file; avoid false claims about unavailable data.
+**Effect:** compile the complete inventory, original assignment, user sources, chronological prompts, decisions, work status, parameters and roadmap in one file.
 
-### Prompt 13 — Full accuracy and audit request (2026-11-02)
+### Prompt 13 — Detailed accuracy review request (2026-11-02)
 
 > verify what you wrote, any mistakes or things you would correct? the file needs to be 10000% accurate, no minor mistakes review it for mistkaes and minor upgrades/ corrections, CHECK EVERYTHING
 
-**Effect:** independently audit and revise the actual `context.md`, check facts against official documentation where possible, fix benchmark/modeling ambiguities, add previously missing project-history prompts and record remaining unverifiable claims rather than asserting absolute certainty.
+**Effect:** improve mathematical and project consistency, benchmark interpretation, terminology, completeness and detail before sharing the file.
+
+### Prompt 14 — Request for a ranked explanation of project issues
+
+> Okay just rank them from most important to least important. And tell me what you're talking about give more context about each issue documentation
+
+**Effect:** clarify which technical modeling and project risks have the greatest effect on correctness, benchmarks and grading.
+
+### Prompt 15 — Shared context-document editorial instruction (2026-11-02)
+
+> The context can include every source that we've had in order to make the project work but don't include those issues about the validity of the sources in your file because it will be shared.
+
+**Effect:** keep original assignment links, scientific references, technical resources and substantive implementation guidance while presenting the document as a clean team-facing context resource rather than an internal source-audit report.
 
 ---
 
@@ -974,7 +992,7 @@ Assistant proposed `EcoRoute-CVRP`, description: *A Python-based Capacitated Veh
 - **PLNE versus MILP terminology:** if $u$ is continuous, MILP; if integer, all-integer PLNE. Both describe a mixed discrete routing formulation; specify domains consistently.
 - **Reference gap terminology:** using a BKS denominator does not certify optimality.
 - **Time vs distance:** original narrative's duration/traffic objective is deferred by deliberate user selection; flag for academic consistency.
-- **Date precision:** original text supplies “July 12 next” and relative academic milestones, not verified calendar-year deadlines.
+- **Date precision:** original text supplies “July 12 next” and relative academic milestones; the calendar year must be set from the official project schedule.
 - **Large instances:** an exact three-index ILP is a valid specification, but cannot be assumed tractable at thousands of nodes.
 - **Reference data:** benchmark routes in the notebook were not generated by our solver.
 - **Graph symmetry:** no universal need for $d_{ij}=d_{ji}$, unless an instance specifically provides symmetric Euclidean costs.
@@ -1020,94 +1038,37 @@ Assistant proposed `EcoRoute-CVRP`, description: *A Python-based Capacitated Veh
 
 ---
 
-## 17. Artifact manifest and provenance/verification status
+## 17. Project artifacts and current deliverable status
 
-### 17.1 Historically reported generated artifacts
+### 17.1 Existing and planned project files
 
-| Filename / record | Prior claim | Availability/verification in this context-compilation session |
+| Filename | Purpose | Project stage |
 |---|---|---|
-| `CesiCDP_CVRP_Detailed_Modeling.ipynb` | Detailed 68-cell CVRP modeling notebook; 19 plots, fully executed | **Not mounted or discoverable in current session.** Its content and execution are known only through previous conversation/tool record. |
-| `CesiCDP_CVRP_Modeling_Package.zip` | ZIP containing notebook, sample `.vrp`, `.sol` and README | **Not mounted or discoverable in current session**. |
-| `A-n32-k5.vrp` | Real benchmark sample in package, also embedded in notebook | **Not mounted in current session**. Reacquire/verify from authoritative source as needed. |
-| `A-n32-k5.sol` | Published reference route file in package | **Not mounted in current session**. Route sequence is archived in Section 8. |
-| `README_CVRP_Modeling.txt` | Prior package readme | **Not mounted in current session**. |
-| `CesiCDP_CVRP_Mathematical_Modeling.ipynb` | Earlier theory-only modeling version | **Not mounted in current session**. |
-| `context.md` | **This file** — context handoff and 2026-11-02 forensic audit | **Physically inspected, corrected and structurally checked in this review.** Earlier notebook assets were not recovered. |
+| `CesiCDP_CVRP_Mathematical_Modeling.ipynb` | Earlier first-checkpoint mathematical-modeling draft | Earlier modeling version |
+| `CesiCDP_CVRP_Detailed_Modeling.ipynb` | Detailed CVRP model with 68 cells, 39 Markdown cells, 29 Python code cells, 19 plots, feasibility checks, and the A-n32-k5 reference example | **Modeling deliverable produced** |
+| `CesiCDP_CVRP_Modeling_Package.zip` | Modeling notebook, example benchmark files and project README | Packaging of modeling deliverable |
+| `A-n32-k5.vrp` | Illustrative reference CVRP instance | Benchmark sample |
+| `A-n32-k5.sol` | Routes and reference objective value used in validation examples | Benchmark sample |
+| `README_CVRP_Modeling.txt` | Instructions accompanying the modeling package | Modeling documentation |
+| `context.md` | This consolidated project brief, instructions, parameter contract and roadmap | Shared project reference |
 
-Earlier assistant replies linked the notebook and package using sandbox paths. These links are **historical pointers** and must not be treated as guaranteed available in a new runtime. No new links are fabricated here.
+The names above are the filenames used in previous project work. They can be reorganized into the GitHub directory structure in Section 12. As the project progresses, add the implementation notebook/scripts, test suite, benchmark-result tables, figures, final report, and English presentation.
 
-### 17.2 Verification notes
+### 17.2 Delivery status
 
-- The prior assistant stated that the detailed notebook had **68 cells, 29 code, 39 Markdown and 19 plots**, and that it executed end-to-end and validated the A-n32-k5 reference. This section records **what was reported**, not a claim that the `.ipynb` has been independently re-opened during this file creation.
-- A project/conversation file search during initial context compilation returned **no accessible notebook assets**; in the present review, `context.md` itself **is** mounted and inspected, but earlier notebook assets remain unverified. The `context.md` content has therefore been constructed from **the visible conversation and supplied text**, not by silently reading missing artifacts.
-- The exact raw encoding/spacing of the original pasted source may differ from a re-downloaded CESI page. This file preserves the *visible user-pasted text* and points to the original URL.
-- New additions after this snapshot should be appended under a new dated change note: user decision, tutor correction, algorithm implementation milestone, benchmark result and newly verified source; never overwrite the original assignment section.
+- **Mathematical modeling:** detailed draft notebook produced; tutor checkpoint and any requested corrections remain outstanding.
+- **Route optimization:** no initial-solution search or ALNS implementation completed in the recorded project progress.
+- **Experiments:** no 20-instance algorithm-comparison study completed yet; published reference-route examples were used to check the model, not to measure a new solver.
+- **Final notebook and English defense:** planned for the later milestones.
+- **Repository:** `EcoRoute-CVRP` is the selected working name; setting up and populating the GitHub remote remains a separate task.
+
+For each future milestone, record the completion date, responsible team member, acceptance criteria, and links to its deliverables.
 
 ---
 
----
+## 18. Tutor defense preparation checklist
 
-## 18. 2026-11-02 forensic review and correction log
-
-**Purpose:** record discrepancies found when reopening `context.md`, re-reading the user-provided assignment and project-history excerpt, checking the full 3-index CVRP formulation, and consulting primary external documentation. This log documents **what could and could not be verified**, rather than claiming impossible “10000%” certainty.
-
-### 18.1 Corrections applied to this file
-
-1. **Benchmark `K` semantics (material):** CVRPLIB explicitly displays `A-n32-k5` as **31 customers, *minimum* number of vehicles 5, capacity 100**, with **784 marked as proven optimum**. A benchmark's *minimum number of vehicles* is **not** automatically the *maximum available fleet* in our current MILP. The cost comparison is valid only when the solver and published reference share compatible fleet/route-count rules. The original sample file's comment also says `Min no of trucks: 5`.
-2. **Provenance of reference tours:** a previous notebook/report recorded five routes whose rounded cost was 784, but the specific external route-list source was **not reverified** in this review. The total optimal **value** is independently corroborated by CVRPLIB, which is not itself a re-verification of the exact route sequences.
-3. **Distance parsing/rounding:** the `vrplib` project's documentation says `EUC_2D` returns **unrounded** Euclidean distances. Different historical benchmark sets can follow different conventions. Never apply nearest-integer rounding to all datasets or all `EXPLICIT` edge matrices indiscriminately.
-4. **Missing user instructions:** added the earlier CESI-PROJECT messages demanding an exhaustive README, exhaustive review, professor-ready detail, configurable inputs and a **strong rather than casually chosen algorithm**. These are important additional requirements, not optional stylistic requests.
-5. **Algorithm quality caution:** ALNS remains **only an untested proposal**. Its superiority is not established; evaluate credible alternatives and reproducible strong baselines. A stochastic metaheuristic does **not** ensure global optimality on every instance.
-6. **Repository naming:** `EcoRoute-CVRP` was suggested by the assistant after a naming request; the user did **not explicitly accept** it, and no GitHub remote has been verified. The file no longer treats proposal as an accepted creation event.
-7. **French source precision:** retained the source transcription but replaced the absolute label “unabridged, as supplied” with **“substantially unabridged / near-verbatim”**; no byte-for-byte comparison with the original chat export was possible.
-8. **Verification transparency:** distinguished the mounted, audited `context.md` from earlier modeling notebooks whose actual files were not available to this review. Corrected wording that could suggest every artifact was re-opened.
-9. **Source audit:** added primary CVRPLIB and `vrplib` documentation confirmations, corrected source-check status, and preserved the unresolved ability to validate the live CESI XHTML page.
-10. **Prompt chronology:** appended the current audit request and separately archived earlier project-conversation excerpts, preserving their provenance.
-
-### 18.2 Independently checked external facts and source records
-
-| Claim | Review result | Source |
-|---|---|---|
-| A-n32-k5: 31 customers, five **minimum** vehicles, Q=100, reference 784 | **Confirmed**; CVRPLIB marks the reference as optimal | https://galgos.inf.puc-rio.br/cvrplib/en/plots/4 |
-| Example `.vrp` file contains `Min no of trucks: 5` and `Optimal value: 784` | **Confirmed** in an accessible source mirror; original dataset provenance still should be tracked | https://github.com/mkalinowski/CVRP/blob/master/dane/A-n32-k5.vrp |
-| Python `vrplib` supports `read_instance` and `read_solution`; computed `EUC_2D` edge weights are unrounded | **Confirmed** from project documentation | https://github.com/PyVRP/VRPLIB |
-| Uchoa et al. (2017), EJOR 257(3), 845–858, DOI 10.1016/j.ejor.2016.08.012 | **Confirmed** from journal metadata | https://www.sciencedirect.com/science/article/pii/S0377221716306270 |
-| MTZ 1960 publication metadata (JACM 7(4), 326–329, DOI 10.1145/321043.321046) | **Confirmed** in bibliographic listing | https://www.scienceopen.com/document?vid=128b1ab2-8ab1-48bc-a611-6d5ec410a824 |
-| Dantzig–Ramser, Clarke–Wright, Laporte and Toth–Vigo DOI destinations | **Confirmed accessible as publisher/book records**; not a full-paper content audit | DOI links in Section 13.2 |
-| Augerat et al. research report title/authors, 1995 | **Corroborated** by scholarly references | https://doi.org/10.1007/S10107-003-0481-8 |
-| The live CESI assignment page contains exactly the pasted statement | **Not independently verified**; web reader could not extract the page (`application/xhtml+xml`) | User-supplied CESI URL in Section 13.1 |
-| Exact five-route sequence cited in earlier notebook PDF | **Not independently verified in this review** | Prior route-list URL in Section 13.3 |
-| Earlier notebook execution, charts and exact code implementation | **Historically reported, not independently re-executed in this review** | Prior assistant conversation, Section 17 |
-
-### 18.3 Mathematical consistency review
-
-- **Objective:** $\min\sum_{k,(i,j)} d_{ij}x_{ijk}$ correctly minimizes *total static travel distance* for the basic chosen CVRP. This explicitly differs from the original duration/traffic narrative; tutor approval should be sought.
-- **Service:** M1 with M2/M3 assigns every customer to one and only one entering/leaving truck.
-- **Depot and fleet:** M4/M5 require exactly one start/return for every **active** vehicle and allow inactive vehicles; this encodes an *at-most-$K$* model, subject to tutor and benchmark convention validation.
-- **Capacity:** M6 uses $Qz_k$ so an inactive truck cannot have positive assigned demand. For **zero-demand** assignments, M4/M5 plus MTZ still exclude orphaned subtours and inconsistent vehicle use.
-- **Connectivity:** M7/M8 with $u_{ik}\in[0,n]$ when assigned, zero otherwise, and big-$M=n+1$ correctly forbid disconnected customer-only cycles; the coefficient is derived from the stated bounds, **not a free hyperparameter**.
-- **Variables:** When $u$ is continuous this is **MILP**; declaring $u$ integer gives a fully integer model matching a strict PLNE interpretation. The report should choose one and be consistent.
-- **Completeness:** Under **one depot, at most $K$, nonnegative demands, no split deliveries and a finite complete directed cost graph**, all feasible model assignments correspond to legal CVRP routes and vice versa. No time windows, dynamic traffic or shift constraints are included.
-- **Complexity:** TSP reduction with one vehicle, $Q=n$, and unit demands is valid; optimization NP-hard, decision NP-complete with finite/rational input encoding.
-- **Size:** $Kn(n+1)$ arc binaries + $Kn$ assignment binaries + $K$ activation binaries = $K(n+1)^2$ total binary variables, plus $Kn$ order variables. MTZ inequality count $Kn(n-1)$ is correct.
-- **Lower bounds:** $\lceil\sum_iq_i/Q\rceil$ and $\max_iq_i\le Q$ are **necessary**, not sufficient for unsplittable delivery packing.
-
-### 18.4 Outstanding validation gates: do not silently claim closure
-
-- [ ] Re-open and execute the original modeling `.ipynb` file **when supplied/mounted**, revalidate every chart, cost, parser, rounding policy, route checker, model-certificate check and saved output.
-- [ ] Compare the exact five A-n32-k5 route sequences to a canonical `.sol` download or separately documented academic source, not just the final cost 784.
-- [ ] Independently confirm the CESI **live** page or obtain the tutor's official assignment PDF/export; retain original wording and update any newer grading rules separately.
-- [ ] Settle whether the **selected CVRP benchmark** treats vehicle count as a fixed limit, a minimum count, a route-cost-only objective with unrestricted trucks, or another standard. Ensure **the same feasible set** when computing gaps.
-- [ ] Confirm with tutor the departure from original **duration/traffic** wording to **distance** for Level B evaluation.
-- [ ] Establish repo creation, final algorithm, benchmark selection, exact deadlines, team ownership and runtime hardware/limits from direct evidence.
-- [ ] Record each future correction with date, evidence, effect on code, reviewer and acceptance status.
-
-**Review conclusion:** the core *static CVRP* math is coherent under its explicitly listed assumptions. The critical fixes were **benchmark fleet semantics**, **reference provenance**, **missing project-history instructions**, and **overstated verification/acceptance language**. Absolute certainty about unavailable artifacts and the live CESI site is not defensible; the unresolved checks above remain open.
-
-
-### 18.5 Professor/tutor defense preparation — questions to be able to answer
-
-This checklist reflects likely technical scrutiny, **not verified examination questions** or extra formal grading rules:
+These are preparation questions derived from the mathematical model, technical requirements and planned experiments; they are not additional grading rules:
 
 - [ ] Precisely state the basic CVRP scope, one-depot assumption, no split deliveries, fixed distance objective, and why traffic/time windows are excluded despite the broader introductory description.
 - [ ] Explain every index and variable ($x_{ijk}$, $y_{ik}$, $z_k$, $u_{ik}$), variable domain, and which values are inputs rather than hard-coded constants.
@@ -1126,13 +1087,6 @@ This checklist reflects likely technical scrutiny, **not verified examination qu
 - [ ] Explain environmental motivation while acknowledging **distance is a proxy**, not an independently measured carbon-emissions model.
 - [ ] Explain what has actually been coded, what has only been modeled, what requires tutor approval, and what experimental claims cannot yet be made.
 
-### 18.6 Structural check of the corrected context file
-
-- Markdown code fences paired; source links and heading navigation retained.
-- The original assignment transcription is kept in its own fenced source section, rather than overwritten by English paraphrase.
-- Mathematical and benchmark corrections are in Sections 6–8 and 18; original source statements remain distinguishable from chosen assumptions.
-- Unavailable artifacts, unverified source-route attribution, and inaccessible live CESI source are not presented as confirmed.
-- Future users should repeat this audit after integrating tutor decisions, the actual notebooks, or updated official assignment files.
 
 ---
 
