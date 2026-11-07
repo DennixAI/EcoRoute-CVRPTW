@@ -237,5 +237,16 @@ These publications were introduced during the mathematical modeling and project-
 
 The source list above includes both user-provided URLs and references consulted during notebook development.
 
+## 3. Advanced scope research notes 2026-11-07
+
+These notes sit outside the preserved original French statement. They distinguish official requirements from the latest user-selected scope and are not evidence of tutor approval or implemented functionality.
+
+- The original assignment names Level B CVRP and Level A CVRPTW, allowing early waiting and prohibiting delivery outside windows. Its separate narrative requires predicted traffic on road axes over time periods. The user now selects their combined TD-CVRPTW target. The original CESI link was attempted during this review, but the web reader could not retrieve it; the archived statement remains the available official text.
+- [SINTEF Solomon benchmark](https://www.sintef.no/projectweb/top/vrptw/solomon-benchmark/) describes a hierarchical fleet-then-distance reference objective and double-precision distances/travel times. These reference values cannot be treated as elapsed-time optima. No Solomon file is bundled by this task.
+- [Ichoua, Gendreau and Potvin, Vehicle dispatching with time-dependent travel times (institutional record)](https://publications.polymtl.ca/74948/) identifies the paper and DOI. Indexed author-paper excerpts discuss FIFO; direct access to the [author-hosted PDF](https://www.iro.umontreal.ca/~potvin/soumia2.pdf) was denied, so this is not a full-paper review. The integrated-speed model in context A3 is specified and justified directly under its stated assumptions; no performance numbers from the paper are attributed to our project.
+- [PyVRP documentation](https://pyvrp.org/) is a source for future version-specific capability checks. Static routing profiles or time windows do not establish departure-time-dependent traffic support. No external TD-CVRPTW baseline is currently confirmed. Pin a released version, verify its supported objective/constraints, and independently validate returned schedules before comparison.
+
+Real forecast source, coverage, license, road mapping and advanced benchmark selection remain open. Synthetic congestion must be labeled as generated data. The complete proposed temporal/discrete formulations are in [context.md](context.md#a2-temporal-formulation), not in the original statement or current notebook.
+
 ---
 

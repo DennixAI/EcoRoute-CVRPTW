@@ -1,10 +1,43 @@
-# CesiCDP — CVRP Optimization Project
+# EcoRoute-CVRP — Advanced time-dependent delivery routing
 
 > **Living project README / execution plan**  
-> **Scope:** basic Capacitated Vehicle Routing Problem (CVRP, Level B), not CVRPTW.  
-> **Document updated:** 2026-11-02.  
+> **Scope:** TD-CVRPTW: identical-capacity vehicles, customer delivery windows, waiting and predicted time-dependent road traffic. Classical CVRP remains a baseline.
+> **Document updated:** 2026-11-07.
 > **Project status:** modeling notebook drafted; tutor approval outstanding; optimization solver and final experiments **not started**.  
 > **Rule:** change instance values and algorithm settings through data/configuration, **never by editing core equations or hard-coding a particular benchmark**.
+
+The latest user-directed scope supersedes the 2026-11-02 CVRP-only decision. Official Level B is CVRP; official Level A adds time windows (CVRPTW); traffic is a separate requirement in the original narrative. Their combination is our selected advanced target. See the [complete advanced specification](context.md#a1-scope-and-authority), [original sources](sources.md) and [reassessed audit](CVRP_Implementation_Plan_Audit.md).
+
+| Layer | Objective / feasibility | Actual state |
+|---|---|---|
+| 1: CVRP | Distance; coverage, fleet, capacity and connected depot routes | Modeling notebook draft only |
+| 2: CVRPTW | Adds windows, service and waiting; benchmark objective is source-specific | Specification; notebook/code pending |
+| 3: TD-CVRPTW | Adds forecast-aware travel and valid schedules; proposed primary sum of route elapsed times | Specification; notebook/code/data/experiments pending |
+
+Repository: [DennixAI/EcoRoute-CVRP](https://github.com/DennixAI/EcoRoute-CVRP). The sole notebook is `CesiCDP_CVRP_Modeling.ipynb`; earlier detailed/mathematical notebook names and package ZIP are absent. Inspection found 68 cells, 19 saved PNG outputs and no saved errors; no fresh execution or tutor approval is claimed. The notebook and unrelated animation guide are unchanged in this documentation upgrade.
+
+### Advanced execution contract
+
+Use [context A2–A4](context.md#a2-temporal-formulation) for the complete temporal specification and discrete reference model. Retain the routing equations below: coverage, flow, depot degree, capacity and MTZ still apply. Add arrival/service-start/completion/departure/waiting, actual return, activation and hard-window constraints. The provisional rule bounds service **start**, allows pre-service waiting/holding, and uses flexible or fixed departure bounds per instance. Completion windows are a distinct policy requiring confirmation. Primary elapsed time is return minus departure; report driving, waiting, service, makespan, distance and used fleet separately. These definitions require tutor review.
+
+Travel times come from directed road-segment speed forecasts integrated across interval boundaries and departure-dependent shortest paths. No real traffic source is bundled. Reject missing coverage/unsupported closures initially; synthetic congestion is labeled and seeded. Do not claim a nonlinear tau(departure) expression is MILP. A time-indexed exact model for the declared grid is specified for tiny checks; continuous-time evaluation supports future heuristics. Grid optima do not certify the original continuous problem.
+
+The [extended parameter register](context.md#a5-configuration-contract) defines customer/depot windows, service, departure/return policy, time horizon/zone, road network, distances, forecast provenance/profiles/intervals/scenarios, travel oracle, repair/penalty settings, resolution, caching, runtime and seeds. Every advanced interface is planned. Instance data and solver settings stay separate.
+
+The [advanced experimental protocol](context.md#a6-experiments-and-figures) proposes 8 CVRP + 6 CVRPTW + 6 distinct TD-CVRPTW base instances, subject to tutor agreement; this preserves the official ≥20 distinct total requirement. The older ambition of ≥20 classical reference benchmarks can be retained as an expanded campaign, not asserted as an official per-category quota. Use `vrplib` for Category A, investigate sourced Solomon/Homberger files for B, and sourced or labeled synthetic traffic for C. Never compare distance/fleet reference values to elapsed-time objectives. Repeat seeds and preserve failures, schedules, scenario hashes and all raw metrics. Window/traffic variants of one base do not inflate the headline instance count.
+
+### Advanced acceptance gates and ordered next work
+
+1. **Modeling:** review fleet semantics, start/completion windows, holding/departure rules, elapsed objective and forecast representation with the tutor; update the actual notebook in a separate phase, retain Layer 1 and add Layers 2/3.
+2. **Data and evaluator:** implement canonical schemas, forecast integration, path oracle and an independent complete schedule/feasibility auditor. Test crossings, FIFO, waiting, service, depot return, horizon limits, missing data and zero-demand customers.
+3. **Exact checks:** compare tiny routes/schedules against enumeration and the explicit grid model; audit discretization effects and continuous feasibility.
+4. **Construction and moves:** use capacity/time-feasible insertion and repair; propagate every affected suffix after moves. Static distance deltas alone cannot evaluate advanced routes. Flexible departure can require whole-route rescheduling.
+5. **Algorithm selection A0:** compare own ALNS and ILS with strong time-aware neighborhoods on 6–10 separate development instances, matched budgets, multiple seeds and independent validation. Investigate tabu/hybrids if evidence warrants. External HGS-CVRP is Layer 1 only; no external time-dependent traffic capability is established here.
+6. **Quality and scale:** require every reported success to be independently feasible; predeclare per-category quality goals. The historical ≤3% BKS ambition applies only to comparable distance references. Profile schedule propagation, path calls, O(n²) matrices and O(K n² h) exact models; test 100/500/1000 and, if feasible, 2000+ customers without unsupported speed claims.
+7. **Experiments:** freeze manifest, hardware, budgets, configs and seeds before final runs. Report feasibility/timeout counts, best/mean/std/worst and paired comparisons; produce question-driven figures listed in context A6.
+8. **Delivery:** integrate corrected models, code, raw results and limitations into a reproducible notebook; prepare the English demo/defense. Exact dates and tutor approval remain outstanding.
+
+All detailed baseline work below remains useful under its stated layer. The advanced execution contract above and context A1–A8 govern the current final target. Documentation is the only deliverable produced by this change; implementation and performance evidence remain future work. Publish documentation changes through a branch and PR; do not merge automatically.
 
 ## Contents
 
@@ -46,7 +79,7 @@
 
 | Workstream | Status | Evidence | Remaining gate |
 |---|---|---|---|
-| Mathematical formulation | **Draft done** | `CesiCDP_CVRP_Detailed_Modeling.ipynb` | Formal tutor review and corrections |
+| Mathematical formulation | **Draft done** | `CesiCDP_CVRP_Modeling.ipynb` | Formal tutor review and corrections |
 | Reusable synthetic data | **Demonstrated** | Notebook generator/configuration, plots | Generality and edge-case review |
 | Real VRPLIB data example | **Demonstrated on one instance** | Embedded A-n32-k5 and published route/cost 784 | Verify selected families and rounding for every later instance |
 | Route feasibility checking | **Demonstrated** | Handwritten and published reference route checks | Standalone independently tested validator for the solver |
@@ -63,7 +96,8 @@
 
 ### 1.2 Requirements taken from the project brief
 
-- [x] Restrict the current implementation to **Level B CVRP**: one depot, homogeneous-capacity trucks, capacity constraints, routes that return to the depot.
+- [x] Preserve the original **Level B CVRP** modeling foundation.
+- [ ] Implement selected Layer 3 TD-CVRPTW, including Level A windows and predicted traffic; documentation alone does not complete it.
 - [ ] Create a Python solver for realistically large instances, with an ambition to handle **several thousand customers**; separately report sizes actually tested.
 - [ ] Implement and explain a **metaheuristic** (e.g., ALNS, tabu search, simulated annealing, hybrid genetic search), not just call a black-box benchmark solution.
 - [ ] Provide a **corrected complete ILP/PLNE**, decision variables, objective, all constraints, complexity argument, and explain any exact-solver role.
@@ -81,18 +115,9 @@
 
 ### 1.3 In-scope / out-of-scope contract
 
-**IN basic CVRP:** selected customers are all mandatory; one depot; at most or exactly `K` identical-capacity trucks (decision pending); nonnegative, known demands; each customer assigned to exactly one route; no split deliveries; start/end at depot; static distance costs for VRPLIB comparisons; possibly asymmetric precomputed costs *if the loaded dataset supports them*; any valid number of clients, routes, and per-instance capacity; configurable construction/search settings.
+The active target is Layer 3 TD-CVRPTW: mandatory unsplit customers, one depot, configurable homogeneous fleet/capacity, hard service windows, service duration, waiting, predicted road traffic and connected chronological depot-returning schedules. Layer 1 static distance CVRP and Layer 2 CVRPTW remain supported conceptual baselines. At most/exactly K and service-start/completion interpretation require explicit policy. The full model is in [context A1–A4](context.md#a1-scope-and-authority).
 
-**NOT IN current mathematical/algorithmic scope (explicitly deferred, not forgotten):**
-
-- **CVRPTW** delivery windows, waiting, service start constraints, late-arrival prohibition.
-- Departure-time-dependent congestion/travel times (TDVRP), hourly traffic forecasts.
-- Explicit emissions/carbon optimization, fuel modeling, traffic-based emissions accounting; benefits must not be claimed from distance alone without assumptions/data.
-- Heterogeneous truck capacities, different vehicle costs, multi-depot routing.
-- Split deliveries, pickups, optional customers/prizes, multiple tours per truck, mandatory breaks, driver shifts, route duration bounds, precedence constraints.
-- Vehicle loading in multiple dimensions, hazardous-material compatibility, live GPS/road incident updates, stochastic demand, live dispatch.
-
-**`[APPROVAL — USER + TUTOR]`** Confirm that implementing a **static-distance CVRP** satisfies the Level B assessment even though the motivating ADEME scenario mentions travel duration and traffic. Make the distinction explicit in presentations; do not silently change cost definitions mid-project.
+Outside the selected target: explicit carbon/fuel optimization, heterogeneous fleets, multi-depot operations, split deliveries, pickups, optional customers, multi-tour shifts, hazardous loading and live stochastic dispatch. Forecasts are known planning inputs. Closures are deferred until their physical policy is specified. No environmental improvement is inferred solely from distance or duration.
 
 ### 1.4 Meaning of “as optimal as possible”
 
@@ -106,16 +131,16 @@
 
 ## 2. What exists today: evidence and limitations
 
-### 2.1 Existing artifacts (checked 2026-11-02)
+### 2.1 Existing artifacts (checked 2026-11-07)
 
-| File | Purpose | Evidence found |
+| File | Purpose | Evidence / limitation |
 |---|---|---|
-| `CesiCDP_CVRP_Detailed_Modeling.ipynb` | Detailed first-checkpoint notebook | 68 cells = 39 Markdown + 29 code; 19 embedded PNG figure outputs; all code cells have recorded execution counts; no recorded error outputs |
-| `CesiCDP_CVRP_Mathematical_Modeling.ipynb` | Earlier/simpler modeling draft | Exists, **do not confuse it with** the detailed current draft |
-| `CesiCDP_CVRP_Modeling_Package.zip` | Modeling notebook + example data | Includes A-n32-k5 `.vrp` and `.sol` and an earlier short README |
-| This `README_CesiCDP_CVRP_Project.md` | Detailed project execution specification | Master plan, tracked approvals, parameters, future tests and release gates |
+| `CesiCDP_CVRP_Modeling.ipynb` | Classical first-checkpoint modeling | 68 cells, 39 Markdown, 29 code, 19 PNGs, no saved errors; not freshly executed |
+| `README.md`, `context.md` | Execution plan and complete layered specification | Documentation, not solver code |
+| `sources.md` | Original French assignment and sources | Original statement preserved |
+| `CVRP_Implementation_Plan_Audit.md` | Historical audit plus advanced reassessment | Research/implementation gates |
 
-**Verification nuance:** saved execution counts/images and absence of saved exceptions were inspected. That is **not** equivalent to a fresh end-to-end execution on another machine. A clean-environment rerun remains on the TODO list.
+Earlier `CesiCDP_CVRP_Detailed_Modeling.ipynb`, `CesiCDP_CVRP_Mathematical_Modeling.ipynb`, package ZIP and standalone benchmark files are absent. Sample text is embedded in the actual notebook. Saved outputs do not establish a fresh clean run or tutor acceptance. The notebook's fleet inference, ID provenance and generic rounding require the next modeling-phase review (context A8).
 
 ### 2.2 Completed modeling functions/topics
 
@@ -153,18 +178,20 @@
 
 ## 3. Decisions and approvals required
 
+Advanced decisions additionally require window-start/completion semantics, total elapsed objective, pre-service holding, departure bounds, traffic provider/coverage, FIFO/path policy, grid resolution and compatible advanced references. The user scope itself is settled; tutor interpretation remains open.
+
 **No open academic or modeling choice should be silently treated as settled.** Use the table below as the decision register. “Provisional default” is a *proposal*, not approval.
 
 | ID / Priority | Decision / research | Provisional default or options | Owner / gate | Why it matters |
 |---|---|---|---|---|
 | D01 **BLOCKER** | **Up to K vs exactly K trucks used?** | Up to `K` with optional unused trucks; verify wording | **[APPROVAL — USER + TUTOR]** | Changes depot-use constraints, feasibility and comparability |
-| D02 **BLOCKER** | Distance vs duration as graded objective | Static **distance**, matching VRPLIB reference | **[APPROVAL — TUTOR]** | Avoid apples-to-oranges gap values |
-| D03 **BLOCKER** | Will solving 20 VRPLIB datasets + synthetic satisfy instance coverage? | At least 20 **distinct** real CVRP benchmarks, synthetic as supplemental | **[APPROVAL — USER + TUTOR]** | Meets stated validation requirement conservatively |
+| D02 **BLOCKER** | Advanced duration objective and baseline metrics | Propose sum elapsed time; distance for Category A only | **[APPROVAL — TUTOR]** | Avoid apples-to-oranges gap values |
+| D03 **BLOCKER** | Advanced stratified instance coverage | ≥20 distinct total; proposed 8/6/6 split; expanded classical campaign optional | **[APPROVAL — USER + TUTOR]** | Meets stated validation requirement conservatively |
 | D04 **BLOCKER** | Acceptable benchmark families / size spread | A/B/P/E/M/X mixture with approved manifest | **[APPROVAL — TUTOR] [RESEARCH]** | Fair, representative and cost-compatible results |
 | D05 **BLOCKER** | Fleet limits for files without `VEHICLES` | Use file/family official fleet info or approved override; fail otherwise | **[APPROVAL — USER + TUTOR] [RESEARCH]** | Hidden fleet changes invalidate comparisons |
 | D06 **BLOCKER** | Benchmark edge-weight policies, including half ties | Explicit per-instance rounding policy and published route-cost checksum | **[RESEARCH] + reviewer sign-off** | Tiny rounding errors corrupt gap claims |
-| D07 **BLOCKER** | Third-party solvers in submission? | Implement own ALNS; PyVRP/HGS as **clearly labeled comparison**, not disguised authorship | **[APPROVAL — TUTOR]** | Academic integrity, grading expectations |
-| D08 High | Main metaheuristic choice | ALNS with local search; compare with HGS evidence | **[APPROVAL — USER + TUTOR] [RESEARCH]** | Strong solution quality and explainability |
+| D07 **BLOCKER** | Third-party solvers in submission? | Select own algorithm via A0; compatible PyVRP/HGS comparisons as **clearly labeled comparison**, not disguised authorship | **[APPROVAL — TUTOR]** | Academic integrity, grading expectations |
+| D08 High | Main metaheuristic choice | Compare time-aware ALNS/ILS; HGS evidence applies to Layer 1 | **[APPROVAL — USER + TUTOR] [RESEARCH]** | Strong solution quality and explainability |
 | D09 High | Quality goals | Try for gaps significantly below 7%; report actual figures honestly | **[APPROVAL — USER]** | No guarantee possible; guides tuning |
 | D10 High | Per-run compute budgets | Configurable seconds/iterations/no-improvement; compare at same wall-time | **[APPROVAL — USER]** | Quality/time fairness |
 | D11 High | Available hardware and memory | Record OS, CPU, RAM, Python versions, concurrency | **[APPROVAL — USER]** | Performance/reproducibility/scalability |
@@ -172,11 +199,11 @@
 | D13 High | Is exact ILP benchmark required or optional? | Formulate fully; solve only small instances if useful and allowed | **[APPROVAL — TUTOR]** | Exact results versus main heuristic |
 | D14 High | Parameter tuning policy | Separate tuning subset; freeze parameters before test | **[APPROVAL — USER]** | Avoid benchmark overfitting |
 | D15 High | Dataset acquisition permissions/licenses | Retain sources, attribution, and permitted copies | **[RESEARCH]** | Submission packaging/provenance |
-| D16 Medium | Road graph vs precomputed complete matrix | Model complete customer-level cost closure; road shortest paths are future preprocessing | **[APPROVAL — USER]** | Interface and memory design |
+| D16 Medium | Road graph vs precomputed complete matrix | Use directed road forecasts and departure-dependent paths for Layer 3; fixed closure for Layer 1 | **[APPROVAL — USER]** | Interface and memory design |
 | D17 Medium | Symmetry support | Allow asymmetric matrices where valid; use asymmetry-safe cost updates | **[APPROVAL — USER]** | Generality vs code complexity |
 | D18 Medium | What to do when no feasible initial solution is found | Run alternate construction/repair; return explicit failure, never invalid result | **[APPROVAL — USER]** | Reliability |
 | D19 Medium | Parallel optimization / multi-start | Optional configurable parallel runs; record total CPU resources | **[APPROVAL — USER]** | Performance fairness |
-| D20 Medium | Emissions/traffic treatment in final ADEME narrative | Discuss only as potential extensions; no unsupported carbon claim | **[APPROVAL — USER + TUTOR]** | Responsible interpretation |
+| D20 Medium | Emissions/traffic treatment in final ADEME narrative | Traffic now required; emissions claims still need independent data | **[APPROVAL — USER + TUTOR]** | Responsible interpretation |
 | D21 Medium | Zero-customer and zero-demand handling | Zero-demand customers must be served; empty instance support optional | **[APPROVAL — USER]** | Boundary conditions |
 | D22 Medium | Allowed algorithms/libraries and Python standard | Check PEP guidance, required originality and environment | **[APPROVAL — TUTOR]** | Compliance |
 | D23 High | Concrete checkpoint dates and who submits what | Fill milestone dates from official course calendar | **[APPROVAL — USER + TUTOR]** | “Prosit 3,” final-before-defense, oral defense, July deadline |
@@ -189,6 +216,8 @@
 ---
 
 ## 4. Master configurable parameter register
+
+The complete advanced register is in [context A5](context.md#a5-configuration-contract). All advanced fields are planned. Validate units/time zone, hard windows/service, depot departure/return, forecasts, road mapping, resolution and cache keys separately from search settings.
 
 ### 4.1 Core rule: separate *schema* from *values*
 
@@ -268,7 +297,7 @@ All parameters below need: a documented type, units, valid range, source (datase
 
 | Field | Meaning |
 |---|---|
-| `metaheuristic` | `alns` primary; optional `tabu`/`hgs` research paths only if approved |
+| `metaheuristic` | `alns` / `ils` candidates via A0; tabu/hybrids subject to evidence and constraint support |
 | `max_iterations`, `time_limit_seconds`, `max_no_improvement` | Alternative or combined stopping rules |
 | `random_seed`, `restart_seeds`, `number_of_starts` | Reproducibility and intensification |
 | `destroy_min_fraction`, `destroy_max_fraction` | Limits on removed customers as fractions of variable `n` |
@@ -328,7 +357,9 @@ Every operator's conditions and search parameters must be documented with its al
 
 ## 5. Mathematical model and formal validation checklist
 
-### 5.1 Definitions (parameterized, basic CVRP)
+This section preserves the complete classical routing model. Advanced schedules add T1–T7 and the discrete MILP D1–D6 in [context A2–A4](context.md#a2-temporal-formulation). Retain MTZ for zero-time cycles; no nonlinear oracle is silently treated as linear.
+
+### 5.1 Layer 1 definitions (advanced extension in context A2–A4)
 
 - `C={1,...,n}`: customers; `V={0} ∪ C`: nodes; `F={1,...,K}`: vehicles.
 - `A={(i,j)∈V×V:i≠j}` for the full directed customer closure, or a correctly represented allowed-arc subset.
@@ -391,16 +422,19 @@ Every operator's conditions and search parameters must be documented with its al
 
 ## 6. Full work breakdown and ordered TODOs
 
+Apply each phase to all three layers. Phases 1–2 must include forecast/path loading and an independent chronological evaluator; Phases 3–5 require time-feasible construction/repair and full affected-suffix propagation; Phase 7 exact comparisons use the tiny grid model; Phases 8–11 use the stratified advanced campaign and temporal figures. Baseline-specific distance tasks below remain Category A tasks.
+
 **Completion means a tangible artifact, independent validation evidence, and review sign-off.** Individual implementation tasks are **not** checked merely because a similar function exists in the modeling notebook.
 
 ### Phase 0 — Lock the project contract / first-model review (CURRENT)
 
 **Owner:** mathematical lead + tutor; **exit:** signed scope and corrected model.
 
-- [x] Capture assignment deliverable requirements and chosen Level B scope.
+- [x] Capture original Level B foundation and latest selected advanced scope.
+- [ ] Extend the actual notebook with the temporal and road-traffic model, independent examples and tutor corrections.
 - [x] Create detailed modeling notebook and explanations.
 - [x] Provide synthetic and real data visual demonstrations.
-- [ ] D01/D02: obtain fleet rule and static-distance objective approval. **[APPROVAL — TUTOR] [BLOCKER]**
+- [ ] D01/D02: obtain fleet rule and advanced time-objective/window/holding policy approval. **[APPROVAL — TUTOR] [BLOCKER]**
 - [ ] D07/D08: clarify own-algorithm versus external-comparison policy and choose primary metaheuristic. **[APPROVAL — TUTOR]**
 - [ ] Confirm actual Prosit 3 meeting date, final notebook deadline, defense date, and relevance/year of “12 July”. **[APPROVAL — USER + TUTOR]**
 - [ ] Recheck the full ILP on tiny cases with independent route/constraint logic.
@@ -555,7 +589,7 @@ Every operator's conditions and search parameters must be documented with its al
 **Owner:** experiments lead; **exit:** frozen, reproducible evaluation plan approved before final tests.
 
 - [ ] **[APPROVAL — TUTOR]** Fix official benchmark families and interpretation of reference fleet/rounding.
-- [ ] Build a manifest with **at least 20 distinct `.vrp` instances**, not merely 20 repetitions.
+- [ ] Build a manifest with **at least 20 distinct instances across A/B/C**, under the tutor-reviewed stratified protocol; formats are category-specific, and repetitions do not add instances.
 - [ ] Stratify by n (small/medium/large/very large), spatial pattern, demand/capacity pressure, fleet size and benchmark family.
 - [ ] Include clustered, dispersed and mixed types where the family supports them; synthetic experiments separately supplement rather than substitute.
 - [ ] For each reference, store dataset name, node count, K, Q, total demand, coordinate/matrix type, rounding rule, reference value, reference **status**, source date and checksum.
@@ -575,7 +609,7 @@ Every operator's conditions and search parameters must be documented with its al
 
 - [ ] Execute all distinct >=20 reference instances, ensuring independent feasibility validation of every result.
 - [ ] For randomized methods, repeat each selected instance according to approved repetition plan; preserve every seed and failure.
-- [ ] Record best/final/initial distances, best-known reference, gap, runtime, iterations, max memory, routes, loads, statuses, algorithm version and settings.
+- [ ] Record best/final/initial layer-specific objective, distance, driving/waiting/service, departure/return, makespan, windows/traffic/policy hashes, compatible reference and gap, runtime, memory, routes, schedules, loads, statuses and versions.
 - [ ] Compute gap only using equivalent metric and fleet rules; flag when reference cost/type absent.
 - [ ] Report **best, mean, median, standard deviation, maximum/worst, quantiles** of gaps (as meaningful) and runtime.
 - [ ] Report feasibility rate **over all attempted runs**, including timeouts/failures; do not compute quality mean without disclosing feasibility coverage.
@@ -628,6 +662,8 @@ Every operator's conditions and search parameters must be documented with its al
 ---
 
 ## 7. Algorithm strategy: maximize solution quality
+
+A0 compares time-aware ALNS and ILS, with tabu/hybrids investigated when justified. Every advanced candidate must account for waiting, service, forecasts, depot return and schedule optimization. External HGS-CVRP is Category A only; no PyVRP time-dependent traffic capability is assumed. See context A7.
 
 ### 7.1 Candidate ALNS architecture (subject to D07/D08 and §17 A0 approval)
 
@@ -703,6 +739,8 @@ The CVRP is NP-hard. A heuristic can be excellent but cannot generally certify o
 
 ## 8. Benchmark design and statistical analysis
 
+The operative final allocation is the proposed ≥20 total stratified 8/6/6 plan in context A6. Baseline family/rounding audits below apply to A. Add windows/service/departure/forecast hashes and all temporal metrics to raw rows for B/C. Match objective and constraints before any reference gap. Time-window/traffic figures and their scientific questions are in A6.
+
 ### 8.1 Minimum dataset matrix (proposal; exact names require approval)
 
 | Dimension | Planned coverage | Evidence to retain |
@@ -735,7 +773,7 @@ operator_stats_file, convergence_trace_file, reviewer
 
 ### 8.3 Metrics to compute and interpret
 
-1. Best and mean final **feasible** distance per instance and budget.
+1. Best and mean final **feasible** objective per instance and budget; distance for A, declared objective for B, elapsed route time for C, with all temporal components reported separately.
 2. Gap to *proven optimum* or *BKS*, labeled distinctly.
 3. Feasibility success rate and failure/timeout count.
 4. Best/mean/median/worst gap and standard deviation across seeds per instance.
@@ -782,6 +820,8 @@ For every evaluated run:
 ---
 
 ## 9. Testing, correctness, and acceptance criteria
+
+Advanced release additionally requires independent continuous schedule auditing, time-boundary/FIFO/path-switch tests, grid-versus-continuous checks, earliest-service versus flexible schedule tests and randomized suffix propagation checks (context A7). No grid optimum certifies a continuous optimum.
 
 ### 9.1 Test layers
 
@@ -834,7 +874,7 @@ For every evaluated run:
 | G2 Construction | Feasible initial solutions on documented test set | Independent validator |
 | G3 Moves | All tested deltas accurate, no invalid moves emitted as valid | Test suite |
 | G4 ALNS | Reproducible, feasibility-safe, quality improves over starting baseline on representative instances | Algorithm + statistics leads |
-| G5 Benchmarks | ≥20 **distinct** instances; raw runs, consistent gaps and failure reporting | Experiment reviewer |
+| G5 Benchmarks | ≥20 **distinct** instances across approved categories; raw runs, comparable gaps and failure reporting | Experiment reviewer |
 | G6 Quality | Grading threshold assessed honestly; attempts to improve outliers documented | Team + tutor if needed |
 | G7 Reproducibility | New environment runs quick demo; full results traceable to config/seeds/versions | Peer reviewer |
 | G8 Final defense | Final submission complete; English presentation/rehearsal ready | Whole team |
@@ -847,12 +887,14 @@ A phase is **not done** until: (1) code/math artifact exists; (2) independent te
 
 ## 10. Anticipated tutor/professor questions
 
+Also defend start versus completion windows, deliberate holding, flexible departure, interval-crossing travel, FIFO, road/customer graph distinction, path changes, temporal activation, grid approximation, O(K n² h) scaling and objective-compatible references.
+
 Each row is a **preparation task**, not a claim that the final answer has already been fully demonstrated.
 
 | Question professor may ask | Expected defense / required artifact | Status |
 |---|---|---|
 | What is CVRP and how does it differ from TSP? | CVRP with capacities and `K` routes; TSP special case when `K=1`, Q sufficient | Modeling draft |
-| Why did you choose distance rather than duration? | VRPLIB comparability; static distance scope explicitly agreed | Tutor approval pending |
+| Why separate distance and elapsed objectives? | Layer 1 published comparisons; Layer 3 tour-duration proposal, with explicit policies | Advanced tutor review pending |
 | Why is the problem NP-hard? | Polynomial reduction from TSP with one sufficient-capacity truck | Modeling draft |
 | Is it NP-hard or NP-complete? | Optimization NP-hard; properly specified decision version NP-complete | Review precision |
 | What exactly are `x`, `y`, `z`, `u`? | Explain binary arcs, assignments, vehicle use and MTZ order | Modeling draft |
@@ -906,6 +948,8 @@ Each row is a **preparation task**, not a claim that the final answer has alread
 ---
 
 ## 11. Reproducibility, interfaces, and project structure
+
+Extend the proposed data/API layout with forecast/path/schedule modules and layered problem selection. This is a design proposal: current files are in §2.1. `solve_cvrp` below is the Layer 1 API only; a future advanced entry point must consume validated windows, service, road forecasts and departure policies and return independently audited schedules.
 
 ### 11.1 Proposed file layout (do **not** interpret uncreated files as existing)
 
@@ -1040,6 +1084,8 @@ experiment:
 
 ## 12. Risk management and contingency plans
 
+Advanced risks include non-FIFO duration steps, stale forecast caches, coarse-grid false feasibility, hidden service/window policy changes, missing data and treating static solver profiles as time-dependent capability. Reject or diagnose these explicitly; quantify forecast/rounding sensitivity.
+
 | Risk | Impact | Detection | Mitigation and owner |
 |---|---|---|---|
 | Fleet interpretation wrong (`<=K` vs `=K`) | Invalid ILP/benchmark | Tutor question or mismatched routes | **Blocker D01**, update all validators and experiments |
@@ -1054,7 +1100,7 @@ experiment:
 | Only best seed presented | Biased robustness claim | Missing raw trials | Save all seeds, failures and descriptive statistics |
 | External solver misrepresented | Academic-integrity issue | Code/doc review | Explicit authorship, tutor-approved role |
 | Missing reference data/provenance | Gap cannot be defended | Absent manifest/source | Label unknown, retrieve legitimate source, no invented numbers |
-| Time windows/traffic added midproject | Scope creep, failure of base results | Changed metrics/data models | Defer unless separately approved and after CVRP done |
+| Advanced scope selected 2026-11-07 | Increased modeling/data/evaluation costs | Missing schedules, forecasts or compatible references | Stage Layers 1/2/3; validate each and profile propagation |
 | Experimental hardware changes | Unfair runtime comparison | Logs differ | Rerun matched hardware/budgets or prominently disclose |
 | Notebook state dependence | Demo fails on fresh machine | Clean-run test | Modular code, pinned env, scriptable quick-demo |
 | Deadline ambiguity | Missed submission | No confirmed dates | **D23** obtain official date/calendar |
@@ -1064,6 +1110,8 @@ experiment:
 ---
 
 ## 13. Ownership, review workflow, and deadlines
+
+Modeling ownership now includes the temporal/traffic contract; data ownership includes road/forecast provenance and compatible reference objectives. The user-selected advanced scope is recorded; actual named owners, dates and tutor decisions remain pending.
 
 ### 13.1 Four-person suggested responsibility map (names: TBD by user)
 
@@ -1094,7 +1142,7 @@ The brief mentions:
 - **Oral defense:** **last day of the block**; in English, results/demo oriented.
 - **ADEME application:** **12 July next** in the scenario text; without the course's confirmed year/date, do **not** put a guessed year in the actual project calendar.
 
-**`[APPROVAL — USER + TUTOR]`** Fill in absolute dates (YYYY-MM-DD), intermediate review meetings, owner, venue/upload system and contingency buffer. Current date for this README: 2026-11-02; the assignment's relative “next July” cannot be interpreted as a formal school submission deadline without confirmation.
+**`[APPROVAL — USER + TUTOR]`** Fill in absolute dates (YYYY-MM-DD), intermediate review meetings, owner, venue/upload system and contingency buffer. Current date for this README: 2026-11-07; the assignment's relative “next July” cannot be interpreted as a formal school submission deadline without confirmation.
 
 ### 13.4 Template schedule to fill
 
@@ -1114,6 +1162,8 @@ The brief mentions:
 ---
 
 ## 14. Deliverable checklists
+
+Advanced final delivery additionally requires Layers 2/3 notebook modeling, forecast provenance, schedule validation, time-aware algorithm evidence, temporal figures and compatible advanced comparisons. None is completed by this documentation task.
 
 ### Deliverable 1 — Modeling checkpoint (draft present; tutor not approved)
 
@@ -1136,7 +1186,7 @@ The brief mentions:
 
 ### Final project — experimental analysis
 
-- [ ] >=20 distinct benchmark instances loaded through `vrplib`.
+- [ ] >=20 distinct instances across approved categories; classical references loaded through `vrplib`, advanced data through documented validated adapters.
 - [ ] Consistent benchmark metrics and verified reference costs/status.
 - [ ] Measured gap, time, feasibility, scalability, robust repeated trials.
 - [ ] Statistical analyses, informative plots, parameter sensitivity and ablations.
@@ -1152,6 +1202,8 @@ The brief mentions:
 ---
 
 ## 15. References and research tasks
+
+Advanced source interpretation and dated research are in [sources §3](sources.md#3-advanced-scope-research-notes-2026-11-07). Verify sources and pinned solver support at implementation time. Classical references below remain relevant baseline research.
 
 ### 15.1 Literature / verified technical starting points
 
@@ -1187,9 +1239,11 @@ The brief mentions:
 
 ## 16. Immediate next actions and decision log
 
+Next implement the advanced notebook model and independent travel/schedule evaluator before selecting the main algorithm. Preserve historical decisions below as history, superseded where explicitly changed on 2026-11-07.
+
 ### 16.1 The next ten actions, in order
 
-1. **[ ] [BLOCKER]** User + tutor decide **fleet rule** (`K` maximum vs exactly `K` active) and static **distance objective**.
+1. **[ ] [BLOCKER]** Tutor reviews **fleet rule**, advanced elapsed objective, windows, holding/departure and traffic policies; user already selected advanced scope.
 2. **[ ]** Perform fresh clean-run of existing 68-cell modeling notebook and record environment/results.
 3. **[ ]** Independently audit ILP and MTZ proof using edge-case scenarios and, optionally, tiny exhaustive/ILP cross-checks.
 4. **[ ] [APPROVAL — TUTOR]** Complete the first model review, capture feedback, and update the “corrected PLNE.”
@@ -1204,8 +1258,9 @@ The brief mentions:
 
 | Date | ID | Proposal / evidence | Decision | Approved by | Implementation impact |
 |---|---|---|---|---|---|
-| 2026-11-02 | Scope | Basic CVRP, no time windows or time-dependent traffic | User chose CVRP-only | User (prior requests) | Advanced variants deferred |
-| 2026-11-02 | Objective | Distance for VRPLIB compatibility | User chose distance | User (prior request) | Objective static distance; tutor approval still pending |
+| 2026-11-07 | Scope expansion | Explicit user request for TD-CVRPTW | Layer 3 selected; retain Layers 1/2 | User | Temporal/traffic specification; future implementation; PR review |
+| 2026-11-02 | Historical Scope | Basic CVRP, no time windows or time-dependent traffic | User chose CVRP-only | User (prior requests) | Advanced variants deferred |
+| 2026-11-02 | Historical Objective | Distance for VRPLIB compatibility | User chose distance | User (prior request) | Objective static distance; tutor approval still pending |
 | 2026-11-02 | Data | Both synthetic and real VRPLIB examples | User chose both | User (prior request) | Existing notebook contains both |
 | 2026-11-02 | Code scope | Modeling plots/validation only, no optimizer in first checkpoint | User chose this scope | User (prior request) | Modeling notebook only |
 | TBD | D01 | `at_most_k` is current modeling assumption | **Pending** | Tutor | Could require revised ILP/validator |
@@ -1223,13 +1278,15 @@ The brief mentions:
 - **Never start the next unapproved scope change silently.** Mark research decisions and obtain the specified user/tutor acceptance.
 - **Never treat “19 modeling plots” or “one reference route demonstration” as the required 20-instance solver benchmark.**
 
-**Next gate:** finish Phase 0 tutor approval, then complete independent evaluator and a mandatory **algorithm-selection prototype (Gate A0 in §17)** before locking the main optimizer. The optimization algorithm itself remains **TODO**.
+**Next gate:** validate the advanced modeling contract and update the actual notebook in its next phase; finish Phase 0 tutor approval, then complete independent evaluator and a mandatory **algorithm-selection prototype (Gate A0 in §17)** before locking the main optimizer. The optimization algorithm itself remains **TODO**.
 
 ---
 
 ## 17. Critical algorithm-quality audit and implementation gates
 
-**Audit date:** 2026-11-02. **Status:** plan reviewed, **not** an implemented or benchmarked optimizer. **Do not** mark any tasks below complete until evidence is produced. The original plan was substantial but its early ALNS commitment was not supported by comparative experimental evidence. This section is mandatory and overrides any conflicting, provisional recommendation above.
+The original algorithm-quality research remains a baseline. Extend every feasibility gate to hard windows/traffic/return and every move test to downstream schedules. Apply 3%/7% ambitions only to comparable classical distance references; set advanced improvement/reliability targets on development data before final evaluation. No TD reference optimum is invented.
+
+**Original audit date:** 2026-11-02; advanced reassessment 2026-11-07. Classical quality thresholds and external baselines below apply only to compatible Layer 1 comparisons. **Status:** plan reviewed, **not** an implemented or benchmarked optimizer. **Do not** mark any tasks below complete until evidence is produced. The original plan was substantial but its early ALNS commitment was not supported by comparative experimental evidence. This section is mandatory and overrides any conflicting, provisional recommendation above.
 
 ### 17.1 Corrections and risks found in the previous plan
 
@@ -1253,7 +1310,7 @@ The brief mentions:
 **Do not assume ALNS is better than ILS or HGS.** Strong external implementations are useful **references**, but are not our own code. The first prototypes may be deliberately small/limited; comparisons are used to decide development effort, not to claim a fair final leaderboard prematurely.
 
 - [ ] **[APPROVAL — TUTOR]** Confirm requirements for original implementation, allowed libraries, compiled/Numba/C++ acceleration and external comparisons.
-- [ ] Pick a **development-only** (non-final-test) set of **6–10 varied CVRP instances** covering at least two scales, geographic patterns and load tightness. A separate final set still must have **20+ distinct** benchmarks.
+- [ ] Pick a **development-only** (non-final-test) set of **6–10 varied CVRP instances** covering at least two scales, geographic patterns and load tightness. A separate final set still must have **20+ distinct** final instances under the stratified protocol.
 - [ ] Build the **common independent evaluator and cost adapter first**; all algorithms must consume the *same* validated `CVRPInstance` and satisfy the same fleet rule.
 - [ ] Prototype a **strong local-search ILS**: construction → perturbation (e.g., double bridge, ejection-chain-like changes, route exchange) → local search → acceptance/restart.
 - [ ] Prototype **ALNS**: multiple removal/repair methods, adaptive selection, calibrated acceptance, strong local search; do not compare a full ALNS to a deliberately handicapped ILS.
@@ -1309,7 +1366,7 @@ The brief mentions:
 - [ ] Verify that loader, validator, optimizer, `.sol` export, `.sol` import and plot all agree on **original IDs / internal 0-based IDs / depot mapping**. Include tests where original node labels are not contiguous or depot first.
 - [ ] Distinguish **proven optimum / BKS / lower bound** and date of reference. Negative BKS gaps are a **verification event**, not immediate proof of a new record.
 - [ ] Compute objective in **the same units** as benchmark (often abstract distance units, not km); verify direct/return edges, any distance scaling, and prohibition of extra depot visits if model assumes one tour per vehicle.
-- [ ] Use **≥20 final distinct** benchmarks with independent repeated seeds. Synthetic stress tests are additional; test instances cannot be repurposed as tuning data without explicitly disclosing that the result is exploratory.
+- [ ] Use **≥20 final distinct** instances across the approved categories with independent repeated seeds. Synthetic advanced instances are labeled; additional stress tests remain separate; test instances cannot be repurposed as tuning data without explicitly disclosing that the result is exploratory.
 - [ ] For an optional exact MILP, report solver **status and bound**, not merely the best feasible incumbent as an optimum. Formally valid bounds must use the same objective and instance assumptions.
 
 ### 17.6 Additional professor-defensible correctness and complexity tests
@@ -1322,7 +1379,7 @@ The brief mentions:
 - [ ] Explain why **finding a feasible solution** is different from proving existence; NP-hard bin-packing-style allocation may defeat a greedy constructor even if a CVRP solution exists.
 - [ ] Include proof/explanation of correctness and feasibility invariants for each move, not just tests and plots; explicitly identify any assumptions behind O(1) deltas (symmetric matrix, fixed depot, etc.).
 - [ ] Create a **staged-release table**: small exact-optimum tests, medium development suite, held-out 20+ benchmark suite, 1k/2k+ scalability suite. Do not infer reliability of the entire distribution from a few easy examples.
-- [ ] Write down the distinct difference between **distance minimization** (graded VRPLIB objective), original story's **duration minimization**, and any future traffic/emissions goals. Confirm tutor approval; no unvalidated CO₂-saving percentages.
+- [ ] Explain Layer 1 distance comparisons and Layer 3 duration minimization with predicted traffic; emissions remain separate research requiring evidence. Confirm tutor interpretation; no unvalidated CO₂-saving percentages.
 
 ### 17.7 Explicit ownership and approvals for this audit
 

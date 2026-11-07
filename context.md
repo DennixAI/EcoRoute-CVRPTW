@@ -1,12 +1,220 @@
-# EcoRoute-CVRP — Project Context, Assignment, Decisions, Resources & Roadmap
+# EcoRoute-CVRP — Advanced TD-CVRPTW specification and project context
+
+> **Latest user decision, 2026-11-07:** target time-dependent capacitated vehicle routing with time windows (TD-CVRPTW). This supersedes the earlier CVRP-only selection. This document specifies future work; the existing notebook remains a classical CVRP draft. No advanced solver, advanced notebook implementation, experiments or tutor approval is established.
+
+## Advanced specification navigation
+
+- [Scope and authority](#a1-scope-and-authority)
+- [Temporal formulation](#a2-temporal-formulation)
+- [Traffic and paths](#a3-traffic-and-paths)
+- [Exact discrete formulation](#a4-exact-discrete-formulation)
+- [Configuration contract](#a5-configuration-contract)
+- [Experiments and figures](#a6-experiments-and-figures)
+- [Engineering and validation](#a7-engineering-and-validation)
+- [Status, decisions and next steps](#a8-status-decisions-and-next-steps)
+
+## A1. Scope and authority
+
+Official requirements come from the French assignment in [sources.md](sources.md). The latest user decision chooses the team's scope; actual files establish implementation status, recorded tutor feedback establishes review status, and earlier assistant proposals remain recommendations. The live CESI URL was attempted on 2026-11-07 but could not be retrieved by the web reader; no claim of independent confirmation of the live text is made.
+
+| Layer | Problem and objective | Role |
+|---|---|---|
+| 1 | Classical CVRP; minimize static total distance | Existing modeling foundation and reference benchmark |
+| 2 | CVRPTW; capacity, service windows, service durations and waiting | Official Level A advanced variant; future implementation |
+| 3 | TD-CVRPTW; Layer 2 plus predicted time-dependent road traffic; minimize total route elapsed time | Latest user-selected final target; future implementation |
+
+Level B names CVRP; Level A names CVRPTW. Predicted traffic appears separately in the original narrative. Their combination is our selected scope, not an assertion that CESI explicitly names TD-CVRPTW as mandatory Level A. The source's traffic sentence is traceable in the original statement in `sources.md`.
+
+Current assumptions: one depot; configurable fleet; identical capacities within each instance; known nonnegative unsplit demands; every required customer served once; each active truck makes one connected depot-returning route. At most K is the working fleet convention, pending tutor/benchmark confirmation. Exactly K requires nonempty routes and a separate policy. Directed roads and asymmetric travel are permitted. Zero-demand customers remain mandatory. Forecasts are deterministic inputs known at planning time; live dispatch, stochastic demand, multi-depot routing, heterogeneous capacities and carbon optimization are separate research extensions.
+
+The prior user-approved CVRP-only and distance choices applied to the first notebook and remain historical records in Section 14. They no longer restrict the final project to Layer 1. Baseline equations M1–M8 in Section 6 remain applicable to all layers' routing structure; their distance objective applies to Layer 1 only.
+
+## A2. Temporal formulation
+
+This is a continuous-time mathematical specification for future implementation and review, not a claim of a linear program. Let C, V, F, A, q, Q, x, y, z, u retain Section 6 definitions. Use coordinate symbols p_i=(X_i,Y_i), reserving a_i,b_i for time bounds. All times are nonnegative minutes from a declared planning epoch; all durations use minutes. H is a finite horizon, 0≤a_i≤b_i≤H, s_i≥0. Depot departure bounds are E_k≤L_k≤H, and latest return is B_k≤H. Depot loading is outside route time unless explicitly represented in the input convention.
+
+| Symbol | Definition/domain | Purpose |
+|---|---|---|
+| a_i,b_i | Opening and latest service-start time | Hard customer window under the provisional start policy |
+| s_i,q_i | Service duration and demand | Time and capacity data |
+| E_k,L_k,B_k,H | Earliest/latest departure, latest return, horizon | Scheduling limits |
+| tau_ij(t), F_ij(t)=t+tau_ij(t) | Travel duration and arrival map at departure t | Time-dependent travel input/oracle |
+| A_ik,S_ik | Arrival and service-start times, continuous in [0,H] when assigned | Distinguish physical arrival from service |
+| C_ik=S_ik+s_i y_ik | Service completion, derived | No independent completion decision |
+| D_ik=C_ik | Customer departure, derived | No post-service holding under this provisional policy |
+| W_ik=S_ik−A_ik | Waiting before service, derived, nonnegative | Includes optional pre-service holding |
+| T_k,R_k | Depot departure and return, continuous in [0,H] | Route scheduling decisions |
+| delta_k=R_k−T_k | Elapsed route time, derived | Primary objective contribution |
+
+Retain M1–M8 and binary domains, and strengthen activation explicitly with y_ik≤z_k. The original MTZ remains necessary when travel/service can be zero; temporal inequalities alone must not be assumed to exclude all subtours. The following equations use implications with binary antecedents, interpreted logically; arbitrary nonlinear indicator expressions are not claimed to be solver-supported MILP constraints.
+
+| Equation | Rule (for all relevant i,j,k) | Meaning |
+|---|---|---|
+| T1 | 0≤A_ik,S_ik,D_ik≤H y_ik; S_ik≥A_ik | Unassigned customers have zero schedule; no negative waiting |
+| T2 | a_i y_ik≤S_ik≤b_i y_ik; D_ik=S_ik+s_i y_ik | Service-start windows, full service duration |
+| T3 | E_k z_k≤T_k≤L_k z_k; T_k≤R_k≤B_k z_k | Inactive trucks have T=R=0; active depot limits |
+| T4 | x_0jk=1 implies A_jk=F_0j(T_k) | Actual arrival from depot |
+| T5 | x_ijk=1 implies A_jk=F_ij(D_ik), i,j∈C | Exact chronological propagation |
+| T6 | x_i0k=1 implies R_k=F_i0(D_ik) | Actual return to depot |
+| T7 | min Σ_k(R_k−T_k) | Primary advanced objective |
+
+Service windows provisionally constrain commencement. If the tutor/data require completion within the window, replace S_ik≤b_i y_ik by D_ik≤b_i y_ik. Do not apply both interpretations under a single undocumented flag. Example: arrival 09:30, window 10:00–12:00, service 20 minutes → wait 30, start 10:00, depart 10:20. Arrival 12:01 is infeasible. Starting at 11:50 and ending 12:10 satisfies a start window and violates a completion window.
+
+S may exceed max(A,a): deliberate pre-service holding is allowed. This is important when departure timing can improve route elapsed time. The special earliest-service policy S=max(A,a) is useful as a feasible schedule constructor, but is not assumed to optimize the full model. For fixed route order and departure, FIFO plus earliest service can test hard-window feasibility; minimizing elapsed time with flexible departure/holding requires a separate schedule optimization step. No path-side discretionary waiting is assumed in the initial positive-speed FIFO model.
+
+Report driving Σ tau on selected scheduled legs, waiting Σ W, service Σ s, route elapsed Σ delta, makespan max R, used fleet Σ z and traveled road distance separately. Under the selected no-post-service-holding convention, elapsed=driving+waiting+service on each active route. Total service is constant when all customers are mandatory, but remains part of elapsed time. Minimizing pure driving can favor more waiting; minimizing makespan optimizes the latest absolute return; neither is equivalent to minimizing total elapsed time. Flexible departures can reduce time spent waiting at customers; report departures and any depot holding outside elapsed time. T7 is a project proposal aligned with tour-duration wording, pending tutor agreement. Distance and vehicle count are reported metrics; lexicographic tie-breaks require an explicit policy, never an arbitrary weighted mixture or a change to a published objective.
+
+## A3. Traffic and paths
+
+Let the directed road network be G_R=(N_R,E_R). Map each stop to a road vertex with explicit connector costs. Each segment e has length ell_e>0 and a predicted speed profile v_e(t)>0 over contiguous forecast intervals spanning [0,H]. Units are length/minute. Profiles are exogenous; trucks do not change traffic. Missing intervals, unknown directions, negative/nonfinite speed, unmapped stops and horizon overrun cause an explicit data error or unavailable traversal. No real forecast dataset is currently bundled. Generated peaks, off-peak periods and incidents must be labeled synthetic with generator, seed and provenance.
+
+For segment entry t, define exit F_e(t) by:
+
+$$\int_t^{F_e(t)} v_e(r)\,dr=\ell_e.\tag{TR1}$$
+
+For piecewise-constant speeds, consume distance up to each interval boundary, then continue at the next interval's speed until the segment is complete. A synthetic example: 10 km, departure 07:55, speed 60 km/h until 08:00 then 30 km/h → 5 km in five minutes and 5 km in ten more; arrival 08:10. Freezing the entry speed would incorrectly predict 08:05. These are explanatory invented values, not forecasts.
+
+Positive speed integration yields a nondecreasing segment arrival map (FIFO). Compose these maps along a path. A time-dependent earliest-arrival shortest-path oracle chooses a path for each stop pair and departure; tau_ij(t)=earliest_arrival_ij(t)−t. Store its path and distance so temporal and distance metrics refer to the same physical path. Static straight-line distance is not traffic. Passing another customer's road location is transit, not service. When the earliest-arrival path changes, secondary distance is the selected path's length, not a fixed distance matrix. Deterministic path ties use a disclosed tie-break.
+
+Initial recommendation: time-dependent shortest-path evaluation under FIFO with positive integrated speeds; fixed paths are a labeled comparison approximation. Closures and zero speeds require an explicit entry/in-progress traversal and waiting policy before support; the first implementation should reject them. Never silently substitute a free-flow speed or extrapolate beyond the forecast horizon. A later imputation policy must record its source, uncertainty and effect on feasibility.
+
+Direct piecewise-constant durations tau(t) can violate FIFO at boundaries: check t1+tau(t1)≤t2+tau(t2) for t1<t2. Prefer speed integration over arbitrary duration steps. Piecewise-linear arrival maps may represent integrated speeds; interpolation needs monotonicity checks and approximation-error accounting, especially near windows. Caches must include departure (or an error-certified time cell), forecast version, direction, scenario and path policy. Coarse caching cannot turn a late arrival into a feasible one.
+
+## A4. Exact discrete formulation
+
+First exact reference recommendation: a time-indexed arc model for tiny finite-horizon instances. It is exact for the declared discrete model, not automatically for the continuous road process. This favors explainability and explicit activation over an unproved linearization of tau(D). Retain the continuous evaluator in A2–A3 as the practical heuristic specification.
+
+Choose tick Delta>0 minutes, integer h=H/Delta, and grid times 0,…,h. Scale q,Q without changing demand semantics. Round opening/earliest-departure times up; latest-start/latest-departure/latest-return times down; service and evaluated travel arrivals up. State the conservative rounding policy in the manifest. Earliest arrival f_ij(t) is a precomputed integer tick from the road oracle for grid departure t, or unavailable; f_ij(t)≥t. Build it only for departures with arrival inside the horizon. If using a completion window, use conservatively rounded service in that bound too. A continuous-feasible plan may disappear on a coarse grid; a grid optimum is not a continuous optimum. Revalidate grid solutions against original continuous travel and compare multiple resolutions.
+
+For every valid (i,j,t,k), introduce binary X_ijtk indicating departure along arc i→j at grid tick t. Keep x_ijk=Σ_t X_ijtk and all M1–M8; disallow arcs whose departure/arrival cannot meet horizon bounds. The integer schedule variables A,S,D,T,R have the bounds from T1–T3 expressed in ticks. The complete additional linear equations are:
+
+$$x_{ijk}=\sum_{t:(i,j,t)\ valid}X_{ijtk}.\tag{D1}$$
+$$D_{ik}=\sum_{j,t}tX_{ijtk},\quad
+A_{ik}=\sum_{j,t}f_{ji}(t)X_{jitk}\qquad(i\in C).\tag{D2}$$
+$$S_{ik}\ge A_{ik},\quad D_{ik}=S_{ik}+\hat s_i y_{ik},\quad
+\hat a_i y_{ik}\le S_{ik}\le\hat b_i y_{ik}.\tag{D3}$$
+$$T_k=\sum_{j\in C,t}tX_{0jtk},\quad R_k=\sum_{i\in C,t}f_{i0}(t)X_{i0tk}.\tag{D4}$$
+$$\hat E_k z_k\le T_k\le\hat L_k z_k,\quad T_k\le R_k\le\hat B_k z_k,\quad y_{ik}\le z_k.\tag{D5}$$
+$$\min\ \Delta\sum_k(R_k-T_k),\quad X,x,y,z\ binary,\ A,S,D,T,R\ integer\ in\ [0,h].\tag{D6}$$
+
+All customer sums in D2 cover permitted predecessor/successor stops and their valid ticks. M2/M3 ensure exactly one selected outgoing/incoming time arc for an assigned customer, so these sums select its actual departure and arrival. Unassigned variables are zero by D2–D3; inactive depot schedules are zero by D4–D5. Preserve MTZ even with zero-time arcs; use integer u if the final PLNE is required to be all-integer. D1–D6 plus M1–M8 and domains are the complete discrete reference formulation. In Layer 2 use constant travel times in f; in Layer 1 remove the scheduling restrictions and use the distance objective. A Layer 1 comparison must not inherit restrictive advanced windows.
+
+No temporal big-M is needed here. The existing MTZ M=n+1 remains justified by 0≤u≤n. For future piecewise-linear formulations, choose a segment with binaries and enforce exact affine arrival on the selected segment; bound all times and derive each deactivation constant from expression extrema. For an arrival variable in [0,H] and a candidate arrival expression in [0,H+tau_max], an equality can be relaxed using M=H+tau_max (or tighter directional bounds). If no finite bound exists, this M is invalid. Indicator syntax for an arbitrary nonlinear oracle does not make it MILP. A piecewise-linear formulation is a research alternative, not implemented or claimed complete here.
+
+TSP reduces to Layer 3 by one sufficient-capacity truck, zero service, broad windows, fixed departure 0 and constant travel durations equal to TSP edge costs with a polynomially encoded sufficient horizon. Then T7 equals TSP tour cost, so optimization remains NP-hard. Decision NP-completeness is justified for the finite explicit discrete/rational polynomially verifiable variant; no blanket NP-membership claim is made for arbitrary travel oracles. Time-indexed size is O(K n² h), pseudo-polynomial in encoded horizon and potentially huge. At n=1000, K=20, h=1440 it is already tens of billions of potential X variables. It is a correctness reference, not the thousands-customer solution architecture.
+
+## A5. Configuration contract
+
+Everything below is a **planned interface**, including advanced fields; none is implemented by adding this table. Section 7 preserves existing Layer 1 example settings. Canonical immutable instance data and forecast provenance are separate from search/experiment configuration. Fields sharing a row have the stated validation/default policy individually; no silent defaults for required Layer 3 data.
+
+| Field | Meaning; type and units | Valid range / source | Default policy and validation |
+|---|---|---|---|
+| `time_windows` | Array n×2 of a,b; minutes | 0≤a≤b≤H; dataset/synthetic generator | Required; preserve start/completion semantics |
+| `service_durations` | Array n, minutes | finite ≥0; dataset | Required; zero only if explicitly supplied |
+| `customer_demands` | Array n, capacity units | 0≤q≤Q; dataset | Required; ID alignment, no split |
+| `vehicle_count` | Integer K | ≥1, or zero for agreed empty case; metadata/override | Required; never infer universal upper bound from filename |
+| `vehicle_capacity` | Numeric Q, demand units | finite >0; dataset | Required, common within instance |
+| `fleet_rule` | Enum at_most_k/exactly_k | benchmark/tutor policy | Working at_most_k; reject unknown benchmark convention |
+| `depot_time_window` | Departure and return bounds; minutes | within H; dataset/config | Required; distinguish departure closing from latest return |
+| `time_horizon` | Numeric H, minutes | finite >0; dataset/config | Required; forecast covers all evaluated travel |
+| `vehicle_departure_policy` | Enum fixed/flexible; per-vehicle bounds | instance contract | Explicit; fixed means E=L |
+| `earliest_departure`, `latest_departure`, `latest_return` | Scalars or K arrays, minutes | 0≤E≤L≤B≤H | Required; dimension validation |
+| `window_policy` | Enum service_start/service_completion | source/tutor | Provisional service_start; always log |
+| `holding_policy` | Enum pre_service/earliest_service | model policy | Pre-service holding allowed; constructor may use earliest |
+| `time_reference`, `time_zone` | Epoch/date and IANA zone | dataset metadata | Required; convert to monotonic elapsed minutes; reject ambiguous DST clock values without offset |
+| `road_network` | Directed vertices/segments and stop mapping | road source or labeled synthetic | Required Layer 3; reachability/connectors validated |
+| `road_distance` | Segment lengths; numeric array, declared length units | finite >0; road data | Required; no geographic degrees treated as length |
+| `traffic_profiles` | Segment×interval speeds, length/minute | finite >0, contiguous coverage; forecast/generator | Required; missing data rejected |
+| `traffic_interval_minutes` | Numeric or vector of interval widths | >0; forecast metadata | Required; boundaries increasing and cover H |
+| `traffic_prediction_source` | Provider/version/retrieval/issue time and license | provenance record | Required; synthetic explicitly named |
+| `traffic_scenario` | Scenario ID and immutable profile hash | manifest | Required; no cross-scenario gap |
+| `travel_time_policy` | Enum integrated_speed/fixed_path_approximation | model configuration | integrated_speed recommended; flag approximations |
+| `time_dependent_travel_time` | Callable/oracle descriptor, version, paths | tau≥0; FIFO and boundary tests | Derived from network/profiles; no undocumented supplied matrix |
+| `missing_forecast_policy`, `closure_policy` | Enums | data contract | reject; support alternatives only with tests |
+| `distance_policy`, `benchmark_references` | Metric/rounding and cost/status/source records | manifest | Required for gap; unknown reference gives null gap |
+
+| Search/experiment field | Type; units/range | Source and default policy; validation (all planned) |
+|---|---|---|
+| `runtime_budget`, `iteration_budget` | positive seconds/integer iterations | Run config, mandatory at least one; log both and stop reason |
+| `random_seeds`, `repetition_count` | integer list, positive count | Frozen experiment config; matching lengths |
+| `traffic_scenario_selection` | list of valid IDs | Manifest; explicit development/final split |
+| `neighborhood_settings` | supported operator names, candidate count 1…n−1 when n>1 | Development config; singleton special case, reject unimplemented operators |
+| `feasibility_repair_settings` | methods and finite nonnegative attempt/time limits | Development config; explicit failure after exhaustion |
+| `penalty_parameters` | nonnegative capacity/time penalties in objective-compatible units | Only for selected infeasible search mode; final feasibility always hard |
+| `discretization_resolution` | positive Delta minutes | Exact-test config; sensitivity runs, no universal resolution |
+| `caching_settings` | byte limit ≥0, key/precision policy | Profiled config; zero disables cache; scenario/version invalidation |
+| `performance_settings` | workers≥1, propagation policy, optional compiled backend | Measured config; serial reference first, resource accounting |
+| `schedule_optimization_budget` | nonnegative seconds and tolerance minutes | Development config; no route marked optimal from earliest schedule alone |
+| `benchmark_manifest`, `reference_tolerance` | paths and nonnegative numeric tolerances in declared units | Frozen protocol; positive reference before percentage gap |
+
+Data schemas should include checksum, source IDs, dimensional units and input validity diagnostics. Wall-clock timestamps for logs are UTC with presentation zone recorded; local delivery windows are converted once at import. Calendar dates and elapsed durations are different types. No changing core equations to adjust n, K, Q, windows or forecast intervals.
+
+## A6. Experiments and figures
+
+Proposed final manifest: **at least 20 distinct instances**, with 8 classical CVRP, 6 CVRPTW and 6 distinct TD-CVRPTW base instances. Confirm this distribution with the tutor; the earlier conservative ambition of 20 published CVRP references remains an optional expanded campaign if resources permit. The official minimum is 20 total, not a documented requirement for 20 per category. Repeated seeds and multiple traffic profiles on the same base do not inflate the headline distinct count. Separate 6–10 development instances across layers; no overlap with final base geometries or derived scenarios.
+
+Category A uses VRPLIB, distance objective, per-family rounding, reference fleet and source-ID audits. Category B should investigate Solomon and Gehring–Homberger sources; no files are bundled. SINTEF's Solomon tables use lexicographic fleet then distance with their stated precision: these are not elapsed-time optima. Run that exact objective convention for a valid published comparison, or report elapsed time without a published gap. Category C needs sourced traffic-aware instances or explicitly synthetic speed scenarios; no certified advanced optimum or real traffic feed is currently established. Keep scenario hashes, windows, service, fleet, horizon, holding/departure rules, objective and precision identical across compared methods.
+
+Use tiny cases (n≤8 when tractable) for enumeration/exact grid checks, medium cases for operators, larger 100/500/1000 cases for scaling and 2000+ synthetic stress tests if feasible. Vary geographic clustering, demand/capacity pressure, narrow/wide windows and synthetic morning/evening/directional peaks. Generate feasible examples from disclosed witness schedules when needed, but hide witnesses from optimization; separately include deliberate infeasible cases. Changing traffic or windows creates a different comparison problem; do not reuse original BKS.
+
+Before final runs, freeze budgets, versions, hardware, seeds (propose five, adjust by declared compute budget), preprocessing inclusion, failure/timeout policy and manifests. Report feasibility over all attempts; quality statistics among feasible runs with explicit denominators. Report best/mean/median/std/worst, paired instance differences, bootstrap intervals where meaningful and outliers. Never pool minutes, distance gaps and hierarchical fleet scores into a single mean. Baseline improvement is 100(C_base−C_ours)/C_base for positive comparable baseline cost; it is not a certified optimality gap. Reference gap remains 100(C_ours−C_ref)/C_ref only for C_ref>0 and an identical problem; otherwise null.
+
+Save routes and schedules, path traces, forecast/source hashes, policy/units, initial/final/best objective, distance, driving/waiting/service, departure/return, makespan, fleet, maximum lateness, status, time-to-first-feasible, runtime/preprocessing, peak RSS, seed, commit and config hash. Replaying planned routes under perturbed forecasts measures robustness, not observed actual traffic performance. Label observed arrivals only when measurements exist.
+
+| Planned figure | Scientific question |
+|---|---|
+| Customer map with windows; routes colored by truck | How do geography and temporal compatibility shape assignment? |
+| Segment congestion heatmap and daily profiles | When and where do forecasts alter travel? |
+| Planned vs replayed arrivals; window bands | Which forecast errors threaten feasible service? |
+| Waiting bars and vehicle Gantt timelines | Is elapsed time dominated by driving, service or waiting? |
+| Service-start slack/violation plot | Are hard windows respected, including boundary cases? |
+| Objective convergence and paired quality comparisons | Which method improves quality within matched budgets? |
+| Runtime and peak RAM versus n and time resolution | Which representation or evaluator becomes limiting? |
+| Traffic intensity/window tightness sensitivity | Where does reliability degrade? |
+| Distance-optimal versus time-aware route/path maps | How much distance is exchanged for elapsed-time improvement? |
+| Failure/timeout counts and seed distributions | Are apparent gains robust across all attempted runs? |
+
+## A7. Engineering and validation
+
+Compare ALNS with time-aware related removal/regret repair and ILS with feasible perturbation/local search on the same development data, evaluator and wall-time budget. Tabu search and hybrid methods are credible research candidates, not predetermined winners. Investigate relocate, swap, Or-opt, 2-opt, 2-opt*, cross-exchange and SWAP* adaptation; every reversal and tail exchange must propagate schedules. Savings is a Layer 1 baseline; advanced constructors use capacity- and time-feasible insertion. Keep versioned external comparisons only where the exact supported constraints/objective match. HGS-CVRP is a classical CVRP baseline; PyVRP's time windows and routing profiles do not establish departure-time-dependent traffic support. No external TD baseline is confirmed by this task.
+
+For any changed route, recompute from the earliest affected predecessor through the suffix, including changed road paths, interval crossings, waiting, service windows and depot return. A static distance delta cannot evaluate Layer 3. Reuse a suffix only when the full downstream state (time, load, policy and forecast/path version) provably agrees; early termination based solely on a small objective difference is unsafe. A flexible-departure schedule may require reoptimizing the whole route.
+
+Independent validator contract: consume immutable instance, routes, departure choices and any deliberate holding; check IDs, each customer exactly once, no splits, fleet rule, connectivity, capacities, reachable road paths, forecast coverage, continuous traversal, all arrival/start/completion/departure/wait times, window policy and return limits. Recompute objective and distance from physical paths independently of search caches. Return feasible flag, structured reasons, per-stop schedule/slack, route loads and all metrics. Unused trucks contribute zero schedule and objective. Invalid/timeout/no-feasible-found/proven-infeasible are distinct outcomes. Best-feasible storage must not alias mutable search state; final outputs always pass a full audit.
+
+Future tests: early waiting, exact opening/closing, completion versus start policy, service-induced late suffix, departure at/near forecast boundaries, multi-period traversal, FIFO order tests, asymmetry, path switches, unreachable roads, horizon overrun, missing forecast, invalid units/DST, inactive trucks, zero demand/service/travel, duplicates, non-first depot, bin-packing counterexample and full-capacity trucks. Check incremental versus independent propagation for randomized moves, inverse moves and label permutations. With broad windows, zero service and constant tau proportional to d, validate Layer 1-compatible schedules under a sufficient horizon and fixed departures. For arbitrary restrictive windows or flexible departure conventions, do not claim an automatic objective equivalence.
+
+Performance plan: dense static matrix is about 8(n+1)² bytes; a dense h-slice temporal table multiplies that by h. Prefer road-profile storage, on-demand paths, bounded exact caches, candidate neighbor lists, prefix schedule state and selective route evaluation. Naive regret insertion can examine O(n²) positions each with O(n) propagation plus path costs; measure these costs. Profile CPU/RSS, path-oracle calls and cache accuracy before compilation or decomposition. Candidate restrictions need occasional wider search and quality ablations. No thousands-customer speed or quality guarantee follows from this design.
+
+## A8. Status, decisions and next steps
+
+Inspection at starting commit `da20370` on `main` found README.md, context.md, sources.md, CVRP_Implementation_Plan_Audit.md, CesiCDP_CVRP_Modeling.ipynb and the unrelated animation guide. The repository exists at [DennixAI/EcoRoute-CVRP](https://github.com/DennixAI/EcoRoute-CVRP). The only notebook has 68 cells (39 Markdown, 29 code), 19 saved PNG outputs and no saved error outputs. Its full cell source was inspected; it has static CVRP generation, parsing, supplied-route checking and equation certification. Saved outputs are not a fresh execution or tutor approval.
+
+`CesiCDP_CVRP_Detailed_Modeling.ipynb`, `CesiCDP_CVRP_Mathematical_Modeling.ipynb`, the package ZIP, standalone benchmark files and short README named in earlier history are **not present**. Do not assume file equivalence merely from counts. The current notebook embeds A-n32-k5 text, but its fleet parser infers -k as an upper limit and its `original_ids` stores parser indices; both need explicit correction/verification in the next notebook phase. Its generic rounding path also needs format-specific guarding. The notebook is intentionally unchanged in this documentation task.
+
+| Stage | Evidence now | Required next evidence |
+|---|---|---|
+| Documentation upgrade | This reviewed specification and synchronized roadmap | PR review; not tutor approval |
+| Modeling notebook | Classical draft exists, saved outputs | Layer 2/3 equations, tests, clean run and tutor feedback |
+| Optimization | No constructor, main search or exact solver | Canonical schema, validator, prototypes, selected own algorithm |
+| Validation | One supplied reference-route demonstration | Frozen manifests, ≥20 distinct instances, raw runs and statistics |
+| Final delivery | Planned | Reproducible notebook, English presentation/live demo and confirmed dates |
+
+Open decisions: start versus completion windows; whether pre-service holding and flexible departures match the assignment; total elapsed versus alternative time objectives; exactly/at-most K; depot bounds and fleet-specific schedules; forecast provider/license/resolution and data coverage; time-grid resolution/error tolerance; acceptable public advanced benchmark protocols; tutor approval of external/compiled code; budgets/hardware/seeds; team ownership and absolute deadlines. These are implementation/review gates, not reasons to misstate the now-explicit user-selected advanced scope.
+
+Next sequence: (1) tutor review of this mathematical contract; (2) update the actual notebook in a separate authorized phase with temporal examples and traffic evaluation; (3) implement canonical data/forecast schemas and independent evaluator; (4) validate tiny continuous/discrete cases and baseline reduction; (5) implement feasible constructors and move propagation; (6) run ALNS/ILS comparative development pilots before selecting the main search; (7) profile and accelerate without feasibility loss; (8) freeze and run the stratified final campaign; (9) integrate results, limitations, reproducibility and English defense. All implementation and experiment steps remain pending.
+
+Latest scope-change record: **2026-11-07, explicit user request** selected Layer 3, retained Layers 1/2, required documentation-only changes and a review PR rather than a direct main push. Earlier prompts below are preserved verbatim as history. Further research and official links are in [sources.md](sources.md); the [README](README.md) gives execution gates and the [audit](CVRP_Implementation_Plan_Audit.md) reassesses risks.
+
+---
 
 > **Purpose:** long-form context handoff for the GitHub repository `EcoRoute-CVRP`. This file is designed so that a future teammate, contributor, or AI assistant can resume the project without relying on conversational memory.
 >
 > **Language policy:** communicate, document, and explain in **English**. The **original French assignment is preserved in [`sources.md`](sources.md)**; it must not be silently translated or altered.
 >
-> **Context snapshot:** 2026-11-02. This document summarizes the original assignment provided in the conversation and consolidates project decisions, technical modeling, deliverables, user requirements, and the planned development roadmap. The original source and references are in `sources.md`.
+> **Context snapshot:** 2026-11-07. This document summarizes the original assignment provided in the conversation and consolidates project decisions, technical modeling, deliverables, user requirements, and the planned development roadmap. The original source and references are in `sources.md`.
 >
-> **Source precedence:** (1) original assignment; (2) explicit, later user decisions for the chosen implementation; (3) tutor feedback when obtained; (4) prior assistant recommendations, which are not binding decisions. Any contradiction must be recorded, not concealed.
+> **Source precedence:** (1) original assignment; (2) explicit, later user decisions for the chosen implementation; (3) actual repository implementation evidence; (4) recorded tutor feedback; (5) prior assistant recommendations, which are not binding decisions. Any contradiction must be recorded, not concealed.
 
 ## Contents
 
@@ -37,8 +245,8 @@ This is an inventory; the following sections contain the full details. **User re
 
 - **Identity:** `EcoRoute-CVRP`; descriptive name “EcoRoute — Intelligent Delivery Route Optimization”; CesiCDP; ADEME project; CESI Algorithmics and Optimization 2026–27; four-person team; environmental mobility and urban logistics context.
 - **Original material:** long French environmental/assignment introduction; original basic and advanced problem descriptions; organization; first-check modeling rules; final deliverable; oral defense; evaluation criteria; both CESI links and the GitHub VRPLIB link supplied by the user.
-- **Original broader domain:** minimize delivery tour duration on a road network taking time-varying traffic into account; this is broader than a static CVRP. The user subsequently chose CVRP only with static **distance** as primary benchmark-aligned objective.
-- **Chosen problem:** **Capacitated Vehicle Routing Problem (CVRP, Level B)**, not CVRPTW or time-dependent VRP for the current scope. All customers serviced exactly once by a fleet of identical-capacity trucks, starting and ending at one depot, with payload limitations and no disconnected tours.
+- **Original broader domain:** minimize delivery tour duration on a road network taking time-varying traffic into account; this is broader than a static CVRP. The first notebook used CVRP with distance; the latest user decision selects TD-CVRPTW and a time-based objective (A1–A4).
+- **Chosen problem:** **TD-CVRPTW**, retaining classical CVRP as Layer 1 and CVRPTW as Layer 2. All customers serviced exactly once by a fleet of identical-capacity trucks, starting and ending at one depot, with payload limitations and no disconnected tours.
 - **Math:** sets $V,C,F,A$; data $n,K,Q,q_i,d_{ij}$; arc variables $x_{ijk}$; assignment variables $y_{ik}$; active-truck variables $z_k$; order variables $u_{ik}$; minimize total distance; coverage, flow, depot, capacity, MTZ, domain and self-loop rules; optional symmetry breaking; TSP reduction; decision NP-completeness vs optimization NP-hardness; model sufficiency/necessity.
 - **Configurable inputs:** customer count, depot/index mapping, fleet upper bound, shared vehicle capacity, per-customer demand, coordinates, graph, distances and rounding, synthetic generation distribution, seeds, benchmark paths/fleet override, and future solver, experiment and plot parameters. *Rules remain fixed even when data vary.*
 - **Data:** synthetic examples plus actual VRPLIB benchmarks; `vrplib` library; `A-n32-k5` illustrative instance (31 customers + 1 depot, published **minimum number of vehicles** 5, capacity 100, proven optimum 784); avoid comparing unrounded costs with rounded reference costs; preserve original source IDs.
@@ -47,9 +255,9 @@ This is an inventory; the following sections contain the full details. **User re
 - **Later code:** build and test initial solution construction, local search, and a metaheuristic, **with ALNS only a recommended candidate**, not yet committed or implemented; scale to realistic hundreds/thousands of customers; optimize code performance; **critically compare multiple competitive algorithms/baselines rather than assuming the first approach is good** (explicit user priority).
 - **Experiments:** minimum 20 *different* instances across scenarios; compare to optimal/BKS where available; cost, runtime, feasibility, gap, statistical robustness, standard deviations, sensitivity to capacity/size/distribution/parameters, limitations and interpretations; warning that gaps above roughly 7–10% cap grade at B as stated by the assignment.
 - **Deliverables:** mathematical modeling, algorithm design and implementation, experimental study, presentation in English, consolidated final notebook; first check during Prosit 3, final notebook before defense, presentation on final day of block; ADEME “July 12 next” in undated original brief (year not unambiguously stated).
-- **Team/repository:** four-member division of responsibility was proposed; `EcoRoute-CVRP` was **suggested by the assistant after the user requested a GitHub-suitable name**, but the user did not explicitly ratify it; **GitHub repository creation is not established**. The list of deliverables and their implementation status is recorded below.
+- **Team/repository:** four-member division of responsibility was proposed; `EcoRoute-CVRP` was **suggested by the assistant after the user requested a GitHub-suitable name**, and was explicitly accepted and created by the user-directed repository setup. The remote is https://github.com/DennixAI/EcoRoute-CVRP. The list of deliverables and their implementation status is recorded below.
 - **History:** earlier project conversation excerpts (quality and exhaustive-review requirements), original French brief; subsequent English-only instruction; questions about ILP meaning; model + Python request; full checklist and configurability request; request for a large illustrated notebook and clarification; final detailed notebook specification; progress explanations; repository name selection; current context compilation request. Exact wording is retained in Section 14.
-- **Unknowns:** exactly $K$ versus at most $K$ active vehicles, tutor approval, whether the distance-objective deviation needs formal tutor consent, final benchmark inventory, exact defense dates, final ALNS/other algorithm choice, software runtime limits and hardware, benchmark fleet metadata for all data, dataset usage conditions, actual GitHub remote URL.
+- **Unknowns:** exactly $K$ versus at most $K$ active vehicles, tutor approval, the advanced time objective and window/holding policies, final benchmark inventory, exact defense dates, final ALNS/other algorithm choice, software runtime limits and hardware, benchmark fleet metadata for all data, dataset usage conditions and actual traffic sources.
 
 ---
 
@@ -57,7 +265,7 @@ This is an inventory; the following sections contain the full details. **User re
 
 | Item | Recorded value / state | Authority |
 |---|---|---|
-| Repository name | **`EcoRoute-CVRP`**, working proposal | User asked for a GitHub-suitable name and assistant proposed this one; there is no explicit user acceptance or repository creation record |
+| Repository name | **`EcoRoute-CVRP`**, existing repository | Verified repository and user-directed creation/push history |
 | Project title | **EcoRoute — Intelligent Delivery Route Optimization** | Assistant-proposed title |
 | Short technical subtitle | Mathematical Modeling and Optimization of the Capacitated Vehicle Routing Problem (CVRP) | Assistant-proposed subtitle |
 | Original organization | **CesiCDP** | French brief |
@@ -66,16 +274,16 @@ This is an inventory; the following sections contain the full details. **User re
 | Team size | **4 people** | French brief |
 | Intended application | Optimizing delivery vehicle routes | French brief + confirmed user choice |
 | Original task objective | **Minimize total travel duration**, considering predicted traffic in different time slots | French brief |
-| Current user-selected mathematical objective | **Minimize total traveled distance**, chosen for VRPLIB compatibility | Explicit later user prompt |
-| Main problem | **CVRP / capacitated VRP (Level B)** | Explicit user prompt and assignment |
-| Advanced alternative | CVRPTW with time windows and waiting, Level A | Original brief only; **outside current work** |
+| Current proposed mathematical objective | Minimize total elapsed route time; distance remains Layer 1 objective | Latest user scope, A2; tutor interpretation pending |
+| Main problem | **TD-CVRPTW**, Layer 3 | Latest explicit user decision; see A1 |
+| Advanced alternative | CVRPTW with time windows and waiting, Level A | Official Level A and now an included layer of the selected target |
 | Requested implementation language | Python | Brief + user |
 | Delivery formats | Jupyter notebooks with explanation and code; final oral defense in English | Brief + user |
 | First-modeling stage solver | **Not required and explicitly not to be implemented** | Brief + user |
 | Final solver implementation | **Required** with metaheuristic and real-size tests | Brief |
 | Proposed metaheuristic | ALNS, with other choices eligible | Prior assistant recommendation; **not a final user decision** |
 | Current recorded state | Modeling notebook draft reported completed and executed; **awaits tutor review** | Modeling deliverable status from previous project work |
-| Repository creation | Not established | No GitHub creation action in visible history |
+| Repository creation | Established | https://github.com/DennixAI/EcoRoute-CVRP |
 
 ### Environmental and business motivation
 
@@ -83,7 +291,7 @@ Since the 1990s, international and national action to reduce energy consumption 
 
 ### Scope distinction (critical for future AI assistants)
 
-**DO NOT silently upgrade the model to CVRPTW or time-dependent CVRP.** The statement's initial narrative asks for traffic-aware tour-duration optimization, whereas the explicitly selected *current deliverable* is basic CVRP with distance objective and static costs. Both must be retained in the record. If the tutor later requires traffic-dependent travel times, that would be a separately specified extension; it is not already covered by the existing distance-based ILP or benchmark.
+The latest user request explicitly upgrades the final target to TD-CVRPTW. Classical distance CVRP remains the foundational baseline and the existing notebook scope. Follow A1–A8 for advanced modeling, objectives, parameters, benchmarks and release gates. Historical CVRP-only prompts in Section 14 describe the earlier checkpoint.
 
 ---
 
@@ -102,7 +310,7 @@ The source text and normalization notes are preserved in [`sources.md`](sources.
 - Use a fleet of $k$ trucks with **identical capacity**.
 - Resolve a vehicle-routing optimization problem using Operations Research methods.
 
-### 4.2 Advanced version — archived but currently excluded
+### 4.2 Advanced version — included in the latest selected target
 
 - Delivery windows per object/customer.
 - No service outside time window.
@@ -151,19 +359,19 @@ $$\text{gap}(\%)=100\cdot\frac{\text{our cost}-\text{optimal cost}}{\text{optima
 | Topic | Status | Explanation |
 |---|---|---|
 | Language | **Explicitly confirmed** | User requested **English only** for responses/documentation (original assignment reproduced in French as evidence). |
-| Current model | **Explicitly confirmed** | **CVRP only**, not advanced CVRPTW. |
-| Main objective | **Explicitly confirmed** | **Total distance** for VRPLIB benchmark compatibility. Different from initial duration/traffic motivation. |
+| Current target | **Explicitly confirmed, 2026-11-07** | TD-CVRPTW; notebook still implements Layer 1 modeling only. |
+| Main objective | **Advanced proposal** | Total elapsed route time (A2); distance remains the historical Layer 1 benchmark objective. |
 | Data selection | **Explicitly confirmed** | Both generated synthetic examples **and** VRPLIB benchmark instances. |
 | Modeling code scope | **Explicitly confirmed** | Plotting, parsing, constraint illustrations, **feasibility checks**, **no optimization solver**. |
 | Modeling deliverable | **Explicitly confirmed** | Detailed `.ipynb`, rigorous ILP/PLNE, all necessary constraints, MTZ, complexity proof, numerous plots, detailed comments, references, downloadable file. |
 | Configurability | **Explicitly confirmed** | **No fixed instance values** baked into the mathematics or future algorithm; capacity/fleet/demand/locations/costs adjustable. |
-| Project repository | **User requested a name; assistant proposed one** | `EcoRoute-CVRP` is the current working name. Repository creation is a separate project step. |
+| Project repository | **Verified** | https://github.com/DennixAI/EcoRoute-CVRP exists and has main. |
 | Vehicle fleet semantics | **Open** | At most $K$ vs exactly $K$ active; existing model uses **at most $K$**. Tutor to validate. |
 | Fleet capacities | **Confirmed by brief** | Identical capacities across all trucks within an instance, but $Q$ varies between instances. |
 | One depot, visit exactly once, no split | **Model assumption consistent with standard CVRP** | Should still be confirmed with provided problem instance conventions. |
 | Zero customer demand | **Model supports it** | Order-based MTZ works even for zero-demand customers. |
 | Symmetric Euclidean graph | **Not a universal assumption** | General directed nonnegative cost matrix supported; plots may use Euclidean coordinates. |
-| Time-dependent traffic | **Excluded from current model** | Remains documented from original business context. |
+| Time-dependent traffic | **Included in target; not implemented** | Integrated forecast evaluation specified in A3. |
 | Initial route constructor | **Candidate only** | Greedy insertion / Clarke–Wright Savings previously proposed. |
 | Local search | **Candidate only** | 2-opt, relocate, swap, 2-opt*. |
 | Metaheuristic | **Recommended, not finalized** | **ALNS** suggested. No algorithm implementation or benchmark performance established. |
@@ -184,7 +392,7 @@ $$\text{gap}(\%)=100\cdot\frac{\text{our cost}-\text{optimal cost}}{\text{optima
 - $q_i\ge0$ customer demand and $q_0=0$.
 - $Q>0$ common truck capacity, **input** not a fixed universal number.
 - $d_{ij}\ge0$ fixed distance/cost of driving from $i$ to $j$, **input**. Symmetry is not required.
-- Optional $(a_i,b_i)$ customer/depot coordinates, for maps and possibly constructing Euclidean distances; cost matrix remains authoritative.
+- Optional $(X_i,Y_i)$ customer/depot coordinates, for maps and possibly constructing Euclidean distances; cost matrix remains authoritative.
 - $n,K,Q,q_i,d_{ij}$ are **instance parameters**; the ILP equations are unchanged across instances.
 
 ### 6.2 Decision variables
@@ -196,13 +404,13 @@ $$u_{ik}\ge0:\quad \text{auxiliary relative visit order for customer } i \text{ 
 
 **Classification note:** If $u_{ik}$ is continuous, technically this is a **Mixed-Integer Linear Program (MILP)**; setting $u_{ik}\in\mathbb{Z}_{\ge0}$ instead yields an **all-integer PLNE** with the same interpretation. The original conversation used both descriptions; a final report should consistently define its domain.
 
-### 6.3 Objective
+### 6.3 Layer 1 objective
 
 **Minimize total traveled distance over all trucks and selected arcs:**
 
 $$\boxed{\min\sum_{k\in F}\sum_{(i,j)\in A}d_{ij}x_{ijk}}.$$
 
-The later empirical comparison must use **the exact benchmark cost convention**. The objective is **not** currently minimizing fleet count, max route length, lateness, time-varying travel duration, or emissions directly.
+The later empirical comparison must use **the exact benchmark cost convention**. This objective defines Layer 1. The active advanced objective and temporal extension are in A2–A4.
 
 ### 6.4 Complete constraints (at most $K$ active trucks)
 
@@ -279,6 +487,8 @@ Therefore this explicit three-index model has $\Theta(Kn^2)$ arc variables/MTZ i
 
 ## 7. Parameterization contract: no hard-coded instance values
 
+**Layer applicability:** preserve the classical baseline details below and apply A1–A8 to the advanced target. Temporal inputs, traffic evaluation, schedule feasibility and stratified experiments are mandatory additions to this workstream.
+
 ### 7.1 Principle
 
 **Do not hard-code data values into the model/algorithm.** “$Q$ is shared across trucks” is a model rule; “$Q=100$” is only an input value for a specific benchmark. The final algorithm should accept multiple instance configurations without rewriting code. Hand-written small examples may of course use numerical demonstration values.
@@ -294,7 +504,7 @@ Therefore this explicit three-index model has $\Theta(Kn^2)$ arc variables/MTZ i
 | Geography | Depot location | `depot`, `depot_xy` | One configurable depot; internally reindex to 0 | Instance |
 | Geography | Customer locations | `coordinates` | Spatial visualization or distance derivation | Instance/optional |
 | Network | Allowed arcs | $A$ | Feasible stop-to-stop connections | Complete graph or derived network |
-| Costs | Travel-distance matrix | $d_{ij}$ / `distances` | Primary objective costs | Instance |
+| Costs | Travel-distance matrix | $d_{ij}$ / `distances` | Layer 1 objective costs; secondary advanced distance metrics require selected road paths | Instance |
 | Costs | Rounding convention | `distance_policy` | Align VRPLIB costs with BKS | Benchmark-specific |
 | IDs | Original node ID mapping | `original_ids` | Translate depot/customer labels to canonical indices | Parsing |
 | Synthetic | Layout type | `layout` | Uniform vs clustered generation | Configuration |
@@ -357,6 +567,8 @@ These are **examples only**, never universal constants in the math or future sol
 
 ## 8. Synthetic inputs, VRPLIB and benchmarking conventions
 
+**Layer applicability:** preserve the classical baseline details below and apply A1–A8 to the advanced target. Temporal inputs, traffic evaluation, schedule feasibility and stratified experiments are mandatory additions to this workstream.
+
 ### 8.1 Required data sources
 
 1. **Synthetic CVRP instances:** configurable number of customers; random seeds; uniform or clustered locations; adjustable demand ranges, depot, capacity and fleet count; cost matrix from coordinates or supplied data. Generation does not construct optimal routes.
@@ -391,13 +603,13 @@ Cost: 784
 
 **Do not infer that `-k5` is automatically an upper bound on available trucks.** The dataset and catalog describe 5 as the *minimum number of vehicles*. The current ILP uses an *at-most-$K$* parameter, which must be chosen consistently with the comparison protocol. For this instance, a feasible five-route reference is reported and its cost matches the cataloged optimum. For other instances, confirm the admissible fleet definition before comparing gaps.
 
-The prior notebook contained an embedded text version of `A-n32-k5.vrp` and `.sol` to work offline; **that original generated binary notebook and sample files are not available in the current runtime** (see artifact manifest). The route sequence and cost above reflect the prior recorded notebook and should be revalidated against the authoritative benchmark if reused.
+The prior notebook contained an embedded text version of `A-n32-k5.vrp` and `.sol` to work offline; the notebook is present as `CesiCDP_CVRP_Modeling.ipynb`, with embedded sample text; standalone sample files are absent (see artifact manifest). The route sequence and cost above reflect the prior recorded notebook and should be revalidated against the authoritative benchmark if reused.
 
 ### 8.3 Distance conventions
 
-For coordinates $p_i=(a_i,b_i)$, raw Euclidean distance is
+For coordinates $p_i=(X_i,Y_i)$, raw Euclidean distance is
 
-$$D_{ij}=\sqrt{(a_i-a_j)^2+(b_i-b_j)^2}.$$
+$$D_{ij}=\sqrt{(X_i-X_j)^2+(Y_i-Y_j)^2}.$$
 
 The recorded Set A reference used **nearest-integer** distances, as modeled by `floor(D + 0.5)` for nonnegative $D$. The `vrplib` documentation confirms that `EUC_2D` is parsed as **unrounded double-precision Euclidean distances**, so users must explicitly apply the benchmark-family convention where appropriate. Do **not** default to NumPy `round` for all instances (ties-to-even behavior). **Do not apply the same rounding rule to every VRPLIB family without checking it.** Preserve `EXPLICIT` edge weights and distinguish `EUC_2D`, `FLOOR_2D`, `CEIL_2D` and `EXACT_2D` rather than blindly applying a generic rule. Published reference cost must be evaluated with the same conventions as produced solutions, or gaps are meaningless.
 
@@ -423,7 +635,7 @@ Customer spatial map with demand-colored or demand-sized points; histograms of d
 
 ### 9.1 Completed modeling deliverable (current project record)
 
-- Name: `CesiCDP_CVRP_Detailed_Modeling.ipynb`.
+- Actual filename: `CesiCDP_CVRP_Modeling.ipynb`. Earlier differently named artifacts are absent (A8).
 - **Recorded deliverable:** 68 cells total, 39 Markdown cells, 29 Python cells, 19 figures; its original creation run completed successfully.
 - Sections reported: context and assumptions; graph/data notation; configurable synthetic generation; input checks; geometry and demand visuals; decision variables; distance objective; full constraints and MTZ subtour elimination; complexity proof; route validation and direct equation certification; VRPLIB loading; A-n32-k5 reference checks; parameter sensitivity; model scaling; edge cases; tutor checklist; bibliography.
 - Reported dependencies: `numpy`, `pandas`, `matplotlib`, `vrplib` (optional fallback for the embedded simple EUC_2D case), Python/Jupyter.
@@ -442,7 +654,7 @@ Customer spatial map with demand-colored or demand-sized points; histograms of d
 - No comparative result gaps from **our own** solver reported.
 - No final consolidated notebook or English slide deck/presentation reported.
 - No tutor approval or final ADEME submission reported.
-- No verified GitHub repository creation, remote URL, pushes or commits recorded.
+- Repository creation, commits and pushes are verified; advanced implementation and results remain absent.
 
 ### 9.3 Meaning of “modeling” in this project
 
@@ -452,11 +664,13 @@ Customer spatial map with demand-colored or demand-sized points; histograms of d
 
 ## 10. Detailed end-to-end project roadmap
 
+**Layer applicability:** preserve the classical baseline details below and apply A1–A8 to the advanced target. Temporal inputs, traffic evaluation, schedule feasibility and stratified experiments are mandatory additions to this workstream.
+
 The project phases below consolidate the prior 30-step to-do list with the formal assignment. A checked box means the **prior notebook contains a draft of that component**, not that it has passed tutor review.
 
-### Phase 1 — Formal CVRP modeling (current)
+### Phase 1 — Classical CVRP foundation (draft present); advanced modeling next
 
-- [x] **1. Define problem/context:** sustainable delivery logistics; current CVRP scope; one depot; static distance objective; identical-capacity truck fleet; no split deliveries.
+- [x] **1. Define foundational problem/context:** sustainable delivery logistics; historical CVRP notebook scope; one depot; static distance objective; identical-capacity truck fleet; no split deliveries.
 - [x] **2. Define data and sets:** $V,C,A,F,n,K,Q,q_i,d_{ij}$, coordinates and depot mapping; describe domains and assumptions.
 - [x] **3. Define decisions:** binary arc $x$, assignment $y$, vehicle-use $z$, auxiliary order $u$.
 - [x] **4. Define objective:** total fleet distance, including all departure/return legs.
@@ -469,19 +683,19 @@ The project phases below consolidate the prior 30-step to-do list with the forma
 ### Phase 2 — Python environment and datasets
 
 - [ ] **8. Project setup:** organize `.ipynb`, source scripts, `data/`, benchmark and results directories; install packages; lock or record dependency versions; document Python environment/PEP conventions.
-- [ ] **9. Dataset pipeline:** configure/load synthetic and VRPLIB instances; parse depot, original IDs, coordinates, demands, capacities, fleet constraint and costs; load known solutions; handle missing fleet metadata.
+- [ ] **9. Dataset pipeline:** configure/load synthetic and VRPLIB baseline instances, CVRPTW windows/service and Layer 3 road forecasts; preserve source IDs, units, fleet policy, forecast epochs/hashes and compatible references (A5–A6).
 - [ ] **10. Input validation:** dimension and data checks, nonnegative values, single depot, known/explicit cost matrix conventions, necessary feasibility conditions, clear rejection messages.
 
 ### Phase 3 — Algorithm design and implementation
 
-- [ ] **11. Solution representation:** routes as variable-length lists of customer IDs, with depot implicit or explicit; route load, distance, fleet use, cost and feasibility.
-- [ ] **12. Initial construction:** compare candidate greedy insertion and Clarke–Wright Savings; generate feasible candidate or report construction failure.
-- [ ] **13. Local search:** 2-opt, relocate, swap, optional 2-opt*, efficient delta costs, capacity-aware move filtering.
+- [ ] **11. Solution representation:** customer route lists plus depot departures, holding choices, per-stop schedules, physical paths, route load, distance, elapsed objective and independent feasibility diagnostics.
+- [ ] **12. Initial construction:** compare capacity/time-feasible insertion and regret repair; keep Savings as a Layer 1 candidate; generate independently feasible schedules or report failure.
+- [ ] **13. Local search:** 2-opt, relocate, swap, Or-opt, 2-opt* and stronger candidates; propagate affected schedules/paths and audit capacity/windows/return after each accepted move.
 - [ ] **14. Metaheuristic:** choose/justify ALNS or another eligible approach; define destroy and repair operators, adaptive selection, acceptance of improving/worsening moves, best-feasible tracking, stopping criteria.
-- [ ] **15. Performance/scaling:** incremental distance evaluation, candidate lists, vectorization where valuable, profiling, memory analysis, robust stopping time, thousands-of-customers trials.
+- [ ] **15. Performance/scaling:** exact incremental schedule propagation, path/time caches, candidate lists, profiling, memory analysis, robust stopping and thousands-of-customer trials when feasible.
 - [ ] **16. Unit/integration testing:** coverage, capacity, depot, no duplicates, exactly-once, cost calculation, deterministic seeds, edge cases and per-operator validity.
 
-**Milestone:** documented Python CVRP algorithm that actually generates and improves routes.
+**Milestone:** a layered TD-CVRPTW solver; schedule construction, traffic and cascading move evaluation in A7 are mandatory.
 
 ### Phase 4 — Experimental design
 
@@ -519,10 +733,12 @@ The project phases below consolidate the prior 30-step to-do list with the forma
 
 ## 11. Performance evaluation and statistical protocol
 
+**Layer applicability:** preserve the classical baseline details below and apply A1–A8 to the advanced target. Temporal inputs, traffic evaluation, schedule feasibility and stratified experiments are mandatory additions to this workstream.
+
 ### 11.1 Mandatory minimum
 
 - **At least 20 distinct instances**. Repeated runs on one instance are valuable but do **not** count as distinct instances.
-- **VRPLIB** parsing via `vrplib` and comparison with known reference costs.
+- **VRPLIB** parsing via `vrplib` for classical references; validated category-specific advanced loaders and references only when objectives/constraints match (A6).
 - Cost and execution time measurements; experiments across different instance characteristics; visualization and statistical discussion.
 - Robust reproducibility: seeds, dependency versions, hardware and resource limits.
 
@@ -560,6 +776,8 @@ The modeling notebook validated the **published A-n32-k5 reference route** with 
 ---
 
 ## 12. Architecture, reproducibility, testing and team work
+
+**Layer applicability:** preserve the classical baseline details below and apply A1–A8 to the advanced target. Temporal inputs, traffic evaluation, schedule feasibility and stratified experiments are mandatory additions to this workstream.
 
 ### 12.1 Proposed repository structure
 
@@ -751,7 +969,7 @@ Assistant proposed `EcoRoute-CVRP`, description: *A Python-based Capacitated Veh
 
 ### 15.2 Prior assistant recommendations (not confirmed requirements)
 
-- Start with a strong static CVRP baseline, then consider optional advanced features only if explicitly approved.
+- Historical recommendation: start with a static CVRP baseline. The latest user decision explicitly includes advanced windows and traffic; implement all three layers.
 - Use greedy insertion or Clarke–Wright Savings for an initial feasible solution.
 - Add 2-opt, relocate, swap, and possibly 2-opt* for local improvement.
 - Choose ALNS (adaptive large neighborhood search) as a plausible main metaheuristic; define removal/insertion operators, acceptance and stopping criteria.
@@ -766,7 +984,7 @@ Assistant proposed `EcoRoute-CVRP`, description: *A Python-based Capacitated Veh
 - **At most $K$ versus exactly $K$:** current model allows unused trucks. Confirm with tutor if exactly $K$ required. Importantly, the *minimum vehicles* field on CVRPLIB is neither interpretation by itself; benchmark comparison must respect the original benchmark constraints.
 - **PLNE versus MILP terminology:** if $u$ is continuous, MILP; if integer, all-integer PLNE. Both describe a mixed discrete routing formulation; specify domains consistently.
 - **Reference gap terminology:** using a BKS denominator does not certify optimality.
-- **Time vs distance:** original narrative's duration/traffic objective is deferred by deliberate user selection; flag for academic consistency.
+- **Time vs distance:** duration/traffic is now in the selected Layer 3 target; retain distance comparisons only under Layer 1 conventions.
 - **Date precision:** original text supplies “July 12 next” and relative academic milestones; the calendar year must be set from the official project schedule.
 - **Large instances:** an exact three-index ILP is a valid specification, but cannot be assumed tractable at thousands of nodes.
 - **Reference data:** benchmark routes in the notebook were not generated by our solver.
@@ -778,10 +996,12 @@ Assistant proposed `EcoRoute-CVRP`, description: *A Python-based Capacitated Veh
 
 ## 16. Open questions, risks, limitations and next action
 
+**Layer applicability:** preserve the classical baseline details below and apply A1–A8 to the advanced target. Temporal inputs, traffic evaluation, schedule feasibility and stratified experiments are mandatory additions to this workstream.
+
 ### 16.1 Questions to settle with the tutor/team
 
 1. **Does the final CVRP require at most $K$ vehicles, or exactly $K$ used vehicles?**
-2. Is using **distance** rather than initial brief's **time-dependent travel duration** accepted for the selected Level B/VRPLIB benchmark scope?
+2. Does the proposed total-elapsed-time objective and its flexible-departure/holding policy match tutor expectations for Layer 3?
 3. Which official datasets are supplied by CESI (file links, instance families, fleet metadata, cost rules), if any beyond the explicitly linked `vrplib` repository?
 4. Which algorithm/metaheuristic will the team implement — ALNS or another method? **What evidence/baselines justify its quality and robustness?**
 5. What runtime or iterations budget, hardware, seeds and repetitions define a fair experimental protocol?
@@ -815,19 +1035,9 @@ Assistant proposed `EcoRoute-CVRP`, description: *A Python-based Capacitated Veh
 
 ## 17. Project artifacts and current deliverable status
 
-### 17.1 Existing and planned project files
+### 17.1 Verified artifacts and historical names
 
-| Filename | Purpose | Project stage |
-|---|---|---|
-| `CesiCDP_CVRP_Mathematical_Modeling.ipynb` | Earlier first-checkpoint mathematical-modeling draft | Earlier modeling version |
-| `CesiCDP_CVRP_Detailed_Modeling.ipynb` | Detailed CVRP model with 68 cells, 39 Markdown cells, 29 Python code cells, 19 plots, feasibility checks, and the A-n32-k5 reference example | **Modeling deliverable produced** |
-| `CesiCDP_CVRP_Modeling_Package.zip` | Modeling notebook, example benchmark files and project README | Packaging of modeling deliverable |
-| `A-n32-k5.vrp` | Illustrative reference CVRP instance | Benchmark sample |
-| `A-n32-k5.sol` | Routes and reference objective value used in validation examples | Benchmark sample |
-| `README_CVRP_Modeling.txt` | Instructions accompanying the modeling package | Modeling documentation |
-| `context.md` | This consolidated project brief, instructions, parameter contract and roadmap | Shared project reference |
-
-The names above are the filenames used in previous project work. They can be reorganized into the GitHub directory structure in Section 12. As the project progresses, add the implementation notebook/scripts, test suite, benchmark-result tables, figures, final report, and English presentation.
+The actual inspected files and missing historical artifacts are listed in A8. The only existing notebook is `CesiCDP_CVRP_Modeling.ipynb`; it is a classical CVRP modeling draft, not a TD-CVRPTW solver. `README.md`, `context.md`, `sources.md` and `CVRP_Implementation_Plan_Audit.md` are the project documentation. The animation guide is unrelated and unchanged. Earlier detailed/mathematical notebook names, ZIP, standalone `.vrp`/`.sol` and short README are historical references, not present files. The directory tree in Section 12 is a proposal.
 
 ### 17.2 Delivery status
 
@@ -835,7 +1045,7 @@ The names above are the filenames used in previous project work. They can be reo
 - **Route optimization:** no initial-solution search or ALNS implementation completed in the recorded project progress.
 - **Experiments:** no 20-instance algorithm-comparison study completed yet; published reference-route examples were used to check the model, not to measure a new solver.
 - **Final notebook and English defense:** planned for the later milestones.
-- **Repository:** `EcoRoute-CVRP` is the selected working name; setting up and populating the GitHub remote remains a separate task.
+- **Repository:** the existing remote is https://github.com/DennixAI/EcoRoute-CVRP; review upgrades on branches via PRs.
 
 For each future milestone, record the completion date, responsible team member, acceptance criteria, and links to its deliverables.
 
@@ -843,9 +1053,11 @@ For each future milestone, record the completion date, responsible team member, 
 
 ## 18. Tutor defense preparation checklist
 
+**Layer applicability:** preserve the classical baseline details below and apply A1–A8 to the advanced target. Temporal inputs, traffic evaluation, schedule feasibility and stratified experiments are mandatory additions to this workstream.
+
 These are preparation questions derived from the mathematical model, technical requirements and planned experiments; they are not additional grading rules:
 
-- [ ] Precisely state the basic CVRP scope, one-depot assumption, no split deliveries, fixed distance objective, and why traffic/time windows are excluded despite the broader introductory description.
+- [ ] Precisely state the basic CVRP scope, one-depot assumption, no split deliveries, fixed distance objective, and how Layers 2/3 add time windows, waiting and predicted traffic (A1–A4).
 - [ ] Explain every index and variable ($x_{ijk}$, $y_{ik}$, $z_k$, $u_{ik}$), variable domain, and which values are inputs rather than hard-coded constants.
 - [ ] Derive the objective and justify including departures and returns; distinguish total fleet distance from maximum route duration and fleet count.
 - [ ] Explain why degree/flow equations alone allow disconnected subtours, and demonstrate the MTZ cycle contradiction.
@@ -867,4 +1079,4 @@ These are preparation questions derived from the mathematical model, technical r
 
 ## Final scope reminder for future contributors and AI assistants
 
-**Current target:** model, then implement, then benchmark a **parameterized basic CVRP** minimizing **total distance**, with identical-capacity vehicles, unique customer visits, one depot, fleet and capacity restrictions, and disconnected subtour prevention. Current draft modeling included mathematical equations, many plots and candidate-route feasibility checks. **No route-search optimization solver has been implemented yet** in the recorded project work. Advanced windows, waiting and time-dependent traffic remain archived as original assignment context, not part of the selected current formulation. Follow the official CESI grading requirements, including **at least 20 distinct benchmark instances**, and confirm tutor feedback before declaring modeling finished.
+**Current target:** Layer 3 TD-CVRPTW with capacity, hard customer windows, waiting and predicted traffic, using the time-based objective in A2. Layers 1/2 remain validation baselines. Only a classical modeling notebook currently exists. Advanced notebook work, solver, benchmark experiments and tutor review remain pending. Follow A1–A8 and preserve at least 20 distinct final evaluation instances.
