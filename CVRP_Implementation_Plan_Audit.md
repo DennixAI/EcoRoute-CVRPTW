@@ -2,6 +2,20 @@
 
 ## Advanced reassessment — 2026-11-07
 
+### PR 1 mathematical review corrections
+
+The follow-up review corrected the specification, not the untouched notebook or an implemented solver:
+
+- **FIFO schedule dominance:** for fixed route and depot departure, earliest service minimizes return and elapsed time. Extra customer holding cannot improve that primary objective. Flexible depot departure still needs optimization (context A2).
+- **Grid semantics:** define tick conversion explicitly, avoid demand/capacity rounding, and supply completion-window equation D3c. A grid trajectory must be replayed with original service/travel times; copied grid departure times need not satisfy the continuous no-post-service-holding policy (A4).
+- **Certificates:** grid infeasibility and grid lower bounds do not certify the continuous problem. The continuous replay cost and the discrete objective are separate values (A4).
+- **Complexity:** use metric TSP with costs in {1,2}, keeping the horizon and explicit travel table polynomial in the reduction input size; scope decision NP-completeness to that explicit finite-table variant (A4).
+- **Activation and symmetry:** exactly-K fixes every z to one; optional truck-label symmetry requires identical temporal and cost parameters, not only equal capacities (A2/A4).
+- **Benchmark ordering:** hierarchical fleet/distance results require lexicographic comparison; a distance gap is conditional on matching fleet count and conventions (A6).
+- **Implementation instructions:** remove active assumptions that A0 has selected ALNS, and replace static-only move evaluation instructions with advanced schedule propagation where required (README).
+
+Validation for this documentation correction includes small enumerated FIFO schedule/grid-replay checks, preservation of the French archive and historical prompts, unchanged notebook/animation bytes, Markdown link/fence checks and whitespace review. These checks support the stated examples and internal consistency; they are not solver benchmarks, a general implementation verification or tutor approval.
+
 The earlier audit below is preserved as a **historical classical-CVRP audit dated 2026-11-02**. Its instruction to exclude windows/traffic is superseded by the user's explicit TD-CVRPTW decision. Apply its algorithm-quality principles to the new three-layer specification in [context A1–A8](context.md#a1-scope-and-authority) and the synchronized [README](README.md). Classical performance ambitions and HGS-CVRP comparisons remain Layer 1 only.
 
 ### Findings against the advanced target

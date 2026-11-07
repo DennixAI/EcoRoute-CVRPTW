@@ -18,7 +18,7 @@ Repository: [DennixAI/EcoRoute-CVRP](https://github.com/DennixAI/EcoRoute-CVRP).
 
 ### Advanced execution contract
 
-Use [context A2–A4](context.md#a2-temporal-formulation) for the complete temporal specification and discrete reference model. Retain the routing equations below: coverage, flow, depot degree, capacity and MTZ still apply. Add arrival/service-start/completion/departure/waiting, actual return, activation and hard-window constraints. The provisional rule bounds service **start**, allows pre-service waiting/holding, and uses flexible or fixed departure bounds per instance. Completion windows are a distinct policy requiring confirmation. Primary elapsed time is return minus departure; report driving, waiting, service, makespan, distance and used fleet separately. These definitions require tutor review.
+Use [context A2–A4](context.md#a2-temporal-formulation) for the complete temporal specification and discrete reference model. Retain the routing equations below: coverage, flow, depot degree, capacity and MTZ still apply. Add arrival/service-start/completion/departure/waiting, actual return, activation and hard-window constraints. The provisional rule bounds service **start**, allows pre-service waiting/holding, and uses flexible or fixed departure bounds per instance. Completion windows use alternative T2/D3c bounds requiring confirmation. Under FIFO, earliest-service propagation minimizes elapsed time for a fixed route and depot departure; extra holding cannot improve it. Flexible departure still requires scheduling optimization. Primary elapsed time is return minus departure; report driving, waiting, service, makespan, distance and used fleet separately. It does not prioritize fleet minimization. Vehicle symmetry constraints require identical temporal bounds as well as capacities. These definitions require tutor review.
 
 Travel times come from directed road-segment speed forecasts integrated across interval boundaries and departure-dependent shortest paths. No real traffic source is bundled. Reject missing coverage/unsupported closures initially; synthetic congestion is labeled and seeded. Do not claim a nonlinear tau(departure) expression is MILP. A time-indexed exact model for the declared grid is specified for tiny checks; continuous-time evaluation supports future heuristics. Grid optima do not certify the original continuous problem.
 
@@ -384,7 +384,7 @@ This section preserves the complete classical routing model. Advanced schedules 
 7. `y_ik ≤ u_ik ≤ n y_ik` for each `i,k` (orders only for assigned customers).
 8. `u_jk ≥ u_ik + 1 − (n+1)(1−x_ijk)` for each `i≠j∈C`, each `k` (MTZ subtour elimination).
 9. Binary domains for `x,y,z`, nonnegative continuous domain for `u`, no self loops.
-10. Optional truck-label symmetry breaking: `z_k ≥ z_(k+1)` when vehicles are identical (changes labels, not physical solutions).
+10. Optional truck-label symmetry breaking: `z_k ≥ z_(k+1)` only within groups identical in capacity, departure/return bounds, access and costs (changes labels, not physical solutions). Equal capacity alone is insufficient in the advanced model.
 
 **Nuance:** for allowed-arc subsets, change sums and graph assumptions consistently; do not keep undefined `x_ijk` variables or forget reachability. If benchmarking standard complete-node-distance CVRP, the full `A` above is appropriate.
 
@@ -493,7 +493,7 @@ Apply each phase to all three layers. Phases 1–2 must include forecast/path lo
 - [ ] **[RESEARCH]** Review Clarke–Wright savings, sequential/parallel cheapest insertion and randomized construction.
 - [ ] Implement at least two construction strategies when feasible (e.g., sequential insertion and savings); document their different failure modes.
 - [ ] Respect hard fleet bound, capacity and mandatory customers during every insertion.
-- [ ] Implement candidate lists and cost-delta evaluation without repeated full-route recomputation.
+- [ ] Implement candidate lists and verified move evaluation. Static distance deltas are Layer 1 only; advanced changes require affected-suffix propagation and, when departures are flexible, departure rescheduling.
 - [ ] Add configurable tie breaking and seed; deterministic when asked.
 - [ ] Handle construction failure by alternate seeds/operators/repairs; do not silently increase `K`.
 - [ ] Stop after explicit recovery budget and report `no_feasible_solution_found` without claiming mathematical infeasibility unless proven.
@@ -514,7 +514,7 @@ Apply each phase to all three layers. Phases 1–2 must include forecast/path lo
 - [ ] Or-opt (move short sequence, configurable length).
 - [ ] 2-opt* between routes (edge exchange; preserve capacity and route connectivity).
 - [ ] **[OPTIONAL] [RESEARCH]** Cross-exchange and `SWAP*` neighborhoods; performance justification.
-- [ ] Implement each operator with a clear mathematical delta formula and constraints.
+- [ ] Specify each operator's distance delta and feasibility conditions; for Layer 3, recompute the elapsed-time delta from propagated schedules and traffic-dependent paths.
 - [ ] Unit-test delta == full independently recomputed cost within tolerance for thousands of seeded trial moves.
 - [ ] Reject capacity/fleet/coverage-breaking moves (or carefully account for approved penalized infeasible search).
 - [ ] Implement first-/best-improvement policy and configurable neighborhood scanning.
@@ -533,7 +533,7 @@ Apply each phase to all three layers. Phases 1–2 must include forecast/path lo
 - [ ] Implement **random removal** and **worst-cost removal**.
 - [ ] Implement **related/Shaw removal** using configurable customer distance/demand/route features.
 - [ ] Implement **route/cluster/segment removal** if it improves meaningful test cases.
-- [ ] Implement **greedy insertion** and **regret-k insertion**, each respecting capacity and `K`.
+- [ ] Implement **greedy insertion** and **regret-k insertion**, each respecting capacity, fleet, windows, service, traffic and depot return; include full schedule effects in insertion cost.
 - [ ] Implement randomized tie-breaking/diversification with recorded seeded RNG.
 - [ ] Implement adaptive roulette/weighted operator selection with verified nonnegative normalized probabilities.
 - [ ] Implement operator rewards (new best, improvement, accepted, rejected) and periodic weight adaptation.
@@ -668,7 +668,7 @@ A0 compares time-aware ALNS and ILS, with tabu/hybrids investigated when justifi
 ### 7.1 Candidate ALNS architecture (subject to D07/D08 and §17 A0 approval)
 
 ```text
-Approved CVRP data and distance policy
+Validated selected-layer data, forecasts and objective policy
             │
             ▼
 Independent input validation and feasibility prechecks
@@ -683,9 +683,9 @@ Local search (2-opt / relocate / swap / 2-opt* / optional SWAP*)
 ALNS search loop ────────────────────────────────────────────────┐
   1. choose destroy/repair operators adaptively                 │
   2. destroy a configurable number of client assignments       │
-  3. repair respecting routes, capacity, fleet                  │
+  3. repair respecting capacity, fleet and temporal feasibility │
   4. run selective local improvement                            │
-  5. validate / compute exact distance and feasibility         │
+  5. propagate schedules; audit selected objective/feasibility  │
   6. accept/reject using configured acceptance policy          │
   7. update operator rewards, elite/best, convergence logs     │
   8. restart/perturb if stagnating                              │
@@ -717,7 +717,7 @@ Best **feasible** route set + cost + metrics + evidence
 The CVRP is NP-hard. A heuristic can be excellent but cannot generally certify optimality. Use the following precise labels:
 
 - **Feasible:** all constraints checked, regardless of quality.
-- **Best found by our algorithm:** minimum valid distance across its documented runs.
+- **Best found by our algorithm:** best validated value of the declared objective across documented runs; compare fleet/distance objectives lexicographically where applicable.
 - **Best-known solution (BKS):** lowest known published reference at the stated source date, not automatically proven optimal.
 - **Proven optimal:** backed by an exact certificate/official proof.
 - **Lower bound:** rigorous number not exceeding true optimum, if its assumptions apply.
@@ -873,7 +873,7 @@ Advanced release additionally requires independent continuous schedule auditing,
 | G1 Data reliability | Approved datasets load with valid IDs, costs, K and Q | Independent reviewer |
 | G2 Construction | Feasible initial solutions on documented test set | Independent validator |
 | G3 Moves | All tested deltas accurate, no invalid moves emitted as valid | Test suite |
-| G4 ALNS | Reproducible, feasibility-safe, quality improves over starting baseline on representative instances | Algorithm + statistics leads |
+| G4 Selected metaheuristic | A0 selection recorded; reproducible, feasibility-safe, quality improves over starting baseline on representative instances | Algorithm + statistics leads |
 | G5 Benchmarks | ≥20 **distinct** instances across approved categories; raw runs, comparable gaps and failure reporting | Experiment reviewer |
 | G6 Quality | Grading threshold assessed honestly; attempts to improve outliers documented | Team + tutor if needed |
 | G7 Reproducibility | New environment runs quick demo; full results traceable to config/seeds/versions | Peer reviewer |
@@ -1027,7 +1027,7 @@ write_result_record(instance, config, solution, audit, provenance=...)
 
 **API test:** swapping a benchmark file should alter instance quantities and outputs **without edits to `solve_cvrp` source**. `config` changes alter algorithm search behavior but never bypass mathematical constraints.
 
-### 11.3 Example config skeleton (names are a **design proposal**, not current implementation)
+### 11.3 Layer 1 ALNS candidate config (design proposal, not a selected algorithm)
 
 ```yaml
 problem:
@@ -1251,7 +1251,7 @@ Next implement the advanced notebook model and independent travel/schedule evalu
 6. **[ ]** Create the project source/data/test/config structure and single canonical instance/solution schema.
 7. **[ ]** Implement general `vrplib` loading, source ID mapping, cost policy and reference cost audit.
 8. **[ ]** Implement independent full solution validator with tests, then initial route construction.
-9. **[ ]** Implement local search and ALNS incrementally, verify deltas/feasibility, profile runtime.
+9. **[ ]** Compare ALNS/ILS prototypes through A0, implement the selected method incrementally, verify temporal deltas/feasibility and profile runtime.
 10. **[ ]** Freeze experiment protocol, run 20+ distinct instances with repeated seeds, analyze, consolidate notebook and prepare English presentation.
 
 ### 16.2 Decision log (must be maintained continuously)
@@ -1310,7 +1310,7 @@ The original algorithm-quality research remains a baseline. Extend every feasibi
 **Do not assume ALNS is better than ILS or HGS.** Strong external implementations are useful **references**, but are not our own code. The first prototypes may be deliberately small/limited; comparisons are used to decide development effort, not to claim a fair final leaderboard prematurely.
 
 - [ ] **[APPROVAL — TUTOR]** Confirm requirements for original implementation, allowed libraries, compiled/Numba/C++ acceleration and external comparisons.
-- [ ] Pick a **development-only** (non-final-test) set of **6–10 varied CVRP instances** covering at least two scales, geographic patterns and load tightness. A separate final set still must have **20+ distinct** final instances under the stratified protocol.
+- [ ] Pick **6–10 development-only instances across Layers 1/2/3**, covering multiple sizes, spatial patterns, load pressure, window tightness and traffic scenarios. A separate final set still must have **20+ distinct** instances under the stratified protocol.
 - [ ] Build the **common independent evaluator and cost adapter first**; all algorithms must consume the *same* validated `CVRPInstance` and satisfy the same fleet rule.
 - [ ] Prototype a **strong local-search ILS**: construction → perturbation (e.g., double bridge, ejection-chain-like changes, route exchange) → local search → acceptance/restart.
 - [ ] Prototype **ALNS**: multiple removal/repair methods, adaptive selection, calibrated acceptance, strong local search; do not compare a full ALNS to a deliberately handicapped ILS.
