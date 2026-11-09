@@ -2,10 +2,72 @@
 
 EcoRoute studies the **capacitated vehicle routing problem with time windows (CVRPTW)** using the Solomon and Gehring–Homberger benchmark instances. Each route must respect vehicle capacity, customer service windows, and the depot time window. The benchmark objective is **total traveled distance**.
 
+## Setup and run order
+
+Run the commands below from the repository root. The project currently performs mathematical modeling and supplied-route validation; no optimization algorithm is selected or implemented.
+
+### 1. Create an isolated Python environment
+
+Use Python 3.9–3.12. Validation was performed with Python 3.9.6; other versions in this range have not yet been tested. On macOS/Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+On Windows, create it with `py -m venv .venv`, then activate with `.venv\Scripts\Activate.ps1` in PowerShell before the two `python -m pip` commands. [requirements.txt](requirements.txt) pins the direct dependencies from the tested environment; it is not a complete transitive lockfile.
+
+### 2. Obtain data only if missing
+
+The collection is already included at `data/benchmarks/vrptw/`. Skip this step when those files exist. To download or deliberately refresh the collection:
+
+```bash
+python scripts/download_vrptw_benchmarks.py
+```
+
+This downloads the selected 356 problem/reference pairs and records archive provenance. Refreshing from upstream can change data; preserve hashes for reproducible experiments.
+
+### 3. Run the complete modeling validation
+
+```bash
+python scripts/run_modeling.py --strict
+```
+
+The runner executes every cell of `main.ipynb` in a fresh kernel using the active Python environment. Strict mode checks all 356 reference pairs and fails on missing data, invalid routes or mismatched costs. A successful run writes `outputs/main.executed.ipynb`; open that notebook in VS Code or another notebook viewer to inspect the tables and plots. The source `main.ipynb` is not overwritten.
+
+To run synthetic modeling examples when the collection is unavailable:
+
+```bash
+python scripts/run_modeling.py
+```
+
+Missing collection-dependent checks are explicitly marked **NOT RUN**. Present but invalid benchmark data still fail. You may change the data/output locations:
+
+```bash
+python scripts/run_modeling.py --strict --data-root /path/to/vrptw --output outputs/review.ipynb
+python scripts/run_modeling.py --help
+```
+
+For interactive editing, open `main.ipynb` in your notebook editor, select `.venv` as the kernel, and use **Restart Kernel → Run All**. This requirements file supplies the execution kernel, not a browser-based Jupyter interface. Use the runner above if you only need execution and saved results.
+
+### What each script does
+
+| File | Run directly? | Purpose |
+| --- | --- | --- |
+| `scripts/download_vrptw_benchmarks.py` | Only if data are missing or a refresh is intended | Acquires the selected benchmark files |
+| `scripts/run_modeling.py` | Yes, after dependency installation | Executes and validates the notebook |
+| `scripts/cvrptw_model.py` | No | Reusable parsing, schedule and equation checks imported by the notebook |
+
+No temporary `/private/tmp/` review scripts are required. Algorithm selection, optimization runs, tuning and final experiments remain future work.
+
 ## Repository map
 
 | Path | Purpose |
 | --- | --- |
+| [`requirements.txt`](requirements.txt) | Pinned direct modeling/execution dependencies |
+| [`scripts/run_modeling.py`](scripts/run_modeling.py) | Fresh-kernel notebook execution |
 | [`main.ipynb`](main.ipynb) | Mathematical modeling, examples, plots, and reference-route validation |
 | [`data/benchmarks/vrptw/`](data/benchmarks/vrptw/) | 356 `.vrp` instances with 356 paired `.sol` reference solutions |
 | [`scripts/download_vrptw_benchmarks.py`](scripts/download_vrptw_benchmarks.py) | Downloads the benchmark collection |
