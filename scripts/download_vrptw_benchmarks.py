@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Download the Solomon and Homberger CVRPTW benchmarks from PyVRP/Instances.
 
-Place this file in the root of your project and run:
-    python download_vrptw_benchmarks.py
+From the project root, run:
+    python scripts/download_vrptw_benchmarks.py
 
 Requires Python 3.9+; no third-party packages.
 """
@@ -23,7 +23,7 @@ from pathlib import Path, PurePosixPath
 
 REPOSITORY = "https://github.com/PyVRP/Instances"
 ARCHIVE_URL = "https://codeload.github.com/PyVRP/Instances/zip/refs/heads/main"
-DESTINATION = Path(__file__).resolve().parent / "benchmarks" / "vrptw"
+DESTINATION = Path(__file__).resolve().parent.parent / "benchmarks" / "vrptw"
 EXPECTED_COUNTS = {
     "Solomon": 56,
     "GH200": 60,
