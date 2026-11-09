@@ -1,5 +1,7 @@
 # EcoRoute — Vehicle routing with time windows
 
+> Authoritative project handbooks: [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md). They preserve the assignment and dataset details, distinguish original requirements from our static CVRPTW scope, and define candidate algorithms, worktrees, persistent benchmark results, engineering targets and unresolved decisions. Use them for current project instructions; no algorithm has been selected or implemented.
+
 EcoRoute studies the **capacitated vehicle routing problem with time windows (CVRPTW)** using the Solomon and Gehring–Homberger benchmark instances. Each route must respect vehicle capacity, customer service windows, and the depot time window. The benchmark objective is **total traveled distance**.
 
 ## Setup and run order

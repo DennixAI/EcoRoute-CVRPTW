@@ -1,5 +1,7 @@
 # EcoRoute — CVRPTW project context
 
+> Authoritative project handbooks: [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md). They preserve the assignment and dataset details, distinguish original requirements from our static CVRPTW scope, and define candidate algorithms, worktrees, persistent benchmark results, engineering targets and unresolved decisions. Use them for current project instructions; no algorithm has been selected or implemented.
+
 ## Scope
 
 The project addresses **capacitated vehicle routing with time windows (CVRPTW)**. The supplied Solomon and Gehring–Homberger instances contain customer locations, demands, service durations, vehicle limits, and hard time windows. The benchmark objective is to minimize total traveled distance while respecting all constraints. This document describes the current model and planned implementation; it does not claim that a finished solver or measured results exist.

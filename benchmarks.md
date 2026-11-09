@@ -1,5 +1,7 @@
 # EcoRoute — CVRPTW benchmark protocol
 
+> Authoritative project handbooks: [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md). They preserve the assignment and dataset details, distinguish original requirements from our static CVRPTW scope, and define candidate algorithms, worktrees, persistent benchmark results, engineering targets and unresolved decisions. Use them for current project instructions; no algorithm has been selected or implemented.
+
 ## Objective and data
 
 Use the 356 Solomon and Gehring–Homberger VRPTW instances in [`data/benchmarks/vrptw/`](data/benchmarks/vrptw/). Each `.vrp` input has a paired `.sol` published reference solution. The primary objective is **total route distance**, subject to at most `K` vehicles, vehicle capacity `Q`, customer service-start windows, and the depot window. These are static Euclidean benchmark instances.

@@ -1,5 +1,7 @@
 # EcoRoute — CVRPTW dataset guide
 
+> Authoritative project handbooks: [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md). They preserve the assignment and dataset details, distinguish original requirements from our static CVRPTW scope, and define candidate algorithms, worktrees, persistent benchmark results, engineering targets and unresolved decisions. Use them for current project instructions; no algorithm has been selected or implemented.
+
 ## Collection
 
 The checked-in benchmark collection is [`data/benchmarks/vrptw/`](data/benchmarks/vrptw/), downloaded from [PyVRP/Instances](https://github.com/PyVRP/Instances/tree/main/VRPTW). It contains **356 distinct problem instances** and **356 paired published solutions**:
