@@ -1,0 +1,20 @@
+{
+  "source": "https://github.com/PyVRP/Instances",
+  "archive_url": "https://codeload.github.com/PyVRP/Instances/zip/refs/heads/main",
+  "downloaded_utc": "2026-11-09T09:20:54.941518+00:00",
+  "archive_sha256": "0b03cfecc42722379f99eaf9f52f6d103f3bbe6a3a0538877041a0ef6dfc052c",
+  "problem_type": "VRPTW (vehicle routing with time windows)",
+  "families": {
+    "Solomon": 56,
+    "GH200": 60,
+    "GH400": 60,
+    "GH600": 60,
+    "GH800": 60,
+    "GH1000": 60
+  },
+  "total_instances": 356,
+  "file_types": [
+    ".vrp",
+    ".sol"
+  ]
+}
