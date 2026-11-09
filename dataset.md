@@ -15,7 +15,7 @@
 5. Maintain **three separate experiment tracks**: **(A)** native static VRPTW, **(B)** the same base data augmented with a declared time-dependent traffic model, and **(C)** optional purpose-built TD-VRPTW benchmark families if independently validated. Never use static published optimum/BKS as the optimum of a modified traffic instance.
 6. **Benchmark convention is part of the dataset identity.** CVRPLIB's VRPTW catalog and SINTEF's historical benchmark tables use **different objective/rounding conventions**. Pin the source and evaluator before computing gaps; see §7.
 7. Separate **development/tuning** from **held-out final evaluation**. The CESI brief requires **at least 20 distinct evaluated instances**; multiple random seeds on one instance are not distinct instances.
-8. Treat every resulting dataset, schedule, benchmark score, and feasibility check as **versioned and reproducible**. Run `download_vrptw_benchmarks.py` from the repository root; it saves files under `data/benchmarks/vrptw/` rather than cloning GitHub. Its manifest records the downloaded ZIP SHA-256 but **not a pinned Git commit or per-file checksums**; freeze those separately for publication. No fabricated optimal values, source labels, or experimental achievements.
+8. Treat every resulting dataset, schedule, benchmark score, and feasibility check as **versioned and reproducible**. Run `download_vrptw_benchmarks.py` from the repository root; it saves files under `benchmarks/vrptw/` rather than cloning GitHub. Its manifest records the downloaded ZIP SHA-256 but **not a pinned Git commit or per-file checksums**; freeze those separately for publication. No fabricated optimal values, source labels, or experimental achievements.
 
 ## 2. Why these datasets, and which are in scope
 
@@ -184,34 +184,34 @@ It extracts **only** the 356 `.vrp` + 356 `.sol` files in the `VRPTW` collection
 EcoRoute-CVRP/
 ├── dataset.md
 ├── download_vrptw_benchmarks.py
+├── benchmarks/
+│   └── vrptw/
+│       ├── Solomon/           # 56 x (.vrp + .sol) = 112 files
+│       │   ├── C101.vrp
+│       │   ├── C101.sol
+│       │   └── ...
+│       ├── GH200/             # 60 pairs / 200 customers
+│       │   ├── C1_2_1.vrp
+│       │   ├── C1_2_1.sol
+│       │   └── ...
+│       ├── GH400/             # 60 pairs / 400 customers
+│       ├── GH600/             # 60 pairs / 600 customers
+│       ├── GH800/             # 60 pairs / 800 customers
+│       ├── GH1000/            # 60 pairs / 1000 customers
+│       │   ├── C1_10_1.vrp
+│       │   ├── C1_10_1.sol
+│       │   └── ...
+│       ├── UPSTREAM_README.md
+│       ├── LICENSE
+│       └── source_manifest.json
 ├── data/
-│   ├── benchmarks/
-│   │   └── vrptw/
-│   │       ├── Solomon/           # 56 x (.vrp + .sol) = 112 files
-│   │       │   ├── C101.vrp
-│   │       │   ├── C101.sol
-│   │       │   └── ...
-│   │       ├── GH200/             # 60 pairs / 200 customers
-│   │       │   ├── C1_2_1.vrp
-│   │       │   ├── C1_2_1.sol
-│   │       │   └── ...
-│   │       ├── GH400/             # 60 pairs / 400 customers
-│   │       ├── GH600/             # 60 pairs / 600 customers
-│   │       ├── GH800/             # 60 pairs / 800 customers
-│   │       ├── GH1000/            # 60 pairs / 1000 customers
-│   │       │   ├── C1_10_1.vrp
-│   │       │   ├── C1_10_1.sol
-│   │       │   └── ...
-│   │       ├── UPSTREAM_README.md
-│   │       ├── LICENSE
-│   │       └── source_manifest.json
 │   └── derived/
 │       └── traffic/               # future generated TD overlays; NOT in original data
 ├── tests/
 └── results/
 ```
 
-The actual downloader writes `DESTINATION = Path(__file__).resolve().parent / "data" / "benchmarks" / "vrptw"`: it places data beside the **script's directory**, so keeping the script in the repository root determines the intended destination. Run it from that root for clarity. **It does not make a nested Git repo, `.git` directory, or `PyVRP/Instances/` folder.** The existence of this downloader does not prove the dataset was successfully downloaded in a given checkout; check the files and manifest after execution.
+The actual downloader writes `DESTINATION = Path(__file__).resolve().parent / "benchmarks" / "vrptw"`: it places data beside the **script's directory**, so keeping the script in the repository root determines the intended destination. Run it from that root for clarity. **It does not make a nested Git repo, `.git` directory, or `PyVRP/Instances/` folder.** The existence of this downloader does not prove the dataset was successfully downloaded in a given checkout; check the files and manifest after execution.
 
 `source_manifest.json` currently records the upstream repo/ZIP URL, download UTC timestamp, archive SHA-256, expected family counts and total instance count. It does **not** pin the upstream commit SHA or record SHA-256 values for each file; capture those as a separate reproducibility step if needed.
 
@@ -230,7 +230,7 @@ from pathlib import Path
 import numpy as np
 import vrplib
 
-root = Path("data/benchmarks/vrptw")
+root = Path("benchmarks/vrptw")
 instance_path = root / "Solomon" / "C101.vrp"
 solution_path = root / "Solomon" / "C101.sol"
 

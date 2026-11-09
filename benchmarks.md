@@ -51,7 +51,7 @@ For the project, implement **S-A first**, because its single distance objective 
 project-root/
   dataset.md                 # dataset specification and instance conventions
   benchmarks.md              # this execution and reporting contract
-  data/raw/{solomon,homberger}/
+  benchmarks/vrptw/          # downloaded .vrp inputs and .sol reference solutions
   data/manifests/{instances.csv,split.csv,references.csv}
   data/derived/traffic/      # derived overlays only, never overwrite raw data
   configs/benchmarks/        # frozen, versioned experiment configurations

@@ -23,7 +23,7 @@ from pathlib import Path, PurePosixPath
 
 REPOSITORY = "https://github.com/PyVRP/Instances"
 ARCHIVE_URL = "https://codeload.github.com/PyVRP/Instances/zip/refs/heads/main"
-DESTINATION = Path(__file__).resolve().parent / "data" / "benchmarks" / "vrptw"
+DESTINATION = Path(__file__).resolve().parent / "benchmarks" / "vrptw"
 EXPECTED_COUNTS = {
     "Solomon": 56,
     "GH200": 60,
