@@ -2,7 +2,7 @@
 
 ## Objective and data
 
-Use the 356 Solomon and Gehring–Homberger VRPTW instances in [`benchmarks/vrptw/`](benchmarks/vrptw/). Each `.vrp` input has a paired `.sol` published reference solution. The primary objective is **total route distance**, subject to at most `K` vehicles, vehicle capacity `Q`, customer service-start windows, and the depot window. These are static Euclidean benchmark instances.
+Use the 356 Solomon and Gehring–Homberger VRPTW instances in [`data/benchmarks/vrptw/`](data/benchmarks/vrptw/). Each `.vrp` input has a paired `.sol` published reference solution. The primary objective is **total route distance**, subject to at most `K` vehicles, vehicle capacity `Q`, customer service-start windows, and the depot window. These are static Euclidean benchmark instances.
 
 For comparisons against the bundled `.sol` files, follow the upstream PyVRP/CVRPLIB **DIMACS one-decimal truncation** convention for distance and duration. Reconstruct the published cost of `Solomon/C101.sol` (827.3) and at least one Gehring–Homberger reference before batch evaluation. Resolve any mismatch before reporting gaps. Do not mix these costs with a reference calculated using a different objective, rounding rule, or fleet policy.
 
@@ -37,3 +37,13 @@ runtime_s, solution_path, validation_log_path
 ```
 
 Use `null` for unknown values rather than inventing a score. The independent validator and its evidence are prerequisites for any published comparison. Data format and customer indexing are documented in [`dataset.md`](dataset.md).
+
+
+Current modeling contract (2026-11-09): static CVRPTW; minimum total distance; at most K identical-capacity vehicles; hard service-start windows, early waiting, customer service, and a common depot opening/return window. Each active vehicle may choose its depot departure within that same window. Travel duration, waiting and capacity utilization are secondary reported metrics. Traffic and road networks are postponed, and no optimization algorithm is selected or implemented. Algorithm design, splits, runtime budgets and final experiments are future work.
+
+
+Modeling validation: `main.ipynb` imports the reusable checks in `scripts/cvrptw_model.py`.
+Normal mode reports missing collection checks as **NOT RUN** while synthetic examples execute.
+For complete validation, run Jupyter from the repository root with `ECOROUTE_STRICT_DATA=1`.
+`ECOROUTE_PROJECT_ROOT` and `ECOROUTE_DATA_ROOT` override the project and dataset roots.
+No solver, metaheuristic, final dataset split or experimental budget is selected by these checks.

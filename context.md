@@ -14,7 +14,7 @@ The objective is the sum of all traveled arc distances. A mixed-integer formulat
 
 ## Data and reference conventions
 
-The repository contains 56 Solomon and 300 Gehring–Homberger instances in [`benchmarks/vrptw/`](benchmarks/vrptw/), each with a `.vrp` input and `.sol` published reference route. The files are PyVRP-converted VRPLIB format. On disk, `.vrp` node IDs start at `1` for the depot; `.sol` customer labels use `1..n`, matching normalized customer indices when the depot is index `0`. Keep the input data and published solutions distinct from results produced by our algorithm.
+The repository contains 56 Solomon and 300 Gehring–Homberger instances in [`data/benchmarks/vrptw/`](data/benchmarks/vrptw/), each with a `.vrp` input and `.sol` published reference route. The files are PyVRP-converted VRPLIB format. On disk, `.vrp` node IDs start at `1` for the depot; `.sol` customer labels use `1..n`, matching normalized customer indices when the depot is index `0`. Keep the input data and published solutions distinct from results produced by our algorithm.
 
 The bundled reference costs use the PyVRP/CVRPLIB one-decimal truncation convention. Recompute a published route's feasibility and cost before using its cost as a benchmark. A `.sol` cost is a published reference, not proof of optimality. See [`dataset.md`](dataset.md) and [`benchmarks.md`](benchmarks.md).
 
@@ -27,3 +27,13 @@ The bundled reference costs use the PyVRP/CVRPLIB one-decimal truncation convent
 5. Report feasibility, distance, route count, gap to a compatible reference, runtime, variability, and limitations.
 
 The notebook and docs establish a starting point. They do not substitute for an implemented solver, automated checks, or reproducible experiments.
+
+
+Current modeling contract (2026-11-09): static CVRPTW; minimum total distance; at most K identical-capacity vehicles; hard service-start windows, early waiting, customer service, and a common depot opening/return window. Each active vehicle may choose its depot departure within that same window. Travel duration, waiting and capacity utilization are secondary reported metrics. Traffic and road networks are postponed, and no optimization algorithm is selected or implemented. Algorithm design, splits, runtime budgets and final experiments are future work.
+
+
+Modeling validation: `main.ipynb` imports the reusable checks in `scripts/cvrptw_model.py`.
+Normal mode reports missing collection checks as **NOT RUN** while synthetic examples execute.
+For complete validation, run Jupyter from the repository root with `ECOROUTE_STRICT_DATA=1`.
+`ECOROUTE_PROJECT_ROOT` and `ECOROUTE_DATA_ROOT` override the project and dataset roots.
+No solver, metaheuristic, final dataset split or experimental budget is selected by these checks.
