@@ -2,7 +2,8 @@
 
 Every algorithmic setting is a field here; ``ALNSConfig.from_dict`` rejects
 unknown keys so that a typo in an experiment plan cannot silently fall back to a
-default.  Defaults are the frozen tuned values (see docs/alns_vnd.md).
+default.  Defaults are the frozen tuned values (dev campaigns dev-001..dev-007,
+see results/alns-vnd/README.md).
 """
 from dataclasses import asdict, dataclass, fields
 import math
@@ -28,7 +29,7 @@ class ALNSConfig:
 
     # --- granular neighbourhoods -------------------------------------------
     n_neighbours: int = 40             # repair: routes of these neighbours are candidates
-    vnd_neighbours: int = 30           # VND: neighbours v examined per customer u
+    vnd_neighbours: int = 20           # VND: neighbours v examined per customer u
     near_list: int = 100               # SISR adjacency length
     shaw_list: int = 100               # Shaw relatedness list length
     tw_wait_weight: float = 0.2        # proximity: penalty on forced waiting
@@ -49,7 +50,7 @@ class ALNSConfig:
     blink_rate: float = 0.01
 
     # --- adaptive operator selection ---------------------------------------
-    destroy_weights: tuple = (1.0, 1.0, 1.0, 1.0, 0.5)   # 0 disables
+    destroy_weights: tuple = (1.0, 0.0, 1.0, 1.0, 0.5)   # 0 disables (worst off: tuned)
     repair_weights: tuple = (1.0, 1.0, 1.0, 1.0)
     score_new_best: float = 33.0
     score_better: float = 9.0
@@ -60,8 +61,8 @@ class ALNSConfig:
     # --- acceptance / diversification ---------------------------------------
     # Simulated annealing with temperatures relative to the mean arc length of
     # the initial solution, cooled exponentially over the elapsed budget.
-    temp_start: float = 0.5
-    temp_end: float = 0.01
+    temp_start: float = 1.5
+    temp_end: float = 0.02
     restart_after: int = 0             # iterations without best improvement; 0 = off
 
     # --- VND ----------------------------------------------------------------
