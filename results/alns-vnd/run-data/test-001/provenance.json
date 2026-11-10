@@ -1,0 +1,12 @@
+{
+  "extracted_utc": "2026-11-10T23:39:38.318782+00:00",
+  "script": "scripts/alns_tuning_extract.py",
+  "note": "Derived from raw per-attempt files; gaps and feasibility are the independent evaluator's values.",
+  "sources": {
+    "test-001": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/test-001/shards",
+      "attempts": 360
+    }
+  }
+}

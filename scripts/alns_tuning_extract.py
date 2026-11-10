@@ -10,6 +10,8 @@ CSV files that are committed and loaded by the notebook:
     <out>/run_metadata.csv   one row per attempt
     <out>/convergence.csv    best gap at 21 points of the time budget, per attempt
     <out>/provenance.json    sources, archive SHA-256 checks, extraction time
+    <out>/routes/*.json      (optional, --routes) the routes of the median-gap seed of
+                             selected instances, for route and time-window plots
 
 Sources: a campaign directory with raw shards/, or its archived
 results/alns-vnd/archives/<campaign>-shards.tar.gz, which is verified against the
@@ -17,6 +19,8 @@ SHA-256 recorded in <campaign>/shards.tar.gz.sha256 before use.
 
     python scripts/alns_tuning_extract.py --out results/alns-vnd/tuning-data/historical \\
         results/alns-vnd/dev-001-baseline ... results/alns-vnd/dev-007-noworst
+    python scripts/alns_tuning_extract.py --out results/alns-vnd/run-data/test-001 \
+        --routes Solomon/RC101.vrp --routes GH1000/RC1_10_3.vrp results/alns-vnd/test-001
 """
 import argparse
 import csv
@@ -48,14 +52,14 @@ def attempt_files(campaign):
     if shards.is_dir():
         for result in sorted(shards.glob("*/runs/**/result.json")):
             run = result.parent
-            yield str(run), {p.name: p.read_bytes() for p in run.glob("*.json")}
+            yield str(run.relative_to(campaign)), {p.name: p.read_bytes() for p in run.glob("*.json")}
         return
     archive = ARCHIVES / f"{campaign.name}-shards.tar.gz"
     files = {}
     with tarfile.open(archive) as tar:
         for member in tar:
             if member.isfile() and "/runs/" in member.name and member.name.endswith(
-                    ("result.json", "log.json", "trace.json")):
+                    ("result.json", "log.json", "trace.json", "routes.json")):
                 run, name = member.name.rsplit("/", 1)
                 files.setdefault(run, {})[name] = tar.extractfile(member).read()
     yield from sorted(files.items())
@@ -86,15 +90,20 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("campaigns", nargs="+", type=Path)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--routes", action="append", default=[], metavar="INSTANCE_ID",
+                        help="save the routes of this instance's median-gap seed (repeatable)")
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
-    meta_rows, curve_rows, sources = [], [], {}
+    meta_rows, curve_rows, sources, kept = [], [], {}, {}
     for campaign in args.campaigns:
         campaign = campaign.resolve()
         sources[campaign.name] = source_of(campaign)
         count = 0
-        for _, files in attempt_files(campaign):
+        for run_key, files in attempt_files(campaign):
             result = json.loads(files["result.json"])
+            if result["instance_id"] in args.routes and result["feasible"] and "routes.json" in files:
+                kept.setdefault((campaign.name, result["instance_id"]), []).append(
+                    (result["gap_percent"], result["seed"], result, json.loads(files["routes.json"])))
             meta = json.loads(files["log.json"]).get("adapter_metadata", {}) if "log.json" in files else {}
             trace = json.loads(files["trace.json"]) if "trace.json" in files else []
             stats = meta.get("stats", {})
@@ -137,6 +146,17 @@ def main():
             writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
             writer.writeheader()
             writer.writerows(rows)
+    for (campaign_name, instance_id), runs in sorted(kept.items()):
+        runs.sort(key=lambda r: (r[0], r[1]))
+        gap, seed, result, routes = runs[(len(runs) - 1) // 2]  # median-gap seed (lower median)
+        target = args.out / "routes" / f"{instance_id.replace('/', '__').replace('.vrp', '')}__s{seed}.json"
+        target.parent.mkdir(exist_ok=True)
+        target.write_text(json.dumps(dict(
+            campaign=campaign_name, instance_id=instance_id, seed=seed, run_id=result["run_id"],
+            selection=f"median gap of {len(runs)} feasible seeds", gap_percent=gap, cost=result["cost"],
+            bks=result["reference"]["recomputed_cost"], routes=routes["routes"],
+            departure_times=routes.get("departure_times")), indent=1) + "\n")
+        print(f"routes: {target.name} (gap {gap:.3f} %)")
     (args.out / "provenance.json").write_text(json.dumps(dict(
         extracted_utc=datetime.now(timezone.utc).isoformat(), script="scripts/alns_tuning_extract.py",
         note="Derived from raw per-attempt files; gaps and feasibility are the independent evaluator's values.",

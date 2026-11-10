@@ -26,11 +26,13 @@ The CESI brief (ADEME mobility call) asks for a delivery tour on a road network 
 
 | Path | Contents |
 | --- | --- |
-| [`main.ipynb`](main.ipynb) | The deliverable: model, proof, validation, **the solver source code**, live demo and results |
+| [`main.ipynb`](main.ipynb) | The deliverable: model, proof, validation, **the solver source code**, live demo, tuning and results; saved **with its outputs** (figures and tables visible without running) |
 | [`scripts/cvrptw_model.py`](scripts/cvrptw_model.py) | `CVRPTWInstance`, `load_cvrptw`, DIMACS distances, independent validator `check_cvrptw`, MILP residual checks, collection audit |
 | [`scripts/notebook_solver.py`](scripts/notebook_solver.py) | Builds the solver cells of `main.ipynb` into an importable package |
 | [`scripts/benchmark.py`](scripts/benchmark.py) | Solver protocol, isolated time-limited workers, independent scoring, campaign storage and statistics |
 | [`scripts/run_alns.py`](scripts/run_alns.py) | ALNS experiments: split, parallel campaigns, reports |
+| [`scripts/alns_tuning_study.py`](scripts/alns_tuning_study.py), [`scripts/tuning_progress.py`](scripts/tuning_progress.py) | Post-hoc tuning study (confirmation, temperature sweep, ablations) and its read-only progress monitor |
+| [`scripts/alns_tuning_extract.py`](scripts/alns_tuning_extract.py) | Condenses raw attempt files into the small CSVs (and sample routes) the notebook plots |
 | [`scripts/run_modeling.py`](scripts/run_modeling.py) | Executes the whole notebook in a fresh kernel |
 | [`scripts/verify_dataset.py`](scripts/verify_dataset.py) | Audits all 356 instance/reference pairs |
 | [`scripts/run_benchmarks.py`](scripts/run_benchmarks.py) | Reference-replay fixture and scoring of externally supplied solutions |
@@ -42,6 +44,7 @@ The CESI brief (ADEME mobility call) asks for a delivery tour on a road network 
 | [`tests/`](tests/) | 52 automated tests |
 | [`algorithms/alns_vnd/`](algorithms/alns_vnd/) | Frozen snapshot of the solver version evaluated in `test-001` (not maintained) |
 | [`docs/alns_vnd.md`](docs/alns_vnd.md) | Algorithm design notes and references |
+| [`docs/figures/`](docs/figures/) | Figures exported from the notebook for this README |
 | `outputs/` | Git-ignored scratch: executed notebooks and the generated solver build |
 
 ## 3. Setup and quick start
@@ -60,13 +63,14 @@ python -m pip install -r requirements.txt
 | Task | Command |
 | --- | --- |
 | Run the whole notebook (strict: all 356 references must validate) | `python scripts/run_modeling.py --strict` → `outputs/main.executed.ipynb` |
+| Same, then store the outputs in `main.ipynb` and refresh `docs/figures/` | `python scripts/run_modeling.py --strict --publish` |
 | Interactive use | open `main.ipynb`, kernel `.venv`, **Restart Kernel → Run All** |
 | All tests | `python -m unittest discover -v` |
 | Held-out benchmark (≈2.6 h with 6 workers) | see [§10](#10-benchmarks) |
 
-`run_modeling.py` options: `--strict` (fail on any missing pair), `--data-root PATH`, `--output PATH` (never overwrites `main.ipynb`). Without `--strict`, collection checks that cannot run are reported as **NOT RUN** (never PASS) while synthetic examples still execute; malformed data always fails. A full strict run takes ≈35 s (≈50 s the first time, when the solver compiles). The data are already in the repository; no download happens during Run All.
+`run_modeling.py` options: `--strict` (fail on any missing pair), `--data-root PATH`, `--output PATH` (never `main.ipynb` itself), `--publish` (with `--strict` only: after a successful run, saves the outputs into `main.ipynb`, with local paths replaced by `<repo>`, and re-exports the README figures). Without `--strict`, collection checks that cannot run are reported as **NOT RUN** (never PASS) while synthetic examples still execute; malformed data always fails. A full strict run takes ≈35 s (≈50 s the first time, when the solver compiles). The data are already in the repository; no download happens during Run All.
 
-**Environment variables:** `ECOROUTE_PROJECT_ROOT`, `ECOROUTE_DATA_ROOT` (paths), `ECOROUTE_STRICT_DATA=1` (strict mode), `ECOROUTE_DEMO_ITERATIONS` (demo budget, default 12,000), `ECOROUTE_DISABLE_JIT=1` (run kernels as plain Python), `ECOROUTE_ALLOW_PURE_PYTHON=1` (let the demo run without Numba).
+**Environment variables:** `ECOROUTE_PROJECT_ROOT`, `ECOROUTE_DATA_ROOT` (paths), `ECOROUTE_STRICT_DATA=1` (strict mode), `ECOROUTE_DEMO_ITERATIONS` (demo budget, default 12,000), `ECOROUTE_EXPORT_FIGURES=1` (also write README figures), `ECOROUTE_DISABLE_JIT=1` (run kernels as plain Python), `ECOROUTE_ALLOW_PURE_PYTHON=1` (let the demo run without Numba).
 
 ## 4. The notebook, section by section
 
@@ -75,17 +79,17 @@ python -m pip install -r requirements.txt
 | 0 | Execution settings, roots, package versions |
 | 1 | Graph and data; seeded synthetic generator (uniform or clustered); capacity-only teaching container `CVRPInstance`; necessary feasibility conditions ($\max q_i\le Q$, $\sum q_i\le KQ$, at least $\lceil \sum q_i/Q\rceil$ trucks) and why they are not sufficient |
 | 2–3 | Decision variables and the distance objective |
-| 4 | Routing constraints M0–M10, MTZ subtour elimination, traceability table, necessity/sufficiency proof, **temporal extension TW1–TW6** |
+| 4 | Routing constraints M0–M10, MTZ subtour elimination, traceability table, necessity/sufficiency proof, **temporal extension TW1–TW6** with a timing diagram (waiting, service start, late finish, depot return) |
 | 5 | NP-hardness (reduction from TSP) |
 | 6 | Teaching validator, hand-written routes, invalid-route tests, explicit $x,y,z,u$ arrays checking every equation, zero-demand case |
 | 8 | Sensitivity of the necessary conditions; model size ($O(Kn^2)$) |
 | 9 | Edge cases |
-| 10–10A | Loading the real instances; audit of all 356 references; C101 schedule plots; temporal test fixtures |
+| 10–10B | Loading the real instances; audit of all 356 references; C101 schedule plots; temporal test fixtures; **anatomy of the benchmark** (geographies, route lengths, capacity vs time as the fleet driver) |
 | 11 | Review checkpoint |
 | 12 | ALNS + VND overview; solver assembly (`%%alns_source`); JIT and configuration cells |
 | 13 | Search kernels: data layout, segment algebra, route maintenance, VND moves, VND, repair, destroy, ALNS iteration |
 | 14 | Driver `solve()`: provenance, preprocessing, time-managed search, warm-up |
-| 15 | Build and load; independent evaluation helpers; **reproducible live demo**; frozen experiment results; interpretation |
+| 15 | Build and load; independent evaluation helpers; **reproducible live demo**; **how the parameters were tuned** (decision journal, paired statistics, confirmation, temperature sweep, ablations); **held-out benchmark figures** (quality, scaling, robustness, speed, fleet, solution maps and schedules); interpretation |
 | 16 | References |
 
 ## 5. Mathematical model
@@ -109,11 +113,21 @@ python -m pip install -r requirements.txt
 | TW3 | $a_0 z_k\le T_k\le R_k\le H z_k$ |
 | TW4–TW6 | $\lvert A_{jk}-D_{ik}-t_{ij}\rvert\le M_{ij}(1-x_{ijk})$ for customer arcs, depot departures ($T_k$) and returns ($R_k$), with $M_{ij}=H+t_{ij}$ |
 
-The earliest schedule (leave at $a_0$, start at $\max(A,a_i)$) decides whether a route order is feasible. **Size:** $K(n+1)^2$ binaries and $4Kn+2K$ continuous variables, so the MILP defines the problem but is not used to solve 1,000-customer instances. **Complexity:** TSP reduces to CVRPTW (one truck, unit demands, $Q=n$, zero service, wide windows), so optimisation is NP-hard and the distance-budget decision version is NP-complete.
+The earliest schedule (leave at $a_0$, start at $\max(A,a_i)$) decides whether a route order is feasible:
+
+![How the timing constraints behave on one route and at one customer](docs/figures/modeling_time_windows.png)
+
+ **Size:** $K(n+1)^2$ binaries and $4Kn+2K$ continuous variables, so the MILP defines the problem but is not used to solve 1,000-customer instances. **Complexity:** TSP reduces to CVRPTW (one truck, unit demands, $Q=n$, zero service, wide windows), so optimisation is NP-hard and the distance-budget decision version is NP-complete.
 
 ## 6. Data and scoring
 
 [PyVRP/Instances VRPTW](https://github.com/PyVRP/Instances/tree/main/VRPTW): Solomon (56 instances × 100 customers) and Gehring–Homberger GH200, GH400, GH600, GH800, GH1000 (60 each), each with a published BKS. Classes: **C** clustered, **R** random, **RC** mixed customer locations; type **1** has a short scheduling horizon (many short routes), type **2** a long one (few long routes). The file's `VEHICLES` (K) always exceeds the BKS route count, so in practice the fleet limit does not bind.
+
+![The three geographies on 100-customer instances](docs/figures/instances_geography.png)
+
+![Customers per truck and capacity bound vs BKS fleet over all 356 instances](docs/figures/instances_anatomy.png)
+
+Over all 356 instances, a BKS truck serves about 10 customers in type 1 and 32–35 in type 2. Capacity explains the fleet size of type 1 and C2 almost exactly (BKS trucks / ⌈Σq/Q⌉ = 1.02–1.08), while R2 and RC2 need 1.60 and 1.45 times the capacity bound: there the time windows, not the trucks' capacity, decide how many routes are needed.
 
 * Parsed with `vrplib.read_instance(path, compute_edge_weights=False)`. Disk IDs 1..N become internal 0..n (depot 0); `.sol` customer labels are already 1..n. A scalar service time applies to customers only.
 * **DIMACS scoring:** each arc is $\lfloor 10\cdot\text{Euclidean}\rfloor/10$ (integer tenths, exact integer square-root boundary correction); distance = travel time; route costs are summed in integer tenths. This reproduces C101 = 827.3, C1_2_1 = 2698.6 and all 356 BKS.
@@ -190,7 +204,28 @@ All parameters are fields of `ALNSConfig` (§12.2); unknown keys are rejected.
 
 ## 9. Parameter tuning
 
-<!-- To be written. -->
+Notebook §15.4 tells the whole story; every number there is recomputed from the run ledgers. Claude (AI assistant) proposed each hypothesis and next setting after reading the results; Python ran every attempt and computed every statistic; the team set the goals and approved the protocol.
+
+**Historical tuning (seven campaigns, development split only, seeds 0–1, 0.1 s/customer).** One change at a time from literature defaults: a cooler annealing schedule was worse; a hotter one (start 1.5 × mean arc) was better and adopted; even hotter (4.0) was worse; 20 instead of 30 VND neighbours gave ~1.46× more iterations and was adopted; a smaller destroy size was neutral and rejected; switching off worst removal (it always ended with one of the lowest adaptive weights) was adopted and the configuration frozen before the test.
+
+![Tuning path and paired per-instance evidence](docs/figures/tuning_path.png)
+
+Several single steps were smaller than the seed-to-seed noise (SD ≈ 0.35 pp), so three **new** experiments were run afterwards (development split only, new seeds 2–6, 1,656 attempts, all feasible and within budget):
+
+![Confirmation on five new seeds](docs/figures/tuning_confirmation.png)
+
+* **Confirmation:** the frozen configuration beats the initial defaults by **−0.244 pp** (95 % CI [−0.348, −0.147]), better on 25 of 36 instances (sign test p = 0.0003); the historical estimate was −0.246 pp.
+* **Temperature sweep:** start temperatures 1–4 form a plateau; 0.25 is clearly worse (+0.317 pp) and 0.5 (the original default) somewhat worse (+0.118 pp).
+* **Ablation:** removing **2-opt\*** hurts most (+0.465 pp, worse on 26 of 36 instances) and is the only effect that survives a Holm correction for 13 tests; route, Shaw and string removal and relocate probably help; the remaining components are individually redundant. Dropping random removal looked slightly better but within noise: recorded as a lead for a future development study, not adopted after the test.
+
+<p float="left">
+  <img src="docs/figures/tuning_temperature.png" width="49%" alt="Temperature sweep" />
+  <img src="docs/figures/tuning_ablation.png" width="49%" alt="Ablation study" />
+</p>
+
+![What happened inside the search: acceptance, iteration speed, adaptive weights, convergence](docs/figures/tuning_mechanisms.png)
+
+Data: [`results/alns-vnd/tuning-study/`](results/alns-vnd/tuning-study/) (new experiments), [`results/alns-vnd/tuning-data/`](results/alns-vnd/tuning-data/) (decision journal and condensed run data).
 
 ## 10. Benchmarks
 
@@ -238,7 +273,21 @@ python scripts/watch_benchmarks.py --campaign results/alns-vnd/<new-id>       # 
 
 Per-instance tables and plots: [`results/alns-vnd/test-001/alns_report.md`](results/alns-vnd/test-001/alns_report.md).
 
-**Interpretation.** Every run is feasible and seeds differ by only ~0.2 pp. The BKS is matched on several clustered instances. The gap grows with size while iterations per second fall roughly in proportion to it, and the convergence curves are still descending at the deadline for 600–1,000 customers, so those sizes are limited by time rather than stuck. The weakest cases are random and mixed geography (R1, R2, RC1) at 600–1,000 customers.
+![Held-out benchmark overview: every run, gap by size and class, robustness, quality over time, speed and time of the last improvement](docs/figures/benchmark_overview.png)
+
+![Mean gap per held-out instance with best–worst seed range](docs/figures/benchmark_instances.png)
+
+The objective is distance only, so the fleet is free (≤ K): 75 runs use fewer trucks than the BKS, 183 the same and 102 more, with only a weak link between extra trucks and the gap (Spearman 0.15).
+
+![Fleet size vs BKS and gap vs extra trucks](docs/figures/benchmark_fleet.png)
+
+Representative held-out solutions (median-gap seed of each instance, re-validated independently before plotting) and the schedule of every truck of the 100-customer one:
+
+![Solution maps](docs/figures/benchmark_solutions.png)
+
+![Truck schedules and the tightest route's time windows](docs/figures/benchmark_schedule.png)
+
+**Interpretation.** Every run is feasible and seeds differ by only ~0.2 pp. The BKS is matched on several clustered instances. The gap grows with size while iterations per second fall roughly in proportion to it, and the convergence curves are still descending at the deadline for 600–1,000 customers (the median run's last improvement comes at 88–93 % of the time limit, against 28–37 % at 100–200 customers), so those sizes are limited by time rather than stuck. The weakest cases are random and mixed geography (R1, R2, RC1) at 600–1,000 customers.
 
 **Limitations.** BKS are not proven optima and no lower bound is computed; the 0.3 s/customer budget is our own choice; there are 6 instances per size and per class; timings were measured with 6 workers sharing one machine; no PyVRP baseline yet; nothing above 1,000 customers.
 
@@ -267,4 +316,4 @@ python scripts/download_vrptw_benchmarks.py --destination data/benchmarks/vrptw 
 
 ## 12. Status and open items
 
-Done: model and proof (tutor sign-off pending), dataset audit, shared evaluator, ALNS + VND with a held-out PASS. Open: tutor acknowledgement of the selected scope, the parameter-tuning write-up (§9), a pinned PyVRP baseline at equal budgets, an agreed runtime budget, an off-device archive for raw results, Algorithms 2–3 (ILS and HGS, awaiting approval), and optional stress tests above 1,000 customers.
+Done: model and proof (tutor sign-off pending), dataset audit, shared evaluator, ALNS + VND with a held-out PASS. Open: tutor acknowledgement of the selected scope, a pinned PyVRP baseline at equal budgets, an agreed runtime budget, an off-device archive for raw results, Algorithms 2–3 (ILS and HGS, awaiting approval), and optional stress tests above 1,000 customers.
