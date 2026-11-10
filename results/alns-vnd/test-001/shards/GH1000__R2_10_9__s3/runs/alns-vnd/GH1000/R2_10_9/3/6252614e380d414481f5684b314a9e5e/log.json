@@ -1,0 +1,120 @@
+{
+  "error": null,
+  "adapter_metadata": {
+    "algorithm": "ALNS+VND",
+    "version": "alns-vnd-1.0",
+    "seed": 3,
+    "config": {
+      "clock": "process",
+      "time_fraction": 0.97,
+      "time_reserve": 0.75,
+      "max_iterations": 0,
+      "chunk_seconds": 0.05,
+      "n_neighbours": 40,
+      "vnd_neighbours": 20,
+      "near_list": 100,
+      "shaw_list": 100,
+      "tw_wait_weight": 0.2,
+      "tw_warp_weight": 1.0,
+      "insert_all_routes": false,
+      "destroy_min": 5,
+      "destroy_max": 40,
+      "destroy_max_fraction": 0.2,
+      "worst_randomness": 3.0,
+      "shaw_randomness": 6.0,
+      "shaw_weights": [
+        9.0,
+        3.0,
+        2.0
+      ],
+      "sisr_avg_removed": 10.0,
+      "sisr_max_string": 10,
+      "sisr_split_rate": 0.5,
+      "sisr_split_depth": 0.01,
+      "blink_rate": 0.01,
+      "destroy_weights": [
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        0.5
+      ],
+      "repair_weights": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "score_new_best": 33.0,
+      "score_better": 9.0,
+      "score_accepted": 13.0,
+      "reaction": 0.1,
+      "segment": 100,
+      "temp_start": 1.5,
+      "temp_end": 0.02,
+      "restart_after": 0,
+      "neighbourhoods": [
+        "relocate",
+        "swap",
+        "two_opt_star",
+        "or_opt",
+        "two_opt"
+      ]
+    },
+    "jit": true,
+    "numba_version": "0.60.0",
+    "source_sha256": {
+      "__init__.py": "d986c35fe671528a6fc5fcade02142b3d4cceac7ff8f113ad1f34d2c95433661",
+      "_jit.py": "9b883441be0bd0294b7be4a897e5ad3840e873949d9f925e2c182b1a856704a6",
+      "config.py": "216b91d0fcd1d1bc9b95d272fbd0a031089d3fbc6ebb139fdcc48d0680597301",
+      "kernels.py": "5622948c7207467c5bed80f6688eaa1789248f01ee5b52f05ad5b45ac3b88994",
+      "solver.py": "0946ab8f455c9b6119ee901af1b7222eb4bc5db0096267603e5cc7011922773e"
+    },
+    "stop_reason": "time_limit",
+    "iterations": 165040,
+    "construction_seconds": 0.390693708,
+    "search_seconds": 289.463749542,
+    "solver_call_seconds": 289.85681904200004,
+    "process_start_known": true,
+    "pre_call_seconds": 0.395225340828125,
+    "time_to_best_seconds": 255.26271096582812,
+    "deadline_seconds": 290.25,
+    "initial_cost": 37461.1,
+    "initial_unassigned": 0,
+    "unassigned": 0,
+    "routes_used": 23,
+    "max_routes": 250,
+    "destroy_size": [
+      5,
+      40
+    ],
+    "neighbours": 40,
+    "final_destroy_weights": {
+      "random": 0.001,
+      "worst": 0.0,
+      "shaw": 0.15254023014559823,
+      "string": 0.047098300369496096,
+      "route": 0.001
+    },
+    "final_repair_weights": {
+      "greedy": 0.17161429278057216,
+      "regret2": 0.1138389386299354,
+      "regret3": 0.001,
+      "blink": 0.1205462728556165
+    },
+    "stats": {
+      "iterations": 165040,
+      "accepted": 145026,
+      "improved_current": 4412,
+      "new_best": 246,
+      "restarts": 0,
+      "incomplete_candidates": 0,
+      "vnd_moves": 506334
+    },
+    "temperature": {
+      "start": 55.035896180215474,
+      "end": 0.7338119490695396,
+      "mean_arc": 36.69059745347698
+    }
+  }
+}

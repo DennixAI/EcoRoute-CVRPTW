@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "campaign_id": "GH1000__R1_10_2__s8",
+  "created_utc": "2026-11-10T11:33:59.320989+00:00",
+  "plan": {
+    "mode": "solver",
+    "splits": {
+      "development": [],
+      "test": [
+        "GH1000/R1_10_2.vrp"
+      ]
+    },
+    "seeds": [
+      8
+    ],
+    "variants": [
+      {
+        "id": "alns-vnd",
+        "version": "alns-vnd-1.0",
+        "config": {
+          "clock": "process",
+          "time_fraction": 0.97,
+          "time_reserve": 0.75,
+          "max_iterations": 0,
+          "chunk_seconds": 0.05,
+          "n_neighbours": 40,
+          "vnd_neighbours": 20,
+          "near_list": 100,
+          "shaw_list": 100,
+          "tw_wait_weight": 0.2,
+          "tw_warp_weight": 1.0,
+          "insert_all_routes": false,
+          "destroy_min": 5,
+          "destroy_max": 40,
+          "destroy_max_fraction": 0.2,
+          "worst_randomness": 3.0,
+          "shaw_randomness": 6.0,
+          "shaw_weights": [
+            9.0,
+            3.0,
+            2.0
+          ],
+          "sisr_avg_removed": 10.0,
+          "sisr_max_string": 10,
+          "sisr_split_rate": 0.5,
+          "sisr_split_depth": 0.01,
+          "blink_rate": 0.01,
+          "destroy_weights": [
+            1.0,
+            0.0,
+            1.0,
+            1.0,
+            0.5
+          ],
+          "repair_weights": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "score_new_best": 33.0,
+          "score_better": 9.0,
+          "score_accepted": 13.0,
+          "reaction": 0.1,
+          "segment": 100,
+          "temp_start": 1.5,
+          "temp_end": 0.02,
+          "restart_after": 0,
+          "neighbourhoods": [
+            "relocate",
+            "swap",
+            "two_opt_star",
+            "or_opt",
+            "two_opt"
+          ]
+        }
+      }
+    ],
+    "time_limits": {
+      "GH1000/R1_10_2.vrp": 300.0
+    },
+    "thresholds": {},
+    "split_source": "results/alns-vnd/split.json",
+    "split_name": "test",
+    "budget_rule": "time_limit = max(10.0, 0.3 * customers) seconds"
+  },
+  "environment": {
+    "commit": "95fbd3d8eed82a4a50238273ae260b2d0de6ce46",
+    "branch": "claude/cvrptw-alns-vnd-4fa707",
+    "dirty": true,
+    "git_status": "?? results/alns-vnd/test-001/",
+    "source_sha256": {
+      "scripts/benchmark.py": "bc3cabe325a8f49ad748ef55f5312c41179644c80131fac26b78dcfdaeca3252",
+      "scripts/cvrptw_model.py": "e4604c4f21ca5a23cf8b15ada742c539e987f4d43a16a859458909730d7b5eca",
+      "scripts/download_vrptw_benchmarks.py": "11546d52d64756d6960886a51e4999de1dbfa72569b17cc388bddcd8f80a4c8e",
+      "scripts/run_alns.py": "576b9dce0f3be0fba981b66ba600697a006d9478e6c01033ebb948f4cec522d4",
+      "scripts/run_benchmarks.py": "8764178616f7243bacdcd4880bc9c7b03a41cbab927b4f040250ebb4ca57b6d0",
+      "scripts/run_modeling.py": "90a6fbbaf0d80db8adb64ff20d8ad0a4f60a3b87ebbe5b4d8a2115dadd97a33d",
+      "scripts/verify_dataset.py": "d877496feff750f441b06fbea2e3d5a446fdd08712ef90bcfd8b5efbf79d437d"
+    },
+    "cpu": "arm",
+    "logical_cpus": 12,
+    "ram_bytes": 68719476736,
+    "affinity": null,
+    "thread_environment": {
+      "OMP_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null
+    }
+  },
+  "reproducibility": {
+    "utc": "2026-11-10T11:33:59.365920+00:00",
+    "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "processor": "arm",
+    "seed": null,
+    "packages": {
+      "numpy": "2.0.2",
+      "pandas": "2.3.3",
+      "matplotlib": "3.9.4",
+      "vrplib": "1.5.1",
+      "nbformat": "5.10.4",
+      "nbclient": "0.10.2",
+      "ipykernel": "6.31.0",
+      "jupyter_client": "8.6.3"
+    },
+    "dataset_root": "/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/data/benchmarks/vrptw",
+    "source_manifest": {
+      "source": "https://github.com/PyVRP/Instances",
+      "archive_url": "https://codeload.github.com/PyVRP/Instances/zip/refs/heads/main",
+      "downloaded_utc": "2026-11-09T09:53:04.194430+00:00",
+      "archive_sha256": "0b03cfecc42722379f99eaf9f52f6d103f3bbe6a3a0538877041a0ef6dfc052c",
+      "problem_type": "VRPTW (vehicle routing with time windows)",
+      "families": {
+        "Solomon": 56,
+        "GH200": 60,
+        "GH400": 60,
+        "GH600": 60,
+        "GH800": 60,
+        "GH1000": 60
+      },
+      "total_instances": 356,
+      "file_types": [
+        ".vrp",
+        ".sol"
+      ]
+    },
+    "upstream_commit": "not recorded by source manifest; use collection/per-file hashes"
+  },
+  "reference_kind": "published BKS; optimality not proven",
+  "inputs": {
+    "GH1000/R1_10_2.vrp": {
+      "input_sha256": "d7f84156b62489e1df76cd31b93aeef666fa941b3719b1dccd02511419e01ea0",
+      "reference_sha256": "3a47af2acb2f50d036a97b22b67fcad4b6b1124b0f95e49a0278a8a95c771856"
+    }
+  },
+  "timing_boundaries": {
+    "search_seconds": "child adapter callable, including its initialization",
+    "execution_seconds": "parent worker start through result receipt, including spawn/IPC",
+    "end_to_end_seconds": "attempt start through route/config/schedule/trace/log persistence; excludes final result/summary writes and shared instance loading",
+    "parsing_seconds": "shared instance load, measured once per instance and recorded alongside each attempt",
+    "reference_validation_seconds": "shared reference validation, measured once per instance; not charged repeatedly to execution"
+  },
+  "note": "Reference fixture replays are infrastructure tests, never optimization experiments."
+}

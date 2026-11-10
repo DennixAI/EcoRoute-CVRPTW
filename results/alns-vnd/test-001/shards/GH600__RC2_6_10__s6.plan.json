@@ -1,0 +1,82 @@
+{
+  "mode": "solver",
+  "splits": {
+    "development": [],
+    "test": [
+      "GH600/RC2_6_10.vrp"
+    ]
+  },
+  "seeds": [
+    6
+  ],
+  "variants": [
+    {
+      "id": "alns-vnd",
+      "version": "alns-vnd-1.0",
+      "config": {
+        "clock": "process",
+        "time_fraction": 0.97,
+        "time_reserve": 0.75,
+        "max_iterations": 0,
+        "chunk_seconds": 0.05,
+        "n_neighbours": 40,
+        "vnd_neighbours": 20,
+        "near_list": 100,
+        "shaw_list": 100,
+        "tw_wait_weight": 0.2,
+        "tw_warp_weight": 1.0,
+        "insert_all_routes": false,
+        "destroy_min": 5,
+        "destroy_max": 40,
+        "destroy_max_fraction": 0.2,
+        "worst_randomness": 3.0,
+        "shaw_randomness": 6.0,
+        "shaw_weights": [
+          9.0,
+          3.0,
+          2.0
+        ],
+        "sisr_avg_removed": 10.0,
+        "sisr_max_string": 10,
+        "sisr_split_rate": 0.5,
+        "sisr_split_depth": 0.01,
+        "blink_rate": 0.01,
+        "destroy_weights": [
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          0.5
+        ],
+        "repair_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "score_new_best": 33.0,
+        "score_better": 9.0,
+        "score_accepted": 13.0,
+        "reaction": 0.1,
+        "segment": 100,
+        "temp_start": 1.5,
+        "temp_end": 0.02,
+        "restart_after": 0,
+        "neighbourhoods": [
+          "relocate",
+          "swap",
+          "two_opt_star",
+          "or_opt",
+          "two_opt"
+        ]
+      }
+    }
+  ],
+  "time_limits": {
+    "GH600/RC2_6_10.vrp": 180.0
+  },
+  "thresholds": {},
+  "split_source": "results/alns-vnd/split.json",
+  "split_name": "test",
+  "budget_rule": "time_limit = max(10.0, 0.3 * customers) seconds"
+}
