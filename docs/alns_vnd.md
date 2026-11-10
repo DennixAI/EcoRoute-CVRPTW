@@ -63,6 +63,10 @@ All settings are fields of `ALNSConfig` (`algorithms/alns_vnd/config.py`); unkno
 
 See [Section 7 of the handbooks](../CLAUDE.md) for the mandatory workflow and [`results/alns-vnd/`](../results/alns-vnd/) for campaigns. Results are summarised in [`results/alns-vnd/README.md`](../results/alns-vnd/README.md).
 
+Frozen configuration (tuned on the development split only): SA temperature 1.5 → 0.02 × mean arc length, 20 VND neighbours, 40 repair-candidate neighbours, q ∈ [5, min(40, 0.2n)], destroy weights random/worst/Shaw/string/route = 1/0/1/1/0.5, all four repair operators.
+
+Held-out test `test-001` (36 instances × 10 seeds, max(10, 0.3·n) s): **360/360 feasible, mean gap 0.654 %, P90 1.448 %, worst run 2.364 %, no run above 7 %**; by size 0.26 % (100) → 1.20 % (1000).
+
 ## References
 
 * Christiaens, J., & Vanden Berghe, G. (2020). Slack induction by string removals for vehicle routing problems. *Transportation Science*, 54(2), 417–433.

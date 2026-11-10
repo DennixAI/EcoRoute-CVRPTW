@@ -6,7 +6,7 @@ EcoRoute studies the **capacitated vehicle routing problem with time windows (CV
 
 ## Setup and run order
 
-Run the commands below from the repository root. The project currently performs mathematical modeling and supplied-route validation; no optimization algorithm is selected or implemented.
+Run the commands below from the repository root. The project performs mathematical modeling and supplied-route validation. On branch `algo/alns-vnd`, Algorithm 1 (ALNS + VND) is implemented and benchmarked: see [docs/alns_vnd.md](docs/alns_vnd.md) and [results/alns-vnd/README.md](results/alns-vnd/README.md). No final method is selected.
 
 ### 1. Create an isolated Python environment
 
@@ -175,3 +175,14 @@ to stop. Add `--save outputs/live-benchmarks.png` to update a PNG outside the ob
 campaign whenever new results arrive. An interactive Matplotlib backend is required;
 on macOS, if needed, use `MPLBACKEND=MacOSX python scripts/watch_benchmarks.py`.
 This viewer needs no additional dependencies beyond `requirements.txt`.
+
+## Algorithm 1 — ALNS + VND (branch `algo/alns-vnd`)
+
+```bash
+python -m pip install -r algorithms/alns_vnd/requirements.txt   # adds numba, psutil
+python -m unittest discover                                      # 45 tests
+python scripts/run_alns.py run --split-file results/alns-vnd/split.json --split test \
+    --seeds 0 1 2 3 4 5 6 7 8 9 --time-per-customer 0.3 --workers 6 --output results/alns-vnd/<new-id>
+```
+
+Held-out result (`test-001`): 360/360 feasible, mean gap 0.654 % to published BKS, worst run 2.364 %. Details in [results/alns-vnd/README.md](results/alns-vnd/README.md).
