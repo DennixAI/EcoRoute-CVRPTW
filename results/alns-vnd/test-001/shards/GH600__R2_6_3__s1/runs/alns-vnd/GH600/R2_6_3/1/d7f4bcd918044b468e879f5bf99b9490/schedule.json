@@ -1,0 +1,5712 @@
+{
+  "schedules": [
+    [
+      {
+        "customer": 232,
+        "source_id": 233,
+        "arrival": 25.0,
+        "waiting": 0.0,
+        "start": 25.0,
+        "departure": 35.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 304,
+        "source_id": 305,
+        "arrival": 51.0,
+        "waiting": 0.0,
+        "start": 51.0,
+        "departure": 61.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 319,
+        "source_id": 320,
+        "arrival": 64.1,
+        "waiting": 577.9,
+        "start": 642.0,
+        "departure": 652.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 215,
+        "source_id": 216,
+        "arrival": 664.2,
+        "waiting": 139.79999999999995,
+        "start": 804.0,
+        "departure": 814.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 587,
+        "source_id": 588,
+        "arrival": 838.0,
+        "waiting": 155.0,
+        "start": 993.0,
+        "departure": 1003.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 128,
+        "source_id": 129,
+        "arrival": 1011.5,
+        "waiting": 0.0,
+        "start": 1011.5,
+        "departure": 1021.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 417,
+        "source_id": 418,
+        "arrival": 1041.7,
+        "waiting": 0.0,
+        "start": 1041.7,
+        "departure": 1051.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 291,
+        "source_id": 292,
+        "arrival": 1066.5,
+        "waiting": 0.0,
+        "start": 1066.5,
+        "departure": 1076.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 528,
+        "source_id": 529,
+        "arrival": 1079.6,
+        "waiting": 0.0,
+        "start": 1079.6,
+        "departure": 1089.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 104,
+        "source_id": 105,
+        "arrival": 1094.6,
+        "waiting": 0.0,
+        "start": 1094.6,
+        "departure": 1104.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 18,
+        "source_id": 19,
+        "arrival": 1112.1999999999998,
+        "waiting": 243.80000000000018,
+        "start": 1356.0,
+        "departure": 1366.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 198,
+        "source_id": 199,
+        "arrival": 1384.8,
+        "waiting": 187.20000000000005,
+        "start": 1572.0,
+        "departure": 1582.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 96,
+        "source_id": 97,
+        "arrival": 1589.0,
+        "waiting": 0.0,
+        "start": 1589.0,
+        "departure": 1599.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 390,
+        "source_id": 391,
+        "arrival": 1608.2,
+        "waiting": 0.0,
+        "start": 1608.2,
+        "departure": 1618.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 297,
+        "source_id": 298,
+        "arrival": 1624.6000000000001,
+        "waiting": 0.0,
+        "start": 1624.6000000000001,
+        "departure": 1634.6000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 398,
+        "source_id": 399,
+        "arrival": 1649.6000000000001,
+        "waiting": 0.0,
+        "start": 1649.6000000000001,
+        "departure": 1659.6000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 170,
+        "source_id": 171,
+        "arrival": 1674.3000000000002,
+        "waiting": 0.0,
+        "start": 1674.3000000000002,
+        "departure": 1684.3000000000002,
+        "lateness": 0.0
+      },
+      {
+        "customer": 502,
+        "source_id": 503,
+        "arrival": 1685.3000000000002,
+        "waiting": 0.0,
+        "start": 1685.3000000000002,
+        "departure": 1695.3000000000002,
+        "lateness": 0.0
+      },
+      {
+        "customer": 450,
+        "source_id": 451,
+        "arrival": 1711.5000000000002,
+        "waiting": 0.0,
+        "start": 1711.5000000000002,
+        "departure": 1721.5000000000002,
+        "lateness": 0.0
+      },
+      {
+        "customer": 72,
+        "source_id": 73,
+        "arrival": 1759.5000000000002,
+        "waiting": 0.0,
+        "start": 1759.5000000000002,
+        "departure": 1769.5000000000002,
+        "lateness": 0.0
+      },
+      {
+        "customer": 494,
+        "source_id": 495,
+        "arrival": 1779.6000000000001,
+        "waiting": 0.0,
+        "start": 1779.6000000000001,
+        "departure": 1789.6000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 543,
+        "source_id": 544,
+        "arrival": 1813.1000000000001,
+        "waiting": 0.0,
+        "start": 1813.1000000000001,
+        "departure": 1823.1000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 271,
+        "source_id": 272,
+        "arrival": 1831.6000000000001,
+        "waiting": 220.39999999999986,
+        "start": 2052.0,
+        "departure": 2062.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 302,
+        "source_id": 303,
+        "arrival": 2076.5,
+        "waiting": 0.0,
+        "start": 2076.5,
+        "departure": 2086.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 168,
+        "source_id": 169,
+        "arrival": 2100.6,
+        "waiting": 491.4000000000001,
+        "start": 2592.0,
+        "departure": 2602.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 67,
+        "source_id": 68,
+        "arrival": 2604.2,
+        "waiting": 0.0,
+        "start": 2604.2,
+        "departure": 2614.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 62,
+        "source_id": 63,
+        "arrival": 2647.0,
+        "waiting": 119.0,
+        "start": 2766.0,
+        "departure": 2776.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 348,
+        "source_id": 349,
+        "arrival": 2782.7,
+        "waiting": 0.0,
+        "start": 2782.7,
+        "departure": 2792.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 525,
+        "source_id": 526,
+        "arrival": 2814.2,
+        "waiting": 0.0,
+        "start": 2814.2,
+        "departure": 2824.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 4,
+        "source_id": 5,
+        "arrival": 2836.8999999999996,
+        "waiting": 0.0,
+        "start": 2836.8999999999996,
+        "departure": 2846.8999999999996,
+        "lateness": 0.0
+      },
+      {
+        "customer": 330,
+        "source_id": 331,
+        "arrival": 2863.4999999999995,
+        "waiting": 187.50000000000045,
+        "start": 3051.0,
+        "departure": 3061.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 74,
+        "source_id": 75,
+        "arrival": 3063.2,
+        "waiting": 0.0,
+        "start": 3063.2,
+        "departure": 3073.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 363,
+        "source_id": 364,
+        "arrival": 3084.0,
+        "waiting": 0.0,
+        "start": 3084.0,
+        "departure": 3094.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 172,
+        "source_id": 173,
+        "arrival": 3102.0,
+        "waiting": 293.0,
+        "start": 3395.0,
+        "departure": 3405.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 225,
+        "source_id": 226,
+        "arrival": 3409.0,
+        "waiting": 0.0,
+        "start": 3409.0,
+        "departure": 3419.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 484,
+        "source_id": 485,
+        "arrival": 3423.1,
+        "waiting": 0.0,
+        "start": 3423.1,
+        "departure": 3433.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 68,
+        "source_id": 69,
+        "arrival": 3442.5,
+        "waiting": 0.0,
+        "start": 3442.5,
+        "departure": 3452.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 432,
+        "source_id": 433,
+        "arrival": 3468.6,
+        "waiting": 0.0,
+        "start": 3468.6,
+        "departure": 3478.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 249,
+        "source_id": 250,
+        "arrival": 3529.5,
+        "waiting": 0.0,
+        "start": 3529.5,
+        "departure": 3539.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 199,
+        "source_id": 200,
+        "arrival": 3554.5,
+        "waiting": 0.0,
+        "start": 3554.5,
+        "departure": 3564.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 61,
+        "source_id": 62,
+        "arrival": 3567.5,
+        "waiting": 0.0,
+        "start": 3567.5,
+        "departure": 3577.5,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 103,
+        "source_id": 104,
+        "arrival": 61.0,
+        "waiting": 0.0,
+        "start": 61.0,
+        "departure": 71.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 187,
+        "source_id": 188,
+        "arrival": 72.4,
+        "waiting": 0.0,
+        "start": 72.4,
+        "departure": 82.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 138,
+        "source_id": 139,
+        "arrival": 85.5,
+        "waiting": 0.0,
+        "start": 85.5,
+        "departure": 95.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 169,
+        "source_id": 170,
+        "arrival": 115.7,
+        "waiting": 297.3,
+        "start": 413.0,
+        "departure": 423.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 284,
+        "source_id": 285,
+        "arrival": 440.1,
+        "waiting": 0.0,
+        "start": 440.1,
+        "departure": 450.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 513,
+        "source_id": 514,
+        "arrival": 457.70000000000005,
+        "waiting": 0.0,
+        "start": 457.70000000000005,
+        "departure": 467.70000000000005,
+        "lateness": 0.0
+      },
+      {
+        "customer": 488,
+        "source_id": 489,
+        "arrival": 480.70000000000005,
+        "waiting": 92.29999999999995,
+        "start": 573.0,
+        "departure": 583.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 312,
+        "source_id": 313,
+        "arrival": 594.0,
+        "waiting": 0.0,
+        "start": 594.0,
+        "departure": 604.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 255,
+        "source_id": 256,
+        "arrival": 647.0,
+        "waiting": 0.0,
+        "start": 647.0,
+        "departure": 657.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 16,
+        "source_id": 17,
+        "arrival": 664.0,
+        "waiting": 5.0,
+        "start": 669.0,
+        "departure": 679.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 139,
+        "source_id": 140,
+        "arrival": 709.4,
+        "waiting": 34.60000000000002,
+        "start": 744.0,
+        "departure": 754.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 227,
+        "source_id": 228,
+        "arrival": 772.6,
+        "waiting": 403.4,
+        "start": 1176.0,
+        "departure": 1186.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 242,
+        "source_id": 243,
+        "arrival": 1224.8,
+        "waiting": 0.0,
+        "start": 1224.8,
+        "departure": 1234.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 551,
+        "source_id": 552,
+        "arrival": 1251.8999999999999,
+        "waiting": 262.10000000000014,
+        "start": 1514.0,
+        "departure": 1524.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 521,
+        "source_id": 522,
+        "arrival": 1573.3,
+        "waiting": 0.0,
+        "start": 1573.3,
+        "departure": 1583.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 235,
+        "source_id": 236,
+        "arrival": 1587.7,
+        "waiting": 0.0,
+        "start": 1587.7,
+        "departure": 1597.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 239,
+        "source_id": 240,
+        "arrival": 1603.0,
+        "waiting": 17.0,
+        "start": 1620.0,
+        "departure": 1630.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 63,
+        "source_id": 64,
+        "arrival": 1637.0,
+        "waiting": 0.0,
+        "start": 1637.0,
+        "departure": 1647.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 431,
+        "source_id": 432,
+        "arrival": 1668.0,
+        "waiting": 77.0,
+        "start": 1745.0,
+        "departure": 1755.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 559,
+        "source_id": 560,
+        "arrival": 1758.1,
+        "waiting": 591.9000000000001,
+        "start": 2350.0,
+        "departure": 2360.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 108,
+        "source_id": 109,
+        "arrival": 2391.0,
+        "waiting": 0.0,
+        "start": 2391.0,
+        "departure": 2401.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 599,
+        "source_id": 600,
+        "arrival": 2406.8,
+        "waiting": 479.1999999999998,
+        "start": 2886.0,
+        "departure": 2896.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 175,
+        "source_id": 176,
+        "arrival": 2946.2,
+        "waiting": 0.0,
+        "start": 2946.2,
+        "departure": 2956.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 540,
+        "source_id": 541,
+        "arrival": 2982.1,
+        "waiting": 0.0,
+        "start": 2982.1,
+        "departure": 2992.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 489,
+        "source_id": 490,
+        "arrival": 3012.6,
+        "waiting": 0.0,
+        "start": 3012.6,
+        "departure": 3022.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 190,
+        "source_id": 191,
+        "arrival": 3024.0,
+        "waiting": 0.0,
+        "start": 3024.0,
+        "departure": 3034.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 6,
+        "source_id": 7,
+        "arrival": 3037.6,
+        "waiting": 0.0,
+        "start": 3037.6,
+        "departure": 3047.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 259,
+        "source_id": 260,
+        "arrival": 3066.7999999999997,
+        "waiting": 73.20000000000027,
+        "start": 3140.0,
+        "departure": 3150.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 383,
+        "source_id": 384,
+        "arrival": 3208.3,
+        "waiting": 0.0,
+        "start": 3208.3,
+        "departure": 3218.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 247,
+        "source_id": 248,
+        "arrival": 3244.3,
+        "waiting": 0.0,
+        "start": 3244.3,
+        "departure": 3254.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 386,
+        "source_id": 387,
+        "arrival": 3269.9,
+        "waiting": 0.0,
+        "start": 3269.9,
+        "departure": 3279.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 537,
+        "source_id": 538,
+        "arrival": 3282.1,
+        "waiting": 6.900000000000091,
+        "start": 3289.0,
+        "departure": 3299.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 552,
+        "source_id": 553,
+        "arrival": 3301.2,
+        "waiting": 0.0,
+        "start": 3301.2,
+        "departure": 3311.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 379,
+        "source_id": 380,
+        "arrival": 3372.3999999999996,
+        "waiting": 0.0,
+        "start": 3372.3999999999996,
+        "departure": 3382.3999999999996,
+        "lateness": 0.0
+      },
+      {
+        "customer": 25,
+        "source_id": 26,
+        "arrival": 3403.2,
+        "waiting": 0.0,
+        "start": 3403.2,
+        "departure": 3413.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 358,
+        "source_id": 359,
+        "arrival": 3421.3999999999996,
+        "waiting": 30.600000000000364,
+        "start": 3452.0,
+        "departure": 3462.0,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 166,
+        "source_id": 167,
+        "arrival": 17.2,
+        "waiting": 19.8,
+        "start": 37.0,
+        "departure": 47.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 70,
+        "source_id": 71,
+        "arrival": 52.3,
+        "waiting": 0.0,
+        "start": 52.3,
+        "departure": 62.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 507,
+        "source_id": 508,
+        "arrival": 79.3,
+        "waiting": 10.700000000000003,
+        "start": 90.0,
+        "departure": 100.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 365,
+        "source_id": 366,
+        "arrival": 119.4,
+        "waiting": 81.6,
+        "start": 201.0,
+        "departure": 211.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 301,
+        "source_id": 302,
+        "arrival": 228.7,
+        "waiting": 57.30000000000001,
+        "start": 286.0,
+        "departure": 296.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 590,
+        "source_id": 591,
+        "arrival": 311.6,
+        "waiting": 0.0,
+        "start": 311.6,
+        "departure": 321.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 508,
+        "source_id": 509,
+        "arrival": 328.8,
+        "waiting": 438.2,
+        "start": 767.0,
+        "departure": 777.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 123,
+        "source_id": 124,
+        "arrival": 783.7,
+        "waiting": 308.29999999999995,
+        "start": 1092.0,
+        "departure": 1102.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 534,
+        "source_id": 535,
+        "arrival": 1108.4,
+        "waiting": 6.599999999999909,
+        "start": 1115.0,
+        "departure": 1125.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 579,
+        "source_id": 580,
+        "arrival": 1132.0,
+        "waiting": 0.0,
+        "start": 1132.0,
+        "departure": 1142.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 408,
+        "source_id": 409,
+        "arrival": 1155.6,
+        "waiting": 117.40000000000009,
+        "start": 1273.0,
+        "departure": 1283.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 282,
+        "source_id": 283,
+        "arrival": 1288.3,
+        "waiting": 0.0,
+        "start": 1288.3,
+        "departure": 1298.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 560,
+        "source_id": 561,
+        "arrival": 1323.3,
+        "waiting": 0.0,
+        "start": 1323.3,
+        "departure": 1333.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 429,
+        "source_id": 430,
+        "arrival": 1373.7,
+        "waiting": 0.0,
+        "start": 1373.7,
+        "departure": 1383.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 124,
+        "source_id": 125,
+        "arrival": 1420.7,
+        "waiting": 0.0,
+        "start": 1420.7,
+        "departure": 1430.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 39,
+        "source_id": 40,
+        "arrival": 1443.7,
+        "waiting": 88.29999999999995,
+        "start": 1532.0,
+        "departure": 1542.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 293,
+        "source_id": 294,
+        "arrival": 1552.0,
+        "waiting": 392.0,
+        "start": 1944.0,
+        "departure": 1954.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 447,
+        "source_id": 448,
+        "arrival": 1968.8,
+        "waiting": 0.0,
+        "start": 1968.8,
+        "departure": 1978.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 516,
+        "source_id": 517,
+        "arrival": 1986.6,
+        "waiting": 118.40000000000009,
+        "start": 2105.0,
+        "departure": 2115.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 298,
+        "source_id": 299,
+        "arrival": 2148.2,
+        "waiting": 32.80000000000018,
+        "start": 2181.0,
+        "departure": 2191.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 188,
+        "source_id": 189,
+        "arrival": 2255.2,
+        "waiting": 0.0,
+        "start": 2255.2,
+        "departure": 2265.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 570,
+        "source_id": 571,
+        "arrival": 2301.2999999999997,
+        "waiting": 0.0,
+        "start": 2301.2999999999997,
+        "departure": 2311.2999999999997,
+        "lateness": 0.0
+      },
+      {
+        "customer": 347,
+        "source_id": 348,
+        "arrival": 2326.1,
+        "waiting": 0.0,
+        "start": 2326.1,
+        "departure": 2336.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 462,
+        "source_id": 463,
+        "arrival": 2369.7,
+        "waiting": 0.0,
+        "start": 2369.7,
+        "departure": 2379.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 202,
+        "source_id": 203,
+        "arrival": 2399.5,
+        "waiting": 0.0,
+        "start": 2399.5,
+        "departure": 2409.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 31,
+        "source_id": 32,
+        "arrival": 2415.1,
+        "waiting": 0.900000000000091,
+        "start": 2416.0,
+        "departure": 2426.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 305,
+        "source_id": 306,
+        "arrival": 2436.0,
+        "waiting": 0.0,
+        "start": 2436.0,
+        "departure": 2446.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 324,
+        "source_id": 325,
+        "arrival": 2465.7,
+        "waiting": 0.0,
+        "start": 2465.7,
+        "departure": 2475.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 286,
+        "source_id": 287,
+        "arrival": 2485.1,
+        "waiting": 0.0,
+        "start": 2485.1,
+        "departure": 2495.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 593,
+        "source_id": 594,
+        "arrival": 2503.1,
+        "waiting": 0.0,
+        "start": 2503.1,
+        "departure": 2513.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 595,
+        "source_id": 596,
+        "arrival": 2519.4,
+        "waiting": 264.5999999999999,
+        "start": 2784.0,
+        "departure": 2794.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 425,
+        "source_id": 426,
+        "arrival": 2812.1,
+        "waiting": 0.0,
+        "start": 2812.1,
+        "departure": 2822.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 7,
+        "source_id": 8,
+        "arrival": 2865.6,
+        "waiting": 23.40000000000009,
+        "start": 2889.0,
+        "departure": 2899.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 414,
+        "source_id": 415,
+        "arrival": 2925.1,
+        "waiting": 153.9000000000001,
+        "start": 3079.0,
+        "departure": 3089.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 107,
+        "source_id": 108,
+        "arrival": 3109.8,
+        "waiting": 0.0,
+        "start": 3109.8,
+        "departure": 3119.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 112,
+        "source_id": 113,
+        "arrival": 3147.4,
+        "waiting": 0.0,
+        "start": 3147.4,
+        "departure": 3157.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 135,
+        "source_id": 136,
+        "arrival": 3171.5,
+        "waiting": 38.5,
+        "start": 3210.0,
+        "departure": 3220.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 85,
+        "source_id": 86,
+        "arrival": 3227.0,
+        "waiting": 0.0,
+        "start": 3227.0,
+        "departure": 3237.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 474,
+        "source_id": 475,
+        "arrival": 3242.0,
+        "waiting": 0.0,
+        "start": 3242.0,
+        "departure": 3252.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 318,
+        "source_id": 319,
+        "arrival": 3262.1,
+        "waiting": 0.0,
+        "start": 3262.1,
+        "departure": 3272.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 382,
+        "source_id": 383,
+        "arrival": 3299.2,
+        "waiting": 0.0,
+        "start": 3299.2,
+        "departure": 3309.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 266,
+        "source_id": 267,
+        "arrival": 3310.6,
+        "waiting": 209.4000000000001,
+        "start": 3520.0,
+        "departure": 3530.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 156,
+        "source_id": 157,
+        "arrival": 3579.2,
+        "waiting": 373.8000000000002,
+        "start": 3953.0,
+        "departure": 3963.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 473,
+        "source_id": 474,
+        "arrival": 3984.9,
+        "waiting": 0.0,
+        "start": 3984.9,
+        "departure": 3994.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 553,
+        "source_id": 554,
+        "arrival": 3999.0,
+        "waiting": 0.0,
+        "start": 3999.0,
+        "departure": 4009.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 391,
+        "source_id": 392,
+        "arrival": 4013.0,
+        "waiting": 0.0,
+        "start": 4013.0,
+        "departure": 4023.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 117,
+        "source_id": 118,
+        "arrival": 4052.4,
+        "waiting": 0.0,
+        "start": 4052.4,
+        "departure": 4062.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 17,
+        "source_id": 18,
+        "arrival": 4099.6,
+        "waiting": 0.0,
+        "start": 4099.6,
+        "departure": 4109.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 1,
+        "source_id": 2,
+        "arrival": 4140.200000000001,
+        "waiting": 120.79999999999927,
+        "start": 4261.0,
+        "departure": 4271.0,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 547,
+        "source_id": 548,
+        "arrival": 7.2,
+        "waiting": 0.0,
+        "start": 7.2,
+        "departure": 17.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 430,
+        "source_id": 431,
+        "arrival": 48.7,
+        "waiting": 0.0,
+        "start": 48.7,
+        "departure": 58.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 522,
+        "source_id": 523,
+        "arrival": 81.7,
+        "waiting": 0.0,
+        "start": 81.7,
+        "departure": 91.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 344,
+        "source_id": 345,
+        "arrival": 102.4,
+        "waiting": 367.6,
+        "start": 470.0,
+        "departure": 480.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 142,
+        "source_id": 143,
+        "arrival": 482.0,
+        "waiting": 165.0,
+        "start": 647.0,
+        "departure": 657.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 345,
+        "source_id": 346,
+        "arrival": 661.2,
+        "waiting": 0.0,
+        "start": 661.2,
+        "departure": 671.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 122,
+        "source_id": 123,
+        "arrival": 699.6,
+        "waiting": 60.39999999999998,
+        "start": 760.0,
+        "departure": 770.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 30,
+        "source_id": 31,
+        "arrival": 784.2,
+        "waiting": 0.0,
+        "start": 784.2,
+        "departure": 794.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 137,
+        "source_id": 138,
+        "arrival": 813.6,
+        "waiting": 7.399999999999977,
+        "start": 821.0,
+        "departure": 831.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 403,
+        "source_id": 404,
+        "arrival": 873.5,
+        "waiting": 162.5,
+        "start": 1036.0,
+        "departure": 1046.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 95,
+        "source_id": 96,
+        "arrival": 1059.6,
+        "waiting": 0.0,
+        "start": 1059.6,
+        "departure": 1069.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 575,
+        "source_id": 576,
+        "arrival": 1081.8,
+        "waiting": 48.200000000000045,
+        "start": 1130.0,
+        "departure": 1140.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 418,
+        "source_id": 419,
+        "arrival": 1152.3,
+        "waiting": 0.0,
+        "start": 1152.3,
+        "departure": 1162.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 420,
+        "source_id": 421,
+        "arrival": 1198.2,
+        "waiting": 361.79999999999995,
+        "start": 1560.0,
+        "departure": 1570.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 222,
+        "source_id": 223,
+        "arrival": 1594.5,
+        "waiting": 0.0,
+        "start": 1594.5,
+        "departure": 1604.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 314,
+        "source_id": 315,
+        "arrival": 1614.5,
+        "waiting": 0.0,
+        "start": 1614.5,
+        "departure": 1624.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 120,
+        "source_id": 121,
+        "arrival": 1646.9,
+        "waiting": 0.0,
+        "start": 1646.9,
+        "departure": 1656.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 580,
+        "source_id": 581,
+        "arrival": 1669.9,
+        "waiting": 329.0999999999999,
+        "start": 1999.0,
+        "departure": 2009.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 583,
+        "source_id": 584,
+        "arrival": 2024.0,
+        "waiting": 101.0,
+        "start": 2125.0,
+        "departure": 2135.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 555,
+        "source_id": 556,
+        "arrival": 2163.8,
+        "waiting": 0.0,
+        "start": 2163.8,
+        "departure": 2173.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 182,
+        "source_id": 183,
+        "arrival": 2187.1000000000004,
+        "waiting": 0.0,
+        "start": 2187.1000000000004,
+        "departure": 2197.1000000000004,
+        "lateness": 0.0
+      },
+      {
+        "customer": 372,
+        "source_id": 373,
+        "arrival": 2237.4000000000005,
+        "waiting": 0.0,
+        "start": 2237.4000000000005,
+        "departure": 2247.4000000000005,
+        "lateness": 0.0
+      },
+      {
+        "customer": 497,
+        "source_id": 498,
+        "arrival": 2249.4000000000005,
+        "waiting": 0.0,
+        "start": 2249.4000000000005,
+        "departure": 2259.4000000000005,
+        "lateness": 0.0
+      },
+      {
+        "customer": 388,
+        "source_id": 389,
+        "arrival": 2280.0000000000005,
+        "waiting": 0.0,
+        "start": 2280.0000000000005,
+        "departure": 2290.0000000000005,
+        "lateness": 0.0
+      },
+      {
+        "customer": 506,
+        "source_id": 507,
+        "arrival": 2306.2000000000003,
+        "waiting": 397.7999999999997,
+        "start": 2704.0,
+        "departure": 2714.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 155,
+        "source_id": 156,
+        "arrival": 2728.8,
+        "waiting": 0.0,
+        "start": 2728.8,
+        "departure": 2738.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 441,
+        "source_id": 442,
+        "arrival": 2760.2000000000003,
+        "waiting": 0.0,
+        "start": 2760.2000000000003,
+        "departure": 2770.2000000000003,
+        "lateness": 0.0
+      },
+      {
+        "customer": 435,
+        "source_id": 436,
+        "arrival": 2780.8,
+        "waiting": 0.0,
+        "start": 2780.8,
+        "departure": 2790.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 47,
+        "source_id": 48,
+        "arrival": 2814.2000000000003,
+        "waiting": 0.0,
+        "start": 2814.2000000000003,
+        "departure": 2824.2000000000003,
+        "lateness": 0.0
+      },
+      {
+        "customer": 574,
+        "source_id": 575,
+        "arrival": 2830.0000000000005,
+        "waiting": 0.0,
+        "start": 2830.0000000000005,
+        "departure": 2840.0000000000005,
+        "lateness": 0.0
+      },
+      {
+        "customer": 140,
+        "source_id": 141,
+        "arrival": 2847.2000000000003,
+        "waiting": 47.79999999999973,
+        "start": 2895.0,
+        "departure": 2905.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 519,
+        "source_id": 520,
+        "arrival": 2918.3,
+        "waiting": 0.0,
+        "start": 2918.3,
+        "departure": 2928.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 404,
+        "source_id": 405,
+        "arrival": 2933.3,
+        "waiting": 0.0,
+        "start": 2933.3,
+        "departure": 2943.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 76,
+        "source_id": 77,
+        "arrival": 2953.3,
+        "waiting": 0.0,
+        "start": 2953.3,
+        "departure": 2963.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 491,
+        "source_id": 492,
+        "arrival": 2973.9,
+        "waiting": 0.0,
+        "start": 2973.9,
+        "departure": 2983.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 339,
+        "source_id": 340,
+        "arrival": 2996.4,
+        "waiting": 355.5999999999999,
+        "start": 3352.0,
+        "departure": 3362.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 100,
+        "source_id": 101,
+        "arrival": 3369.0,
+        "waiting": 0.0,
+        "start": 3369.0,
+        "departure": 3379.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 267,
+        "source_id": 268,
+        "arrival": 3382.6,
+        "waiting": 0.0,
+        "start": 3382.6,
+        "departure": 3392.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 533,
+        "source_id": 534,
+        "arrival": 3417.1,
+        "waiting": 0.0,
+        "start": 3417.1,
+        "departure": 3427.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 556,
+        "source_id": 557,
+        "arrival": 3440.5,
+        "waiting": 0.0,
+        "start": 3440.5,
+        "departure": 3450.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 84,
+        "source_id": 85,
+        "arrival": 3460.3,
+        "waiting": 0.0,
+        "start": 3460.3,
+        "departure": 3470.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 277,
+        "source_id": 278,
+        "arrival": 3500.3,
+        "waiting": 364.6999999999998,
+        "start": 3865.0,
+        "departure": 3875.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 310,
+        "source_id": 311,
+        "arrival": 3900.0,
+        "waiting": 163.0,
+        "start": 4063.0,
+        "departure": 4073.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 353,
+        "source_id": 354,
+        "arrival": 4101.0,
+        "waiting": 0.0,
+        "start": 4101.0,
+        "departure": 4111.0,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 483,
+        "source_id": 484,
+        "arrival": 46.2,
+        "waiting": 0.0,
+        "start": 46.2,
+        "departure": 56.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 177,
+        "source_id": 178,
+        "arrival": 63.2,
+        "waiting": 0.0,
+        "start": 63.2,
+        "departure": 73.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 406,
+        "source_id": 407,
+        "arrival": 115.30000000000001,
+        "waiting": 224.7,
+        "start": 340.0,
+        "departure": 350.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 54,
+        "source_id": 55,
+        "arrival": 353.0,
+        "waiting": 0.0,
+        "start": 353.0,
+        "departure": 363.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 82,
+        "source_id": 83,
+        "arrival": 378.0,
+        "waiting": 0.0,
+        "start": 378.0,
+        "departure": 388.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 584,
+        "source_id": 585,
+        "arrival": 395.0,
+        "waiting": 0.0,
+        "start": 395.0,
+        "departure": 405.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 581,
+        "source_id": 582,
+        "arrival": 427.3,
+        "waiting": 0.0,
+        "start": 427.3,
+        "departure": 437.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 557,
+        "source_id": 558,
+        "arrival": 442.90000000000003,
+        "waiting": 0.0,
+        "start": 442.90000000000003,
+        "departure": 452.90000000000003,
+        "lateness": 0.0
+      },
+      {
+        "customer": 52,
+        "source_id": 53,
+        "arrival": 460.1,
+        "waiting": 0.0,
+        "start": 460.1,
+        "departure": 470.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 544,
+        "source_id": 545,
+        "arrival": 490.1,
+        "waiting": 0.0,
+        "start": 490.1,
+        "departure": 500.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 401,
+        "source_id": 402,
+        "arrival": 501.1,
+        "waiting": 0.0,
+        "start": 501.1,
+        "departure": 511.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 136,
+        "source_id": 137,
+        "arrival": 535.3000000000001,
+        "waiting": 0.0,
+        "start": 535.3000000000001,
+        "departure": 545.3000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 380,
+        "source_id": 381,
+        "arrival": 590.0000000000001,
+        "waiting": 0.0,
+        "start": 590.0000000000001,
+        "departure": 600.0000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 42,
+        "source_id": 43,
+        "arrival": 606.0000000000001,
+        "waiting": 0.0,
+        "start": 606.0000000000001,
+        "departure": 616.0000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 162,
+        "source_id": 163,
+        "arrival": 621.0000000000001,
+        "waiting": 0.0,
+        "start": 621.0000000000001,
+        "departure": 631.0000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 236,
+        "source_id": 237,
+        "arrival": 640.0000000000001,
+        "waiting": 3.9999999999998863,
+        "start": 644.0,
+        "departure": 654.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 309,
+        "source_id": 310,
+        "arrival": 677.7,
+        "waiting": 0.0,
+        "start": 677.7,
+        "departure": 687.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 41,
+        "source_id": 42,
+        "arrival": 702.8000000000001,
+        "waiting": 0.0,
+        "start": 702.8000000000001,
+        "departure": 712.8000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 415,
+        "source_id": 416,
+        "arrival": 717.8000000000001,
+        "waiting": 65.19999999999993,
+        "start": 783.0,
+        "departure": 793.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 189,
+        "source_id": 190,
+        "arrival": 796.0,
+        "waiting": 403.0,
+        "start": 1199.0,
+        "departure": 1209.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 367,
+        "source_id": 368,
+        "arrival": 1270.0,
+        "waiting": 0.0,
+        "start": 1270.0,
+        "departure": 1280.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 535,
+        "source_id": 536,
+        "arrival": 1288.2,
+        "waiting": 0.0,
+        "start": 1288.2,
+        "departure": 1298.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 352,
+        "source_id": 353,
+        "arrival": 1302.6000000000001,
+        "waiting": 0.0,
+        "start": 1302.6000000000001,
+        "departure": 1312.6000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 283,
+        "source_id": 284,
+        "arrival": 1316.7,
+        "waiting": 0.0,
+        "start": 1316.7,
+        "departure": 1326.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 329,
+        "source_id": 330,
+        "arrival": 1346.9,
+        "waiting": 252.0999999999999,
+        "start": 1599.0,
+        "departure": 1609.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 320,
+        "source_id": 321,
+        "arrival": 1626.4,
+        "waiting": 328.5999999999999,
+        "start": 1955.0,
+        "departure": 1965.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 260,
+        "source_id": 261,
+        "arrival": 1990.4,
+        "waiting": 0.0,
+        "start": 1990.4,
+        "departure": 2000.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 518,
+        "source_id": 519,
+        "arrival": 2032.4,
+        "waiting": 34.59999999999991,
+        "start": 2067.0,
+        "departure": 2077.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 280,
+        "source_id": 281,
+        "arrival": 2093.1,
+        "waiting": 0.0,
+        "start": 2093.1,
+        "departure": 2103.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 554,
+        "source_id": 555,
+        "arrival": 2120.7,
+        "waiting": 0.0,
+        "start": 2120.7,
+        "departure": 2130.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 150,
+        "source_id": 151,
+        "arrival": 2137.1,
+        "waiting": 0.0,
+        "start": 2137.1,
+        "departure": 2147.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 273,
+        "source_id": 274,
+        "arrival": 2161.0,
+        "waiting": 510.0,
+        "start": 2671.0,
+        "departure": 2681.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 466,
+        "source_id": 467,
+        "arrival": 2700.8,
+        "waiting": 0.0,
+        "start": 2700.8,
+        "departure": 2710.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 33,
+        "source_id": 34,
+        "arrival": 2723.8,
+        "waiting": 0.0,
+        "start": 2723.8,
+        "departure": 2733.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 11,
+        "source_id": 12,
+        "arrival": 2735.8,
+        "waiting": 324.1999999999998,
+        "start": 3060.0,
+        "departure": 3070.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 8,
+        "source_id": 9,
+        "arrival": 3082.3,
+        "waiting": 0.0,
+        "start": 3082.3,
+        "departure": 3092.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 254,
+        "source_id": 255,
+        "arrival": 3108.9,
+        "waiting": 0.0,
+        "start": 3108.9,
+        "departure": 3118.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 392,
+        "source_id": 393,
+        "arrival": 3128.9,
+        "waiting": 0.0,
+        "start": 3128.9,
+        "departure": 3138.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 485,
+        "source_id": 486,
+        "arrival": 3152.5,
+        "waiting": 386.5,
+        "start": 3539.0,
+        "departure": 3549.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 416,
+        "source_id": 417,
+        "arrival": 3557.0,
+        "waiting": 0.0,
+        "start": 3557.0,
+        "departure": 3567.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 105,
+        "source_id": 106,
+        "arrival": 3583.2,
+        "waiting": 23.800000000000182,
+        "start": 3607.0,
+        "departure": 3617.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 332,
+        "source_id": 333,
+        "arrival": 3638.9,
+        "waiting": 0.0,
+        "start": 3638.9,
+        "departure": 3648.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 91,
+        "source_id": 92,
+        "arrival": 3650.9,
+        "waiting": 0.0,
+        "start": 3650.9,
+        "departure": 3660.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 586,
+        "source_id": 587,
+        "arrival": 3666.7000000000003,
+        "waiting": 0.0,
+        "start": 3666.7000000000003,
+        "departure": 3676.7000000000003,
+        "lateness": 0.0
+      },
+      {
+        "customer": 321,
+        "source_id": 322,
+        "arrival": 3698.2000000000003,
+        "waiting": 0.0,
+        "start": 3698.2000000000003,
+        "departure": 3708.2000000000003,
+        "lateness": 0.0
+      },
+      {
+        "customer": 501,
+        "source_id": 502,
+        "arrival": 3761.8,
+        "waiting": 0.0,
+        "start": 3761.8,
+        "departure": 3771.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 393,
+        "source_id": 394,
+        "arrival": 3823.2000000000003,
+        "waiting": 0.0,
+        "start": 3823.2000000000003,
+        "departure": 3833.2000000000003,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 469,
+        "source_id": 470,
+        "arrival": 32.5,
+        "waiting": 2372.5,
+        "start": 2405.0,
+        "departure": 2415.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 45,
+        "source_id": 46,
+        "arrival": 2426.1,
+        "waiting": 573.9000000000001,
+        "start": 3000.0,
+        "departure": 3010.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 323,
+        "source_id": 324,
+        "arrival": 3021.4,
+        "waiting": 107.59999999999991,
+        "start": 3129.0,
+        "departure": 3139.0,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 114,
+        "source_id": 115,
+        "arrival": 31.3,
+        "waiting": 2.6999999999999993,
+        "start": 34.0,
+        "departure": 44.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 480,
+        "source_id": 481,
+        "arrival": 59.1,
+        "waiting": 72.9,
+        "start": 132.0,
+        "departure": 142.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 263,
+        "source_id": 264,
+        "arrival": 158.1,
+        "waiting": 0.0,
+        "start": 158.1,
+        "departure": 168.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 381,
+        "source_id": 382,
+        "arrival": 172.29999999999998,
+        "waiting": 0.0,
+        "start": 172.29999999999998,
+        "departure": 182.29999999999998,
+        "lateness": 0.0
+      },
+      {
+        "customer": 524,
+        "source_id": 525,
+        "arrival": 187.6,
+        "waiting": 0.0,
+        "start": 187.6,
+        "departure": 197.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 511,
+        "source_id": 512,
+        "arrival": 199.0,
+        "waiting": 0.0,
+        "start": 199.0,
+        "departure": 209.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 409,
+        "source_id": 410,
+        "arrival": 217.4,
+        "waiting": 25.599999999999994,
+        "start": 243.0,
+        "departure": 253.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 527,
+        "source_id": 528,
+        "arrival": 266.4,
+        "waiting": 0.0,
+        "start": 266.4,
+        "departure": 276.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 459,
+        "source_id": 460,
+        "arrival": 300.7,
+        "waiting": 114.30000000000001,
+        "start": 415.0,
+        "departure": 425.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 563,
+        "source_id": 564,
+        "arrival": 437.0,
+        "waiting": 93.0,
+        "start": 530.0,
+        "departure": 540.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 578,
+        "source_id": 579,
+        "arrival": 559.9,
+        "waiting": 487.1,
+        "start": 1047.0,
+        "departure": 1057.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 294,
+        "source_id": 295,
+        "arrival": 1077.8,
+        "waiting": 150.20000000000005,
+        "start": 1228.0,
+        "departure": 1238.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 214,
+        "source_id": 215,
+        "arrival": 1284.0,
+        "waiting": 9.0,
+        "start": 1293.0,
+        "departure": 1303.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 89,
+        "source_id": 90,
+        "arrival": 1337.5,
+        "waiting": 7.5,
+        "start": 1345.0,
+        "departure": 1355.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 178,
+        "source_id": 179,
+        "arrival": 1360.8,
+        "waiting": 0.0,
+        "start": 1360.8,
+        "departure": 1370.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 378,
+        "source_id": 379,
+        "arrival": 1380.6,
+        "waiting": 0.0,
+        "start": 1380.6,
+        "departure": 1390.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 110,
+        "source_id": 111,
+        "arrival": 1403.3999999999999,
+        "waiting": 168.60000000000014,
+        "start": 1572.0,
+        "departure": 1582.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 371,
+        "source_id": 372,
+        "arrival": 1595.0,
+        "waiting": 0.0,
+        "start": 1595.0,
+        "departure": 1605.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 592,
+        "source_id": 593,
+        "arrival": 1607.0,
+        "waiting": 0.0,
+        "start": 1607.0,
+        "departure": 1617.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 594,
+        "source_id": 595,
+        "arrival": 1624.8,
+        "waiting": 0.0,
+        "start": 1624.8,
+        "departure": 1634.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 200,
+        "source_id": 201,
+        "arrival": 1658.1,
+        "waiting": 0.0,
+        "start": 1658.1,
+        "departure": 1668.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 208,
+        "source_id": 209,
+        "arrival": 1683.1,
+        "waiting": 0.0,
+        "start": 1683.1,
+        "departure": 1693.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 510,
+        "source_id": 511,
+        "arrival": 1699.3999999999999,
+        "waiting": 0.0,
+        "start": 1699.3999999999999,
+        "departure": 1709.3999999999999,
+        "lateness": 0.0
+      },
+      {
+        "customer": 366,
+        "source_id": 367,
+        "arrival": 1724.1999999999998,
+        "waiting": 0.0,
+        "start": 1724.1999999999998,
+        "departure": 1734.1999999999998,
+        "lateness": 0.0
+      },
+      {
+        "customer": 600,
+        "source_id": 601,
+        "arrival": 1743.1,
+        "waiting": 49.90000000000009,
+        "start": 1793.0,
+        "departure": 1803.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 274,
+        "source_id": 275,
+        "arrival": 1805.2,
+        "waiting": 0.0,
+        "start": 1805.2,
+        "departure": 1815.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 173,
+        "source_id": 174,
+        "arrival": 1829.2,
+        "waiting": 443.79999999999995,
+        "start": 2273.0,
+        "departure": 2283.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 538,
+        "source_id": 539,
+        "arrival": 2287.2,
+        "waiting": 0.0,
+        "start": 2287.2,
+        "departure": 2297.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 316,
+        "source_id": 317,
+        "arrival": 2320.8999999999996,
+        "waiting": 95.10000000000036,
+        "start": 2416.0,
+        "departure": 2426.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 444,
+        "source_id": 445,
+        "arrival": 2450.0,
+        "waiting": 0.0,
+        "start": 2450.0,
+        "departure": 2460.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 53,
+        "source_id": 54,
+        "arrival": 2486.5,
+        "waiting": 0.0,
+        "start": 2486.5,
+        "departure": 2496.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 153,
+        "source_id": 154,
+        "arrival": 2521.0,
+        "waiting": 397.0,
+        "start": 2918.0,
+        "departure": 2928.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 292,
+        "source_id": 293,
+        "arrival": 2934.7,
+        "waiting": 324.3000000000002,
+        "start": 3259.0,
+        "departure": 3269.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 240,
+        "source_id": 241,
+        "arrival": 3316.4,
+        "waiting": 0.0,
+        "start": 3316.4,
+        "departure": 3326.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 335,
+        "source_id": 336,
+        "arrival": 3344.1,
+        "waiting": 0.0,
+        "start": 3344.1,
+        "departure": 3354.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 427,
+        "source_id": 428,
+        "arrival": 3359.7,
+        "waiting": 0.0,
+        "start": 3359.7,
+        "departure": 3369.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 191,
+        "source_id": 192,
+        "arrival": 3371.1,
+        "waiting": 0.0,
+        "start": 3371.1,
+        "departure": 3381.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 159,
+        "source_id": 160,
+        "arrival": 3393.2,
+        "waiting": 46.80000000000018,
+        "start": 3440.0,
+        "departure": 3450.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 121,
+        "source_id": 122,
+        "arrival": 3455.0,
+        "waiting": 0.0,
+        "start": 3455.0,
+        "departure": 3465.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 396,
+        "source_id": 397,
+        "arrival": 3496.0,
+        "waiting": 0.0,
+        "start": 3496.0,
+        "departure": 3506.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 509,
+        "source_id": 510,
+        "arrival": 3512.7,
+        "waiting": 416.3000000000002,
+        "start": 3929.0,
+        "departure": 3939.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 572,
+        "source_id": 573,
+        "arrival": 3956.0,
+        "waiting": 0.0,
+        "start": 3956.0,
+        "departure": 3966.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 479,
+        "source_id": 480,
+        "arrival": 4043.3,
+        "waiting": 0.0,
+        "start": 4043.3,
+        "departure": 4053.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 35,
+        "source_id": 36,
+        "arrival": 4067.4,
+        "waiting": 133.5999999999999,
+        "start": 4201.0,
+        "departure": 4211.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 251,
+        "source_id": 252,
+        "arrival": 4233.8,
+        "waiting": 0.0,
+        "start": 4233.8,
+        "departure": 4243.8,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 270,
+        "source_id": 271,
+        "arrival": 42.5,
+        "waiting": 0.0,
+        "start": 42.5,
+        "departure": 52.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 596,
+        "source_id": 597,
+        "arrival": 71.5,
+        "waiting": 114.5,
+        "start": 186.0,
+        "departure": 196.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 299,
+        "source_id": 300,
+        "arrival": 205.0,
+        "waiting": 0.0,
+        "start": 205.0,
+        "departure": 215.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 495,
+        "source_id": 496,
+        "arrival": 219.4,
+        "waiting": 104.6,
+        "start": 324.0,
+        "departure": 334.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 157,
+        "source_id": 158,
+        "arrival": 339.3,
+        "waiting": 0.0,
+        "start": 339.3,
+        "departure": 349.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 88,
+        "source_id": 89,
+        "arrival": 383.7,
+        "waiting": 0.0,
+        "start": 383.7,
+        "departure": 393.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 288,
+        "source_id": 289,
+        "arrival": 397.9,
+        "waiting": 0.0,
+        "start": 397.9,
+        "departure": 407.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 57,
+        "source_id": 58,
+        "arrival": 428.5,
+        "waiting": 0.0,
+        "start": 428.5,
+        "departure": 438.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 29,
+        "source_id": 30,
+        "arrival": 456.7,
+        "waiting": 24.30000000000001,
+        "start": 481.0,
+        "departure": 491.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 526,
+        "source_id": 527,
+        "arrival": 529.5,
+        "waiting": 7.5,
+        "start": 537.0,
+        "departure": 547.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 375,
+        "source_id": 376,
+        "arrival": 551.1,
+        "waiting": 0.0,
+        "start": 551.1,
+        "departure": 561.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 357,
+        "source_id": 358,
+        "arrival": 598.1,
+        "waiting": 215.89999999999998,
+        "start": 814.0,
+        "departure": 824.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 585,
+        "source_id": 586,
+        "arrival": 831.0,
+        "waiting": 0.0,
+        "start": 831.0,
+        "departure": 841.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 83,
+        "source_id": 84,
+        "arrival": 844.1,
+        "waiting": 0.0,
+        "start": 844.1,
+        "departure": 854.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 130,
+        "source_id": 131,
+        "arrival": 863.9,
+        "waiting": 3.1000000000000227,
+        "start": 867.0,
+        "departure": 877.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 422,
+        "source_id": 423,
+        "arrival": 880.6,
+        "waiting": 0.0,
+        "start": 880.6,
+        "departure": 890.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 322,
+        "source_id": 323,
+        "arrival": 921.6,
+        "waiting": 198.39999999999998,
+        "start": 1120.0,
+        "departure": 1130.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 127,
+        "source_id": 128,
+        "arrival": 1141.0,
+        "waiting": 0.0,
+        "start": 1141.0,
+        "departure": 1151.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 101,
+        "source_id": 102,
+        "arrival": 1184.0,
+        "waiting": 0.0,
+        "start": 1184.0,
+        "departure": 1194.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 313,
+        "source_id": 314,
+        "arrival": 1199.6,
+        "waiting": 159.4000000000001,
+        "start": 1359.0,
+        "departure": 1369.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 362,
+        "source_id": 363,
+        "arrival": 1381.0,
+        "waiting": 0.0,
+        "start": 1381.0,
+        "departure": 1391.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 14,
+        "source_id": 15,
+        "arrival": 1393.2,
+        "waiting": 0.0,
+        "start": 1393.2,
+        "departure": 1403.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 158,
+        "source_id": 159,
+        "arrival": 1428.2,
+        "waiting": 0.0,
+        "start": 1428.2,
+        "departure": 1438.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 377,
+        "source_id": 378,
+        "arrival": 1449.9,
+        "waiting": 0.0,
+        "start": 1449.9,
+        "departure": 1459.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 419,
+        "source_id": 420,
+        "arrival": 1466.9,
+        "waiting": 67.09999999999991,
+        "start": 1534.0,
+        "departure": 1544.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 241,
+        "source_id": 242,
+        "arrival": 1592.7,
+        "waiting": 0.0,
+        "start": 1592.7,
+        "departure": 1602.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 384,
+        "source_id": 385,
+        "arrival": 1624.7,
+        "waiting": 0.0,
+        "start": 1624.7,
+        "departure": 1634.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 219,
+        "source_id": 220,
+        "arrival": 1654.6000000000001,
+        "waiting": 0.0,
+        "start": 1654.6000000000001,
+        "departure": 1664.6000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 194,
+        "source_id": 195,
+        "arrival": 1667.6000000000001,
+        "waiting": 78.39999999999986,
+        "start": 1746.0,
+        "departure": 1756.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 226,
+        "source_id": 227,
+        "arrival": 1774.4,
+        "waiting": 131.5999999999999,
+        "start": 1906.0,
+        "departure": 1916.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 183,
+        "source_id": 184,
+        "arrival": 1944.6,
+        "waiting": 0.0,
+        "start": 1944.6,
+        "departure": 1954.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 230,
+        "source_id": 231,
+        "arrival": 1973.3999999999999,
+        "waiting": 96.60000000000014,
+        "start": 2070.0,
+        "departure": 2080.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 562,
+        "source_id": 563,
+        "arrival": 2118.4,
+        "waiting": 0.0,
+        "start": 2118.4,
+        "departure": 2128.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 338,
+        "source_id": 339,
+        "arrival": 2130.4,
+        "waiting": 1005.5999999999999,
+        "start": 3136.0,
+        "departure": 3146.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 65,
+        "source_id": 66,
+        "arrival": 3166.8,
+        "waiting": 115.19999999999982,
+        "start": 3282.0,
+        "departure": 3292.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 145,
+        "source_id": 146,
+        "arrival": 3301.2,
+        "waiting": 0.0,
+        "start": 3301.2,
+        "departure": 3311.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 385,
+        "source_id": 386,
+        "arrival": 3314.2999999999997,
+        "waiting": 0.0,
+        "start": 3314.2999999999997,
+        "departure": 3324.2999999999997,
+        "lateness": 0.0
+      },
+      {
+        "customer": 234,
+        "source_id": 235,
+        "arrival": 3343.6,
+        "waiting": 0.0,
+        "start": 3343.6,
+        "departure": 3353.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 481,
+        "source_id": 482,
+        "arrival": 3367.0,
+        "waiting": 0.0,
+        "start": 3367.0,
+        "departure": 3377.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 448,
+        "source_id": 449,
+        "arrival": 3381.4,
+        "waiting": 50.59999999999991,
+        "start": 3432.0,
+        "departure": 3442.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 361,
+        "source_id": 362,
+        "arrival": 3473.9,
+        "waiting": 0.0,
+        "start": 3473.9,
+        "departure": 3483.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 78,
+        "source_id": 79,
+        "arrival": 3491.5,
+        "waiting": 0.0,
+        "start": 3491.5,
+        "departure": 3501.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 102,
+        "source_id": 103,
+        "arrival": 3533.8,
+        "waiting": 11.199999999999818,
+        "start": 3545.0,
+        "departure": 3555.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 148,
+        "source_id": 149,
+        "arrival": 3593.0,
+        "waiting": 139.0,
+        "start": 3732.0,
+        "departure": 3742.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 451,
+        "source_id": 452,
+        "arrival": 3762.8,
+        "waiting": 840.1999999999998,
+        "start": 4603.0,
+        "departure": 4613.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 458,
+        "source_id": 459,
+        "arrival": 4620.6,
+        "waiting": 0.0,
+        "start": 4620.6,
+        "departure": 4630.6,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 253,
+        "source_id": 254,
+        "arrival": 37.0,
+        "waiting": 1374.0,
+        "start": 1411.0,
+        "departure": 1421.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 285,
+        "source_id": 286,
+        "arrival": 1441.5,
+        "waiting": 0.0,
+        "start": 1441.5,
+        "departure": 1451.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 60,
+        "source_id": 61,
+        "arrival": 1458.7,
+        "waiting": 414.29999999999995,
+        "start": 1873.0,
+        "departure": 1883.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 442,
+        "source_id": 443,
+        "arrival": 1899.9,
+        "waiting": 0.0,
+        "start": 1899.9,
+        "departure": 1909.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 471,
+        "source_id": 472,
+        "arrival": 1920.7,
+        "waiting": 365.29999999999995,
+        "start": 2286.0,
+        "departure": 2296.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 32,
+        "source_id": 33,
+        "arrival": 2304.5,
+        "waiting": 0.0,
+        "start": 2304.5,
+        "departure": 2314.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 328,
+        "source_id": 329,
+        "arrival": 2330.3,
+        "waiting": 242.69999999999982,
+        "start": 2573.0,
+        "departure": 2583.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 478,
+        "source_id": 479,
+        "arrival": 2598.2,
+        "waiting": 164.80000000000018,
+        "start": 2763.0,
+        "departure": 2773.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 500,
+        "source_id": 501,
+        "arrival": 2795.6,
+        "waiting": 0.0,
+        "start": 2795.6,
+        "departure": 2805.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 449,
+        "source_id": 450,
+        "arrival": 2817.2,
+        "waiting": 0.0,
+        "start": 2817.2,
+        "departure": 2827.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 340,
+        "source_id": 341,
+        "arrival": 2836.2,
+        "waiting": 365.8000000000002,
+        "start": 3202.0,
+        "departure": 3212.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 436,
+        "source_id": 437,
+        "arrival": 3232.0,
+        "waiting": 0.0,
+        "start": 3232.0,
+        "departure": 3242.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 327,
+        "source_id": 328,
+        "arrival": 3244.0,
+        "waiting": 110.0,
+        "start": 3354.0,
+        "departure": 3364.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 539,
+        "source_id": 540,
+        "arrival": 3394.4,
+        "waiting": 0.0,
+        "start": 3394.4,
+        "departure": 3404.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 461,
+        "source_id": 462,
+        "arrival": 3410.4,
+        "waiting": 0.0,
+        "start": 3410.4,
+        "departure": 3420.4,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 426,
+        "source_id": 427,
+        "arrival": 50.6,
+        "waiting": 0.0,
+        "start": 50.6,
+        "departure": 60.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 542,
+        "source_id": 543,
+        "arrival": 73.7,
+        "waiting": 247.3,
+        "start": 321.0,
+        "departure": 331.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 424,
+        "source_id": 425,
+        "arrival": 357.4,
+        "waiting": 418.6,
+        "start": 776.0,
+        "departure": 786.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 262,
+        "source_id": 263,
+        "arrival": 795.0,
+        "waiting": 153.0,
+        "start": 948.0,
+        "departure": 958.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 129,
+        "source_id": 130,
+        "arrival": 971.1,
+        "waiting": 272.9,
+        "start": 1244.0,
+        "departure": 1254.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 186,
+        "source_id": 187,
+        "arrival": 1261.2,
+        "waiting": 579.8,
+        "start": 1841.0,
+        "departure": 1851.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 463,
+        "source_id": 464,
+        "arrival": 1869.6,
+        "waiting": 0.0,
+        "start": 1869.6,
+        "departure": 1879.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 243,
+        "source_id": 244,
+        "arrival": 1883.6999999999998,
+        "waiting": 0.0,
+        "start": 1883.6999999999998,
+        "departure": 1893.6999999999998,
+        "lateness": 0.0
+      },
+      {
+        "customer": 493,
+        "source_id": 494,
+        "arrival": 1901.6999999999998,
+        "waiting": 380.3000000000002,
+        "start": 2282.0,
+        "departure": 2292.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 368,
+        "source_id": 369,
+        "arrival": 2295.6,
+        "waiting": 0.0,
+        "start": 2295.6,
+        "departure": 2305.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 203,
+        "source_id": 204,
+        "arrival": 2318.7,
+        "waiting": 180.30000000000018,
+        "start": 2499.0,
+        "departure": 2509.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 278,
+        "source_id": 279,
+        "arrival": 2512.1,
+        "waiting": 417.9000000000001,
+        "start": 2930.0,
+        "departure": 2940.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 346,
+        "source_id": 347,
+        "arrival": 2950.2,
+        "waiting": 564.8000000000002,
+        "start": 3515.0,
+        "departure": 3525.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 204,
+        "source_id": 205,
+        "arrival": 3539.2,
+        "waiting": 0.0,
+        "start": 3539.2,
+        "departure": 3549.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 180,
+        "source_id": 181,
+        "arrival": 3561.7999999999997,
+        "waiting": 0.0,
+        "start": 3561.7999999999997,
+        "departure": 3571.7999999999997,
+        "lateness": 0.0
+      },
+      {
+        "customer": 412,
+        "source_id": 413,
+        "arrival": 3605.7999999999997,
+        "waiting": 38.20000000000027,
+        "start": 3644.0,
+        "departure": 3654.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 467,
+        "source_id": 468,
+        "arrival": 3684.2,
+        "waiting": 0.0,
+        "start": 3684.2,
+        "departure": 3694.2,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 221,
+        "source_id": 222,
+        "arrival": 18.6,
+        "waiting": 0.0,
+        "start": 18.6,
+        "departure": 28.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 504,
+        "source_id": 505,
+        "arrival": 46.2,
+        "waiting": 15.799999999999997,
+        "start": 62.0,
+        "departure": 72.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 438,
+        "source_id": 439,
+        "arrival": 84.8,
+        "waiting": 0.0,
+        "start": 84.8,
+        "departure": 94.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 113,
+        "source_id": 114,
+        "arrival": 114.0,
+        "waiting": 0.0,
+        "start": 114.0,
+        "departure": 124.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 185,
+        "source_id": 186,
+        "arrival": 143.2,
+        "waiting": 148.8,
+        "start": 292.0,
+        "departure": 302.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 126,
+        "source_id": 127,
+        "arrival": 309.8,
+        "waiting": 0.0,
+        "start": 309.8,
+        "departure": 319.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 550,
+        "source_id": 551,
+        "arrival": 328.3,
+        "waiting": 69.69999999999999,
+        "start": 398.0,
+        "departure": 408.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 281,
+        "source_id": 282,
+        "arrival": 422.1,
+        "waiting": 0.0,
+        "start": 422.1,
+        "departure": 432.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 174,
+        "source_id": 175,
+        "arrival": 434.90000000000003,
+        "waiting": 0.0,
+        "start": 434.90000000000003,
+        "departure": 444.90000000000003,
+        "lateness": 0.0
+      },
+      {
+        "customer": 206,
+        "source_id": 207,
+        "arrival": 479.8,
+        "waiting": 37.19999999999999,
+        "start": 517.0,
+        "departure": 527.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 279,
+        "source_id": 280,
+        "arrival": 547.6,
+        "waiting": 0.0,
+        "start": 547.6,
+        "departure": 557.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 213,
+        "source_id": 214,
+        "arrival": 564.8000000000001,
+        "waiting": 0.0,
+        "start": 564.8000000000001,
+        "departure": 574.8000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 411,
+        "source_id": 412,
+        "arrival": 590.8000000000001,
+        "waiting": 0.0,
+        "start": 590.8000000000001,
+        "departure": 600.8000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 397,
+        "source_id": 398,
+        "arrival": 613.3000000000001,
+        "waiting": 1.6999999999999318,
+        "start": 615.0,
+        "departure": 625.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 109,
+        "source_id": 110,
+        "arrival": 647.4,
+        "waiting": 0.0,
+        "start": 647.4,
+        "departure": 657.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 464,
+        "source_id": 465,
+        "arrival": 659.6,
+        "waiting": 0.0,
+        "start": 659.6,
+        "departure": 669.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 171,
+        "source_id": 172,
+        "arrival": 695.6,
+        "waiting": 94.39999999999998,
+        "start": 790.0,
+        "departure": 800.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 549,
+        "source_id": 550,
+        "arrival": 819.7,
+        "waiting": 30.299999999999955,
+        "start": 850.0,
+        "departure": 860.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 515,
+        "source_id": 516,
+        "arrival": 872.0,
+        "waiting": 107.0,
+        "start": 979.0,
+        "departure": 989.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 40,
+        "source_id": 41,
+        "arrival": 1024.0,
+        "waiting": 0.0,
+        "start": 1024.0,
+        "departure": 1034.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 237,
+        "source_id": 238,
+        "arrival": 1066.2,
+        "waiting": 621.8,
+        "start": 1688.0,
+        "departure": 1698.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 400,
+        "source_id": 401,
+        "arrival": 1706.5,
+        "waiting": 0.0,
+        "start": 1706.5,
+        "departure": 1716.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 133,
+        "source_id": 134,
+        "arrival": 1719.3,
+        "waiting": 0.0,
+        "start": 1719.3,
+        "departure": 1729.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 333,
+        "source_id": 334,
+        "arrival": 1738.3,
+        "waiting": 0.0,
+        "start": 1738.3,
+        "departure": 1748.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 184,
+        "source_id": 185,
+        "arrival": 1762.3,
+        "waiting": 88.70000000000005,
+        "start": 1851.0,
+        "departure": 1861.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 311,
+        "source_id": 312,
+        "arrival": 1868.2,
+        "waiting": 0.0,
+        "start": 1868.2,
+        "departure": 1878.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 354,
+        "source_id": 355,
+        "arrival": 1911.7,
+        "waiting": 0.0,
+        "start": 1911.7,
+        "departure": 1921.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 468,
+        "source_id": 469,
+        "arrival": 1940.3,
+        "waiting": 125.70000000000005,
+        "start": 2066.0,
+        "departure": 2076.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 252,
+        "source_id": 253,
+        "arrival": 2116.3,
+        "waiting": 139.69999999999982,
+        "start": 2256.0,
+        "departure": 2266.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 336,
+        "source_id": 337,
+        "arrival": 2275.4,
+        "waiting": 323.5999999999999,
+        "start": 2599.0,
+        "departure": 2609.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 434,
+        "source_id": 435,
+        "arrival": 2617.0,
+        "waiting": 0.0,
+        "start": 2617.0,
+        "departure": 2627.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 38,
+        "source_id": 39,
+        "arrival": 2656.1,
+        "waiting": 369.9000000000001,
+        "start": 3026.0,
+        "departure": 3036.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 598,
+        "source_id": 599,
+        "arrival": 3091.7,
+        "waiting": 178.30000000000018,
+        "start": 3270.0,
+        "departure": 3280.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 258,
+        "source_id": 259,
+        "arrival": 3318.9,
+        "waiting": 171.0999999999999,
+        "start": 3490.0,
+        "departure": 3500.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 12,
+        "source_id": 13,
+        "arrival": 3535.3,
+        "waiting": 0.0,
+        "start": 3535.3,
+        "departure": 3545.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 341,
+        "source_id": 342,
+        "arrival": 3553.1000000000004,
+        "waiting": 0.0,
+        "start": 3553.1000000000004,
+        "departure": 3563.1000000000004,
+        "lateness": 0.0
+      },
+      {
+        "customer": 48,
+        "source_id": 49,
+        "arrival": 3582.9000000000005,
+        "waiting": 0.0,
+        "start": 3582.9000000000005,
+        "departure": 3592.9000000000005,
+        "lateness": 0.0
+      },
+      {
+        "customer": 228,
+        "source_id": 229,
+        "arrival": 3616.3000000000006,
+        "waiting": 0.0,
+        "start": 3616.3000000000006,
+        "departure": 3626.3000000000006,
+        "lateness": 0.0
+      },
+      {
+        "customer": 81,
+        "source_id": 82,
+        "arrival": 3636.100000000001,
+        "waiting": 0.0,
+        "start": 3636.100000000001,
+        "departure": 3646.100000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 37,
+        "source_id": 38,
+        "arrival": 3653.100000000001,
+        "waiting": 0.0,
+        "start": 3653.100000000001,
+        "departure": 3663.100000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 541,
+        "source_id": 542,
+        "arrival": 3668.100000000001,
+        "waiting": 0.0,
+        "start": 3668.100000000001,
+        "departure": 3678.100000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 261,
+        "source_id": 262,
+        "arrival": 3703.8000000000006,
+        "waiting": 328.19999999999936,
+        "start": 4032.0,
+        "departure": 4042.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 55,
+        "source_id": 56,
+        "arrival": 4053.7,
+        "waiting": 0.0,
+        "start": 4053.7,
+        "departure": 4063.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 146,
+        "source_id": 147,
+        "arrival": 4066.7999999999997,
+        "waiting": 0.0,
+        "start": 4066.7999999999997,
+        "departure": 4076.7999999999997,
+        "lateness": 0.0
+      },
+      {
+        "customer": 92,
+        "source_id": 93,
+        "arrival": 4111.5,
+        "waiting": 0.0,
+        "start": 4111.5,
+        "departure": 4121.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 486,
+        "source_id": 487,
+        "arrival": 4159.0,
+        "waiting": 0.0,
+        "start": 4159.0,
+        "departure": 4169.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 209,
+        "source_id": 210,
+        "arrival": 4179.1,
+        "waiting": 0.0,
+        "start": 4179.1,
+        "departure": 4189.1,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 98,
+        "source_id": 99,
+        "arrival": 3.6,
+        "waiting": 0.0,
+        "start": 3.6,
+        "departure": 13.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 532,
+        "source_id": 533,
+        "arrival": 45.4,
+        "waiting": 41.6,
+        "start": 87.0,
+        "departure": 97.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 118,
+        "source_id": 119,
+        "arrival": 114.0,
+        "waiting": 20.0,
+        "start": 134.0,
+        "departure": 144.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 460,
+        "source_id": 461,
+        "arrival": 180.2,
+        "waiting": 132.8,
+        "start": 313.0,
+        "departure": 323.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 196,
+        "source_id": 197,
+        "arrival": 341.0,
+        "waiting": 0.0,
+        "start": 341.0,
+        "departure": 351.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 207,
+        "source_id": 208,
+        "arrival": 364.3,
+        "waiting": 57.69999999999999,
+        "start": 422.0,
+        "departure": 432.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 568,
+        "source_id": 569,
+        "arrival": 437.0,
+        "waiting": 0.0,
+        "start": 437.0,
+        "departure": 447.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 197,
+        "source_id": 198,
+        "arrival": 467.3,
+        "waiting": 58.69999999999999,
+        "start": 526.0,
+        "departure": 536.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 224,
+        "source_id": 225,
+        "arrival": 560.0,
+        "waiting": 0.0,
+        "start": 560.0,
+        "departure": 570.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 268,
+        "source_id": 269,
+        "arrival": 584.7,
+        "waiting": 7.2999999999999545,
+        "start": 592.0,
+        "departure": 602.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 218,
+        "source_id": 219,
+        "arrival": 622.0,
+        "waiting": 283.0,
+        "start": 905.0,
+        "departure": 915.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 229,
+        "source_id": 230,
+        "arrival": 924.8,
+        "waiting": 0.0,
+        "start": 924.8,
+        "departure": 934.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 303,
+        "source_id": 304,
+        "arrival": 941.8,
+        "waiting": 110.20000000000005,
+        "start": 1052.0,
+        "departure": 1062.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 565,
+        "source_id": 566,
+        "arrival": 1071.0,
+        "waiting": 0.0,
+        "start": 1071.0,
+        "departure": 1081.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 326,
+        "source_id": 327,
+        "arrival": 1084.1,
+        "waiting": 0.0,
+        "start": 1084.1,
+        "departure": 1094.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 75,
+        "source_id": 76,
+        "arrival": 1095.5,
+        "waiting": 0.0,
+        "start": 1095.5,
+        "departure": 1105.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 423,
+        "source_id": 424,
+        "arrival": 1130.6,
+        "waiting": 0.0,
+        "start": 1130.6,
+        "departure": 1140.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 443,
+        "source_id": 444,
+        "arrival": 1150.8,
+        "waiting": 617.2,
+        "start": 1768.0,
+        "departure": 1778.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 496,
+        "source_id": 497,
+        "arrival": 1791.1,
+        "waiting": 0.0,
+        "start": 1791.1,
+        "departure": 1801.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 512,
+        "source_id": 513,
+        "arrival": 1813.8,
+        "waiting": 85.20000000000005,
+        "start": 1899.0,
+        "departure": 1909.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 111,
+        "source_id": 112,
+        "arrival": 1922.6,
+        "waiting": 0.0,
+        "start": 1922.6,
+        "departure": 1932.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 558,
+        "source_id": 559,
+        "arrival": 1963.3999999999999,
+        "waiting": 153.60000000000014,
+        "start": 2117.0,
+        "departure": 2127.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 23,
+        "source_id": 24,
+        "arrival": 2145.0,
+        "waiting": 0.0,
+        "start": 2145.0,
+        "departure": 2155.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 530,
+        "source_id": 531,
+        "arrival": 2161.4,
+        "waiting": 0.0,
+        "start": 2161.4,
+        "departure": 2171.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 369,
+        "source_id": 370,
+        "arrival": 2177.7000000000003,
+        "waiting": 337.2999999999997,
+        "start": 2515.0,
+        "departure": 2525.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 34,
+        "source_id": 35,
+        "arrival": 2535.8,
+        "waiting": 0.0,
+        "start": 2535.8,
+        "departure": 2545.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 5,
+        "source_id": 6,
+        "arrival": 2555.8,
+        "waiting": 494.1999999999998,
+        "start": 3050.0,
+        "departure": 3060.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 465,
+        "source_id": 466,
+        "arrival": 3072.8,
+        "waiting": 419.1999999999998,
+        "start": 3492.0,
+        "departure": 3502.0,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 395,
+        "source_id": 396,
+        "arrival": 12.8,
+        "waiting": 0.0,
+        "start": 12.8,
+        "departure": 22.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 80,
+        "source_id": 81,
+        "arrival": 49.8,
+        "waiting": 13.200000000000003,
+        "start": 63.0,
+        "departure": 73.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 548,
+        "source_id": 549,
+        "arrival": 82.0,
+        "waiting": 0.0,
+        "start": 82.0,
+        "departure": 92.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 66,
+        "source_id": 67,
+        "arrival": 100.0,
+        "waiting": 44.0,
+        "start": 144.0,
+        "departure": 154.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 437,
+        "source_id": 438,
+        "arrival": 162.0,
+        "waiting": 0.0,
+        "start": 162.0,
+        "departure": 172.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 376,
+        "source_id": 377,
+        "arrival": 182.4,
+        "waiting": 0.0,
+        "start": 182.4,
+        "departure": 192.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 90,
+        "source_id": 91,
+        "arrival": 200.4,
+        "waiting": 0.0,
+        "start": 200.4,
+        "departure": 210.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 337,
+        "source_id": 338,
+        "arrival": 246.4,
+        "waiting": 192.6,
+        "start": 439.0,
+        "departure": 449.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 582,
+        "source_id": 583,
+        "arrival": 458.4,
+        "waiting": 0.0,
+        "start": 458.4,
+        "departure": 468.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 131,
+        "source_id": 132,
+        "arrival": 483.2,
+        "waiting": 0.0,
+        "start": 483.2,
+        "departure": 493.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 50,
+        "source_id": 51,
+        "arrival": 497.4,
+        "waiting": 0.0,
+        "start": 497.4,
+        "departure": 507.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 86,
+        "source_id": 87,
+        "arrival": 511.79999999999995,
+        "waiting": 0.0,
+        "start": 511.79999999999995,
+        "departure": 521.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 410,
+        "source_id": 411,
+        "arrival": 528.1999999999999,
+        "waiting": 72.80000000000007,
+        "start": 601.0,
+        "departure": 611.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 350,
+        "source_id": 351,
+        "arrival": 632.0,
+        "waiting": 0.0,
+        "start": 632.0,
+        "departure": 642.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 476,
+        "source_id": 477,
+        "arrival": 650.4,
+        "waiting": 0.0,
+        "start": 650.4,
+        "departure": 660.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 164,
+        "source_id": 165,
+        "arrival": 682.9,
+        "waiting": 49.10000000000002,
+        "start": 732.0,
+        "departure": 742.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 272,
+        "source_id": 273,
+        "arrival": 757.6,
+        "waiting": 0.0,
+        "start": 757.6,
+        "departure": 767.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 56,
+        "source_id": 57,
+        "arrival": 780.6,
+        "waiting": 0.0,
+        "start": 780.6,
+        "departure": 790.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 573,
+        "source_id": 574,
+        "arrival": 823.8000000000001,
+        "waiting": 0.0,
+        "start": 823.8000000000001,
+        "departure": 833.8000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 51,
+        "source_id": 52,
+        "arrival": 836.8000000000001,
+        "waiting": 0.0,
+        "start": 836.8000000000001,
+        "departure": 846.8000000000001,
+        "lateness": 0.0
+      },
+      {
+        "customer": 394,
+        "source_id": 395,
+        "arrival": 857.6,
+        "waiting": 0.0,
+        "start": 857.6,
+        "departure": 867.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 13,
+        "source_id": 14,
+        "arrival": 871.2,
+        "waiting": 0.0,
+        "start": 871.2,
+        "departure": 881.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 588,
+        "source_id": 589,
+        "arrival": 888.4000000000001,
+        "waiting": 88.59999999999991,
+        "start": 977.0,
+        "departure": 987.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 24,
+        "source_id": 25,
+        "arrival": 1007.6,
+        "waiting": 70.39999999999998,
+        "start": 1078.0,
+        "departure": 1088.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 73,
+        "source_id": 74,
+        "arrival": 1096.5,
+        "waiting": 0.0,
+        "start": 1096.5,
+        "departure": 1106.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 2,
+        "source_id": 3,
+        "arrival": 1111.8,
+        "waiting": 0.0,
+        "start": 1111.8,
+        "departure": 1121.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 355,
+        "source_id": 356,
+        "arrival": 1146.5,
+        "waiting": 0.0,
+        "start": 1146.5,
+        "departure": 1156.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 405,
+        "source_id": 406,
+        "arrival": 1171.7,
+        "waiting": 369.29999999999995,
+        "start": 1541.0,
+        "departure": 1551.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 561,
+        "source_id": 562,
+        "arrival": 1566.8,
+        "waiting": 363.20000000000005,
+        "start": 1930.0,
+        "departure": 1940.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 106,
+        "source_id": 107,
+        "arrival": 1953.6,
+        "waiting": 94.40000000000009,
+        "start": 2048.0,
+        "departure": 2058.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 87,
+        "source_id": 88,
+        "arrival": 2063.3,
+        "waiting": 0.0,
+        "start": 2063.3,
+        "departure": 2073.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 356,
+        "source_id": 357,
+        "arrival": 2075.3,
+        "waiting": 0.0,
+        "start": 2075.3,
+        "departure": 2085.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 569,
+        "source_id": 570,
+        "arrival": 2089.7000000000003,
+        "waiting": 0.0,
+        "start": 2089.7000000000003,
+        "departure": 2099.7000000000003,
+        "lateness": 0.0
+      },
+      {
+        "customer": 505,
+        "source_id": 506,
+        "arrival": 2113.1000000000004,
+        "waiting": 0.0,
+        "start": 2113.1000000000004,
+        "departure": 2123.1000000000004,
+        "lateness": 0.0
+      },
+      {
+        "customer": 374,
+        "source_id": 375,
+        "arrival": 2131.7000000000003,
+        "waiting": 0.0,
+        "start": 2131.7000000000003,
+        "departure": 2141.7000000000003,
+        "lateness": 0.0
+      },
+      {
+        "customer": 300,
+        "source_id": 301,
+        "arrival": 2152.7000000000003,
+        "waiting": 0.0,
+        "start": 2152.7000000000003,
+        "departure": 2162.7000000000003,
+        "lateness": 0.0
+      },
+      {
+        "customer": 517,
+        "source_id": 518,
+        "arrival": 2179.9,
+        "waiting": 0.0,
+        "start": 2179.9,
+        "departure": 2189.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 44,
+        "source_id": 45,
+        "arrival": 2198.5,
+        "waiting": 0.0,
+        "start": 2198.5,
+        "departure": 2208.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 250,
+        "source_id": 251,
+        "arrival": 2229.1,
+        "waiting": 0.0,
+        "start": 2229.1,
+        "departure": 2239.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 315,
+        "source_id": 316,
+        "arrival": 2250.5,
+        "waiting": 101.5,
+        "start": 2352.0,
+        "departure": 2362.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 360,
+        "source_id": 361,
+        "arrival": 2385.3,
+        "waiting": 530.6999999999998,
+        "start": 2916.0,
+        "departure": 2926.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 152,
+        "source_id": 153,
+        "arrival": 2956.4,
+        "waiting": 0.0,
+        "start": 2956.4,
+        "departure": 2966.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 147,
+        "source_id": 148,
+        "arrival": 2997.0,
+        "waiting": 233.0,
+        "start": 3230.0,
+        "departure": 3240.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 119,
+        "source_id": 120,
+        "arrival": 3249.2,
+        "waiting": 0.0,
+        "start": 3249.2,
+        "departure": 3259.2,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 439,
+        "source_id": 440,
+        "arrival": 17.0,
+        "waiting": 0.0,
+        "start": 17.0,
+        "departure": 27.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 421,
+        "source_id": 422,
+        "arrival": 59.1,
+        "waiting": 107.9,
+        "start": 167.0,
+        "departure": 177.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 457,
+        "source_id": 458,
+        "arrival": 185.0,
+        "waiting": 373.0,
+        "start": 558.0,
+        "departure": 568.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 165,
+        "source_id": 166,
+        "arrival": 601.1,
+        "waiting": 0.0,
+        "start": 601.1,
+        "departure": 611.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 15,
+        "source_id": 16,
+        "arrival": 628.7,
+        "waiting": 188.29999999999995,
+        "start": 817.0,
+        "departure": 827.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 181,
+        "source_id": 182,
+        "arrival": 871.0,
+        "waiting": 0.0,
+        "start": 871.0,
+        "departure": 881.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 205,
+        "source_id": 206,
+        "arrival": 889.9,
+        "waiting": 0.0,
+        "start": 889.9,
+        "departure": 899.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 307,
+        "source_id": 308,
+        "arrival": 910.5,
+        "waiting": 549.5,
+        "start": 1460.0,
+        "departure": 1470.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 308,
+        "source_id": 309,
+        "arrival": 1478.5,
+        "waiting": 0.0,
+        "start": 1478.5,
+        "departure": 1488.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 446,
+        "source_id": 447,
+        "arrival": 1506.2,
+        "waiting": 0.0,
+        "start": 1506.2,
+        "departure": 1516.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 216,
+        "source_id": 217,
+        "arrival": 1521.5,
+        "waiting": 0.0,
+        "start": 1521.5,
+        "departure": 1531.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 503,
+        "source_id": 504,
+        "arrival": 1543.5,
+        "waiting": 0.0,
+        "start": 1543.5,
+        "departure": 1553.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 370,
+        "source_id": 371,
+        "arrival": 1564.3,
+        "waiting": 123.70000000000005,
+        "start": 1688.0,
+        "departure": 1698.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 143,
+        "source_id": 144,
+        "arrival": 1728.8,
+        "waiting": 167.20000000000005,
+        "start": 1896.0,
+        "departure": 1906.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 351,
+        "source_id": 352,
+        "arrival": 1929.3,
+        "waiting": 151.70000000000005,
+        "start": 2081.0,
+        "departure": 2091.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 290,
+        "source_id": 291,
+        "arrival": 2098.2,
+        "waiting": 16.800000000000182,
+        "start": 2115.0,
+        "departure": 2125.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 475,
+        "source_id": 476,
+        "arrival": 2129.1,
+        "waiting": 0.0,
+        "start": 2129.1,
+        "departure": 2139.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 161,
+        "source_id": 162,
+        "arrival": 2176.5,
+        "waiting": 0.0,
+        "start": 2176.5,
+        "departure": 2186.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 19,
+        "source_id": 20,
+        "arrival": 2188.5,
+        "waiting": 0.0,
+        "start": 2188.5,
+        "departure": 2198.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 445,
+        "source_id": 446,
+        "arrival": 2206.5,
+        "waiting": 0.0,
+        "start": 2206.5,
+        "departure": 2216.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 472,
+        "source_id": 473,
+        "arrival": 2245.5,
+        "waiting": 0.0,
+        "start": 2245.5,
+        "departure": 2255.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 295,
+        "source_id": 296,
+        "arrival": 2277.9,
+        "waiting": 0.0,
+        "start": 2277.9,
+        "departure": 2287.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 93,
+        "source_id": 94,
+        "arrival": 2296.5,
+        "waiting": 0.0,
+        "start": 2296.5,
+        "departure": 2306.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 71,
+        "source_id": 72,
+        "arrival": 2322.1,
+        "waiting": 0.0,
+        "start": 2322.1,
+        "departure": 2332.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 589,
+        "source_id": 590,
+        "arrival": 2341.1,
+        "waiting": 0.0,
+        "start": 2341.1,
+        "departure": 2351.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 257,
+        "source_id": 258,
+        "arrival": 2370.7999999999997,
+        "waiting": 0.0,
+        "start": 2370.7999999999997,
+        "departure": 2380.7999999999997,
+        "lateness": 0.0
+      },
+      {
+        "customer": 43,
+        "source_id": 44,
+        "arrival": 2402.7,
+        "waiting": 0.0,
+        "start": 2402.7,
+        "departure": 2412.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 343,
+        "source_id": 344,
+        "arrival": 2423.7999999999997,
+        "waiting": 0.0,
+        "start": 2423.7999999999997,
+        "departure": 2433.7999999999997,
+        "lateness": 0.0
+      },
+      {
+        "customer": 176,
+        "source_id": 177,
+        "arrival": 2439.1,
+        "waiting": 44.90000000000009,
+        "start": 2484.0,
+        "departure": 2494.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 46,
+        "source_id": 47,
+        "arrival": 2527.7,
+        "waiting": 0.0,
+        "start": 2527.7,
+        "departure": 2537.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 264,
+        "source_id": 265,
+        "arrival": 2549.7,
+        "waiting": 0.0,
+        "start": 2549.7,
+        "departure": 2559.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 134,
+        "source_id": 135,
+        "arrival": 2590.2999999999997,
+        "waiting": 25.700000000000273,
+        "start": 2616.0,
+        "departure": 2626.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 407,
+        "source_id": 408,
+        "arrival": 2642.1,
+        "waiting": 0.0,
+        "start": 2642.1,
+        "departure": 2652.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 566,
+        "source_id": 567,
+        "arrival": 2672.1,
+        "waiting": 0.0,
+        "start": 2672.1,
+        "departure": 2682.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 428,
+        "source_id": 429,
+        "arrival": 2686.2,
+        "waiting": 908.8000000000002,
+        "start": 3595.0,
+        "departure": 3605.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 514,
+        "source_id": 515,
+        "arrival": 3626.5,
+        "waiting": 148.5,
+        "start": 3775.0,
+        "departure": 3785.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 373,
+        "source_id": 374,
+        "arrival": 3798.3,
+        "waiting": 0.0,
+        "start": 3798.3,
+        "departure": 3808.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 545,
+        "source_id": 546,
+        "arrival": 3826.3,
+        "waiting": 0.0,
+        "start": 3826.3,
+        "departure": 3836.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 389,
+        "source_id": 390,
+        "arrival": 3859.6000000000004,
+        "waiting": 10.399999999999636,
+        "start": 3870.0,
+        "departure": 3880.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 402,
+        "source_id": 403,
+        "arrival": 3894.8,
+        "waiting": 471.1999999999998,
+        "start": 4366.0,
+        "departure": 4376.0,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 192,
+        "source_id": 193,
+        "arrival": 48.8,
+        "waiting": 0.0,
+        "start": 48.8,
+        "departure": 58.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 275,
+        "source_id": 276,
+        "arrival": 63.199999999999996,
+        "waiting": 77.80000000000001,
+        "start": 141.0,
+        "departure": 151.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 349,
+        "source_id": 350,
+        "arrival": 156.0,
+        "waiting": 0.0,
+        "start": 156.0,
+        "departure": 166.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 276,
+        "source_id": 277,
+        "arrival": 177.3,
+        "waiting": 0.0,
+        "start": 177.3,
+        "departure": 187.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 99,
+        "source_id": 100,
+        "arrival": 223.5,
+        "waiting": 141.5,
+        "start": 365.0,
+        "departure": 375.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 144,
+        "source_id": 145,
+        "arrival": 391.4,
+        "waiting": 10.600000000000023,
+        "start": 402.0,
+        "departure": 412.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 455,
+        "source_id": 456,
+        "arrival": 432.0,
+        "waiting": 0.0,
+        "start": 432.0,
+        "departure": 442.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 571,
+        "source_id": 572,
+        "arrival": 469.8,
+        "waiting": 267.2,
+        "start": 737.0,
+        "departure": 747.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 193,
+        "source_id": 194,
+        "arrival": 749.2,
+        "waiting": 0.0,
+        "start": 749.2,
+        "departure": 759.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 149,
+        "source_id": 150,
+        "arrival": 768.1,
+        "waiting": 0.0,
+        "start": 768.1,
+        "departure": 778.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 487,
+        "source_id": 488,
+        "arrival": 804.9,
+        "waiting": 0.0,
+        "start": 804.9,
+        "departure": 814.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 325,
+        "source_id": 326,
+        "arrival": 819.3,
+        "waiting": 273.70000000000005,
+        "start": 1093.0,
+        "departure": 1103.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 287,
+        "source_id": 288,
+        "arrival": 1115.1,
+        "waiting": 21.90000000000009,
+        "start": 1137.0,
+        "departure": 1147.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 256,
+        "source_id": 257,
+        "arrival": 1169.6,
+        "waiting": 0.0,
+        "start": 1169.6,
+        "departure": 1179.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 58,
+        "source_id": 59,
+        "arrival": 1185.6,
+        "waiting": 280.4000000000001,
+        "start": 1466.0,
+        "departure": 1476.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 116,
+        "source_id": 117,
+        "arrival": 1499.7,
+        "waiting": 510.29999999999995,
+        "start": 2010.0,
+        "departure": 2020.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 3,
+        "source_id": 4,
+        "arrival": 2045.9,
+        "waiting": 0.0,
+        "start": 2045.9,
+        "departure": 2055.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 265,
+        "source_id": 266,
+        "arrival": 2086.9,
+        "waiting": 0.0,
+        "start": 2086.9,
+        "departure": 2096.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 64,
+        "source_id": 65,
+        "arrival": 2105.1,
+        "waiting": 94.90000000000009,
+        "start": 2200.0,
+        "departure": 2210.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 452,
+        "source_id": 453,
+        "arrival": 2212.0,
+        "waiting": 0.0,
+        "start": 2212.0,
+        "departure": 2222.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 413,
+        "source_id": 414,
+        "arrival": 2230.2,
+        "waiting": 0.0,
+        "start": 2230.2,
+        "departure": 2240.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 520,
+        "source_id": 521,
+        "arrival": 2256.7999999999997,
+        "waiting": 0.0,
+        "start": 2256.7999999999997,
+        "departure": 2266.7999999999997,
+        "lateness": 0.0
+      },
+      {
+        "customer": 163,
+        "source_id": 164,
+        "arrival": 2293.7999999999997,
+        "waiting": 0.0,
+        "start": 2293.7999999999997,
+        "departure": 2303.7999999999997,
+        "lateness": 0.0
+      },
+      {
+        "customer": 201,
+        "source_id": 202,
+        "arrival": 2320.7999999999997,
+        "waiting": 0.0,
+        "start": 2320.7999999999997,
+        "departure": 2330.7999999999997,
+        "lateness": 0.0
+      },
+      {
+        "customer": 211,
+        "source_id": 212,
+        "arrival": 2347.7999999999997,
+        "waiting": 0.0,
+        "start": 2347.7999999999997,
+        "departure": 2357.7999999999997,
+        "lateness": 0.0
+      },
+      {
+        "customer": 531,
+        "source_id": 532,
+        "arrival": 2386.6,
+        "waiting": 178.4000000000001,
+        "start": 2565.0,
+        "departure": 2575.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 454,
+        "source_id": 455,
+        "arrival": 2595.8,
+        "waiting": 0.0,
+        "start": 2595.8,
+        "departure": 2605.8,
+        "lateness": 0.0
+      },
+      {
+        "customer": 77,
+        "source_id": 78,
+        "arrival": 2642.9,
+        "waiting": 0.0,
+        "start": 2642.9,
+        "departure": 2652.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 342,
+        "source_id": 343,
+        "arrival": 2665.9,
+        "waiting": 0.0,
+        "start": 2665.9,
+        "departure": 2675.9,
+        "lateness": 0.0
+      },
+      {
+        "customer": 132,
+        "source_id": 133,
+        "arrival": 2695.9,
+        "waiting": 66.09999999999991,
+        "start": 2762.0,
+        "departure": 2772.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 94,
+        "source_id": 95,
+        "arrival": 2804.6,
+        "waiting": 0.0,
+        "start": 2804.6,
+        "departure": 2814.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 151,
+        "source_id": 152,
+        "arrival": 2824.0,
+        "waiting": 0.0,
+        "start": 2824.0,
+        "departure": 2834.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 26,
+        "source_id": 27,
+        "arrival": 2839.3,
+        "waiting": 0.0,
+        "start": 2839.3,
+        "departure": 2849.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 20,
+        "source_id": 21,
+        "arrival": 2861.3,
+        "waiting": 0.0,
+        "start": 2861.3,
+        "departure": 2871.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 97,
+        "source_id": 98,
+        "arrival": 2881.5,
+        "waiting": 0.0,
+        "start": 2881.5,
+        "departure": 2891.5,
+        "lateness": 0.0
+      },
+      {
+        "customer": 160,
+        "source_id": 161,
+        "arrival": 2894.6,
+        "waiting": 0.0,
+        "start": 2894.6,
+        "departure": 2904.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 195,
+        "source_id": 196,
+        "arrival": 2912.6,
+        "waiting": 134.4000000000001,
+        "start": 3047.0,
+        "departure": 3057.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 331,
+        "source_id": 332,
+        "arrival": 3081.6,
+        "waiting": 148.4000000000001,
+        "start": 3230.0,
+        "departure": 3240.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 546,
+        "source_id": 547,
+        "arrival": 3249.4,
+        "waiting": 0.0,
+        "start": 3249.4,
+        "departure": 3259.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 359,
+        "source_id": 360,
+        "arrival": 3280.4,
+        "waiting": 340.5999999999999,
+        "start": 3621.0,
+        "departure": 3631.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 125,
+        "source_id": 126,
+        "arrival": 3647.1,
+        "waiting": 0.0,
+        "start": 3647.1,
+        "departure": 3657.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 248,
+        "source_id": 249,
+        "arrival": 3687.5,
+        "waiting": 167.5,
+        "start": 3855.0,
+        "departure": 3865.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 79,
+        "source_id": 80,
+        "arrival": 3877.3,
+        "waiting": 0.0,
+        "start": 3877.3,
+        "departure": 3887.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 141,
+        "source_id": 142,
+        "arrival": 3902.3,
+        "waiting": 0.0,
+        "start": 3902.3,
+        "departure": 3912.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 453,
+        "source_id": 454,
+        "arrival": 3941.3,
+        "waiting": 0.0,
+        "start": 3941.3,
+        "departure": 3951.3,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 115,
+        "source_id": 116,
+        "arrival": 11.7,
+        "waiting": 0.0,
+        "start": 11.7,
+        "departure": 21.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 296,
+        "source_id": 297,
+        "arrival": 38.9,
+        "waiting": 30.1,
+        "start": 69.0,
+        "departure": 79.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 482,
+        "source_id": 483,
+        "arrival": 106.8,
+        "waiting": 75.2,
+        "start": 182.0,
+        "departure": 192.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 470,
+        "source_id": 471,
+        "arrival": 203.1,
+        "waiting": 38.900000000000006,
+        "start": 242.0,
+        "departure": 252.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 499,
+        "source_id": 500,
+        "arrival": 267.6,
+        "waiting": 0.0,
+        "start": 267.6,
+        "departure": 277.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 289,
+        "source_id": 290,
+        "arrival": 293.1,
+        "waiting": 0.0,
+        "start": 293.1,
+        "departure": 303.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 591,
+        "source_id": 592,
+        "arrival": 317.5,
+        "waiting": 124.5,
+        "start": 442.0,
+        "departure": 452.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 210,
+        "source_id": 211,
+        "arrival": 463.1,
+        "waiting": 0.0,
+        "start": 463.1,
+        "departure": 473.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 233,
+        "source_id": 234,
+        "arrival": 482.3,
+        "waiting": 0.0,
+        "start": 482.3,
+        "departure": 492.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 492,
+        "source_id": 493,
+        "arrival": 498.1,
+        "waiting": 189.89999999999998,
+        "start": 688.0,
+        "departure": 698.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 21,
+        "source_id": 22,
+        "arrival": 756.6,
+        "waiting": 0.0,
+        "start": 756.6,
+        "departure": 766.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 179,
+        "source_id": 180,
+        "arrival": 804.4,
+        "waiting": 0.0,
+        "start": 804.4,
+        "departure": 814.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 9,
+        "source_id": 10,
+        "arrival": 823.6,
+        "waiting": 65.39999999999998,
+        "start": 889.0,
+        "departure": 899.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 59,
+        "source_id": 60,
+        "arrival": 910.0,
+        "waiting": 24.0,
+        "start": 934.0,
+        "departure": 944.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 577,
+        "source_id": 578,
+        "arrival": 951.0,
+        "waiting": 0.0,
+        "start": 951.0,
+        "departure": 961.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 49,
+        "source_id": 50,
+        "arrival": 963.0,
+        "waiting": 0.0,
+        "start": 963.0,
+        "departure": 973.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 564,
+        "source_id": 565,
+        "arrival": 991.3,
+        "waiting": 0.0,
+        "start": 991.3,
+        "departure": 1001.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 529,
+        "source_id": 530,
+        "arrival": 1003.5,
+        "waiting": 330.5,
+        "start": 1334.0,
+        "departure": 1344.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 238,
+        "source_id": 239,
+        "arrival": 1350.3,
+        "waiting": 0.0,
+        "start": 1350.3,
+        "departure": 1360.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 167,
+        "source_id": 168,
+        "arrival": 1365.3,
+        "waiting": 0.0,
+        "start": 1365.3,
+        "departure": 1375.3,
+        "lateness": 0.0
+      },
+      {
+        "customer": 217,
+        "source_id": 218,
+        "arrival": 1384.7,
+        "waiting": 0.0,
+        "start": 1384.7,
+        "departure": 1394.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 28,
+        "source_id": 29,
+        "arrival": 1406.4,
+        "waiting": 0.0,
+        "start": 1406.4,
+        "departure": 1416.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 576,
+        "source_id": 577,
+        "arrival": 1436.0,
+        "waiting": 0.0,
+        "start": 1436.0,
+        "departure": 1446.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 523,
+        "source_id": 524,
+        "arrival": 1448.0,
+        "waiting": 0.0,
+        "start": 1448.0,
+        "departure": 1458.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 22,
+        "source_id": 23,
+        "arrival": 1464.4,
+        "waiting": 609.5999999999999,
+        "start": 2074.0,
+        "departure": 2084.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 433,
+        "source_id": 434,
+        "arrival": 2096.3,
+        "waiting": 112.69999999999982,
+        "start": 2209.0,
+        "departure": 2219.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 27,
+        "source_id": 28,
+        "arrival": 2226.2,
+        "waiting": 289.8000000000002,
+        "start": 2516.0,
+        "departure": 2526.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 246,
+        "source_id": 247,
+        "arrival": 2556.6,
+        "waiting": 0.0,
+        "start": 2556.6,
+        "departure": 2566.6,
+        "lateness": 0.0
+      },
+      {
+        "customer": 490,
+        "source_id": 491,
+        "arrival": 2572.6,
+        "waiting": 558.4000000000001,
+        "start": 3131.0,
+        "departure": 3141.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 220,
+        "source_id": 221,
+        "arrival": 3154.1,
+        "waiting": 0.0,
+        "start": 3154.1,
+        "departure": 3164.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 244,
+        "source_id": 245,
+        "arrival": 3184.9,
+        "waiting": 246.0999999999999,
+        "start": 3431.0,
+        "departure": 3441.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 231,
+        "source_id": 232,
+        "arrival": 3446.0,
+        "waiting": 0.0,
+        "start": 3446.0,
+        "departure": 3456.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 597,
+        "source_id": 598,
+        "arrival": 3474.7,
+        "waiting": 0.0,
+        "start": 3474.7,
+        "departure": 3484.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 306,
+        "source_id": 307,
+        "arrival": 3505.2,
+        "waiting": 0.0,
+        "start": 3505.2,
+        "departure": 3515.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 334,
+        "source_id": 335,
+        "arrival": 3527.2,
+        "waiting": 0.0,
+        "start": 3527.2,
+        "departure": 3537.2,
+        "lateness": 0.0
+      }
+    ],
+    [
+      {
+        "customer": 456,
+        "source_id": 457,
+        "arrival": 22.0,
+        "waiting": 0.0,
+        "start": 22.0,
+        "departure": 32.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 364,
+        "source_id": 365,
+        "arrival": 45.1,
+        "waiting": 0.0,
+        "start": 45.1,
+        "departure": 55.1,
+        "lateness": 0.0
+      },
+      {
+        "customer": 399,
+        "source_id": 400,
+        "arrival": 77.4,
+        "waiting": 0.0,
+        "start": 77.4,
+        "departure": 87.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 36,
+        "source_id": 37,
+        "arrival": 101.7,
+        "waiting": 1532.3,
+        "start": 1634.0,
+        "departure": 1644.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 317,
+        "source_id": 318,
+        "arrival": 1650.4,
+        "waiting": 0.0,
+        "start": 1650.4,
+        "departure": 1660.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 387,
+        "source_id": 388,
+        "arrival": 1679.4,
+        "waiting": 0.0,
+        "start": 1679.4,
+        "departure": 1689.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 477,
+        "source_id": 478,
+        "arrival": 1703.7,
+        "waiting": 0.0,
+        "start": 1703.7,
+        "departure": 1713.7,
+        "lateness": 0.0
+      },
+      {
+        "customer": 498,
+        "source_id": 499,
+        "arrival": 1733.5,
+        "waiting": 340.5,
+        "start": 2074.0,
+        "departure": 2084.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 10,
+        "source_id": 11,
+        "arrival": 2103.7,
+        "waiting": 66.30000000000018,
+        "start": 2170.0,
+        "departure": 2180.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 269,
+        "source_id": 270,
+        "arrival": 2194.2,
+        "waiting": 0.0,
+        "start": 2194.2,
+        "departure": 2204.2,
+        "lateness": 0.0
+      },
+      {
+        "customer": 245,
+        "source_id": 246,
+        "arrival": 2215.2999999999997,
+        "waiting": 240.70000000000027,
+        "start": 2456.0,
+        "departure": 2466.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 536,
+        "source_id": 537,
+        "arrival": 2499.5,
+        "waiting": 150.5,
+        "start": 2650.0,
+        "departure": 2660.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 212,
+        "source_id": 213,
+        "arrival": 2673.4,
+        "waiting": 0.0,
+        "start": 2673.4,
+        "departure": 2683.4,
+        "lateness": 0.0
+      },
+      {
+        "customer": 223,
+        "source_id": 224,
+        "arrival": 2690.4,
+        "waiting": 76.59999999999991,
+        "start": 2767.0,
+        "departure": 2777.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 440,
+        "source_id": 441,
+        "arrival": 2785.0,
+        "waiting": 0.0,
+        "start": 2785.0,
+        "departure": 2795.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 69,
+        "source_id": 70,
+        "arrival": 2831.0,
+        "waiting": 0.0,
+        "start": 2831.0,
+        "departure": 2841.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 567,
+        "source_id": 568,
+        "arrival": 2877.2,
+        "waiting": 67.80000000000018,
+        "start": 2945.0,
+        "departure": 2955.0,
+        "lateness": 0.0
+      },
+      {
+        "customer": 154,
+        "source_id": 155,
+        "arrival": 2966.7,
+        "waiting": 37.30000000000018,
+        "start": 3004.0,
+        "departure": 3014.0,
+        "lateness": 0.0
+      }
+    ]
+  ],
+  "route_totals": [
+    {
+      "truck": 1,
+      "departure": 0.0,
+      "return_time": 3607.9,
+      "elapsed": 3607.9,
+      "driving": 582.9,
+      "waiting": 2615.0000000000005,
+      "service": 410.0,
+      "load": 655.0,
+      "utilization": 0.655,
+      "distance": 582.9,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 2,
+      "departure": 0.0,
+      "return_time": 3489.0,
+      "elapsed": 3489.0,
+      "driving": 758.5000000000001,
+      "waiting": 2370.500000000001,
+      "service": 360.0,
+      "load": 700.0,
+      "utilization": 0.7,
+      "distance": 758.5,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 3,
+      "departure": 0.0,
+      "return_time": 4311.7,
+      "elapsed": 4311.7,
+      "driving": 965.0000000000002,
+      "waiting": 2856.7000000000003,
+      "service": 490.0,
+      "load": 853.0,
+      "utilization": 0.853,
+      "distance": 965.0,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 4,
+      "departure": 0.0,
+      "return_time": 4156.2,
+      "elapsed": 4156.2,
+      "driving": 784.3,
+      "waiting": 2931.899999999999,
+      "service": 440.0,
+      "load": 816.0,
+      "utilization": 0.816,
+      "distance": 784.3,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 5,
+      "departure": 0.0,
+      "return_time": 3880.0000000000005,
+      "elapsed": 3880.0000000000005,
+      "driving": 853.2999999999998,
+      "waiting": 2556.7,
+      "service": 470.0,
+      "load": 770.0,
+      "utilization": 0.77,
+      "distance": 853.3,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 6,
+      "departure": 0.0,
+      "return_time": 3169.6,
+      "elapsed": 3169.6,
+      "driving": 85.6,
+      "waiting": 3054.0,
+      "service": 30.0,
+      "load": 54.0,
+      "utilization": 0.054,
+      "distance": 85.6,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 7,
+      "departure": 0.0,
+      "return_time": 4280.5,
+      "elapsed": 4280.5,
+      "driving": 792.8000000000001,
+      "waiting": 3037.700000000001,
+      "service": 450.0,
+      "load": 809.0,
+      "utilization": 0.809,
+      "distance": 792.8,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 8,
+      "departure": 0.0,
+      "return_time": 4662.0,
+      "elapsed": 4662.0,
+      "driving": 838.7999999999997,
+      "waiting": 3363.1999999999994,
+      "service": 460.0,
+      "load": 777.0,
+      "utilization": 0.777,
+      "distance": 838.8,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 9,
+      "departure": 0.0,
+      "return_time": 3466.4,
+      "elapsed": 3466.4,
+      "driving": 279.5,
+      "waiting": 3036.9,
+      "service": 150.0,
+      "load": 266.0,
+      "utilization": 0.266,
+      "distance": 279.5,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 10,
+      "departure": 0.0,
+      "return_time": 3720.2999999999997,
+      "elapsed": 3720.2999999999997,
+      "driving": 297.2,
+      "waiting": 3253.1000000000013,
+      "service": 170.0,
+      "load": 315.0,
+      "utilization": 0.315,
+      "distance": 297.2,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 11,
+      "departure": 0.0,
+      "return_time": 4220.400000000001,
+      "elapsed": 4220.400000000001,
+      "driving": 898.4999999999999,
+      "waiting": 2851.899999999999,
+      "service": 470.0,
+      "load": 914.0,
+      "utilization": 0.914,
+      "distance": 898.5,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 12,
+      "departure": 0.0,
+      "return_time": 3532.8,
+      "elapsed": 3532.8,
+      "driving": 434.80000000000007,
+      "waiting": 2817.9999999999995,
+      "service": 280.0,
+      "load": 525.0,
+      "utilization": 0.525,
+      "distance": 434.8,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 13,
+      "departure": 0.0,
+      "return_time": 3282.2,
+      "elapsed": 3282.2,
+      "driving": 619.4000000000001,
+      "waiting": 2222.8,
+      "service": 440.0,
+      "load": 841.0,
+      "utilization": 0.841,
+      "distance": 619.4,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 14,
+      "departure": 0.0,
+      "return_time": 4425.7,
+      "elapsed": 4425.7,
+      "driving": 738.1,
+      "waiting": 3287.6000000000004,
+      "service": 400.0,
+      "load": 648.0,
+      "utilization": 0.648,
+      "distance": 738.1,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 15,
+      "departure": 0.0,
+      "return_time": 3964.3,
+      "elapsed": 3964.3,
+      "driving": 800.6,
+      "waiting": 2713.7000000000007,
+      "service": 450.0,
+      "load": 836.0,
+      "utilization": 0.836,
+      "distance": 800.6,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 16,
+      "departure": 0.0,
+      "return_time": 3570.3999999999996,
+      "elapsed": 3570.3999999999996,
+      "driving": 525.3000000000001,
+      "waiting": 2695.1,
+      "service": 350.0,
+      "load": 693.0,
+      "utilization": 0.693,
+      "distance": 525.3,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    },
+    {
+      "truck": 17,
+      "departure": 0.0,
+      "return_time": 3026.1,
+      "elapsed": 3026.1,
+      "driving": 334.1,
+      "waiting": 2512.0000000000005,
+      "service": 180.0,
+      "load": 265.0,
+      "utilization": 0.265,
+      "distance": 334.1,
+      "depot_lateness": 0.0,
+      "capacity_excess": 0.0,
+      "depot_early_departure": 0.0,
+      "depot_departure_lateness": 0.0
+    }
+  ]
+}

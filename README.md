@@ -6,7 +6,7 @@ EcoRoute studies the **capacitated vehicle routing problem with time windows (CV
 
 ## Setup and run order
 
-Run the commands below from the repository root. The project currently performs mathematical modeling and supplied-route validation; no optimization algorithm is selected or implemented.
+Run the commands below from the repository root. The project performs mathematical modeling and supplied-route validation. Algorithm 1 (ALNS + VND) is implemented and benchmarked: see [docs/alns_vnd.md](docs/alns_vnd.md) and [results/alns-vnd/README.md](results/alns-vnd/README.md). No final method is selected.
 
 ### 1. Create an isolated Python environment
 
@@ -137,3 +137,54 @@ python scripts/run_benchmarks.py --manifest /path/to/campaign.json --output resu
 [AGENTS.md](AGENTS.md) §9 contains the exact JSON manifest format and Python adapter API. Each declared variant/instance/seed attempt is retained, including missing/invalid/error/timeout cases. CSV/JSON/Markdown tables, plots, schedules, route artifacts, hashes, versions and hardware metadata persist under the new campaign directory. Gap is `100 * (independently_validated_cost - verified_reference_cost) / verified_reference_cost`; invalid routes or references have no eligible gap. Imports cannot establish measured solver runtimes or algorithm PASS. Candidate algorithms remain unimplemented.
 
 Default engineering targets are average gap ≤3%, ≥20 held-out instances with repeated seeds, 100% feasible planned outputs and investigation of any individual gap >7%. Campaign reports show explicit PASS / NEEDS IMPROVEMENT with reasons; final runtime/memory budgets and tutor scope approval remain pending. Preserve these results in Git or a durable archive before long experiments; `outputs/` is only notebook scratch space. The user removed the older context/dataset/benchmarks documents; their requirements are preserved in both synchronized handbooks.
+
+## Live benchmark viewer (including Claude worktrees)
+
+With the project environment activated, open a continuously updating Matplotlib window:
+
+```bash
+python scripts/watch_benchmarks.py
+```
+
+By default it finds the newest solver campaign across registered Git worktrees at startup.
+To watch Claude's specific campaign explicitly:
+
+```bash
+python scripts/watch_benchmarks.py \
+  --campaign /Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/results/alns-vnd/test-001 \
+  --interval 3
+```
+
+The viewer polls completed `result.json` artifacts, including parallel `shards/`, every
+three seconds and redraws when results change. It shows finished/total runs, percentage complete, remaining runs, fully completed
+instances, a rough ETA from observed campaign throughput, and the running equal-weight
+mean of available instance means, per-instance mean/min/max gaps, execution time by size,
+and seed coverage. The ETA includes parallel execution in the observed throughput,
+but varying instance sizes or stalled workers can change it substantially; it is not
+a guaranteed finish time. Counts describe recorded attempts, including failed runs,
+and refresh every poll; the ETA display refreshes at least every 30 seconds. Pending, infeasible and unscored runs remain visible; known scoring,
+reference, timeout and budget problems are flagged. It uses the recorded independent
+evaluator outputs; it does not revalidate routes or run the solver. Partial feasible-only
+statistics cannot establish a final PASS. BKS gaps do not establish proven optimality.
+Merged copies are deduplicated by run ID. If there are retries, the latest attempt per
+planned variant/instance/seed is plotted and the additional attempt count is displayed.
+
+The viewer reads the observed campaign without modifying it or switching Git branches.
+It stays on the selected campaign until closed. Close the plot window or press Ctrl+C
+to stop. Add `--save outputs/live-benchmarks.png` to update a PNG outside the observed
+campaign whenever new results arrive. An interactive Matplotlib backend is required;
+on macOS, if needed, use `MPLBACKEND=MacOSX python scripts/watch_benchmarks.py`.
+This viewer needs no additional dependencies beyond `requirements.txt`.
+
+## Algorithm 1 — ALNS + VND
+
+```bash
+python -m pip install -r algorithms/alns_vnd/requirements.txt   # adds numba, psutil
+python -m unittest discover                                      # full test suite
+python scripts/run_alns.py run --split-file results/alns-vnd/split.json --split test \
+    --seeds 0 1 2 3 4 5 6 7 8 9 --time-per-customer 0.3 --workers 6 --output results/alns-vnd/<new-id>
+```
+
+Held-out result (`test-001`): 360/360 feasible, mean gap 0.654 % to published BKS, worst run 2.364 %. Details in [results/alns-vnd/README.md](results/alns-vnd/README.md).
+
+**Source of truth:** the ALNS + VND solver code lives in `main.ipynb` (Sections 12–15, cells headed `%%alns_source`). `algorithms/alns_vnd/*.py` are identical copies kept because Numba caches compiled code only for real files (instant notebook start) and isolated benchmark workers import files. After editing solver cells run `python scripts/sync_notebook_solver.py --write`; `tests/test_notebook_solver.py` fails while they differ, and the notebook compiles its own cells (with a warning) until then.

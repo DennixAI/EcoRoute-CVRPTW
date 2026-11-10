@@ -1,0 +1,30 @@
+{
+  "campaign": "test-001",
+  "split": "test",
+  "instances": 36,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "planned_attempts": 360,
+  "attempts": 360,
+  "feasible_attempts": 360,
+  "budget_respected": 360,
+  "mean_gap_equal_weight": 0.6539836792223219,
+  "median_instance_gap": 0.49647673652358515,
+  "p90_run_gap": 1.44844932142798,
+  "worst_run_gap": 2.364351094660132,
+  "best_of_seeds_mean_gap": 0.3892906839278112,
+  "mean_within_instance_sd": 0.19950833846600993,
+  "instances_any_run_over_7": [],
+  "negative_gap_runs": 0,
+  "budget_rule": "time_limit = max(10.0, 0.3 * customers) seconds"
+}

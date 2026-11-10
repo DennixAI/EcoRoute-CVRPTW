@@ -1,0 +1,22 @@
+{
+  "campaign": "smoke-001",
+  "split": "development",
+  "instances": 2,
+  "seeds": [
+    0,
+    1
+  ],
+  "planned_attempts": 4,
+  "attempts": 4,
+  "feasible_attempts": 4,
+  "budget_respected": 4,
+  "mean_gap_equal_weight": 0.17548345109706637,
+  "median_instance_gap": 0.17548345109706637,
+  "p90_run_gap": 0.38164745258461413,
+  "worst_run_gap": 0.42766827817033626,
+  "best_of_seeds_mean_gap": 0.13713276310896458,
+  "mean_within_instance_sd": 0.054236063079112475,
+  "instances_any_run_over_7": [],
+  "negative_gap_runs": 0,
+  "budget_rule": "time_limit = max(5.0, 0.05 * customers) seconds"
+}

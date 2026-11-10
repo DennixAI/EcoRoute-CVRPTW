@@ -1,0 +1,18 @@
+[
+  {
+    "variant": "alns-vnd",
+    "mean_gap": 0.8014236622483956,
+    "instances_with_gaps": 1,
+    "planned_instances": 1,
+    "attempts": 1,
+    "planned_attempts": 1,
+    "feasibility_rate": 1.0,
+    "investigations": [],
+    "assessment": "NEEDS IMPROVEMENT",
+    "reasons": [
+      "Too few distinct held-out instances",
+      "Too few distinct seeds"
+    ],
+    "runtime_memory_targets": "unresolved; no runtime/scalability PASS claimed"
+  }
+]

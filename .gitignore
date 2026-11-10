@@ -5,3 +5,11 @@ __pycache__/
 *.py[cod]
 
 outputs/
+
+# Numba on-disk compilation cache
+*.nbi
+*.nbc
+
+# Raw per-attempt campaign artifacts: archived as checksummed tarballs, not in Git
+results/alns-vnd/*/shards/
+results/alns-vnd/archives/

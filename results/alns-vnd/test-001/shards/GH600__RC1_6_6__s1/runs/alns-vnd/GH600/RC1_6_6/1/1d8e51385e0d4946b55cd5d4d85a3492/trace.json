@@ -1,0 +1,1320 @@
+[
+  {
+    "seconds": 0.5476,
+    "iteration": 0,
+    "best_cost": 18391.899999999998,
+    "current_cost": 18391.899999999998,
+    "event": "construction"
+  },
+  {
+    "seconds": 0.5671,
+    "iteration": 1,
+    "best_cost": 18360.899999999998,
+    "current_cost": 18360.899999999998,
+    "temperature": 41.7365355085225,
+    "event": "improvement"
+  },
+  {
+    "seconds": 0.5705,
+    "iteration": 3,
+    "best_cost": 18359.999999999996,
+    "current_cost": 18359.999999999996,
+    "temperature": 41.717202723976904,
+    "event": "improvement"
+  },
+  {
+    "seconds": 0.5765,
+    "iteration": 7,
+    "best_cost": 18306.3,
+    "current_cost": 18306.3,
+    "temperature": 41.71365234059239,
+    "event": "improvement"
+  },
+  {
+    "seconds": 0.5856,
+    "iteration": 15,
+    "best_cost": 18301.1,
+    "current_cost": 18309.399999999998,
+    "temperature": 41.70741099775673,
+    "event": "improvement"
+  },
+  {
+    "seconds": 0.6022,
+    "iteration": 31,
+    "best_cost": 18013.199999999997,
+    "current_cost": 18013.199999999997,
+    "temperature": 41.698016972456024,
+    "event": "improvement"
+  },
+  {
+    "seconds": 0.6324,
+    "iteration": 63,
+    "best_cost": 17915.800000000003,
+    "current_cost": 17934.6,
+    "temperature": 41.68076480382028,
+    "event": "improvement"
+  },
+  {
+    "seconds": 0.6837,
+    "iteration": 127,
+    "best_cost": 17849.8,
+    "current_cost": 17850.4,
+    "temperature": 41.61994087102029,
+    "event": "improvement"
+  },
+  {
+    "seconds": 0.7383,
+    "iteration": 191,
+    "best_cost": 17733.1,
+    "current_cost": 17878.600000000002,
+    "temperature": 41.596195950270996,
+    "event": "improvement"
+  },
+  {
+    "seconds": 0.8452,
+    "iteration": 319,
+    "best_cost": 17685.399999999994,
+    "current_cost": 17750.699999999997,
+    "temperature": 41.48493691707516,
+    "event": "improvement"
+  },
+  {
+    "seconds": 0.9024,
+    "iteration": 383,
+    "best_cost": 17612.5,
+    "current_cost": 17612.5,
+    "temperature": 41.42923096164361,
+    "event": "improvement"
+  },
+  {
+    "seconds": 0.9603,
+    "iteration": 447,
+    "best_cost": 17443.299999999996,
+    "current_cost": 17443.299999999996,
+    "temperature": 41.37016528517781,
+    "event": "improvement"
+  },
+  {
+    "seconds": 1.014,
+    "iteration": 511,
+    "best_cost": 17442.699999999997,
+    "current_cost": 17599.399999999994,
+    "temperature": 41.310556058311306,
+    "event": "improvement"
+  },
+  {
+    "seconds": 1.2559,
+    "iteration": 831,
+    "best_cost": 17402.0,
+    "current_cost": 17404.399999999998,
+    "temperature": 41.046272923057636,
+    "event": "improvement"
+  },
+  {
+    "seconds": 3.2897,
+    "iteration": 3391,
+    "best_cost": 17402.0,
+    "current_cost": 17690.100000000002,
+    "temperature": 39.03154137377743,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 4.6281,
+    "iteration": 5055,
+    "best_cost": 17398.3,
+    "current_cost": 17408.899999999998,
+    "temperature": 37.754377416834714,
+    "event": "improvement"
+  },
+  {
+    "seconds": 4.6817,
+    "iteration": 5119,
+    "best_cost": 17397.199999999997,
+    "current_cost": 17511.399999999998,
+    "temperature": 37.703103022065775,
+    "event": "improvement"
+  },
+  {
+    "seconds": 5.3838,
+    "iteration": 6015,
+    "best_cost": 17394.3,
+    "current_cost": 17478.7,
+    "temperature": 37.04626518211003,
+    "event": "improvement"
+  },
+  {
+    "seconds": 5.4721,
+    "iteration": 6143,
+    "best_cost": 17390.8,
+    "current_cost": 17426.199999999993,
+    "temperature": 36.95676916273772,
+    "event": "improvement"
+  },
+  {
+    "seconds": 5.9864,
+    "iteration": 6783,
+    "best_cost": 17239.199999999997,
+    "current_cost": 17299.999999999993,
+    "temperature": 36.49244602244546,
+    "event": "improvement"
+  },
+  {
+    "seconds": 6.0412,
+    "iteration": 6847,
+    "best_cost": 17176.299999999996,
+    "current_cost": 17176.299999999996,
+    "temperature": 36.44852146980855,
+    "event": "improvement"
+  },
+  {
+    "seconds": 6.0965,
+    "iteration": 6911,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17252.399999999998,
+    "temperature": 36.39882843316541,
+    "event": "improvement"
+  },
+  {
+    "seconds": 8.1179,
+    "iteration": 9407,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17730.8,
+    "temperature": 34.60256172088645,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 10.1844,
+    "iteration": 12031,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17488.599999999995,
+    "temperature": 32.88370918058396,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 12.2169,
+    "iteration": 14527,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17466.9,
+    "temperature": 31.254318992573545,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 14.225,
+    "iteration": 17087,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17411.999999999996,
+    "temperature": 29.721930674214114,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 16.2403,
+    "iteration": 19711,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17251.4,
+    "temperature": 28.264168471870658,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 18.2467,
+    "iteration": 22271,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17536.500000000004,
+    "temperature": 26.890641036901634,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 20.2977,
+    "iteration": 24895,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17418.6,
+    "temperature": 25.555794087566934,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 22.3177,
+    "iteration": 27455,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17363.4,
+    "temperature": 24.293583097943372,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 24.3502,
+    "iteration": 30079,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17376.199999999997,
+    "temperature": 23.09768967076586,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 26.3574,
+    "iteration": 32767,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17495.4,
+    "temperature": 21.964166066682203,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 28.3745,
+    "iteration": 35327,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17388.100000000006,
+    "temperature": 20.89216728041728,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 30.4057,
+    "iteration": 37951,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17236.599999999995,
+    "temperature": 19.86172739778779,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 32.424,
+    "iteration": 40639,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17204.3,
+    "temperature": 18.88799479298149,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 34.4602,
+    "iteration": 43327,
+    "best_cost": 17160.599999999995,
+    "current_cost": 17259.6,
+    "temperature": 17.948575731241828,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 34.6753,
+    "iteration": 43647,
+    "best_cost": 17152.399999999998,
+    "current_cost": 17152.399999999998,
+    "temperature": 17.85655540563249,
+    "event": "improvement"
+  },
+  {
+    "seconds": 34.7177,
+    "iteration": 43711,
+    "best_cost": 17144.199999999997,
+    "current_cost": 17153.6,
+    "temperature": 17.835157262287563,
+    "event": "improvement"
+  },
+  {
+    "seconds": 36.7227,
+    "iteration": 46335,
+    "best_cost": 17144.199999999997,
+    "current_cost": 17461.300000000003,
+    "temperature": 16.970776534637647,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 37.361,
+    "iteration": 47167,
+    "best_cost": 17137.6,
+    "current_cost": 17138.999999999996,
+    "temperature": 16.698905772886032,
+    "event": "improvement"
+  },
+  {
+    "seconds": 37.4155,
+    "iteration": 47231,
+    "best_cost": 17136.6,
+    "current_cost": 17153.799999999996,
+    "temperature": 16.68085999373979,
+    "event": "improvement"
+  },
+  {
+    "seconds": 38.1529,
+    "iteration": 48191,
+    "best_cost": 17131.699999999997,
+    "current_cost": 17138.899999999994,
+    "temperature": 16.373964658294362,
+    "event": "improvement"
+  },
+  {
+    "seconds": 38.842,
+    "iteration": 49151,
+    "best_cost": 17096.000000000004,
+    "current_cost": 17107.0,
+    "temperature": 16.091617106615217,
+    "event": "improvement"
+  },
+  {
+    "seconds": 38.932,
+    "iteration": 49279,
+    "best_cost": 17089.6,
+    "current_cost": 17103.899999999998,
+    "temperature": 16.058410744912212,
+    "event": "improvement"
+  },
+  {
+    "seconds": 38.977,
+    "iteration": 49343,
+    "best_cost": 17020.499999999993,
+    "current_cost": 17082.299999999996,
+    "temperature": 16.040591371501154,
+    "event": "improvement"
+  },
+  {
+    "seconds": 41.022,
+    "iteration": 52095,
+    "best_cost": 17020.499999999993,
+    "current_cost": 17153.399999999998,
+    "temperature": 15.24565150149293,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 43.0615,
+    "iteration": 54847,
+    "best_cost": 17020.499999999993,
+    "current_cost": 17151.699999999997,
+    "temperature": 14.490235728260185,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 44.2786,
+    "iteration": 56511,
+    "best_cost": 17018.899999999994,
+    "current_cost": 17019.799999999996,
+    "temperature": 14.056399317205914,
+    "event": "improvement"
+  },
+  {
+    "seconds": 46.3146,
+    "iteration": 59327,
+    "best_cost": 17018.899999999994,
+    "current_cost": 17082.9,
+    "temperature": 13.361422848630687,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 48.3512,
+    "iteration": 62143,
+    "best_cost": 17018.899999999994,
+    "current_cost": 17088.399999999998,
+    "temperature": 12.7012996810823,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 50.3528,
+    "iteration": 64831,
+    "best_cost": 17018.899999999994,
+    "current_cost": 17184.4,
+    "temperature": 12.083102748473117,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 52.3633,
+    "iteration": 67583,
+    "best_cost": 17018.899999999994,
+    "current_cost": 17125.999999999996,
+    "temperature": 11.494601389265581,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 54.3874,
+    "iteration": 70271,
+    "best_cost": 17018.899999999994,
+    "current_cost": 17109.299999999996,
+    "temperature": 10.924995376036927,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 56.3942,
+    "iteration": 72959,
+    "best_cost": 17018.899999999994,
+    "current_cost": 17138.800000000003,
+    "temperature": 10.392404833545642,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 58.4117,
+    "iteration": 75583,
+    "best_cost": 17018.899999999994,
+    "current_cost": 17109.4,
+    "temperature": 9.884945132842315,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 60.4172,
+    "iteration": 78335,
+    "best_cost": 17018.899999999994,
+    "current_cost": 17092.7,
+    "temperature": 9.402557766170247,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 62.4406,
+    "iteration": 81215,
+    "best_cost": 17018.899999999994,
+    "current_cost": 17074.2,
+    "temperature": 8.939133172936248,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 62.6744,
+    "iteration": 81535,
+    "best_cost": 16996.1,
+    "current_cost": 16996.1,
+    "temperature": 8.888465230602671,
+    "event": "improvement"
+  },
+  {
+    "seconds": 62.7192,
+    "iteration": 81599,
+    "best_cost": 16993.499999999996,
+    "current_cost": 17021.699999999997,
+    "temperature": 8.878422044527921,
+    "event": "improvement"
+  },
+  {
+    "seconds": 64.6616,
+    "iteration": 84223,
+    "best_cost": 16992.7,
+    "current_cost": 17002.199999999997,
+    "temperature": 8.459185060641325,
+    "event": "improvement"
+  },
+  {
+    "seconds": 65.315,
+    "iteration": 85119,
+    "best_cost": 16991.0,
+    "current_cost": 16997.7,
+    "temperature": 8.323039222325388,
+    "event": "improvement"
+  },
+  {
+    "seconds": 66.5831,
+    "iteration": 86783,
+    "best_cost": 16977.199999999997,
+    "current_cost": 16981.299999999996,
+    "temperature": 8.064097392499615,
+    "event": "improvement"
+  },
+  {
+    "seconds": 67.6932,
+    "iteration": 88255,
+    "best_cost": 16975.399999999998,
+    "current_cost": 16975.399999999998,
+    "temperature": 7.844562604288706,
+    "event": "improvement"
+  },
+  {
+    "seconds": 67.7399,
+    "iteration": 88319,
+    "best_cost": 16974.100000000002,
+    "current_cost": 16982.599999999995,
+    "temperature": 7.834912442094809,
+    "event": "improvement"
+  },
+  {
+    "seconds": 67.7884,
+    "iteration": 88383,
+    "best_cost": 16948.3,
+    "current_cost": 16948.3,
+    "temperature": 7.825809947589438,
+    "event": "improvement"
+  },
+  {
+    "seconds": 67.8348,
+    "iteration": 88447,
+    "best_cost": 16946.499999999996,
+    "current_cost": 16950.8,
+    "temperature": 7.816358969748857,
+    "event": "improvement"
+  },
+  {
+    "seconds": 69.5866,
+    "iteration": 90751,
+    "best_cost": 16941.8,
+    "current_cost": 16961.6,
+    "temperature": 7.48239803112705,
+    "event": "improvement"
+  },
+  {
+    "seconds": 70.6027,
+    "iteration": 92031,
+    "best_cost": 16936.499999999996,
+    "current_cost": 16947.399999999998,
+    "temperature": 7.294485639368947,
+    "event": "improvement"
+  },
+  {
+    "seconds": 70.6525,
+    "iteration": 92095,
+    "best_cost": 16932.6,
+    "current_cost": 16932.6,
+    "temperature": 7.287100721724056,
+    "event": "improvement"
+  },
+  {
+    "seconds": 70.7112,
+    "iteration": 92159,
+    "best_cost": 16928.699999999997,
+    "current_cost": 16930.399999999998,
+    "temperature": 7.27806429640451,
+    "event": "improvement"
+  },
+  {
+    "seconds": 70.9677,
+    "iteration": 92479,
+    "best_cost": 16927.799999999996,
+    "current_cost": 16935.3,
+    "temperature": 7.2290453644220865,
+    "event": "improvement"
+  },
+  {
+    "seconds": 71.057,
+    "iteration": 92607,
+    "best_cost": 16911.999999999996,
+    "current_cost": 16924.199999999997,
+    "temperature": 7.212221201718416,
+    "event": "improvement"
+  },
+  {
+    "seconds": 71.1064,
+    "iteration": 92671,
+    "best_cost": 16903.6,
+    "current_cost": 16906.899999999998,
+    "temperature": 7.20509010776991,
+    "event": "improvement"
+  },
+  {
+    "seconds": 71.2628,
+    "iteration": 92863,
+    "best_cost": 16896.300000000003,
+    "current_cost": 16899.100000000002,
+    "temperature": 7.178645837141358,
+    "event": "improvement"
+  },
+  {
+    "seconds": 71.4628,
+    "iteration": 93119,
+    "best_cost": 16883.400000000005,
+    "current_cost": 16887.3,
+    "temperature": 7.140991968064341,
+    "event": "improvement"
+  },
+  {
+    "seconds": 71.5082,
+    "iteration": 93183,
+    "best_cost": 16882.9,
+    "current_cost": 16887.100000000002,
+    "temperature": 7.1326051835124735,
+    "event": "improvement"
+  },
+  {
+    "seconds": 72.9949,
+    "iteration": 95039,
+    "best_cost": 16878.0,
+    "current_cost": 16878.0,
+    "temperature": 6.873723335906794,
+    "event": "improvement"
+  },
+  {
+    "seconds": 73.2297,
+    "iteration": 95359,
+    "best_cost": 16874.5,
+    "current_cost": 16897.0,
+    "temperature": 6.833269319807812,
+    "event": "improvement"
+  },
+  {
+    "seconds": 73.6755,
+    "iteration": 95935,
+    "best_cost": 16873.899999999998,
+    "current_cost": 16889.8,
+    "temperature": 6.7582910401822005,
+    "event": "improvement"
+  },
+  {
+    "seconds": 73.7203,
+    "iteration": 95999,
+    "best_cost": 16871.999999999996,
+    "current_cost": 16889.699999999993,
+    "temperature": 6.750058907004361,
+    "event": "improvement"
+  },
+  {
+    "seconds": 75.7591,
+    "iteration": 98751,
+    "best_cost": 16871.999999999996,
+    "current_cost": 16919.59999999999,
+    "temperature": 6.416445067370273,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 77.785,
+    "iteration": 101503,
+    "best_cost": 16871.999999999996,
+    "current_cost": 16917.499999999996,
+    "temperature": 6.0995793865341685,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 79.8086,
+    "iteration": 104383,
+    "best_cost": 16871.999999999996,
+    "current_cost": 16917.0,
+    "temperature": 5.8014308169969535,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 80.2433,
+    "iteration": 105023,
+    "best_cost": 16869.400000000005,
+    "current_cost": 16869.400000000005,
+    "temperature": 5.736800027542427,
+    "event": "improvement"
+  },
+  {
+    "seconds": 82.1994,
+    "iteration": 107647,
+    "best_cost": 16862.399999999998,
+    "current_cost": 16862.8,
+    "temperature": 5.465718092496667,
+    "event": "improvement"
+  },
+  {
+    "seconds": 82.2445,
+    "iteration": 107711,
+    "best_cost": 16857.2,
+    "current_cost": 16864.800000000003,
+    "temperature": 5.45860923444548,
+    "event": "improvement"
+  },
+  {
+    "seconds": 82.2933,
+    "iteration": 107775,
+    "best_cost": 16853.300000000003,
+    "current_cost": 16853.300000000003,
+    "temperature": 5.452487267827317,
+    "event": "improvement"
+  },
+  {
+    "seconds": 82.7115,
+    "iteration": 108351,
+    "best_cost": 16849.5,
+    "current_cost": 16849.5,
+    "temperature": 5.395545134910837,
+    "event": "improvement"
+  },
+  {
+    "seconds": 82.7541,
+    "iteration": 108415,
+    "best_cost": 16842.999999999996,
+    "current_cost": 16848.7,
+    "temperature": 5.389419450053426,
+    "event": "improvement"
+  },
+  {
+    "seconds": 82.797,
+    "iteration": 108479,
+    "best_cost": 16836.7,
+    "current_cost": 16838.2,
+    "temperature": 5.3836959993157585,
+    "event": "improvement"
+  },
+  {
+    "seconds": 82.8388,
+    "iteration": 108543,
+    "best_cost": 16836.500000000004,
+    "current_cost": 16846.100000000002,
+    "temperature": 5.377944746052606,
+    "event": "improvement"
+  },
+  {
+    "seconds": 82.882,
+    "iteration": 108607,
+    "best_cost": 16835.5,
+    "current_cost": 16842.5,
+    "temperature": 5.372345383173418,
+    "event": "improvement"
+  },
+  {
+    "seconds": 84.8897,
+    "iteration": 111487,
+    "best_cost": 16835.5,
+    "current_cost": 16878.599999999995,
+    "temperature": 5.109997007372485,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 86.9157,
+    "iteration": 114239,
+    "best_cost": 16835.5,
+    "current_cost": 16881.399999999998,
+    "temperature": 4.85894736045596,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 88.9525,
+    "iteration": 116991,
+    "best_cost": 16835.5,
+    "current_cost": 16859.399999999994,
+    "temperature": 4.618730726141804,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 90.96,
+    "iteration": 119743,
+    "best_cost": 16835.5,
+    "current_cost": 16855.000000000004,
+    "temperature": 4.392700731218178,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 92.9676,
+    "iteration": 122559,
+    "best_cost": 16835.5,
+    "current_cost": 16863.0,
+    "temperature": 4.178821058326054,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 94.586,
+    "iteration": 124863,
+    "best_cost": 16825.1,
+    "current_cost": 16829.800000000003,
+    "temperature": 4.013346950077365,
+    "event": "improvement"
+  },
+  {
+    "seconds": 96.6139,
+    "iteration": 127551,
+    "best_cost": 16825.1,
+    "current_cost": 16857.699999999997,
+    "temperature": 3.815542602156039,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 98.6249,
+    "iteration": 130431,
+    "best_cost": 16825.1,
+    "current_cost": 16850.199999999997,
+    "temperature": 3.6295448522895066,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 100.671,
+    "iteration": 133247,
+    "best_cost": 16825.1,
+    "current_cost": 16829.5,
+    "temperature": 3.449449824749768,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 102.7147,
+    "iteration": 135999,
+    "best_cost": 16825.1,
+    "current_cost": 16842.6,
+    "temperature": 3.277863582264244,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 103.8056,
+    "iteration": 137407,
+    "best_cost": 16824.499999999993,
+    "current_cost": 16827.499999999996,
+    "temperature": 3.191005858579381,
+    "event": "improvement"
+  },
+  {
+    "seconds": 103.9975,
+    "iteration": 137663,
+    "best_cost": 16817.499999999996,
+    "current_cost": 16817.499999999996,
+    "temperature": 3.174934123423591,
+    "event": "improvement"
+  },
+  {
+    "seconds": 104.0404,
+    "iteration": 137727,
+    "best_cost": 16816.399999999998,
+    "current_cost": 16816.399999999998,
+    "temperature": 3.171278582434003,
+    "event": "improvement"
+  },
+  {
+    "seconds": 104.0827,
+    "iteration": 137791,
+    "best_cost": 16803.3,
+    "current_cost": 16803.3,
+    "temperature": 3.167891109083803,
+    "event": "improvement"
+  },
+  {
+    "seconds": 104.1318,
+    "iteration": 137855,
+    "best_cost": 16802.1,
+    "current_cost": 16802.1,
+    "temperature": 3.1645583677602818,
+    "event": "improvement"
+  },
+  {
+    "seconds": 106.1648,
+    "iteration": 140799,
+    "best_cost": 16802.1,
+    "current_cost": 16810.499999999996,
+    "temperature": 3.0074838936554604,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 106.3034,
+    "iteration": 140991,
+    "best_cost": 16800.599999999995,
+    "current_cost": 16800.599999999995,
+    "temperature": 2.9976083763813914,
+    "event": "improvement"
+  },
+  {
+    "seconds": 106.5287,
+    "iteration": 141311,
+    "best_cost": 16800.099999999995,
+    "current_cost": 16800.099999999995,
+    "temperature": 2.9806334042055567,
+    "event": "improvement"
+  },
+  {
+    "seconds": 107.6588,
+    "iteration": 143039,
+    "best_cost": 16795.299999999992,
+    "current_cost": 16795.299999999996,
+    "temperature": 2.8980654130719326,
+    "event": "improvement"
+  },
+  {
+    "seconds": 107.6984,
+    "iteration": 143103,
+    "best_cost": 16795.099999999995,
+    "current_cost": 16795.099999999995,
+    "temperature": 2.894810280313768,
+    "event": "improvement"
+  },
+  {
+    "seconds": 107.9112,
+    "iteration": 143359,
+    "best_cost": 16791.8,
+    "current_cost": 16791.8,
+    "temperature": 2.8802252045164884,
+    "event": "improvement"
+  },
+  {
+    "seconds": 109.1182,
+    "iteration": 145151,
+    "best_cost": 16786.899999999998,
+    "current_cost": 16794.899999999998,
+    "temperature": 2.7938120014133916,
+    "event": "improvement"
+  },
+  {
+    "seconds": 109.3163,
+    "iteration": 145471,
+    "best_cost": 16784.699999999997,
+    "current_cost": 16784.699999999997,
+    "temperature": 2.7803965795509638,
+    "event": "improvement"
+  },
+  {
+    "seconds": 111.1105,
+    "iteration": 148159,
+    "best_cost": 16782.999999999996,
+    "current_cost": 16783.600000000002,
+    "temperature": 2.6590453797709976,
+    "event": "improvement"
+  },
+  {
+    "seconds": 111.3796,
+    "iteration": 148607,
+    "best_cost": 16778.8,
+    "current_cost": 16778.8,
+    "temperature": 2.6413478865793754,
+    "event": "improvement"
+  },
+  {
+    "seconds": 111.4951,
+    "iteration": 148799,
+    "best_cost": 16776.199999999997,
+    "current_cost": 16776.199999999997,
+    "temperature": 2.633157410211388,
+    "event": "improvement"
+  },
+  {
+    "seconds": 113.5043,
+    "iteration": 151679,
+    "best_cost": 16776.199999999997,
+    "current_cost": 16789.499999999996,
+    "temperature": 2.5051442405521103,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 115.5124,
+    "iteration": 154623,
+    "best_cost": 16776.199999999997,
+    "current_cost": 16807.800000000003,
+    "temperature": 2.3830241617714516,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 117.5498,
+    "iteration": 157439,
+    "best_cost": 16776.199999999997,
+    "current_cost": 16804.4,
+    "temperature": 2.2652360450728355,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 118.2072,
+    "iteration": 158335,
+    "best_cost": 16773.700000000004,
+    "current_cost": 16773.700000000004,
+    "temperature": 2.228687602621155,
+    "event": "improvement"
+  },
+  {
+    "seconds": 118.3327,
+    "iteration": 158527,
+    "best_cost": 16773.300000000003,
+    "current_cost": 16773.300000000003,
+    "temperature": 2.2211196110828566,
+    "event": "improvement"
+  },
+  {
+    "seconds": 118.4131,
+    "iteration": 158655,
+    "best_cost": 16773.0,
+    "current_cost": 16775.3,
+    "temperature": 2.2165227037177044,
+    "event": "improvement"
+  },
+  {
+    "seconds": 118.6358,
+    "iteration": 158975,
+    "best_cost": 16772.6,
+    "current_cost": 16772.6,
+    "temperature": 2.204635974203431,
+    "event": "improvement"
+  },
+  {
+    "seconds": 118.7685,
+    "iteration": 159167,
+    "best_cost": 16771.0,
+    "current_cost": 16771.0,
+    "temperature": 2.197472133333036,
+    "event": "improvement"
+  },
+  {
+    "seconds": 118.8146,
+    "iteration": 159231,
+    "best_cost": 16766.399999999998,
+    "current_cost": 16766.399999999998,
+    "temperature": 2.1949152439834316,
+    "event": "improvement"
+  },
+  {
+    "seconds": 119.3038,
+    "iteration": 159935,
+    "best_cost": 16764.4,
+    "current_cost": 16764.4,
+    "temperature": 2.1679801846884725,
+    "event": "improvement"
+  },
+  {
+    "seconds": 119.5689,
+    "iteration": 160319,
+    "best_cost": 16761.499999999996,
+    "current_cost": 16761.499999999996,
+    "temperature": 2.154188696811616,
+    "event": "improvement"
+  },
+  {
+    "seconds": 120.2832,
+    "iteration": 161151,
+    "best_cost": 16758.6,
+    "current_cost": 16758.6,
+    "temperature": 2.1163897264668723,
+    "event": "improvement"
+  },
+  {
+    "seconds": 120.5489,
+    "iteration": 161471,
+    "best_cost": 16756.6,
+    "current_cost": 16756.6,
+    "temperature": 2.102261607981878,
+    "event": "improvement"
+  },
+  {
+    "seconds": 122.5726,
+    "iteration": 164095,
+    "best_cost": 16756.6,
+    "current_cost": 16773.3,
+    "temperature": 1.9989066742009245,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 124.5811,
+    "iteration": 166719,
+    "best_cost": 16756.6,
+    "current_cost": 16772.899999999998,
+    "temperature": 1.9022939452264158,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 126.5998,
+    "iteration": 168895,
+    "best_cost": 16756.6,
+    "current_cost": 16774.999999999996,
+    "temperature": 1.8082996547735184,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 128.634,
+    "iteration": 171263,
+    "best_cost": 16756.6,
+    "current_cost": 16760.5,
+    "temperature": 1.7192664613155637,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 130.6351,
+    "iteration": 173695,
+    "best_cost": 16756.6,
+    "current_cost": 16767.8,
+    "temperature": 1.635218349599426,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 132.5419,
+    "iteration": 176063,
+    "best_cost": 16754.7,
+    "current_cost": 16756.6,
+    "temperature": 1.5592310213846385,
+    "event": "improvement"
+  },
+  {
+    "seconds": 134.5569,
+    "iteration": 178303,
+    "best_cost": 16754.7,
+    "current_cost": 16767.699999999997,
+    "temperature": 1.483065012785059,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 136.5829,
+    "iteration": 180479,
+    "best_cost": 16754.7,
+    "current_cost": 16755.9,
+    "temperature": 1.4101109450957447,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 138.5922,
+    "iteration": 182847,
+    "best_cost": 16754.7,
+    "current_cost": 16761.499999999996,
+    "temperature": 1.3410586219207523,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 139.6648,
+    "iteration": 184191,
+    "best_cost": 16754.199999999997,
+    "current_cost": 16754.2,
+    "temperature": 1.3058954215235792,
+    "event": "improvement"
+  },
+  {
+    "seconds": 140.0885,
+    "iteration": 184703,
+    "best_cost": 16752.399999999998,
+    "current_cost": 16753.899999999998,
+    "temperature": 1.2922372362948034,
+    "event": "improvement"
+  },
+  {
+    "seconds": 142.1044,
+    "iteration": 187199,
+    "best_cost": 16752.399999999998,
+    "current_cost": 16757.000000000004,
+    "temperature": 1.2288218334756118,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 144.1251,
+    "iteration": 190079,
+    "best_cost": 16752.399999999998,
+    "current_cost": 16762.2,
+    "temperature": 1.1680992861823727,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 146.1346,
+    "iteration": 193215,
+    "best_cost": 16752.399999999998,
+    "current_cost": 16753.500000000004,
+    "temperature": 1.1109950443373944,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 147.2132,
+    "iteration": 194943,
+    "best_cost": 16749.5,
+    "current_cost": 16749.5,
+    "temperature": 1.0816171306794466,
+    "event": "improvement"
+  },
+  {
+    "seconds": 149.2534,
+    "iteration": 197823,
+    "best_cost": 16749.5,
+    "current_cost": 16754.0,
+    "temperature": 1.0281035878690394,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 150.652,
+    "iteration": 199999,
+    "best_cost": 16748.5,
+    "current_cost": 16748.5,
+    "temperature": 0.9926562648436374,
+    "event": "improvement"
+  },
+  {
+    "seconds": 151.3164,
+    "iteration": 201407,
+    "best_cost": 16747.0,
+    "current_cost": 16747.0,
+    "temperature": 0.976287828493127,
+    "event": "improvement"
+  },
+  {
+    "seconds": 151.5122,
+    "iteration": 201791,
+    "best_cost": 16745.9,
+    "current_cost": 16745.9,
+    "temperature": 0.9717505832781281,
+    "event": "improvement"
+  },
+  {
+    "seconds": 151.7309,
+    "iteration": 202175,
+    "best_cost": 16745.300000000003,
+    "current_cost": 16745.9,
+    "temperature": 0.9663829602090267,
+    "event": "improvement"
+  },
+  {
+    "seconds": 151.9271,
+    "iteration": 202495,
+    "best_cost": 16745.000000000004,
+    "current_cost": 16745.600000000002,
+    "temperature": 0.9617554940184897,
+    "event": "improvement"
+  },
+  {
+    "seconds": 152.5268,
+    "iteration": 203583,
+    "best_cost": 16744.5,
+    "current_cost": 16744.699999999997,
+    "temperature": 0.9475047510540476,
+    "event": "improvement"
+  },
+  {
+    "seconds": 152.591,
+    "iteration": 203711,
+    "best_cost": 16743.5,
+    "current_cost": 16743.5,
+    "temperature": 0.9459206740292421,
+    "event": "improvement"
+  },
+  {
+    "seconds": 154.6201,
+    "iteration": 206911,
+    "best_cost": 16743.5,
+    "current_cost": 16750.600000000002,
+    "temperature": 0.8995321525668667,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 156.6231,
+    "iteration": 209855,
+    "best_cost": 16743.5,
+    "current_cost": 16750.100000000002,
+    "temperature": 0.8557119492088159,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 158.6586,
+    "iteration": 213311,
+    "best_cost": 16743.5,
+    "current_cost": 16758.2,
+    "temperature": 0.8132801675540492,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 160.6997,
+    "iteration": 216511,
+    "best_cost": 16743.5,
+    "current_cost": 16749.100000000002,
+    "temperature": 0.7730613090948371,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 162.7174,
+    "iteration": 219647,
+    "best_cost": 16743.5,
+    "current_cost": 16746.300000000003,
+    "temperature": 0.735183439265777,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 164.7261,
+    "iteration": 222719,
+    "best_cost": 16743.5,
+    "current_cost": 16745.799999999996,
+    "temperature": 0.6991739034821906,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 166.7539,
+    "iteration": 225727,
+    "best_cost": 16743.5,
+    "current_cost": 16745.8,
+    "temperature": 0.664958059448885,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 168.7852,
+    "iteration": 228735,
+    "best_cost": 16743.5,
+    "current_cost": 16749.199999999997,
+    "temperature": 0.6319455434815426,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 170.8094,
+    "iteration": 232063,
+    "best_cost": 16743.5,
+    "current_cost": 16748.899999999998,
+    "temperature": 0.6008667278231293,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 172.8292,
+    "iteration": 235007,
+    "best_cost": 16743.5,
+    "current_cost": 16745.5,
+    "temperature": 0.5714436103646117,
+    "event": "heartbeat"
+  },
+  {
+    "seconds": 173.8504,
+    "iteration": 236446,
+    "best_cost": 16743.5,
+    "current_cost": 16745.499999999996,
+    "event": "stop"
+  }
+]
