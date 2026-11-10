@@ -1,6 +1,8 @@
 # Algorithm 1 — ALNS + VND for static CVRPTW
 
-Branch `algo/alns-vnd` (worktree `claude/cvrptw-alns-vnd-4fa707`). Code: [`algorithms/alns_vnd/`](../algorithms/alns_vnd/), experiment CLI: [`scripts/run_alns.py`](../scripts/run_alns.py), tests: [`tests/test_alns_vnd.py`](../tests/test_alns_vnd.py).
+Branch `algo/alns-vnd` (worktree `claude/cvrptw-alns-vnd-4fa707`).
+
+**Source of truth:** the ALNS + VND solver code lives in `main.ipynb` (Sections 12–15, cells headed `%%alns_source`). `algorithms/alns_vnd/*.py` are identical copies kept because Numba caches compiled code only for real files (instant notebook start) and isolated benchmark workers import files. After editing solver cells run `python scripts/sync_notebook_solver.py --write`; `tests/test_notebook_solver.py` fails while they differ, and the notebook compiles its own cells (with a warning) until then. Code: [`algorithms/alns_vnd/`](../algorithms/alns_vnd/), experiment CLI: [`scripts/run_alns.py`](../scripts/run_alns.py), tests: [`tests/test_alns_vnd.py`](../tests/test_alns_vnd.py).
 
 The solver implements the `scripts.benchmark.Solver` protocol: `solve(instance, config, seed, time_limit) -> SolverResult`. It receives only the `CVRPTWInstance` (never `.sol` routes or costs), returns customer-only routes in internal indices 1..n, and every result is re-validated and re-scored by the shared independent evaluator (`check_cvrptw`, DIMACS integer tenths).
 

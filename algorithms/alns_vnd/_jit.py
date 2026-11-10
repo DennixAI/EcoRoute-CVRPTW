@@ -18,17 +18,23 @@ if os.environ.get("ECOROUTE_DISABLE_JIT", "") != "1":
 if JIT_ENABLED:
     from numba import njit as _numba_njit
 
+    def _cacheable(function):
+        # Numba can only cache code that lives in a real source file; the same
+        # functions compiled from notebook cells are JIT-compiled without cache.
+        return os.path.isfile(function.__code__.co_filename)
+
     def njit(function=None, inline=False):
         # inline=True inlines at Numba-IR level: removes call overhead (array
         # reference counting) for tiny hot helpers.
         if function is None:
             return lambda f: njit(f, inline)
+        cache = _cacheable(function)
         if inline:
-            return _numba_njit(cache=True, error_model="numpy", inline="always")(function)
+            return _numba_njit(cache=cache, error_model="numpy", inline="always")(function)
         # cache=True writes compiled machine code beside this package so that a
         # freshly spawned benchmark worker does not pay compilation inside its
         # time budget; error_model='numpy' avoids Python-style ZeroDivision checks.
-        return _numba_njit(cache=True, error_model="numpy")(function)
+        return _numba_njit(cache=cache, error_model="numpy")(function)
 else:
     def njit(function=None, inline=False):
         if function is None:

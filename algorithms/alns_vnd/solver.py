@@ -25,8 +25,15 @@ VERSION = "alns-vnd-1.0"
 _SOURCES = ("__init__.py", "_jit.py", "config.py", "kernels.py", "solver.py")
 
 
+# Set by the main.ipynb loader when the solver was compiled from notebook cells
+# that differ from these files: {module: sha256 of the notebook source}.
+NOTEBOOK_SOURCE_SHA256 = None
+
+
 def source_fingerprint():
     """SHA256 of the solver sources (recorded with every run)."""
+    if NOTEBOOK_SOURCE_SHA256 is not None:
+        return {"origin": "main.ipynb", **NOTEBOOK_SOURCE_SHA256}
     root = Path(__file__).resolve().parent
     return {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in _SOURCES}
 

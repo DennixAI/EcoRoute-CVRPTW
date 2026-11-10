@@ -186,3 +186,5 @@ python scripts/run_alns.py run --split-file results/alns-vnd/split.json --split 
 ```
 
 Held-out result (`test-001`): 360/360 feasible, mean gap 0.654 % to published BKS, worst run 2.364 %. Details in [results/alns-vnd/README.md](results/alns-vnd/README.md).
+
+**Source of truth:** the ALNS + VND solver code lives in `main.ipynb` (Sections 12–15, cells headed `%%alns_source`). `algorithms/alns_vnd/*.py` are identical copies kept because Numba caches compiled code only for real files (instant notebook start) and isolated benchmark workers import files. After editing solver cells run `python scripts/sync_notebook_solver.py --write`; `tests/test_notebook_solver.py` fails while they differ, and the notebook compiles its own cells (with a warning) until then.
