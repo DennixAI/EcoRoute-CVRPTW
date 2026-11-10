@@ -1,0 +1,22 @@
+{
+  "campaign": "abl-no-relocate",
+  "split": "development",
+  "instances": 36,
+  "seeds": [
+    2,
+    3
+  ],
+  "planned_attempts": 72,
+  "attempts": 72,
+  "feasible_attempts": 72,
+  "budget_respected": 72,
+  "mean_gap_equal_weight": 1.0435887460302404,
+  "median_instance_gap": 0.9482900113518604,
+  "p90_run_gap": 2.474921957993583,
+  "worst_run_gap": 4.071977697051618,
+  "best_of_seeds_mean_gap": 0.8563136142040207,
+  "mean_within_instance_sd": 0.2648470313238487,
+  "instances_any_run_over_7": [],
+  "negative_gap_runs": 0,
+  "budget_rule": "time_limit = max(10.0, 0.1 * customers) seconds"
+}

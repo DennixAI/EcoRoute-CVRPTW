@@ -1,0 +1,84 @@
+{
+  "description": "Decision journal of the historical ALNS + VND tuning on the development split (campaigns dev-001 ... dev-007, 2026-11-10). Text fields record the reasoning as it was stated during tuning; every number shown with this journal in main.ipynb is computed from the campaigns' run ledgers (runs.jsonl), never copied from here.",
+  "roles": "The team set the goals (lowest gap to best-known solutions, CVRPTW scope, development/test discipline) and approved the protocol. Claude (Anthropic's AI assistant, working in Claude Code) proposed each hypothesis and the next configuration after reading the Python-computed results, and implemented the solver. Python executed every attempt (scripts/run_alns.py: isolated worker, hard wall-clock limit) and computed every number (scripts/benchmark.py: independent feasibility check, DIMACS scoring, gap to the published reference).",
+  "protocol": "36 development instances (one per size family x class), seeds 0 and 1, time limit max(10, 0.1 x customers) s per attempt, 6 concurrent workers. One setting changed at a time relative to the current best configuration. Decision rule used at the time: keep the change if the equal-weight mean gap over instances decreased, looking at how many instances improved versus worsened; the held-out test split was never used.",
+  "steps": [
+    {
+      "step": 1,
+      "campaign": "dev-001-baseline",
+      "reference": null,
+      "change": "Initial defaults from the literature: SA temperature 0.5 -> 0.01 x mean arc, 30 VND neighbours, all five destroy operators (random, worst, Shaw, string, route), q in [5, min(40, 0.2 n)]",
+      "config": {"temp_start": 0.5, "temp_end": 0.01, "vnd_neighbours": 30, "destroy_weights": [1, 1, 1, 1, 0.5], "destroy_max": 40},
+      "prompted_by": "Starting point after implementation and profiling (a VND sweep dominated the iteration time).",
+      "hypothesis": "Reference measurement; no hypothesis.",
+      "decision": "reference",
+      "reasoning": "All 72 attempts feasible and within budget. Two observations steered the next steps: about 70 % of candidate solutions were accepted, and worst removal ended with the lowest adaptive weight of the destroy operators."
+    },
+    {
+      "step": 2,
+      "campaign": "dev-002-coolT",
+      "reference": "dev-001-baseline",
+      "change": "Cooler annealing: 0.15 -> 0.005 x mean arc",
+      "config": {"temp_start": 0.15, "temp_end": 0.005},
+      "prompted_by": "About 70 % acceptance in the baseline looked like too much random walk.",
+      "hypothesis": "A cooler schedule intensifies the search around good solutions and lowers the gap.",
+      "decision": "rejected",
+      "reasoning": "Worse overall and on most instances: accepting worse solutions was helping, so the next step tested the opposite direction."
+    },
+    {
+      "step": 3,
+      "campaign": "dev-003-hotT",
+      "reference": "dev-001-baseline",
+      "change": "Hotter annealing: 1.5 -> 0.02 x mean arc",
+      "config": {"temp_start": 1.5, "temp_end": 0.02},
+      "prompted_by": "Cooling hurt.",
+      "hypothesis": "More diversification (accepting larger deteriorations early) escapes local optima better.",
+      "decision": "adopted",
+      "reasoning": "Lower mean gap than the baseline and better in five of six size families."
+    },
+    {
+      "step": 4,
+      "campaign": "dev-004-hot2",
+      "reference": "dev-003-hotT",
+      "change": "Even hotter: 4.0 -> 0.05 x mean arc",
+      "config": {"temp_start": 4.0, "temp_end": 0.05},
+      "prompted_by": "Hotter helped.",
+      "hypothesis": "Check whether the gains continue, to bracket the best temperature.",
+      "decision": "rejected",
+      "reasoning": "Worse than 1.5 -> 0.02 overall and on most instances, so 1.5 -> 0.02 was kept as the bracketed best of the values tried."
+    },
+    {
+      "step": 5,
+      "campaign": "dev-005-hotT-g20",
+      "reference": "dev-003-hotT",
+      "change": "VND examines 20 instead of 30 granular neighbours per customer",
+      "config": {"temp_start": 1.5, "temp_end": 0.02, "vnd_neighbours": 20},
+      "prompted_by": "Profiling showed that the VND takes almost all of an ALNS iteration.",
+      "hypothesis": "A narrower neighbourhood makes each iteration cheaper, so the same time budget buys more ALNS iterations, which matters most on large instances.",
+      "decision": "adopted",
+      "reasoning": "Slightly lower mean gap and more instances improved than worsened, with about 1.5x more iterations in the same time. The difference was small compared with seed noise; it was accepted on the point estimate plus the mechanism (speed)."
+    },
+    {
+      "step": 6,
+      "campaign": "dev-006-q20",
+      "reference": "dev-005-hotT-g20",
+      "change": "Remove at most 20 instead of 40 customers per ALNS iteration",
+      "config": {"temp_start": 1.5, "temp_end": 0.02, "vnd_neighbours": 20, "destroy_max": 20},
+      "prompted_by": "Smaller destroy steps are cheaper to repair and re-optimise.",
+      "hypothesis": "Smaller, more frequent changes improve the gap within the same budget.",
+      "decision": "rejected",
+      "reasoning": "No clear difference (about as many instances better as worse); the simpler choice was to keep the previous value 40."
+    },
+    {
+      "step": 7,
+      "campaign": "dev-007-noworst",
+      "reference": "dev-005-hotT-g20",
+      "change": "Disable worst removal (destroy weight 0)",
+      "config": {"temp_start": 1.5, "temp_end": 0.02, "vnd_neighbours": 20, "destroy_weights": [1, 0, 1, 1, 0.5]},
+      "prompted_by": "Worst removal had earned almost no adaptive weight: it finished with one of the two lowest destroy weights in every earlier campaign (the lowest in the baseline).",
+      "hypothesis": "The adaptive mechanism still spends some iterations on a weak operator; removing it frees those iterations for the useful ones.",
+      "decision": "adopted (frozen)",
+      "reasoning": "Lower mean gap and more instances improved than worsened. As for step 5, the single-step difference was small relative to seed noise. This configuration was frozen and committed before any test instance was run."
+    }
+  ]
+}

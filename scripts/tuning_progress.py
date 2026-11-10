@@ -20,11 +20,26 @@ STUDY = ROOT / "results" / "alns-vnd" / "tuning-study"
 SET_OF = {"conf": "confirmation", "temp": "temperature", "abl": "ablation"}
 
 
-def runner_alive():
+def runner_state():
+    """'running', 'paused' (SIGSTOP), 'not running' or 'unknown' for the study runner."""
     try:
-        # Match the Python interpreter running the study, not shells that merely mention it.
-        return subprocess.run(["pgrep", "-f", r"[Pp]ython[^ ]* scripts/alns_tuning_study\.py run"],
-                              capture_output=True).returncode == 0
+        # The Python interpreter running the study, not caffeinate or shells that mention it.
+        found = subprocess.run(["pgrep", "-f", r"^[^ ]*[Pp]ython[^ ]* scripts/alns_tuning_study\.py run"],
+                               capture_output=True, text=True)
+        pids = found.stdout.split()
+        if not pids:
+            return "not running"
+        states = subprocess.run(["ps", "-o", "stat=", "-p", ",".join(pids)], capture_output=True, text=True)
+        return "paused" if all(s.strip().startswith("T") for s in states.stdout.split()) else "running"
+    except OSError:
+        return "unknown"
+
+
+def attempts_in_flight():
+    try:
+        found = subprocess.run(["pgrep", "-f", r"^[^ ]*[Pp]ython[^ ]* .*scripts/run_alns\.py shard"],
+                               capture_output=True, text=True)
+        return len(found.stdout.split())
     except OSError:
         return None
 
@@ -95,7 +110,7 @@ def show(study):
           f"{failed} infeasible/over budget")
     print(f"Work (by time limits): {100 * limit_done / limit_total:.1f} % done")
     start = started_at(study)
-    alive = runner_alive()
+    state = runner_state()
     if start is not None:
         elapsed = (datetime.now(timezone.utc) - start).total_seconds()
         print(f"Elapsed since start: {fmt_duration(elapsed)}", end="")
@@ -106,8 +121,13 @@ def show(study):
             print(f"   estimated time left: {fmt_duration(remaining)} (finish ~{eta:%H:%M} local time)")
         else:
             print()
-    print("Runner process:", {True: "running", False: "NOT running", None: "unknown"}[alive])
-    if alive is False and done < planned:
+    in_flight = attempts_in_flight()
+    print(f"Runner process: {state.upper() if state != 'running' else state}; attempts in flight: {in_flight}")
+    if state == "paused":
+        print("  -> paused: no new attempts start; resume with: kill -CONT "
+              + subprocess.run(["pgrep", "-f", r"^[^ ]*[Pp]ython[^ ]* scripts/alns_tuning_study\.py run"],
+                               capture_output=True, text=True).stdout.split()[0])
+    if state == "not running" and done < planned:
         print("  -> resume with: python scripts/alns_tuning_study.py run --workers 8 (completed campaigns are skipped)")
     if done == planned and all(c["complete"] for c in campaigns):
         print("All campaigns complete.")

@@ -1,0 +1,565 @@
+2026-11-10T16:07:43+00:00 START 20 campaigns, solver alns-vnd-1.1, 8 workers
+180 attempts on 36 instances x 5 seeds, 8 workers; sequential time 2.58 h
+180 attempts on 36 instances x 5 seeds, 8 workers; sequential time 2.58 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T16:07:45+00:00 QUEUED 1656 attempts over 20 campaigns (23.8 CPU-hours of time limits)
+2026-11-10T18:34:27+00:00 START 20 campaigns, solver alns-vnd-1.1, 8 workers
+2026-11-10T18:34:27+00:00 conf-final: interrupted earlier, moved to conf-final.incomplete-20261110-193427
+180 attempts on 36 instances x 5 seeds, 8 workers; sequential time 2.58 h
+2026-11-10T18:34:27+00:00 conf-baseline: interrupted earlier, moved to conf-baseline.incomplete-20261110-193427
+180 attempts on 36 instances x 5 seeds, 8 workers; sequential time 2.58 h
+2026-11-10T18:34:28+00:00 temp-0p25: interrupted earlier, moved to temp-0p25.incomplete-20261110-193428
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:28+00:00 temp-0p5: interrupted earlier, moved to temp-0p5.incomplete-20261110-193428
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:28+00:00 temp-1: interrupted earlier, moved to temp-1.incomplete-20261110-193428
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:28+00:00 temp-2p5: interrupted earlier, moved to temp-2p5.incomplete-20261110-193428
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:28+00:00 temp-4: interrupted earlier, moved to temp-4.incomplete-20261110-193428
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:28+00:00 abl-no-random: interrupted earlier, moved to abl-no-random.incomplete-20261110-193428
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:28+00:00 abl-no-shaw: interrupted earlier, moved to abl-no-shaw.incomplete-20261110-193428
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:28+00:00 abl-no-string: interrupted earlier, moved to abl-no-string.incomplete-20261110-193428
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:29+00:00 abl-no-route: interrupted earlier, moved to abl-no-route.incomplete-20261110-193429
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:29+00:00 abl-no-greedy: interrupted earlier, moved to abl-no-greedy.incomplete-20261110-193429
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:29+00:00 abl-no-regret2: interrupted earlier, moved to abl-no-regret2.incomplete-20261110-193429
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:29+00:00 abl-no-regret3: interrupted earlier, moved to abl-no-regret3.incomplete-20261110-193429
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:29+00:00 abl-no-blink: interrupted earlier, moved to abl-no-blink.incomplete-20261110-193429
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:29+00:00 abl-no-relocate: interrupted earlier, moved to abl-no-relocate.incomplete-20261110-193429
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:29+00:00 abl-no-swap: interrupted earlier, moved to abl-no-swap.incomplete-20261110-193429
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:29+00:00 abl-no-twooptstar: interrupted earlier, moved to abl-no-twooptstar.incomplete-20261110-193429
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:30+00:00 abl-no-oropt: interrupted earlier, moved to abl-no-oropt.incomplete-20261110-193430
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:30+00:00 abl-no-twoopt: interrupted earlier, moved to abl-no-twoopt.incomplete-20261110-193430
+72 attempts on 36 instances x 2 seeds, 8 workers; sequential time 1.03 h
+2026-11-10T18:34:30+00:00 QUEUED 1656 attempts over 20 campaigns (23.8 CPU-hours of time limits)
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `conf-final`
+
+Split: **development**; 36 instances x 5 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 180 |
+| attempts | 180 |
+| feasible attempts | 180 |
+| budget respected | 180 |
+| mean gap equal weight | 0.893 |
+| median instance gap | 0.829 |
+| p90 run gap | 2.084 |
+| worst run gap | 3.409 |
+| best of seeds mean gap | 0.625 |
+| mean within instance sd | 0.217 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T20:24:32+00:00 conf-final: DONE (330/1656 attempts overall) feasible 180/180, budget ok 180, mean gap 0.893%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `conf-baseline`
+
+Split: **development**; 36 instances x 5 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 180 |
+| attempts | 180 |
+| feasible attempts | 180 |
+| budget respected | 180 |
+| mean gap equal weight | 1.136 |
+| median instance gap | 0.883 |
+| p90 run gap | 2.529 |
+| worst run gap | 4.481 |
+| best of seeds mean gap | 0.793 |
+| mean within instance sd | 0.306 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T20:25:10+00:00 conf-baseline: DONE (360/1656 attempts overall) feasible 180/180, budget ok 180, mean gap 1.136%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `temp-0p25`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 1.199 |
+| median instance gap | 1.022 |
+| p90 run gap | 2.636 |
+| worst run gap | 4.261 |
+| best of seeds mean gap | 0.980 |
+| mean within instance sd | 0.310 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T21:01:49+00:00 temp-0p25: DONE (672/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 1.199%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `temp-0p5`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 1.000 |
+| median instance gap | 0.673 |
+| p90 run gap | 2.318 |
+| worst run gap | 3.869 |
+| best of seeds mean gap | 0.878 |
+| mean within instance sd | 0.173 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T21:02:07+00:00 temp-0p5: DONE (684/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 1.000%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `temp-1`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.881 |
+| median instance gap | 0.676 |
+| p90 run gap | 2.055 |
+| worst run gap | 2.885 |
+| best of seeds mean gap | 0.768 |
+| mean within instance sd | 0.159 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T21:02:18+00:00 temp-1: DONE (696/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.881%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `temp-2p5`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.885 |
+| median instance gap | 0.803 |
+| p90 run gap | 2.093 |
+| worst run gap | 2.474 |
+| best of seeds mean gap | 0.773 |
+| mean within instance sd | 0.159 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T21:02:37+00:00 temp-2p5: DONE (708/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.885%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `temp-4`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.934 |
+| median instance gap | 0.752 |
+| p90 run gap | 2.129 |
+| worst run gap | 3.473 |
+| best of seeds mean gap | 0.813 |
+| mean within instance sd | 0.171 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T21:02:48+00:00 temp-4: DONE (720/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.934%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-random`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.801 |
+| median instance gap | 0.412 |
+| p90 run gap | 2.004 |
+| worst run gap | 3.118 |
+| best of seeds mean gap | 0.681 |
+| mean within instance sd | 0.169 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:38:03+00:00 abl-no-random: DONE (1512/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.801%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-shaw`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.977 |
+| median instance gap | 0.772 |
+| p90 run gap | 2.122 |
+| worst run gap | 2.607 |
+| best of seeds mean gap | 0.831 |
+| mean within instance sd | 0.207 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:38:15+00:00 abl-no-shaw: DONE (1524/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.977%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-string`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.963 |
+| median instance gap | 0.715 |
+| p90 run gap | 2.084 |
+| worst run gap | 3.994 |
+| best of seeds mean gap | 0.835 |
+| mean within instance sd | 0.180 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:38:33+00:00 abl-no-string: DONE (1536/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.963%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-route`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 1.060 |
+| median instance gap | 1.132 |
+| p90 run gap | 2.143 |
+| worst run gap | 3.064 |
+| best of seeds mean gap | 0.923 |
+| mean within instance sd | 0.194 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:38:44+00:00 abl-no-route: DONE (1548/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 1.060%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-greedy`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.908 |
+| median instance gap | 0.721 |
+| p90 run gap | 2.066 |
+| worst run gap | 3.223 |
+| best of seeds mean gap | 0.817 |
+| mean within instance sd | 0.129 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:39:02+00:00 abl-no-greedy: DONE (1560/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.908%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-regret2`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.933 |
+| median instance gap | 0.548 |
+| p90 run gap | 2.158 |
+| worst run gap | 3.489 |
+| best of seeds mean gap | 0.819 |
+| mean within instance sd | 0.161 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:39:14+00:00 abl-no-regret2: DONE (1572/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.933%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-regret3`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.913 |
+| median instance gap | 0.854 |
+| p90 run gap | 2.096 |
+| worst run gap | 2.646 |
+| best of seeds mean gap | 0.823 |
+| mean within instance sd | 0.127 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:39:32+00:00 abl-no-regret3: DONE (1584/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.913%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-blink`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.876 |
+| median instance gap | 0.666 |
+| p90 run gap | 1.964 |
+| worst run gap | 3.383 |
+| best of seeds mean gap | 0.752 |
+| mean within instance sd | 0.175 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:39:43+00:00 abl-no-blink: DONE (1596/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.876%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-relocate`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 1.044 |
+| median instance gap | 0.948 |
+| p90 run gap | 2.475 |
+| worst run gap | 4.072 |
+| best of seeds mean gap | 0.856 |
+| mean within instance sd | 0.265 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:40:01+00:00 abl-no-relocate: DONE (1608/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 1.044%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-swap`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.872 |
+| median instance gap | 0.656 |
+| p90 run gap | 2.080 |
+| worst run gap | 2.512 |
+| best of seeds mean gap | 0.780 |
+| mean within instance sd | 0.131 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:40:13+00:00 abl-no-swap: DONE (1620/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.872%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-twooptstar`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 1.347 |
+| median instance gap | 1.076 |
+| p90 run gap | 2.755 |
+| worst run gap | 5.266 |
+| best of seeds mean gap | 1.118 |
+| mean within instance sd | 0.324 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:40:31+00:00 abl-no-twooptstar: DONE (1632/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 1.347%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-oropt`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.899 |
+| median instance gap | 0.751 |
+| p90 run gap | 2.088 |
+| worst run gap | 2.661 |
+| best of seeds mean gap | 0.783 |
+| mean within instance sd | 0.165 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:40:42+00:00 abl-no-oropt: DONE (1644/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.899%
+/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/scripts/run_alns.py:411: RuntimeWarning: Mean of empty slice
+  ax.plot(grid, np.nanmean(np.array(curves), axis=0), label=family)
+# ALNS + VND campaign `abl-no-twoopt`
+
+Split: **development**; 36 instances x 2 seeds; budget: time_limit = max(10.0, 0.1 * customers) seconds. Gaps are to published BKS (not proven optima), recomputed by the independent evaluator.
+
+Throughput = total iterations / total measured solver search seconds over valid paired runs; construction and worker startup are excluded. Missing/nonpositive times are excluded, not replaced by the time budget. `throughput_runs` records the included run count; zero rates remain in CSV but are omitted from the log-scale throughput plot.
+
+| Metric | Value |
+| --- | ---: |
+| planned attempts | 72 |
+| attempts | 72 |
+| feasible attempts | 72 |
+| budget respected | 72 |
+| mean gap equal weight | 0.883 |
+| median instance gap | 0.582 |
+| p90 run gap | 2.086 |
+| worst run gap | 2.629 |
+| best of seeds mean gap | 0.783 |
+| mean within instance sd | 0.141 |
+| negative gap runs | 0 |
+
+Instances with any run above 7%: none
+
+2026-11-10T22:41:00+00:00 abl-no-twoopt: DONE (1656/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.883%
+2026-11-10T22:41:00+00:00 ALL DONE: 1656 attempts, 0 non-zero exits

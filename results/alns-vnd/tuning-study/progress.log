@@ -1,0 +1,45 @@
+2026-11-10T16:07:43+00:00 START 20 campaigns, solver alns-vnd-1.1, 8 workers
+2026-11-10T16:07:45+00:00 QUEUED 1656 attempts over 20 campaigns (23.8 CPU-hours of time limits)
+2026-11-10T18:34:27+00:00 START 20 campaigns, solver alns-vnd-1.1, 8 workers
+2026-11-10T18:34:27+00:00 conf-final: interrupted earlier, moved to conf-final.incomplete-20261110-193427
+2026-11-10T18:34:27+00:00 conf-baseline: interrupted earlier, moved to conf-baseline.incomplete-20261110-193427
+2026-11-10T18:34:28+00:00 temp-0p25: interrupted earlier, moved to temp-0p25.incomplete-20261110-193428
+2026-11-10T18:34:28+00:00 temp-0p5: interrupted earlier, moved to temp-0p5.incomplete-20261110-193428
+2026-11-10T18:34:28+00:00 temp-1: interrupted earlier, moved to temp-1.incomplete-20261110-193428
+2026-11-10T18:34:28+00:00 temp-2p5: interrupted earlier, moved to temp-2p5.incomplete-20261110-193428
+2026-11-10T18:34:28+00:00 temp-4: interrupted earlier, moved to temp-4.incomplete-20261110-193428
+2026-11-10T18:34:28+00:00 abl-no-random: interrupted earlier, moved to abl-no-random.incomplete-20261110-193428
+2026-11-10T18:34:28+00:00 abl-no-shaw: interrupted earlier, moved to abl-no-shaw.incomplete-20261110-193428
+2026-11-10T18:34:28+00:00 abl-no-string: interrupted earlier, moved to abl-no-string.incomplete-20261110-193428
+2026-11-10T18:34:29+00:00 abl-no-route: interrupted earlier, moved to abl-no-route.incomplete-20261110-193429
+2026-11-10T18:34:29+00:00 abl-no-greedy: interrupted earlier, moved to abl-no-greedy.incomplete-20261110-193429
+2026-11-10T18:34:29+00:00 abl-no-regret2: interrupted earlier, moved to abl-no-regret2.incomplete-20261110-193429
+2026-11-10T18:34:29+00:00 abl-no-regret3: interrupted earlier, moved to abl-no-regret3.incomplete-20261110-193429
+2026-11-10T18:34:29+00:00 abl-no-blink: interrupted earlier, moved to abl-no-blink.incomplete-20261110-193429
+2026-11-10T18:34:29+00:00 abl-no-relocate: interrupted earlier, moved to abl-no-relocate.incomplete-20261110-193429
+2026-11-10T18:34:29+00:00 abl-no-swap: interrupted earlier, moved to abl-no-swap.incomplete-20261110-193429
+2026-11-10T18:34:29+00:00 abl-no-twooptstar: interrupted earlier, moved to abl-no-twooptstar.incomplete-20261110-193429
+2026-11-10T18:34:30+00:00 abl-no-oropt: interrupted earlier, moved to abl-no-oropt.incomplete-20261110-193430
+2026-11-10T18:34:30+00:00 abl-no-twoopt: interrupted earlier, moved to abl-no-twoopt.incomplete-20261110-193430
+2026-11-10T18:34:30+00:00 QUEUED 1656 attempts over 20 campaigns (23.8 CPU-hours of time limits)
+2026-11-10T20:24:32+00:00 conf-final: DONE (330/1656 attempts overall) feasible 180/180, budget ok 180, mean gap 0.893%
+2026-11-10T20:25:10+00:00 conf-baseline: DONE (360/1656 attempts overall) feasible 180/180, budget ok 180, mean gap 1.136%
+2026-11-10T21:01:49+00:00 temp-0p25: DONE (672/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 1.199%
+2026-11-10T21:02:07+00:00 temp-0p5: DONE (684/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 1.000%
+2026-11-10T21:02:18+00:00 temp-1: DONE (696/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.881%
+2026-11-10T21:02:37+00:00 temp-2p5: DONE (708/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.885%
+2026-11-10T21:02:48+00:00 temp-4: DONE (720/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.934%
+2026-11-10T22:38:03+00:00 abl-no-random: DONE (1512/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.801%
+2026-11-10T22:38:15+00:00 abl-no-shaw: DONE (1524/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.977%
+2026-11-10T22:38:33+00:00 abl-no-string: DONE (1536/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.963%
+2026-11-10T22:38:44+00:00 abl-no-route: DONE (1548/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 1.060%
+2026-11-10T22:39:02+00:00 abl-no-greedy: DONE (1560/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.908%
+2026-11-10T22:39:14+00:00 abl-no-regret2: DONE (1572/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.933%
+2026-11-10T22:39:32+00:00 abl-no-regret3: DONE (1584/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.913%
+2026-11-10T22:39:43+00:00 abl-no-blink: DONE (1596/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.876%
+2026-11-10T22:40:01+00:00 abl-no-relocate: DONE (1608/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 1.044%
+2026-11-10T22:40:13+00:00 abl-no-swap: DONE (1620/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.872%
+2026-11-10T22:40:31+00:00 abl-no-twooptstar: DONE (1632/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 1.347%
+2026-11-10T22:40:42+00:00 abl-no-oropt: DONE (1644/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.899%
+2026-11-10T22:41:00+00:00 abl-no-twoopt: DONE (1656/1656 attempts overall) feasible 72/72, budget ok 72, mean gap 0.883%
+2026-11-10T22:41:00+00:00 ALL DONE: 1656 attempts, 0 non-zero exits

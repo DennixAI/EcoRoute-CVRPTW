@@ -1,0 +1,22 @@
+{
+  "campaign": "abl-no-route",
+  "split": "development",
+  "instances": 36,
+  "seeds": [
+    2,
+    3
+  ],
+  "planned_attempts": 72,
+  "attempts": 72,
+  "feasible_attempts": 72,
+  "budget_respected": 72,
+  "mean_gap_equal_weight": 1.0598008414674875,
+  "median_instance_gap": 1.1322511650280025,
+  "p90_run_gap": 2.1431348922116933,
+  "worst_run_gap": 3.063777475738238,
+  "best_of_seeds_mean_gap": 0.9229024170432416,
+  "mean_within_instance_sd": 0.19360360848827673,
+  "instances_any_run_over_7": [],
+  "negative_gap_runs": 0,
+  "budget_rule": "time_limit = max(10.0, 0.1 * customers) seconds"
+}

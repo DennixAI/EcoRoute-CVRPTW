@@ -1,0 +1,355 @@
+{
+  "created_utc": "2026-11-10T16:07:43.263147+00:00",
+  "solver_version": "alns-vnd-1.1",
+  "solver_sha256": {
+    "__init__.py": "9152c619625ae26bd2c1e3711a0090efbcceabc96ca67031ff3f6f22bdd757f2",
+    "_jit.py": "c8f9419442322b258715e8f77edb4033a30261ef3f2af319b2d4ea009a156224",
+    "config.py": "fa3d459ca3b95fc48f3f1876b12f6c344fba3364227f4283735595fb1825a869",
+    "kernels.py": "5622948c7207467c5bed80f6688eaa1789248f01ee5b52f05ad5b45ac3b88994",
+    "solver.py": "2abaca33a16d083e77b9baef314b11b89e476da8f9b28b308d2c0411cdd7cc12"
+  },
+  "budget": "max(10, 0.1 x customers) s",
+  "split": "development",
+  "workers": 8,
+  "baseline": {
+    "temp_start": 0.5,
+    "temp_end": 0.01,
+    "vnd_neighbours": 30,
+    "destroy_weights": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ]
+  },
+  "experiments": [
+    {
+      "set": "confirmation",
+      "name": "conf-final",
+      "config": {},
+      "seeds": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "description": "frozen configuration (reference)"
+    },
+    {
+      "set": "confirmation",
+      "name": "conf-baseline",
+      "config": {
+        "temp_start": 0.5,
+        "temp_end": 0.01,
+        "vnd_neighbours": 30,
+        "destroy_weights": [
+          1,
+          1,
+          1,
+          1,
+          0.5
+        ]
+      },
+      "seeds": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "description": "historical baseline (dev-001 settings)"
+    },
+    {
+      "set": "temperature",
+      "name": "temp-0p25",
+      "config": {
+        "temp_start": 0.25,
+        "temp_end": 0.003333
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "start temperature 0.25 x mean arc, end = start/75"
+    },
+    {
+      "set": "temperature",
+      "name": "temp-0p5",
+      "config": {
+        "temp_start": 0.5,
+        "temp_end": 0.006667
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "start temperature 0.5 x mean arc, end = start/75"
+    },
+    {
+      "set": "temperature",
+      "name": "temp-1",
+      "config": {
+        "temp_start": 1.0,
+        "temp_end": 0.013333
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "start temperature 1 x mean arc, end = start/75"
+    },
+    {
+      "set": "temperature",
+      "name": "temp-2p5",
+      "config": {
+        "temp_start": 2.5,
+        "temp_end": 0.033333
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "start temperature 2.5 x mean arc, end = start/75"
+    },
+    {
+      "set": "temperature",
+      "name": "temp-4",
+      "config": {
+        "temp_start": 4.0,
+        "temp_end": 0.053333
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "start temperature 4 x mean arc, end = start/75"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-random",
+      "config": {
+        "destroy_weights": [
+          0,
+          0,
+          1,
+          1,
+          0.5
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "without random removal"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-shaw",
+      "config": {
+        "destroy_weights": [
+          1,
+          0,
+          0,
+          1,
+          0.5
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "without shaw removal"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-string",
+      "config": {
+        "destroy_weights": [
+          1,
+          0,
+          1,
+          0,
+          0.5
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "without string removal"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-route",
+      "config": {
+        "destroy_weights": [
+          1,
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "without route removal"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-greedy",
+      "config": {
+        "repair_weights": [
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "without greedy insertion"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-regret2",
+      "config": {
+        "repair_weights": [
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "without regret2 insertion"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-regret3",
+      "config": {
+        "repair_weights": [
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "without regret3 insertion"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-blink",
+      "config": {
+        "repair_weights": [
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "without blink insertion"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-relocate",
+      "config": {
+        "neighbourhoods": [
+          "swap",
+          "two_opt_star",
+          "or_opt",
+          "two_opt"
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "VND without relocate"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-swap",
+      "config": {
+        "neighbourhoods": [
+          "relocate",
+          "two_opt_star",
+          "or_opt",
+          "two_opt"
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "VND without swap"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-twooptstar",
+      "config": {
+        "neighbourhoods": [
+          "relocate",
+          "swap",
+          "or_opt",
+          "two_opt"
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "VND without two_opt_star"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-oropt",
+      "config": {
+        "neighbourhoods": [
+          "relocate",
+          "swap",
+          "two_opt_star",
+          "two_opt"
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "VND without or_opt"
+    },
+    {
+      "set": "ablation",
+      "name": "abl-no-twoopt",
+      "config": {
+        "neighbourhoods": [
+          "relocate",
+          "swap",
+          "two_opt_star",
+          "or_opt"
+        ]
+      },
+      "seeds": [
+        2,
+        3
+      ],
+      "description": "VND without two_opt"
+    }
+  ]
+}

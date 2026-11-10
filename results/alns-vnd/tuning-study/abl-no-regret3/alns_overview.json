@@ -1,0 +1,22 @@
+{
+  "campaign": "abl-no-regret3",
+  "split": "development",
+  "instances": 36,
+  "seeds": [
+    2,
+    3
+  ],
+  "planned_attempts": 72,
+  "attempts": 72,
+  "feasible_attempts": 72,
+  "budget_respected": 72,
+  "mean_gap_equal_weight": 0.9130431854789699,
+  "median_instance_gap": 0.8538010188663265,
+  "p90_run_gap": 2.0959408941458504,
+  "worst_run_gap": 2.645940694432717,
+  "best_of_seeds_mean_gap": 0.8231113652319273,
+  "mean_within_instance_sd": 0.1271827998822671,
+  "instances_any_run_over_7": [],
+  "negative_gap_runs": 0,
+  "budget_rule": "time_limit = max(10.0, 0.1 * customers) seconds"
+}

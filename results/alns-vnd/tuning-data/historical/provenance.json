@@ -1,0 +1,42 @@
+{
+  "extracted_utc": "2026-11-10T22:49:04.503565+00:00",
+  "script": "scripts/alns_tuning_extract.py",
+  "note": "Derived from raw per-attempt files; gaps and feasibility are the independent evaluator's values.",
+  "sources": {
+    "dev-001-baseline": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/dev-001-baseline/shards",
+      "attempts": 72
+    },
+    "dev-002-coolT": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/dev-002-coolT/shards",
+      "attempts": 72
+    },
+    "dev-003-hotT": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/dev-003-hotT/shards",
+      "attempts": 72
+    },
+    "dev-004-hot2": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/dev-004-hot2/shards",
+      "attempts": 72
+    },
+    "dev-005-hotT-g20": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/dev-005-hotT-g20/shards",
+      "attempts": 72
+    },
+    "dev-006-q20": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/dev-006-q20/shards",
+      "attempts": 72
+    },
+    "dev-007-noworst": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/dev-007-noworst/shards",
+      "attempts": 72
+    }
+  }
+}

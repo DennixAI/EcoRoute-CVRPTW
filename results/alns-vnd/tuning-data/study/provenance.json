@@ -1,0 +1,107 @@
+{
+  "extracted_utc": "2026-11-10T22:48:52.364226+00:00",
+  "script": "scripts/alns_tuning_extract.py",
+  "note": "Derived from raw per-attempt files; gaps and feasibility are the independent evaluator's values.",
+  "sources": {
+    "conf-baseline": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/conf-baseline/shards",
+      "attempts": 180
+    },
+    "conf-final": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/conf-final/shards",
+      "attempts": 180
+    },
+    "temp-0p25": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/temp-0p25/shards",
+      "attempts": 72
+    },
+    "temp-0p5": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/temp-0p5/shards",
+      "attempts": 72
+    },
+    "temp-1": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/temp-1/shards",
+      "attempts": 72
+    },
+    "temp-2p5": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/temp-2p5/shards",
+      "attempts": 72
+    },
+    "temp-4": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/temp-4/shards",
+      "attempts": 72
+    },
+    "abl-no-random": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-random/shards",
+      "attempts": 72
+    },
+    "abl-no-shaw": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-shaw/shards",
+      "attempts": 72
+    },
+    "abl-no-string": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-string/shards",
+      "attempts": 72
+    },
+    "abl-no-route": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-route/shards",
+      "attempts": 72
+    },
+    "abl-no-greedy": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-greedy/shards",
+      "attempts": 72
+    },
+    "abl-no-regret2": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-regret2/shards",
+      "attempts": 72
+    },
+    "abl-no-regret3": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-regret3/shards",
+      "attempts": 72
+    },
+    "abl-no-blink": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-blink/shards",
+      "attempts": 72
+    },
+    "abl-no-relocate": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-relocate/shards",
+      "attempts": 72
+    },
+    "abl-no-swap": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-swap/shards",
+      "attempts": 72
+    },
+    "abl-no-twooptstar": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-twooptstar/shards",
+      "attempts": 72
+    },
+    "abl-no-oropt": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-oropt/shards",
+      "attempts": 72
+    },
+    "abl-no-twoopt": {
+      "kind": "raw shards",
+      "path": "results/alns-vnd/tuning-study/abl-no-twoopt/shards",
+      "attempts": 72
+    }
+  }
+}

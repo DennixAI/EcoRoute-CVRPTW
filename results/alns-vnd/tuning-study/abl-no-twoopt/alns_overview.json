@@ -1,0 +1,22 @@
+{
+  "campaign": "abl-no-twoopt",
+  "split": "development",
+  "instances": 36,
+  "seeds": [
+    2,
+    3
+  ],
+  "planned_attempts": 72,
+  "attempts": 72,
+  "feasible_attempts": 72,
+  "budget_respected": 72,
+  "mean_gap_equal_weight": 0.8831333516977833,
+  "median_instance_gap": 0.5824539225616648,
+  "p90_run_gap": 2.085838957874865,
+  "worst_run_gap": 2.6290445214159055,
+  "best_of_seeds_mean_gap": 0.783451288761303,
+  "mean_within_instance_sd": 0.14097172533009872,
+  "instances_any_run_over_7": [],
+  "negative_gap_runs": 0,
+  "budget_rule": "time_limit = max(10.0, 0.1 * customers) seconds"
+}

@@ -1,0 +1,242 @@
+{
+  "campaign_id": "abl-no-string",
+  "created_utc": "2026-11-10T18:34:28.984128+00:00",
+  "plan": {
+    "mode": "solver",
+    "splits": {
+      "development": [
+        "Solomon/C107.vrp",
+        "Solomon/C204.vrp",
+        "Solomon/R102.vrp",
+        "Solomon/R203.vrp",
+        "Solomon/RC107.vrp",
+        "Solomon/RC204.vrp",
+        "GH200/C1_2_8.vrp",
+        "GH200/C2_2_8.vrp",
+        "GH200/R1_2_6.vrp",
+        "GH200/R2_2_8.vrp",
+        "GH200/RC1_2_2.vrp",
+        "GH200/RC2_2_8.vrp",
+        "GH400/C1_4_3.vrp",
+        "GH400/C2_4_8.vrp",
+        "GH400/R1_4_10.vrp",
+        "GH400/R2_4_4.vrp",
+        "GH400/RC1_4_8.vrp",
+        "GH400/RC2_4_3.vrp",
+        "GH600/C1_6_9.vrp",
+        "GH600/C2_6_9.vrp",
+        "GH600/R1_6_4.vrp",
+        "GH600/R2_6_10.vrp",
+        "GH600/RC1_6_2.vrp",
+        "GH600/RC2_6_2.vrp",
+        "GH800/C1_8_6.vrp",
+        "GH800/C2_8_10.vrp",
+        "GH800/R1_8_3.vrp",
+        "GH800/R2_8_10.vrp",
+        "GH800/RC1_8_9.vrp",
+        "GH800/RC2_8_1.vrp",
+        "GH1000/C1_10_2.vrp",
+        "GH1000/C2_10_2.vrp",
+        "GH1000/R1_10_5.vrp",
+        "GH1000/R2_10_7.vrp",
+        "GH1000/RC1_10_5.vrp",
+        "GH1000/RC2_10_10.vrp"
+      ],
+      "test": []
+    },
+    "seeds": [
+      2,
+      3
+    ],
+    "variants": [
+      {
+        "id": "abl-no-string",
+        "version": "alns-vnd-1.1",
+        "config": {
+          "clock": "process",
+          "time_fraction": 0.97,
+          "time_reserve": 0.75,
+          "max_iterations": 0,
+          "deterministic": false,
+          "chunk_seconds": 0.05,
+          "n_neighbours": 40,
+          "vnd_neighbours": 20,
+          "near_list": 100,
+          "shaw_list": 100,
+          "tw_wait_weight": 0.2,
+          "tw_warp_weight": 1.0,
+          "insert_all_routes": false,
+          "destroy_min": 5,
+          "destroy_max": 40,
+          "destroy_max_fraction": 0.2,
+          "worst_randomness": 3.0,
+          "shaw_randomness": 6.0,
+          "shaw_weights": [
+            9.0,
+            3.0,
+            2.0
+          ],
+          "sisr_avg_removed": 10.0,
+          "sisr_max_string": 10,
+          "sisr_split_rate": 0.5,
+          "sisr_split_depth": 0.01,
+          "blink_rate": 0.01,
+          "destroy_weights": [
+            1,
+            0,
+            1,
+            0,
+            0.5
+          ],
+          "repair_weights": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "score_new_best": 33.0,
+          "score_better": 9.0,
+          "score_accepted": 13.0,
+          "reaction": 0.1,
+          "segment": 100,
+          "temp_start": 1.5,
+          "temp_end": 0.02,
+          "restart_after": 0,
+          "neighbourhoods": [
+            "relocate",
+            "swap",
+            "two_opt_star",
+            "or_opt",
+            "two_opt"
+          ]
+        }
+      }
+    ],
+    "time_limits": {
+      "Solomon/C107.vrp": 10.0,
+      "Solomon/C204.vrp": 10.0,
+      "Solomon/R102.vrp": 10.0,
+      "Solomon/R203.vrp": 10.0,
+      "Solomon/RC107.vrp": 10.0,
+      "Solomon/RC204.vrp": 10.0,
+      "GH200/C1_2_8.vrp": 20.0,
+      "GH200/C2_2_8.vrp": 20.0,
+      "GH200/R1_2_6.vrp": 20.0,
+      "GH200/R2_2_8.vrp": 20.0,
+      "GH200/RC1_2_2.vrp": 20.0,
+      "GH200/RC2_2_8.vrp": 20.0,
+      "GH400/C1_4_3.vrp": 40.0,
+      "GH400/C2_4_8.vrp": 40.0,
+      "GH400/R1_4_10.vrp": 40.0,
+      "GH400/R2_4_4.vrp": 40.0,
+      "GH400/RC1_4_8.vrp": 40.0,
+      "GH400/RC2_4_3.vrp": 40.0,
+      "GH600/C1_6_9.vrp": 60.0,
+      "GH600/C2_6_9.vrp": 60.0,
+      "GH600/R1_6_4.vrp": 60.0,
+      "GH600/R2_6_10.vrp": 60.0,
+      "GH600/RC1_6_2.vrp": 60.0,
+      "GH600/RC2_6_2.vrp": 60.0,
+      "GH800/C1_8_6.vrp": 80.0,
+      "GH800/C2_8_10.vrp": 80.0,
+      "GH800/R1_8_3.vrp": 80.0,
+      "GH800/R2_8_10.vrp": 80.0,
+      "GH800/RC1_8_9.vrp": 80.0,
+      "GH800/RC2_8_1.vrp": 80.0,
+      "GH1000/C1_10_2.vrp": 100.0,
+      "GH1000/C2_10_2.vrp": 100.0,
+      "GH1000/R1_10_5.vrp": 100.0,
+      "GH1000/R2_10_7.vrp": 100.0,
+      "GH1000/RC1_10_5.vrp": 100.0,
+      "GH1000/RC2_10_10.vrp": 100.0
+    },
+    "thresholds": {},
+    "split_source": "/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/results/alns-vnd/split.json",
+    "split_name": "development",
+    "budget_rule": "time_limit = max(10.0, 0.1 * customers) seconds",
+    "solver_build": "/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/results/alns-vnd/tuning-study/solver"
+  },
+  "algorithm": {
+    "name": "ALNS+VND",
+    "version": "alns-vnd-1.1",
+    "source": "main.ipynb, frozen into /Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/results/alns-vnd/tuning-study/solver",
+    "source_sha256": {
+      "__init__.py": "9152c619625ae26bd2c1e3711a0090efbcceabc96ca67031ff3f6f22bdd757f2",
+      "_jit.py": "c8f9419442322b258715e8f77edb4033a30261ef3f2af319b2d4ea009a156224",
+      "config.py": "fa3d459ca3b95fc48f3f1876b12f6c344fba3364227f4283735595fb1825a869",
+      "kernels.py": "5622948c7207467c5bed80f6688eaa1789248f01ee5b52f05ad5b45ac3b88994",
+      "solver.py": "2abaca33a16d083e77b9baef314b11b89e476da8f9b28b308d2c0411cdd7cc12"
+    }
+  },
+  "environment": {
+    "commit": "cfcd75e444ea79a56726d1531d8d51ea321c386a",
+    "branch": "claude/cvrptw-alns-vnd-4fa707",
+    "dirty": true,
+    "git_status": "?? results/alns-vnd/tuning-study/",
+    "source_sha256": {
+      "scripts/alns_tuning_study.py": "f7f7b465883c4e9458e581b97904cf90e6b5349a89ed1ffab3a21bf278a48832",
+      "scripts/benchmark.py": "bc3cabe325a8f49ad748ef55f5312c41179644c80131fac26b78dcfdaeca3252",
+      "scripts/cvrptw_model.py": "e4604c4f21ca5a23cf8b15ada742c539e987f4d43a16a859458909730d7b5eca",
+      "scripts/download_vrptw_benchmarks.py": "11546d52d64756d6960886a51e4999de1dbfa72569b17cc388bddcd8f80a4c8e",
+      "scripts/notebook_solver.py": "4d3bcaa2c534a4b2c784a803f0603110243f172498b777a6e15476c47a6e951e",
+      "scripts/run_alns.py": "9c1d9c3788cdc1ad4abeb48babd090172011e15968378e3b080594b69bfe0d95",
+      "scripts/run_benchmarks.py": "8764178616f7243bacdcd4880bc9c7b03a41cbab927b4f040250ebb4ca57b6d0",
+      "scripts/run_modeling.py": "90a6fbbaf0d80db8adb64ff20d8ad0a4f60a3b87ebbe5b4d8a2115dadd97a33d",
+      "scripts/tuning_progress.py": "37bee3d4a29054fa8161aedca8575ed052ceb0452f8dab01d2f8faf59f1844ca",
+      "scripts/verify_dataset.py": "d877496feff750f441b06fbea2e3d5a446fdd08712ef90bcfd8b5efbf79d437d",
+      "scripts/watch_benchmarks.py": "1bafae663b52dc518013d4857d43e8d46b0d55b95b21cbeaca05daf01389a352"
+    },
+    "cpu": "arm",
+    "logical_cpus": 12,
+    "ram_bytes": 68719476736,
+    "affinity": null,
+    "thread_environment": {
+      "OMP_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null
+    }
+  },
+  "reproducibility": {
+    "utc": "2026-11-10T18:34:29.042334+00:00",
+    "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "processor": "arm",
+    "seed": null,
+    "packages": {
+      "numpy": "2.0.2",
+      "pandas": "2.3.3",
+      "matplotlib": "3.9.4",
+      "vrplib": "1.5.1",
+      "nbformat": "5.10.4",
+      "nbclient": "0.10.2",
+      "ipykernel": "6.31.0",
+      "jupyter_client": "8.6.3"
+    },
+    "dataset_root": "/Users/denni/EcoRoute-CVRPTW/.claude/worktrees/cvrptw-alns-vnd-4fa707/data/benchmarks/vrptw",
+    "source_manifest": {
+      "source": "https://github.com/PyVRP/Instances",
+      "archive_url": "https://codeload.github.com/PyVRP/Instances/zip/refs/heads/main",
+      "downloaded_utc": "2026-11-09T09:53:04.194430+00:00",
+      "archive_sha256": "0b03cfecc42722379f99eaf9f52f6d103f3bbe6a3a0538877041a0ef6dfc052c",
+      "problem_type": "VRPTW (vehicle routing with time windows)",
+      "families": {
+        "Solomon": 56,
+        "GH200": 60,
+        "GH400": 60,
+        "GH600": 60,
+        "GH800": 60,
+        "GH1000": 60
+      },
+      "total_instances": 356,
+      "file_types": [
+        ".vrp",
+        ".sol"
+      ]
+    },
+    "upstream_commit": "not recorded by source manifest; use collection/per-file hashes"
+  },
+  "split_file_sha256": "85e11132d84df1a6be938e3b31a5732796c5fd27b4af464e6d70accfc1eff24e",
+  "workers": 8,
+  "warmup_seconds": 0.03213870800000018,
+  "note": "Each attempt is a separate shard campaign evaluated by scripts.benchmark.run_campaign; this manifest describes the merged campaign. Concurrent workers share the machine: timings include that contention."
+}
