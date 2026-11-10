@@ -9,6 +9,7 @@ Requires Python 3.9+; no third-party packages.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -60,7 +61,7 @@ def download_archive() -> Path:
     raise AssertionError("Unreachable")
 
 
-def dataset_target(archive_path: str) -> tuple[str, Path] | None:
+def dataset_target(archive_path: str, destination_root: Path = DESTINATION) -> tuple[str, Path] | None:
     """Map GitHub ZIP member paths to our six local dataset folders."""
     parts = PurePosixPath(archive_path).parts
     if "VRPTW" not in parts:
@@ -76,10 +77,14 @@ def dataset_target(archive_path: str) -> tuple[str, Path] | None:
         return None
     if not filename or filename.startswith("."):
         return None
-    return family, DESTINATION / family / filename
+    return family, destination_root / family / filename
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--destination', type=Path, default=DESTINATION, help='Dataset root (independent of shell working directory)')
+    args = parser.parse_args()
+    destination_root = args.destination.resolve()
     print(f"Source: {REPOSITORY}")
     print("Downloading GitHub archive (contains other families that will be ignored)...")
     archive = download_archive()
@@ -92,7 +97,7 @@ def main() -> None:
             for info in zf.infolist():
                 if info.is_dir():
                     continue
-                target = dataset_target(info.filename)
+                target = dataset_target(info.filename, destination_root)
                 if target is None:
                     continue
                 family, destination = target
@@ -141,8 +146,8 @@ def main() -> None:
             ):
                 matches = [x for x in zf.infolist() if x.filename.endswith("/" + member)]
                 if len(matches) == 1:
-                    DESTINATION.mkdir(parents=True, exist_ok=True)
-                    (DESTINATION / filename).write_bytes(zf.read(matches[0]))
+                    destination_root.mkdir(parents=True, exist_ok=True)
+                    (destination_root / filename).write_bytes(zf.read(matches[0]))
 
         sha256 = hashlib.sha256()
         with archive.open("rb") as stream:
@@ -158,10 +163,10 @@ def main() -> None:
             "total_instances": sum(EXPECTED_COUNTS.values()),
             "file_types": [".vrp", ".sol"],
         }
-        (DESTINATION / "source_manifest.json").write_text(
+        (destination_root / "source_manifest.json").write_text(
             json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
         )
-        print(f"\nSaved to: {DESTINATION}")
+        print(f"\nSaved to: {destination_root}")
         for family, count in EXPECTED_COUNTS.items():
             print(f"  {family:8s} {count:3d} problems + {count:3d} solutions")
         print(f"TOTAL: 356 instances, 356 solutions (712 files)")
