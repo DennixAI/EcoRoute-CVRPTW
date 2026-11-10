@@ -1,0 +1,48 @@
+test_campaign_executes_replay_adapter_without_search (tests.test_benchmark.BenchmarkTests) ... /private/tmp/ecoroute-final-review-venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+  prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+/private/tmp/ecoroute-final-review-venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  parse = parser.parseString(pattern)
+/private/tmp/ecoroute-final-review-venv/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  parser.resetCache()
+/private/tmp/ecoroute-final-review-venv/lib/python3.9/site-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+  ParserElement.enablePackrat()
+In /private/tmp/ecoroute-final-review-venv/lib/python3.9/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'parseString' deprecated - use 'parse_string'
+In /private/tmp/ecoroute-final-review-venv/lib/python3.9/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'resetCache' deprecated - use 'reset_cache'
+ok
+test_campaign_records_missing_attempts_and_preserves_previous_run (tests.test_benchmark.BenchmarkTests) ... ok
+test_enforced_execution_boundary (tests.test_benchmark.BenchmarkTests) ... ok
+test_equal_weight_statistics_failure_and_investigation (tests.test_benchmark.BenchmarkTests) ... ok
+test_gap_is_recomputed_not_claimed (tests.test_benchmark.BenchmarkTests) ... ok
+test_invalid_routes_never_receive_gap (tests.test_benchmark.BenchmarkTests) ... ok
+test_missing_and_bad_reference (tests.test_benchmark.BenchmarkTests) ... ok
+test_negative_gap_not_clamped (tests.test_benchmark.BenchmarkTests) ... ok
+test_plan_validation (tests.test_benchmark.BenchmarkTests) ... ok
+test_quality_assessment_requires_every_planned_attempt (tests.test_benchmark.BenchmarkTests) ... ok
+test_serialization_and_exclusive_publication (tests.test_benchmark.BenchmarkTests) ... ok
+test_two_variants_and_two_seeds_reference_replay (tests.test_benchmark.BenchmarkTests) ... ok
+test_waiting_duration_and_separate_timeout_status (tests.test_benchmark.BenchmarkTests) ... ok
+test_cli_help_from_unrelated_directory (tests.test_integration.IntegrationTests) ... ok
+test_downloader_mapping_and_default_root (tests.test_integration.IntegrationTests) ... ok
+test_external_cli_records_invalid_solution_and_missing_attempt (tests.test_integration.IntegrationTests) ... ok
+test_all_356_references (tests.test_model.CollectionTests) ... ok
+test_all_failures_retained (tests.test_model.CollectionTests) ... ok
+test_asymmetric_separate_duration (tests.test_model.ModelTests) ... ok
+test_depot_boundaries (tests.test_model.ModelTests) ... ok
+test_dimacs_exact_and_below_boundary (tests.test_model.ModelTests) ... ok
+test_explicit_departures (tests.test_model.ModelTests) ... ok
+test_invalid_inputs (tests.test_model.ModelTests) ... ok
+test_native_load_and_independent_c101_cost (tests.test_model.ModelTests) ... ok
+test_normalize_service (tests.test_model.ModelTests) ... ok
+test_reordered_sections_are_rejected (tests.test_model.ModelTests) ... ok
+test_route_rejections_have_no_score (tests.test_model.ModelTests) ... ok
+test_subtour_zero_demand_and_time (tests.test_model.ModelTests) ... ok
+test_temporal_corruption_and_mismatched_routes (tests.test_model.ModelTests) ... ok
+test_tolerance_bounds (tests.test_model.ModelTests) ... ok
+test_type_guard_and_immutability (tests.test_model.ModelTests) ... ok
+test_wait_start_close_completion_and_return (tests.test_model.ModelTests) ... ok
+test_zero_cases_and_capacity (tests.test_model.ModelTests) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 9.436s
+
+OK

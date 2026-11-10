@@ -1,0 +1,18 @@
+[
+  {
+    "variant": "published-reference-replay",
+    "mean_gap": 0.0,
+    "instances_with_gaps": 20,
+    "planned_instances": 20,
+    "attempts": 40,
+    "planned_attempts": 40,
+    "feasibility_rate": 1.0,
+    "investigations": [],
+    "assessment": "NEEDS IMPROVEMENT",
+    "reasons": [
+      "Unverified/exceeded runtime budget",
+      "Infrastructure fixture/import; no executed solver quality claim"
+    ],
+    "runtime_memory_targets": "unresolved; no runtime/scalability PASS claimed"
+  }
+]

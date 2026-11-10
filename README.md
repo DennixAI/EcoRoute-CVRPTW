@@ -73,9 +73,11 @@ No temporary `/private/tmp/` review scripts are required. Algorithm selection, o
 | [`main.ipynb`](main.ipynb) | Mathematical modeling, examples, plots, and reference-route validation |
 | [`data/benchmarks/vrptw/`](data/benchmarks/vrptw/) | 356 `.vrp` instances with 356 paired `.sol` reference solutions |
 | [`scripts/download_vrptw_benchmarks.py`](scripts/download_vrptw_benchmarks.py) | Downloads the benchmark collection |
-| [`dataset.md`](dataset.md) | Data format, indexing, and acquisition rules |
-| [`benchmarks.md`](benchmarks.md) | Evaluation protocol and reporting checklist |
-| [`context.md`](context.md) | Model assumptions and project status |
+| [`AGENTS.md`](AGENTS.md) / [`CLAUDE.md`](CLAUDE.md) | Authoritative scope, assignment, datasets, mathematical contract and benchmarking workflow |
+| [`scripts/benchmark.py`](scripts/benchmark.py) | Shared solver interface, independent scoring, persistent campaigns and comparisons |
+| [`scripts/run_benchmarks.py`](scripts/run_benchmarks.py) | Replay references or evaluate saved external routes |
+| [`scripts/verify_dataset.py`](scripts/verify_dataset.py) | Complete 356-pair verification with durable evidence |
+| [`tests/`](tests/) | Automated unit/integration regressions |
 
 ## Problem definition
 
@@ -93,18 +95,18 @@ python scripts/download_vrptw_benchmarks.py
 
 The script writes to `data/benchmarks/vrptw/` regardless of the shell's current directory. It downloads only the VRPTW collection, checks the six expected family counts and matching problem/solution files, and writes a source manifest. Rerunning it may refresh the manifest and files if the upstream archive changes; freeze hashes before final experiments.
 
-For Python parsing, install `vrplib` and use its default VRPLIB reader for the supplied `.vrp` files. See [`dataset.md`](dataset.md) for indexing and a loading example.
+For Python parsing, install `vrplib` and use its default VRPLIB reader for the supplied `.vrp` files. See [AGENTS.md](AGENTS.md) §4 and §9 for indexing, the shared input interface and evaluation commands.
 
 ## Current status
 
-The notebook contains a mathematical model and validation examples. A complete standalone optimization solver, independent benchmark runner, and final experimental results are **not established by the files in this repository**. Treat proposed algorithms and measurements as future work until reproducible code and run artifacts exist.
+The notebook contains a mathematical model and validation examples. The shared dataset/benchmark evaluator and automated tests exist. An optimization solver and final algorithm experimental results have not been implemented. Treat proposed algorithms and measurements as future work until reproducible code and run artifacts exist.
 
 ## Evaluation target
 
-The project brief calls for a Python heuristic or metaheuristic, at least **20 distinct problem instances**, comparison against compatible reference solutions, computation time, statistical analysis, and a reproducible final presentation. Use separate development and held-out evaluation instances. For each final run, verify feasibility independently, record the route count and distance, and compute the percentage gap only against a reference using the same objective and distance convention. See [`benchmarks.md`](benchmarks.md).
+The project brief calls for a Python heuristic or metaheuristic, at least **20 distinct problem instances**, comparison against compatible reference solutions, computation time, statistical analysis, and a reproducible final presentation. Use separate development and held-out evaluation instances. For each final run, verify feasibility independently, record the route count and distance, and compute the percentage gap only against a reference using the same objective and distance convention. See [AGENTS.md](AGENTS.md) §7 and §9.
 
 
-Current modeling contract (2026-11-09): static CVRPTW; minimum total distance; at most K identical-capacity vehicles; hard service-start windows, early waiting, customer service, and a common depot opening/return window. Each active vehicle may choose its depot departure within that same window. Travel duration, waiting and capacity utilization are secondary reported metrics. Traffic and road networks are postponed, and no optimization algorithm is selected or implemented. Algorithm design, splits, runtime budgets and final experiments are future work.
+Current modeling contract (2026-11-09): static CVRPTW; minimum total distance; at most K identical-capacity vehicles; hard service-start windows, early waiting, customer service, and a common depot opening/return window. Each active vehicle may choose its depot departure within that same window. Travel duration, waiting and capacity utilization are secondary reported metrics. Traffic and road networks are excluded from the selected scope, and no optimization algorithm is selected or implemented. Algorithm design, splits, runtime budgets and final experiments are future work.
 
 
 Modeling validation: `main.ipynb` imports the reusable checks in `scripts/cvrptw_model.py`.
@@ -112,3 +114,26 @@ Normal mode reports missing collection checks as **NOT RUN** while synthetic exa
 For complete validation, run Jupyter from the repository root with `ECOROUTE_STRICT_DATA=1`.
 `ECOROUTE_PROJECT_ROOT` and `ECOROUTE_DATA_ROOT` override the project and dataset roots.
 No solver, metaheuristic, final dataset split or experimental budget is selected by these checks.
+
+
+## 4. Verify the infrastructure and evaluate supplied routes
+
+After setup, run tests, then save a fresh full-collection report and a reference replay campaign. Choose new output directory names on reruns; no earlier campaign is overwritten:
+
+```bash
+python -m unittest discover -v
+python scripts/verify_dataset.py --output reports/verification/my-verification
+python scripts/run_benchmarks.py --reference-fixture --output results/my-reference-fixture
+```
+
+The fixture evaluates **20 distinct test instances × two seeds**, plus one disjoint development fixture × two seeds. It reuses published routes to test scoring/persistence; it does not run or select a routing algorithm. C101 must score **827.3**. Supplied references are best-known solutions, not proven optima, under the [source collection's DIMACS convention](https://github.com/PyVRP/Instances/tree/main/VRPTW). A zero replay gap is expected and is not solver-quality evidence. Solver execution time stays null.
+
+For saved external outputs:
+
+```bash
+python scripts/run_benchmarks.py --manifest /path/to/campaign.json --output results/my-external-evaluation
+```
+
+[AGENTS.md](AGENTS.md) §9 contains the exact JSON manifest format and Python adapter API. Each declared variant/instance/seed attempt is retained, including missing/invalid/error/timeout cases. CSV/JSON/Markdown tables, plots, schedules, route artifacts, hashes, versions and hardware metadata persist under the new campaign directory. Gap is `100 * (independently_validated_cost - verified_reference_cost) / verified_reference_cost`; invalid routes or references have no eligible gap. Imports cannot establish measured solver runtimes or algorithm PASS. Candidate algorithms remain unimplemented.
+
+Default engineering targets are average gap ≤3%, ≥20 held-out instances with repeated seeds, 100% feasible planned outputs and investigation of any individual gap >7%. Campaign reports show explicit PASS / NEEDS IMPROVEMENT with reasons; final runtime/memory budgets and tutor scope approval remain pending. Preserve these results in Git or a durable archive before long experiments; `outputs/` is only notebook scratch space. The user removed the older context/dataset/benchmarks documents; their requirements are preserved in both synchronized handbooks.

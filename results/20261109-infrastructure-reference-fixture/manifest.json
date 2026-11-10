@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "campaign_id": "20261109-infrastructure-reference-fixture",
+  "created_utc": "2026-11-09T18:56:11.021231+00:00",
+  "plan": {
+    "mode": "reference_fixture",
+    "splits": {
+      "development": [
+        "Solomon/C102.vrp"
+      ],
+      "test": [
+        "Solomon/C101.vrp",
+        "GH200/C1_2_1.vrp",
+        "GH400/C1_4_1.vrp",
+        "GH600/C1_6_1.vrp",
+        "GH800/C1_8_1.vrp",
+        "GH1000/C1_10_1.vrp",
+        "Solomon/R101.vrp",
+        "GH200/R1_2_1.vrp",
+        "GH400/R1_4_1.vrp",
+        "GH600/R1_6_1.vrp",
+        "GH800/R1_8_1.vrp",
+        "GH1000/R1_10_1.vrp",
+        "Solomon/RC101.vrp",
+        "GH200/RC1_2_1.vrp",
+        "GH400/RC1_4_1.vrp",
+        "GH600/RC1_6_1.vrp",
+        "GH800/RC1_8_1.vrp",
+        "GH1000/RC1_10_1.vrp",
+        "Solomon/C201.vrp",
+        "GH200/C2_2_1.vrp"
+      ]
+    },
+    "seeds": [
+      0,
+      1
+    ],
+    "variants": [
+      {
+        "id": "published-reference-replay",
+        "version": "fixture-v1",
+        "config": {}
+      }
+    ],
+    "time_limits": {
+      "default": 1.0
+    },
+    "thresholds": {},
+    "split_note": "Infrastructure fixture only; not the final held-out split"
+  },
+  "environment": {
+    "commit": "81612c8b1136e364a65267112171ebf6231e57cd",
+    "branch": "main",
+    "dirty": true,
+    "git_status": "M AGENTS.md\n M CLAUDE.md\n M README.md\n M main.ipynb\n M scripts/cvrptw_model.py\n M scripts/download_vrptw_benchmarks.py\n?? reports/\n?? scripts/benchmark.py\n?? scripts/run_benchmarks.py\n?? scripts/verify_dataset.py\n?? tests/",
+    "source_sha256": {
+      "scripts/benchmark.py": "c6a312bfa5205b00807a25984100b91aaecc17b658a3581143f36abfb5101243",
+      "scripts/cvrptw_model.py": "e4604c4f21ca5a23cf8b15ada742c539e987f4d43a16a859458909730d7b5eca",
+      "scripts/download_vrptw_benchmarks.py": "11546d52d64756d6960886a51e4999de1dbfa72569b17cc388bddcd8f80a4c8e",
+      "scripts/run_benchmarks.py": "8764178616f7243bacdcd4880bc9c7b03a41cbab927b4f040250ebb4ca57b6d0",
+      "scripts/run_modeling.py": "90a6fbbaf0d80db8adb64ff20d8ad0a4f60a3b87ebbe5b4d8a2115dadd97a33d",
+      "scripts/verify_dataset.py": "77eaeefe511b959c54d5b0be86d1d1293a5cb914b7929ab63736b8bad5f91544"
+    },
+    "cpu": "arm",
+    "logical_cpus": 12,
+    "ram_bytes": 68719476736,
+    "affinity": null,
+    "thread_environment": {
+      "OMP_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null
+    }
+  },
+  "reproducibility": {
+    "utc": "2026-11-09T18:56:11.054270+00:00",
+    "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "processor": "arm",
+    "seed": null,
+    "packages": {
+      "numpy": "2.0.2",
+      "pandas": "2.3.3",
+      "matplotlib": "3.9.4",
+      "vrplib": "1.5.1",
+      "nbformat": "5.10.4",
+      "nbclient": "0.10.2",
+      "ipykernel": "6.31.0",
+      "jupyter_client": "8.6.3"
+    },
+    "dataset_root": "/Users/denni/EcoRoute-CVRPTW/data/benchmarks/vrptw",
+    "source_manifest": {
+      "source": "https://github.com/PyVRP/Instances",
+      "archive_url": "https://codeload.github.com/PyVRP/Instances/zip/refs/heads/main",
+      "downloaded_utc": "2026-11-09T09:53:04.194430+00:00",
+      "archive_sha256": "0b03cfecc42722379f99eaf9f52f6d103f3bbe6a3a0538877041a0ef6dfc052c",
+      "problem_type": "VRPTW (vehicle routing with time windows)",
+      "families": {
+        "Solomon": 56,
+        "GH200": 60,
+        "GH400": 60,
+        "GH600": 60,
+        "GH800": 60,
+        "GH1000": 60
+      },
+      "total_instances": 356,
+      "file_types": [
+        ".vrp",
+        ".sol"
+      ]
+    },
+    "upstream_commit": "not recorded by source manifest; use collection/per-file hashes"
+  },
+  "reference_kind": "published BKS; optimality not proven",
+  "inputs": {
+    "Solomon/C102.vrp": {
+      "input_sha256": "f1a7c1473aa13fdef92193525d9394f8671ae7f943a10cad37e17bda0879e14f",
+      "reference_sha256": "ee07c932bc4200e0782e25fccdf8f3b7548ce07b841f66906d6dce8973be0f00"
+    },
+    "Solomon/C101.vrp": {
+      "input_sha256": "048312f0b95a6e474736f18e951322a002762016a08adb2d0cdf5688ad0a8192",
+      "reference_sha256": "ee07c932bc4200e0782e25fccdf8f3b7548ce07b841f66906d6dce8973be0f00"
+    },
+    "GH200/C1_2_1.vrp": {
+      "input_sha256": "3743d20109c701e877e6e72ee046a916bc97d6ce6ab0bafa412aa70cc41fbda2",
+      "reference_sha256": "baad8723ebf8c1e783822c61f4351f9b8017ad80dd390983abb55670b442d237"
+    },
+    "GH400/C1_4_1.vrp": {
+      "input_sha256": "0c41e12469193eb9c08ce094fe8f644e2dd65493c838730c9e8a45559bf931d9",
+      "reference_sha256": "b09e2505b7b8c5706e6e26f7dab3ee128c04d0e143e69ff402a73b90035c1689"
+    },
+    "GH600/C1_6_1.vrp": {
+      "input_sha256": "cafe654e13622171e96ea9e75d60b8437b043ad175f896212cd44320c5200e6e",
+      "reference_sha256": "199101510c7ca933ed445a4c4933f388256f2838d136d07c1810015f2440b0d9"
+    },
+    "GH800/C1_8_1.vrp": {
+      "input_sha256": "4c91b0587178d9d8de17c9a29733d08d038f62c527d3508b5b7ed85720589d32",
+      "reference_sha256": "16293b61cb3048cbe509f5838fff7b42d692be515259004da83c042ab62f0b67"
+    },
+    "GH1000/C1_10_1.vrp": {
+      "input_sha256": "200427879a5170d0c711221a777bd7e2c5ba6fe5ca6f8c1e1153c0a5a14eb45d",
+      "reference_sha256": "fe312f4bff24dc333df09ecbe346e55e7e0b7891601392724d60d598f2e6cb1b"
+    },
+    "Solomon/R101.vrp": {
+      "input_sha256": "1f13c0eb622c258b6e8b743c0a9725ac958efb62496eb4f6d07c646ab670f2b6",
+      "reference_sha256": "1881cf3b7f8212302cd394c8f63f50767e0fae67d982cd918efcff02089c707c"
+    },
+    "GH200/R1_2_1.vrp": {
+      "input_sha256": "b45b327caf7dbffd6694273f806463972d95ca31e35372e5f62022a085c3f435",
+      "reference_sha256": "0603ad0ac00e614d1cc19bcc01fb86ad873bc1268de54927bc593b1a0c0879c1"
+    },
+    "GH400/R1_4_1.vrp": {
+      "input_sha256": "c126593ac2e392a81afb4ef70a8264a7bc7a9ef95e71db0da4354df70329d261",
+      "reference_sha256": "09b7ede982d43960c8759c56bf3f643c78216f29e7b3a8a166fcbb4c1455d503"
+    },
+    "GH600/R1_6_1.vrp": {
+      "input_sha256": "f2f26838b44d5496c8ade6a5b53870e97132edf9ed682ff40b0d9e2169a7311d",
+      "reference_sha256": "0954d2c47e019e8e8870ac7b4969ebefee455ce57a746eecdbdd83925ccde726"
+    },
+    "GH800/R1_8_1.vrp": {
+      "input_sha256": "02d007426ee10f5c71ed73e14e98058f0a3ce08761f4808632b958ac86cc2298",
+      "reference_sha256": "0965c1bd0e24fc03a40345d324c4acc99cb001bf7d134d73da00b23ae6a7e350"
+    },
+    "GH1000/R1_10_1.vrp": {
+      "input_sha256": "7c064a3a3bcf5c3d4e64a4dc32ad603ad84563cf2fce39d5bdbf73972b7fd84d",
+      "reference_sha256": "a781f8c76ef0a6edce7d7bfb066df6cf8b0602e1ea3db98df2705a6165d682e8"
+    },
+    "Solomon/RC101.vrp": {
+      "input_sha256": "aa85524e59f3f52106bf6de262afdff81dbeeb769dba299cb14ead03e9955626",
+      "reference_sha256": "866e8ecce2f6dfd9835a2af30322464dda9ce13446397c5eae70b28e687e1f11"
+    },
+    "GH200/RC1_2_1.vrp": {
+      "input_sha256": "13f70d197422900a1e6afa6f6026d179da7a9acfd26b4767d6cd3446f616b7d8",
+      "reference_sha256": "14303f67e5fd4a252e758d0e97dc62662fadc041322281b7ffce188a700d3123"
+    },
+    "GH400/RC1_4_1.vrp": {
+      "input_sha256": "7f067316fa4486ee8a366a3cd457b80220d6f13e7ae8c81eb89070f7e6d885b5",
+      "reference_sha256": "35f5d942cc906bd0c1aff8a85a2c294a9a1ca40ee821699ede24965d8530ed58"
+    },
+    "GH600/RC1_6_1.vrp": {
+      "input_sha256": "378f85e14d634c5bf3c047082121b8e8c14fe9b51e4d8370a9e0a1a7dd4c8c33",
+      "reference_sha256": "9e2ae50240257f8c29a1950d7bbb55be4b9a94d686e06dd715f18f08a3f5077e"
+    },
+    "GH800/RC1_8_1.vrp": {
+      "input_sha256": "4ec32996f36ea5babbc1fbe44f64e310739b998b080d749ede077f4281dd1044",
+      "reference_sha256": "52283dec428059e4f57338505d9bf7264833950cecd105c50d1fbff67cc85bb6"
+    },
+    "GH1000/RC1_10_1.vrp": {
+      "input_sha256": "e9c00b51724a2c90f0e01f9a3f5908a991a8bf72aebf8c73d6838af5113f67a4",
+      "reference_sha256": "27b3c9af4cc7852424c3e192d437755562eb28bc6f2e611b699e91f45ec5fed3"
+    },
+    "Solomon/C201.vrp": {
+      "input_sha256": "28917ebe98acb231afd6a3a7bfef52bb2489b389fea7283ce9c0bbc687d3b9ae",
+      "reference_sha256": "ca126c291b9fb9533afdbc60a2ebef8737664330050acc6067a2a65c5801c831"
+    },
+    "GH200/C2_2_1.vrp": {
+      "input_sha256": "558fe2542e07fa622c9cb8272034b15756ef6718b62ce0d20e75f89005bf5009",
+      "reference_sha256": "ef9cc73e64c9d8fad7c23f71af378c673a9ed3f1f034a38a7fcf49144954ec61"
+    }
+  },
+  "note": "Reference fixture replays are infrastructure tests, never optimization experiments."
+}
