@@ -103,7 +103,10 @@ def cmd_shard(args):
     return 1 if bad else 0
 
 
-def cmd_run(args):
+def prepare_campaign(args):
+    """Validate the selection, freeze the notebook solver into the campaign, warm its
+    Numba cache and write the manifest. Returns the context used by launch_job /
+    finalize_campaign (so several campaigns can share one worker pool)."""
     split = json.loads(args.split_file.read_text())
     if args.split not in ("development", "test", "reserve"):
         raise SystemExit("split must be development, test or reserve")
@@ -129,9 +132,14 @@ def cmd_run(args):
     if out.exists():
         raise SystemExit(f"{out} exists; campaigns are never overwritten")
     (out / "shards").mkdir(parents=True)
-    # Freeze the solver written in main.ipynb into this campaign (code archived with the results).
-    from scripts.notebook_solver import load, notebook_sources
-    solver_pkg, _ = load(notebook_sources(), build_dir=out / "solver")
+    # Freeze the solver written in main.ipynb into this campaign (code archived with the results),
+    # unless a caller supplies an already frozen build shared by several campaigns.
+    from scripts.notebook_solver import import_built, load, notebook_sources
+    solver_dir = Path(getattr(args, "solver_build", None) or out / "solver")
+    if getattr(args, "solver_build", None):
+        solver_pkg = import_built(solver_dir)
+    else:
+        solver_pkg, _ = load(notebook_sources(), build_dir=solver_dir)
     ALNSConfig, VERSION, warmup = solver_pkg.ALNSConfig, solver_pkg.VERSION, solver_pkg.warmup
     source_fingerprint = solver_pkg.solver.source_fingerprint
     full_config = ALNSConfig.from_dict(config).to_dict()
@@ -144,7 +152,7 @@ def cmd_run(args):
                      variants=[variant], time_limits=limits, thresholds={},
                      split_source=str(args.split_file), split_name=args.split,
                      budget_rule=f"time_limit = max({args.min_time}, {args.time_per_customer} * customers) seconds",
-                     solver_build=str((out / "solver").resolve()))
+                     solver_build=str(solver_dir.resolve()))
     full_plan["splits"][split_key] = names
     # Compile / load the Numba cache once, outside any timed attempt.
     started = time.perf_counter()
@@ -152,7 +160,7 @@ def cmd_run(args):
     warm_seconds = time.perf_counter() - started
     manifest = dict(
         campaign_id=out.name, created_utc=datetime.now(timezone.utc).isoformat(), plan=full_plan,
-        algorithm=dict(name="ALNS+VND", version=VERSION, source="main.ipynb, frozen into solver/",
+        algorithm=dict(name="ALNS+VND", version=VERSION, source=f"main.ipynb, frozen into {solver_dir}",
                        source_sha256=source_fingerprint()),
         environment=environment(ROOT), reproducibility=reproducibility_metadata(args.data_root, None),
         split_file_sha256=__import__("hashlib").sha256(args.split_file.read_bytes()).hexdigest(),
@@ -163,32 +171,45 @@ def cmd_run(args):
     write_json(out / "manifest.json", manifest)
     write_json(out / "split.json", dict(source=str(args.split_file), split=args.split, instances=names))
     jobs = sorted(((n, s) for n in names for s in seeds), key=lambda j: -limits[j[0]])
-    total = len(jobs)
-    print(f"{total} attempts on {len(names)} instances x {len(seeds)} seeds, {args.workers} workers; "
+    print(f"{len(jobs)} attempts on {len(names)} instances x {len(seeds)} seeds, {args.workers} workers; "
           f"sequential time {sum(limits[n] for n, _ in jobs) / 3600:.2f} h", flush=True)
+    return dict(out=out, full_plan=full_plan, jobs=jobs, limits=limits, split_key=split_key,
+                data_root=args.data_root)
 
-    def launch(job):
-        name, seed = job
-        tag = f"{name.replace('/', '__').replace('.vrp', '')}__s{seed}"
-        plan = dict(full_plan, seeds=[seed], time_limits={name: limits[name]})
-        plan["splits"] = {"development": [], "test": []}
-        plan["splits"][split_key] = [name]
-        plan_path = out / "shards" / f"{tag}.plan.json"
-        plan_path.write_text(json.dumps(plan, indent=2))
-        log = (out / "shards" / f"{tag}.log").open("w")
-        code = subprocess.call([sys.executable, str(Path(__file__).resolve()), "shard", "--plan", str(plan_path),
-                                "--output", str(out / "shards" / tag), "--data-root", str(args.data_root)],
-                               stdout=log, stderr=subprocess.STDOUT, cwd=str(ROOT))
-        log.close()
-        return tag, code
 
+def launch_job(ctx, job):
+    """Run one (instance, seed) attempt as an isolated shard campaign."""
+    out, full_plan, limits, split_key = ctx["out"], ctx["full_plan"], ctx["limits"], ctx["split_key"]
+    name, seed = job
+    tag = f"{name.replace('/', '__').replace('.vrp', '')}__s{seed}"
+    plan = dict(full_plan, seeds=[seed], time_limits={name: limits[name]})
+    plan["splits"] = {"development": [], "test": []}
+    plan["splits"][split_key] = [name]
+    plan_path = out / "shards" / f"{tag}.plan.json"
+    plan_path.write_text(json.dumps(plan, indent=2))
+    log = (out / "shards" / f"{tag}.log").open("w")
+    code = subprocess.call([sys.executable, str(Path(__file__).resolve()), "shard", "--plan", str(plan_path),
+                            "--output", str(out / "shards" / tag), "--data-root", str(ctx["data_root"])],
+                           stdout=log, stderr=subprocess.STDOUT, cwd=str(ROOT))
+    log.close()
+    return tag, code
+
+
+def finalize_campaign(ctx):
+    """Merge the shard results into the campaign and write its reports."""
+    merge(ctx["out"], ctx["full_plan"])
+    report(ctx["out"])
+
+
+def cmd_run(args):
+    ctx = prepare_campaign(args)
+    total = len(ctx["jobs"])
     done = 0
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        for tag, code in pool.map(launch, jobs):
+        for tag, code in pool.map(lambda job: launch_job(ctx, job), ctx["jobs"]):
             done += 1
             print(f"[{done}/{total}] {tag} exit={code}", flush=True)
-    merge(out, full_plan)
-    report(out)
+    finalize_campaign(ctx)
     return 0
 
 
@@ -356,8 +377,9 @@ def report(out):
     ax.legend(fontsize=7)
     ax = axes[1]
     sizes = sorted({p["n"] for p in per if p["gap_mean"] is not None})
-    ax.boxplot([[p["gap_mean"] for p in per if p["n"] == s and p["gap_mean"] is not None] for s in sizes],
-               labels=[str(s) for s in sizes])
+    if sizes:  # a campaign without any scored run has nothing to box-plot
+        ax.boxplot([[p["gap_mean"] for p in per if p["n"] == s and p["gap_mean"] is not None] for s in sizes],
+                   labels=[str(s) for s in sizes])
     ax.set(xlabel="customers", ylabel="instance mean gap (%)", title="Scalability: gap by size")
     ax2 = axes[2]
     plot_throughput(ax2, per)
