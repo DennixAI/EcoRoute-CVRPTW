@@ -1,0 +1,6 @@
+# ALNS + VND extra dependencies (on top of the repository requirements).
+# numba 0.60 is the newest release supporting Python 3.9 and numpy 2.0.
+-r ../../requirements.txt
+numba==0.60.0
+llvmlite==0.43.0
+psutil==7.2.2

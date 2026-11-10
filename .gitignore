@@ -5,3 +5,7 @@ __pycache__/
 *.py[cod]
 
 outputs/
+
+# Numba on-disk compilation cache
+*.nbi
+*.nbc
