@@ -22,7 +22,9 @@ SET_OF = {"conf": "confirmation", "temp": "temperature", "abl": "ablation"}
 
 def runner_alive():
     try:
-        return subprocess.run(["pgrep", "-f", "alns_tuning_study.py run"], capture_output=True).returncode == 0
+        # Match the Python interpreter running the study, not shells that merely mention it.
+        return subprocess.run(["pgrep", "-f", r"[Pp]ython[^ ]* scripts/alns_tuning_study\.py run"],
+                              capture_output=True).returncode == 0
     except OSError:
         return None
 
