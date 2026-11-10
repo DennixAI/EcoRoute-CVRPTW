@@ -1,4 +1,4 @@
-"""ALNS + VND correctness tests.
+"""ALNS + VND correctness tests (solver code taken from main.ipynb).
 
 Every VND move is checked against a brute-force reference: for random feasible
 states and every (u, v) pair the expected resulting routes are built in plain
@@ -12,9 +12,13 @@ import unittest
 
 import numpy as np
 
-from algorithms.alns_vnd import ALNSConfig, solve
-from algorithms.alns_vnd import kernels as K
-from algorithms.alns_vnd.solver import build_instance_data, decode_routes, new_solution, route_cost
+from scripts.notebook_solver import load as load_notebook_solver
+
+# The solver under test is the one written in main.ipynb (built into outputs/alns_build).
+ALNS, _ = load_notebook_solver()
+ALNSConfig, solve, K = ALNS.ALNSConfig, ALNS.solve, ALNS.kernels
+build_instance_data, decode_routes = ALNS.solver.build_instance_data, ALNS.solver.decode_routes
+new_solution, route_cost = ALNS.solver.new_solution, ALNS.solver.route_cost
 from scripts.benchmark import evaluate_solution, run_solver
 from scripts.cvrptw_model import CVRPTWInstance, check_cvrptw, dimacs_tenths, load_cvrptw
 from tests.test_model import DATA
@@ -393,7 +397,8 @@ class SolverTests(unittest.TestCase):
 
     def test_time_limit_respected_in_isolated_worker(self):
         instance = load_cvrptw(DATA / "Solomon/R101.vrp")
-        result, timing = run_solver(solve, instance, {"clock": "process"}, 3, 6.0)
+        current, _ = load_notebook_solver()  # workers pickle solve by reference to the live module
+        result, timing = run_solver(current.solve, instance, {"clock": "process"}, 3, 6.0)
         self.assertTrue(timing["budget_respected"], timing)
         self.assertIsNone(timing["error"])
         reference = dict(status="verified", recomputed_cost=1637.7)

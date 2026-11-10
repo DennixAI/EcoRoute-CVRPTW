@@ -8,3 +8,8 @@ nbformat==5.10.4
 nbclient==0.10.2
 ipykernel==6.31.0
 jupyter_client==8.6.3
+# ALNS + VND solver (main.ipynb Sections 12-15): JIT compilation and process-start timing.
+# numba 0.60 is the newest release supporting Python 3.9 and numpy 2.0.
+numba==0.60.0
+llvmlite==0.43.0
+psutil==7.2.2

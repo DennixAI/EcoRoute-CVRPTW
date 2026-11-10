@@ -93,8 +93,10 @@ def time_limit_for(n, per_customer, minimum):
 
 def cmd_shard(args):
     """Internal: run one shard plan with the shared campaign evaluator."""
-    from algorithms.alns_vnd import solve
+    from scripts.notebook_solver import import_built
     plan = json.loads(args.plan.read_text())
+    # The campaign froze the notebook solver into its own folder before any attempt.
+    solve = import_built(plan["solver_build"]).solve
     solvers = {v["id"]: solve for v in plan["variants"]}
     rows, _ = run_campaign(plan, args.data_root, args.output, solvers=solvers)
     bad = [r for r in rows if not r["feasible"]]
@@ -123,22 +125,26 @@ def cmd_run(args):
     if args.config:
         config.update(json.loads(args.config))
     config["clock"] = "process"  # the isolated worker charges start-up to the budget
-    from algorithms.alns_vnd import ALNSConfig, VERSION, warmup
-    from algorithms.alns_vnd.solver import source_fingerprint
+    out = args.output
+    if out.exists():
+        raise SystemExit(f"{out} exists; campaigns are never overwritten")
+    (out / "shards").mkdir(parents=True)
+    # Freeze the solver written in main.ipynb into this campaign (code archived with the results).
+    from scripts.notebook_solver import load, notebook_sources
+    solver_pkg, _ = load(notebook_sources(), build_dir=out / "solver")
+    ALNSConfig, VERSION, warmup = solver_pkg.ALNSConfig, solver_pkg.VERSION, solver_pkg.warmup
+    source_fingerprint = solver_pkg.solver.source_fingerprint
     full_config = ALNSConfig.from_dict(config).to_dict()
     variant = dict(id=args.variant, version=VERSION, config=full_config)
     seeds = list(args.seeds)
     sizes = {n: 100 if n.startswith("Solomon") else int(n.split("/")[0][2:]) for n in names}
     limits = {n: time_limit_for(sizes[n], args.time_per_customer, args.min_time) for n in names}
-    out = args.output
-    if out.exists():
-        raise SystemExit(f"{out} exists; campaigns are never overwritten")
-    (out / "shards").mkdir(parents=True)
     split_key = "test" if args.split in ("test", "reserve") else "development"
     full_plan = dict(mode="solver", splits={"development": [], "test": []}, seeds=seeds,
                      variants=[variant], time_limits=limits, thresholds={},
                      split_source=str(args.split_file), split_name=args.split,
-                     budget_rule=f"time_limit = max({args.min_time}, {args.time_per_customer} * customers) seconds")
+                     budget_rule=f"time_limit = max({args.min_time}, {args.time_per_customer} * customers) seconds",
+                     solver_build=str((out / "solver").resolve()))
     full_plan["splits"][split_key] = names
     # Compile / load the Numba cache once, outside any timed attempt.
     started = time.perf_counter()
@@ -146,7 +152,8 @@ def cmd_run(args):
     warm_seconds = time.perf_counter() - started
     manifest = dict(
         campaign_id=out.name, created_utc=datetime.now(timezone.utc).isoformat(), plan=full_plan,
-        algorithm=dict(name="ALNS+VND", version=VERSION, source_sha256=source_fingerprint()),
+        algorithm=dict(name="ALNS+VND", version=VERSION, source="main.ipynb, frozen into solver/",
+                       source_sha256=source_fingerprint()),
         environment=environment(ROOT), reproducibility=reproducibility_metadata(args.data_root, None),
         split_file_sha256=__import__("hashlib").sha256(args.split_file.read_bytes()).hexdigest(),
         workers=args.workers, warmup_seconds=warm_seconds,

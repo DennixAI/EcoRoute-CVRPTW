@@ -179,7 +179,7 @@ This viewer needs no additional dependencies beyond `requirements.txt`.
 ## Algorithm 1 — ALNS + VND
 
 ```bash
-python -m pip install -r algorithms/alns_vnd/requirements.txt   # adds numba, psutil
+python -m pip install -r requirements.txt                       # includes numba, psutil
 python -m unittest discover                                      # full test suite
 python scripts/run_alns.py run --split-file results/alns-vnd/split.json --split test \
     --seeds 0 1 2 3 4 5 6 7 8 9 --time-per-customer 0.3 --workers 6 --output results/alns-vnd/<new-id>
@@ -187,4 +187,4 @@ python scripts/run_alns.py run --split-file results/alns-vnd/split.json --split 
 
 Held-out result (`test-001`): 360/360 feasible, mean gap 0.654 % to published BKS, worst run 2.364 %. Details in [results/alns-vnd/README.md](results/alns-vnd/README.md).
 
-**Source of truth:** the ALNS + VND solver code lives in `main.ipynb` (Sections 12–15, cells headed `%%alns_source`). `algorithms/alns_vnd/*.py` are identical copies kept because Numba caches compiled code only for real files (instant notebook start) and isolated benchmark workers import files. After editing solver cells run `python scripts/sync_notebook_solver.py --write`; `tests/test_notebook_solver.py` fails while they differ, and the notebook compiles its own cells (with a warning) until then.
+**Single source:** the ALNS + VND solver is written only in `main.ipynb` (Sections 12–15, cells headed `%%alns_source`); edit it there. `scripts/notebook_solver.py` assembles those cells into the generated, git-ignored package `outputs/alns_build/alns_notebook/` so that Numba can cache the compiled code (first run after an edit compiles for ≈15–60 s, later runs start in under a second). The notebook, the tests and `scripts/run_alns.py` all run this notebook code; each benchmark campaign freezes its own copy in `<campaign>/solver/`. `algorithms/alns_vnd/` is a frozen snapshot of the version evaluated in campaign `test-001` and is no longer kept in sync.

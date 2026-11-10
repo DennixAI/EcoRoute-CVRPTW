@@ -13,3 +13,6 @@ outputs/
 # Raw per-attempt campaign artifacts: archived as checksummed tarballs, not in Git
 results/alns-vnd/*/shards/
 results/alns-vnd/archives/
+
+# Notebook solver build (generated from main.ipynb; Numba cache lives beside it)
+outputs/alns_build/

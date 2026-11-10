@@ -2,7 +2,7 @@
 
 Branch `algo/alns-vnd` (worktree `claude/cvrptw-alns-vnd-4fa707`).
 
-**Source of truth:** the ALNS + VND solver code lives in `main.ipynb` (Sections 12–15, cells headed `%%alns_source`). `algorithms/alns_vnd/*.py` are identical copies kept because Numba caches compiled code only for real files (instant notebook start) and isolated benchmark workers import files. After editing solver cells run `python scripts/sync_notebook_solver.py --write`; `tests/test_notebook_solver.py` fails while they differ, and the notebook compiles its own cells (with a warning) until then. Code: [`algorithms/alns_vnd/`](../algorithms/alns_vnd/), experiment CLI: [`scripts/run_alns.py`](../scripts/run_alns.py), tests: [`tests/test_alns_vnd.py`](../tests/test_alns_vnd.py).
+**Single source:** the ALNS + VND solver is written only in `main.ipynb` (Sections 12–15, cells headed `%%alns_source`); edit it there. `scripts/notebook_solver.py` assembles those cells into the generated, git-ignored package `outputs/alns_build/alns_notebook/` so that Numba can cache the compiled code (first run after an edit compiles for ≈15–60 s, later runs start in under a second). The notebook, the tests and `scripts/run_alns.py` all run this notebook code; each benchmark campaign freezes its own copy in `<campaign>/solver/`. `algorithms/alns_vnd/` is a frozen snapshot of the version evaluated in campaign `test-001` and is no longer kept in sync.
 
 The solver implements the `scripts.benchmark.Solver` protocol: `solve(instance, config, seed, time_limit) -> SolverResult`. It receives only the `CVRPTWInstance` (never `.sol` routes or costs), returns customer-only routes in internal indices 1..n, and every result is re-validated and re-scored by the shared independent evaluator (`check_cvrptw`, DIMACS integer tenths).
 
@@ -53,7 +53,7 @@ Each neighbourhood is swept with first improvement; after a sweep that improves,
 
 ## 4. Implementation and performance
 
-The kernels are plain Python in the Numba-compatible subset, JIT-compiled with Numba 0.60 (BSD licence; disclosed dependency, `algorithms/alns_vnd/requirements.txt`). Without Numba (or with `ECOROUTE_DISABLE_JIT=1`) the same code runs as ordinary Python. Compiled code is cached on disk; the campaign CLI warms the cache before any timed attempt.
+The kernels are plain Python in the Numba-compatible subset, JIT-compiled with Numba 0.60 (BSD licence; disclosed dependency, pinned in `requirements.txt`). Without Numba (or with `ECOROUTE_DISABLE_JIT=1`) the same code runs as ordinary Python. Compiled code is cached on disk; the campaign CLI warms the cache before any timed attempt.
 
 A profiling finding shaped the code: handing tuples of arrays to a non-inlined Numba function costs ~100 ns per call (reference counting), whereas passing the arrays individually is ~1 ns. Only per-iteration entry points accept tuples; all hot functions take arrays. This made a full VND sweep ~10× faster (5–60 ns per (u, v) pair and neighbourhood).
 

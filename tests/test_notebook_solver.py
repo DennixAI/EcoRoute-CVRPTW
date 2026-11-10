@@ -1,22 +1,17 @@
-"""main.ipynb is the authoritative ALNS + VND source; the .py copies must match it."""
+"""main.ipynb is the only source of the ALNS + VND solver: build, cache and reproducibility."""
 import json
-import os
-import subprocess
-import sys
-import textwrap
+import tempfile
 import unittest
+from pathlib import Path
 
 import nbformat
 
-from scripts.sync_notebook_solver import MAGIC, MODULES, NOTEBOOK, differences, notebook_sources
+from scripts.notebook_solver import MAGIC, MODULES, NOTEBOOK, build, import_built, load, notebook_sources
+from scripts.cvrptw_model import check_cvrptw
+from tests.test_alns_vnd import random_instance
 
 
 class NotebookSolverTests(unittest.TestCase):
-    def test_notebook_and_py_copies_are_identical(self):
-        diffs = differences()
-        self.assertEqual(diffs, {}, "Run `python scripts/sync_notebook_solver.py --write` after editing "
-                                    "solver cells in main.ipynb:\n" + "\n".join(diffs.values()))
-
     def test_solver_cells_are_well_formed(self):
         notebook = nbformat.read(str(NOTEBOOK), as_version=4)
         nbformat.validate(notebook)
@@ -31,31 +26,30 @@ class NotebookSolverTests(unittest.TestCase):
         for module, numbers in parts.items():
             self.assertEqual(sorted(numbers), list(range(1, len(numbers) + 1)), module)
 
-    def test_notebook_code_runs_as_its_own_package(self):
-        """Mirror load_alns() fallback: exec notebook modules as package alns_notebook."""
-        sources = json.dumps(notebook_sources())
-        script = textwrap.dedent(f"""
-            import json, sys, types
-            sys.path.insert(0, {str(NOTEBOOK.parent)!r})
-            texts = json.loads({sources!r})
-            package = types.ModuleType("alns_notebook"); package.__path__ = []
-            sys.modules["alns_notebook"] = package
-            for m in {list(MODULES)!r}:
-                module = types.ModuleType("alns_notebook." + m); module.__package__ = "alns_notebook"
-                sys.modules[module.__name__] = module; setattr(package, m, module)
-                exec(compile(texts[m], "<main.ipynb " + m + ">", "exec"), module.__dict__)
-            package.solver.NOTEBOOK_SOURCE_SHA256 = {{"solver.py": "test"}}
-            result = package.solver.warmup()
-            assert result.status == "completed" and result.routes, result.status
-            assert result.metadata["source_sha256"]["origin"] == "main.ipynb"
-            assert "algorithms.alns_vnd" not in sys.modules
-            print("ok")
-        """)
-        env = dict(os.environ, ECOROUTE_DISABLE_JIT="1")
-        done = subprocess.run([sys.executable, "-c", script], env=env, capture_output=True, text=True,
-                              cwd=str(NOTEBOOK.parent), timeout=300)
-        self.assertEqual(done.returncode, 0, done.stderr[-3000:])
-        self.assertIn("ok", done.stdout)
+    def test_build_rewrites_only_changed_files_and_reimports(self):
+        sources = notebook_sources()
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(sorted(build(sources, tmp)), sorted(("__init__",) + MODULES))
+            self.assertEqual(build(sources, tmp), [])  # unchanged text keeps files (and Numba's cache)
+            package = import_built(tmp)
+            self.assertEqual(Path(package.__file__).parent, Path(tmp, "alns_notebook"))
+            edited = dict(sources, solver=sources["solver"].replace('VERSION = "', 'VERSION = "edited-', 1))
+            self.assertEqual(build(edited, tmp), ["solver"])
+            self.assertTrue(import_built(tmp).VERSION.startswith("edited-"), "re-import must not reuse stale modules")
+        load()  # restore the shared build for other tests
+
+    def test_deterministic_mode_is_reproducible(self):
+        package, _ = load()
+        instance = random_instance(30, 21)
+        config = {"max_iterations": 400, "deterministic": True}
+        first = package.solve(instance, config, 3, 120.0)
+        second = package.solve(instance, config, 3, 120.0)
+        self.assertTrue(first.metadata["reproducible"])
+        self.assertEqual(first.routes, second.routes)
+        self.assertEqual(first.claimed_cost, second.claimed_cost)
+        self.assertTrue(check_cvrptw(instance, first.routes)["feasible"])
+        with self.assertRaises(ValueError):
+            package.ALNSConfig.from_dict({"deterministic": True})  # needs max_iterations
 
 
 if __name__ == "__main__":
