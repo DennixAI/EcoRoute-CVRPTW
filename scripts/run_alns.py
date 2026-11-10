@@ -26,6 +26,7 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -218,6 +219,43 @@ def _p(values, q):
     return float(np.percentile(values, q)) if values else None
 
 
+def iteration_throughput(metadata):
+    """Time-weighted rate from paired solver iteration/search-time measurements.
+
+    adapter_metadata.search_seconds measures the search loop through final route
+    packaging; it excludes construction and worker startup. Do not substitute the
+    benchmark row's broader search_seconds (the entire worker callable), the
+    execution wall time, or the allocated budget. Missing/invalid pairs are
+    excluded together, never converted to zero. Zero iterations is valid.
+    """
+    pairs = []
+    for record in metadata:
+        iterations = record.get("iterations")
+        seconds = record.get("search_seconds")
+        if (isinstance(iterations, (int, float)) and not isinstance(iterations, bool)
+                and math.isfinite(iterations) and iterations >= 0
+                and float(iterations).is_integer()
+                and isinstance(seconds, (int, float)) and not isinstance(seconds, bool)
+                and math.isfinite(seconds) and seconds > 0):
+            pairs.append((iterations, seconds))
+    return dict(
+        iterations_per_search_second=(sum(i for i, _ in pairs) / sum(t for _, t in pairs)
+                                      if pairs else None),
+        throughput_runs=len(pairs),
+    )
+
+
+def plot_throughput(ax, per_instance):
+    """Only positive measured rates can be displayed on the logarithmic axis."""
+    points = [p for p in per_instance
+              if p["iterations_per_search_second"] is not None
+              and p["iterations_per_search_second"] > 0]
+    ax.plot([p["n"] for p in points],
+            [p["iterations_per_search_second"] for p in points], "o")
+    ax.set(xlabel="customers", ylabel="ALNS iterations / measured search second",
+           yscale="log", title="Throughput by size (excludes construction/startup)")
+
+
 def report(out):
     """ALNS-specific tables and figures from a merged campaign."""
     import matplotlib
@@ -238,6 +276,7 @@ def report(out):
             meta.append(json.loads(log.read_text()).get("adapter_metadata", {}) if log.exists() else {})
         exe = [r["execution_seconds"] for r in runs if r["execution_seconds"] is not None]
         per.append(dict(
+            **iteration_throughput(meta),
             instance=name, family=name.split("/")[0], cls=instance_class(Path(name).stem),
             n=runs[0]["n"] if runs else None, time_limit=runs[0]["time_limit"] if runs else None,
             attempts=len(runs), feasible=sum(r["feasible"] for r in runs),
@@ -314,8 +353,7 @@ def report(out):
                labels=[str(s) for s in sizes])
     ax.set(xlabel="customers", ylabel="instance mean gap (%)", title="Scalability: gap by size")
     ax2 = axes[2]
-    ax2.plot([p["n"] for p in per if p["iterations_mean"]], [p["iterations_mean"] / p["time_limit"] for p in per if p["iterations_mean"]], "o")
-    ax2.set(xlabel="customers", ylabel="ALNS iterations per second", yscale="log", title="Throughput by size")
+    plot_throughput(ax2, per)
     fig.tight_layout()
     fig.savefig(out / "alns_gaps.png", dpi=120)
     plt.close(fig)
@@ -353,6 +391,10 @@ def report(out):
              f"Split: **{plan.get('split_name')}**; {len(names)} instances x {len(plan['seeds'])} seeds; "
              f"budget: {plan.get('budget_rule')}. Gaps are to published BKS (not proven optima), "
              "recomputed by the independent evaluator.", "",
+             "Throughput = total iterations / total measured solver search seconds over valid paired runs; "
+             "construction and worker startup are excluded. Missing/nonpositive times are excluded, "
+             "not replaced by the time budget. `throughput_runs` records the included run count; "
+             "zero rates remain in CSV but are omitted from the log-scale throughput plot.", "",
              "| Metric | Value |", "| --- | ---: |"]
     for key in ("planned_attempts", "attempts", "feasible_attempts", "budget_respected", "mean_gap_equal_weight",
                 "median_instance_gap", "p90_run_gap", "worst_run_gap", "best_of_seeds_mean_gap",
