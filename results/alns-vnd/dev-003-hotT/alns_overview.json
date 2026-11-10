@@ -1,0 +1,22 @@
+{
+  "campaign": "dev-003-hotT",
+  "split": "development",
+  "instances": 36,
+  "seeds": [
+    0,
+    1
+  ],
+  "planned_attempts": 72,
+  "attempts": 72,
+  "feasible_attempts": 72,
+  "budget_respected": 72,
+  "mean_gap_equal_weight": 0.9927937773122566,
+  "median_instance_gap": 0.7752274648629645,
+  "p90_run_gap": 2.2304684130551853,
+  "worst_run_gap": 3.532563998233928,
+  "best_of_seeds_mean_gap": 0.8310221899869847,
+  "mean_within_instance_sd": 0.2287795728020233,
+  "instances_any_run_over_7": [],
+  "negative_gap_runs": 0,
+  "budget_rule": "time_limit = max(10.0, 0.1 * customers) seconds"
+}

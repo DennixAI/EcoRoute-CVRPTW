@@ -1,0 +1,22 @@
+{
+  "campaign": "dev-002-coolT",
+  "split": "development",
+  "instances": 36,
+  "seeds": [
+    0,
+    1
+  ],
+  "planned_attempts": 72,
+  "attempts": 72,
+  "feasible_attempts": 72,
+  "budget_respected": 72,
+  "mean_gap_equal_weight": 1.3280414562438845,
+  "median_instance_gap": 1.0592329298723695,
+  "p90_run_gap": 2.806902822084032,
+  "worst_run_gap": 3.9384979302188117,
+  "best_of_seeds_mean_gap": 1.1463293065299682,
+  "mean_within_instance_sd": 0.25697978657339027,
+  "instances_any_run_over_7": [],
+  "negative_gap_runs": 0,
+  "budget_rule": "time_limit = max(10.0, 0.1 * customers) seconds"
+}
